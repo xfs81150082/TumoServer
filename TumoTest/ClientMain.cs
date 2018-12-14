@@ -13,6 +13,7 @@ namespace TumoTest
         static void Main(string[] args)
         {
             //new InitFinding(); //Ok 2018.11.23
+            //new InitFinding(); //Ok 2018.12.14
 
             new InitRoleLogin(); //Ok 2018.11.22
 
