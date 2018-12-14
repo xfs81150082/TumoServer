@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4F11A08-46C4-4BA8-9C58-BF6C2E3CFF07}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tumo</RootNamespace>
+    <AssemblyName>Tumo</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Assignment.cs" />
+    <Compile Include="Models\AssignmentItem.cs" />
+    <Compile Include="Models\AssignmentItemDB.cs" />
+    <Compile Include="Models\Attribute.cs" />
+    <Compile Include="Models\AttributeAdd.cs" />
+    <Compile Include="Models\AttributeValue.cs" />
+    <Compile Include="Models\Building.cs" />
+    <Compile Include="Models\BuildingItem.cs" />
+    <Compile Include="Models\BuildingItemDB.cs" />
+    <Compile Include="Models\CoolDown.cs" />
+    <Compile Include="Models\CoolDownItem.cs" />
+    <Compile Include="Models\CoolDownItemDB.cs" />
+    <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\InventoryItem.cs" />
+    <Compile Include="Models\InventoryItemDB.cs" />
+    <Compile Include="Models\MoveState.cs" />
+    <Compile Include="Models\Node.cs" />
+    <Compile Include="Models\NodeItem.cs" />
+    <Compile Include="Models\NodeItemDB.cs" />
+    <Compile Include="Models\Roler.cs" />
+    <Compile Include="Models\RolerAttack.cs" />
+    <Compile Include="Models\RolerMove.cs" />
+    <Compile Include="Models\Skill.cs" />
+    <Compile Include="Models\SkillItem.cs" />
+    <Compile Include="Models\SkillItemDB.cs" />
+    <Compile Include="Models\Soul.cs" />
+    <Compile Include="Models\SoulItem.cs" />
+    <Compile Include="Models\SoulItemDB.cs" />
+    <Compile Include="Models\TmMonoBehaviour.cs" />
+    <Compile Include="Models\TmTransform.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserItem.cs" />
+    <Compile Include="Models\UserItemDB.cs" />
+    <Compile Include="Enums\AssignmentType.cs" />
+    <Compile Include="Mvc\ResponseMvcParameter.cs" />
+    <Compile Include="Mvc\RequestMvcParameter.cs" />
+    <Compile Include="Sockets\Tcps\TmAsyncTcpSession.cs" />
+    <Compile Include="Mvc\DictionaryParameter.cs" />
+    <Compile Include="Enums\InventoryType.cs" />
+    <Compile Include="Logs\Log.cs" />
+    <Compile Include="Sockets\Tcps\TmAsyncTcpClient.cs" />
+    <Compile Include="Sockets\Tcps\TmAsyncTcpServer.cs" />
+    <Compile Include="Tools\MD5Tool.cs" />
+    <Compile Include="Mvc\MvcBase.cs" />
+    <Compile Include="Mvc\MvcParameter.cs" />
+    <Compile Include="Mvc\MvcTool.cs" />
+    <Compile Include="Enums\RoleType.cs" />
+    <Compile Include="Enums\SkillPlace.cs" />
+    <Compile Include="Enums\TenCode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
