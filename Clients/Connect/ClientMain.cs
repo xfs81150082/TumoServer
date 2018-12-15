@@ -6,7 +6,7 @@ using System.Text;
 using TumoTest.PathFinding;
 using TumoTest.RoleLogin;
 
-namespace TumoTest
+namespace Clients
 {
     class ClientMain
     {
