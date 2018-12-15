@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TumoTest", "TumoTest\TumoTest.csproj", "{FD11EF8A-E226-4E98-BDB8-F306AED30011}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servers", "Servers\Servers.csproj", "{3B670525-B63C-41FC-8545-177966E74C95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clients", "Clients\Clients.csproj", "{37709CD6-01BD-428E-BA66-D95B9C343AA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientExample", "ClientExample\ClientExample.csproj", "{37709CD6-01BD-428E-BA66-D95B9C343AA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tumo", "Tumo\Tumo.csproj", "{E4F11A08-46C4-4BA8-9C58-BF6C2E3CFF07}"
 EndProject
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FD11EF8A-E226-4E98-BDB8-F306AED30011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD11EF8A-E226-4E98-BDB8-F306AED30011}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD11EF8A-E226-4E98-BDB8-F306AED30011}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD11EF8A-E226-4E98-BDB8-F306AED30011}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3B670525-B63C-41FC-8545-177966E74C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3B670525-B63C-41FC-8545-177966E74C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B670525-B63C-41FC-8545-177966E74C95}.Release|Any CPU.ActiveCfg = Release|Any CPU

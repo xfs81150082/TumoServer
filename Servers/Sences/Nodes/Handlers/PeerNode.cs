@@ -47,15 +47,11 @@ namespace Servers.Sences.Nodes.Handlers
         private int cdsCount = -1;
         public Dictionary<string, PeerCDItem> PeerCDItems = new Dictionary<string, PeerCDItem>();            
 
-        public override void TmAwake()
-        {
-
-        }
+        public override void TmAwake() { }
 
         public override void TmUpdate(ElapsedEventArgs time)
         {
             CheckPeersCD(time);
-            //Console.WriteLine("PeerNode" + 58);
         }
 
 
@@ -120,32 +116,7 @@ namespace Servers.Sences.Nodes.Handlers
             }
         }
         #endregion
-
-        #region EngineerLogin
-        private void EngineerLogin(MvcParameter mvc)
-        {
-            mvc.NineCode = NineCode.Mysqler;
-            TumoNode.Instance.OnTransferParameter(mvc);
-            GetBookers(mvc);
-            Thread.Sleep(100);
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
-            GetTeachers(mvc);
-        }
-        private void GetBookers(MvcParameter mvc)
-        {
-            MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Booker, ElevenCode.GetItems);
-            mvc2.Endpoint = mvc.Endpoint;
-            TumoGate.Instance.OnTransferParameter(mvc2);
-        }
-        private void GetTeachers(MvcParameter mvc)
-        {
-            MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Teacher, ElevenCode.GetItems);
-            mvc2.Endpoint = mvc.Endpoint;
-            TumoGate.Instance.OnTransferParameter(mvc2);
-        }
-
-        #endregion
-
+             
 
     }
 }

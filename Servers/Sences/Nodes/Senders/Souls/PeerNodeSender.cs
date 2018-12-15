@@ -19,10 +19,13 @@ namespace Servers.Sences.Nodes.Senders.Souls
             switch (elevenCode)
             {
                 case (ElevenCode.HeartBeat):
+                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " PeerNodeSender:" + elevenCode);
                     TPeer peer1 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
                     mvc.NineCode = NineCode.Controller;
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerSender:/nine:" + elevenCode + "/" + mvc.NineCode);
-                    peer1.SendMsg(mvc);
+                    if (peer1 != null)
+                    {
+                        peer1.SendMsg(mvc);
+                    }
                     break;
                 case (ElevenCode.None):                  
                     break;
