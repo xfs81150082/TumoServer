@@ -14,14 +14,20 @@ namespace Clients
         {
             //new InitFinding(); //Ok 2018.11.23
             //new InitFinding(); //Ok 2018.12.14
+            //new InitRoleLogin(); //Ok 2018.11.22
 
-            new InitRoleLogin(); //Ok 2018.11.22
-
+            new TmClientHelper();
+            new TumoConnect();
+            TmTcpClient tmTcpClient = new TmTcpClient();
+            tmTcpClient.StartConnect();
+            new Test();
+            
 
             Console.ReadKey();
             Console.WriteLine("退出联接，并关闭程序。");
         }
 
+       
 
     }
 }
