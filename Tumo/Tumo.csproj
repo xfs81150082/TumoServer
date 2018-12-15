@@ -81,7 +81,7 @@
     <Compile Include="Sockets\Tcps\TmAsyncTcpSession.cs" />
     <Compile Include="Mvc\DictionaryParameter.cs" />
     <Compile Include="Enums\InventoryType.cs" />
-    <Compile Include="Logs\Log.cs" />
+    <Compile Include="Logs\TmLog.cs" />
     <Compile Include="Sockets\Tcps\TmAsyncTcpClient.cs" />
     <Compile Include="Sockets\Tcps\TmAsyncTcpServer.cs" />
     <Compile Include="Tools\MD5Tool.cs" />
