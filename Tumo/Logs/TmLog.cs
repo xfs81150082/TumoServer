@@ -6,9 +6,10 @@ using System.Text;
 
 namespace Tumo
 {
-    public class Log
+    public class TmLog
     {
-        private static string logpath = AppDomain.CurrentDomain.BaseDirectory + "TumoLog/log.txt";    
+        //private static string logpath = AppDomain.CurrentDomain.BaseDirectory + "TumoLog/log.txt";
+        private static string logpath = AppDomain.CurrentDomain.BaseDirectory + "log.txt";
 
         public static void WriteLine(string message)
         {

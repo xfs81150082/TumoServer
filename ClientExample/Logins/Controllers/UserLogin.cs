@@ -25,11 +25,11 @@ namespace ClientExample.Logins.Controllers
                     for (int i = 0; i < SoulItems2.Count; i++)
                     {
                         Console.WriteLine("SoulItems2: " + SoulItems2.Count + " Id:" + SoulItems2[i].Id + " Name:" + SoulItems2[i].Name);
-                        Log.WriteLine("SoulItems: " + SoulItems2.Count + " Id:" + SoulItems2[i].Id + " Name:" + SoulItems2[i].Name);
+                        TmLog.WriteLine("SoulItems: " + SoulItems2.Count + " Id:" + SoulItems2[i].Id + " Name:" + SoulItems2[i].Name);
                     }
 
                     RolerLoginTest(SoulItems2[0]);
-
+                    
                     break;
                 default:
                     break;

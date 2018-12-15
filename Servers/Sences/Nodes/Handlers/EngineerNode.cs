@@ -64,7 +64,7 @@ namespace Servers.Sences.Nodes.Handlers
             {
                 cdsCount = TmServerHelper.Instance.TcpPeers.Count;
                 Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " PeerCD:心跳包每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ", 毫秒针:" + ela.SignalTime.Millisecond + ")");
-                Log.WriteLine("EngineerTimer每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ",毫秒针:" + ela.SignalTime.Millisecond + ")");
+                TmLog.WriteLine("EngineerTimer每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ",毫秒针:" + ela.SignalTime.Millisecond + ")");
                 //初始化服务器PeersCD字典
                 if (TmServerHelper.Instance.TcpPeers.Count > 0)
                 {
