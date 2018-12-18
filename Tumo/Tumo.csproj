@@ -79,8 +79,8 @@
     <Compile Include="Models\UserItem.cs" />
     <Compile Include="Models\UserItemDB.cs" />
     <Compile Include="Enums\AssignmentType.cs" />
-    <Compile Include="Mvc\ResponseMvcParameter.cs" />
-    <Compile Include="Mvc\RequestMvcParameter.cs" />
+    <Compile Include="Mvc\TmResponse.cs" />
+    <Compile Include="Mvc\TmRequest.cs" />
     <Compile Include="Sockets\Tcps\TmAsyncTcpSession.cs" />
     <Compile Include="Mvc\DictionaryParameter.cs" />
     <Compile Include="Enums\InventoryType.cs" />
