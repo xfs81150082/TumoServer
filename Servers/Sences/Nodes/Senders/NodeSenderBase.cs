@@ -12,7 +12,7 @@ namespace Servers.Sences.Nodes.Senders
         public NodeSenderBase()
         {
             TumoNodeSender.Instance.NodeSenders.Add(Code, this);
-            Console.WriteLine("MeasurementSenders:" + this.GetType().Name + "  is register.");
+            Console.WriteLine("NodeSender:" + this.GetType().Name + "  is register.");
         }
     }
 }
