@@ -20,8 +20,7 @@ namespace ClientExample
             Console.ReadKey();
             Console.WriteLine("退出联接，并关闭程序。");
         }
-
-       
+               
 
     }
 }

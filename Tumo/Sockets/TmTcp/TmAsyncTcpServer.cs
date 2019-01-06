@@ -18,6 +18,8 @@ namespace Tumo
         private Socket serverSocket { get; set; }                 //服务器使用的异步socket   
         #endregion
 
+
+
         #region Constructor
         public TmAsyncTcpServer()  { }
         public void Init(string ipString, int port, int maxListenCount)
@@ -56,6 +58,8 @@ namespace Tumo
         }
         #endregion 
         public abstract void TmReceiveSocket(Socket socket);
+
+
 
     }
 }

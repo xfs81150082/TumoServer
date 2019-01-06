@@ -12,8 +12,8 @@ namespace Tumo
     public abstract class TmAsyncTcpSession
     {
         #region Properties
-        //客户端Socket 
-        private Socket Socket { get; set; }                //创建一个套接字，用于储藏代理服务端套接字，与客户端通信
+        ///客户端Socket 
+        private Socket Socket { get; set; }                ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信
         private bool IsRunning { get; set; }
         private bool noClose { get; set; } = false;
         #endregion
@@ -29,6 +29,8 @@ namespace Tumo
         private bool isHead { get; set; }
         private bool isBody { get; set; }
         #endregion
+
+        
 
         #region Constructor
         public TmAsyncTcpSession() { }
@@ -59,7 +61,7 @@ namespace Tumo
                     RecvLength = Socket.EndReceive(ar);
                     if (RecvLength == 0)
                     {
-                        //发送端关闭
+                        ///发送端关闭
                         Console.WriteLine("发送端{0}连接关闭", Socket.RemoteEndPoint);
                         IsRunning = false;
                         OnDisconnect(Socket);
@@ -69,10 +71,10 @@ namespace Tumo
                     {
                         AddRange(RecvBuffList, Buffer, RecvLength);
                     }
-                    //触发事件 解析缓存池RecvBuffList<byte> 读取数据字节
+                    ///触发事件 解析缓存池RecvBuffList<byte> 读取数据字节
                     ParsingBytes();
 
-                    //继续接收来自来客户端的数据  
+                    ///继续接收来自来客户端的数据  
                     Socket.BeginReceive(Buffer, 0, BufferSize, SocketFlags.None, new AsyncCallback(this.ReceiveCallback), this);
                 }
                 catch (Exception ex)
@@ -88,13 +90,13 @@ namespace Tumo
             Console.WriteLine(GetCurrentTime() + " (90), ReceiveMsg Id/IP: " + Thread.CurrentThread.ManagedThreadId + " / " + Socket.RemoteEndPoint.ToString());
             ///将本次要接收的消息头字节数置0
             int iBytesHead = 0;
-            //将本次要剪切的字节数置0
+            ///将本次要剪切的字节数置0
             int iBytesBody = 0;
             try
             {
                 if (isHead)
                 {
-                    //如果当前需要接收的字节数小于缓存池RecvBuffList，进行下一步操作
+                    ///如果当前需要接收的字节数小于缓存池RecvBuffList，进行下一步操作
                     if (surHL <= RecvBuffList.Count)
                     {
                         iBytesHead = surHL;
@@ -104,7 +106,7 @@ namespace Tumo
                     {
                         isHead = false;
                         isBody = true;
-                        //接收消息体（消息体的长度存储在消息头的0至4索引位置的字节里）
+                        ///接收消息体（消息体的长度存储在消息头的0至4索引位置的字节里）
                         byte[] HeadBytes = new byte[iBytesHead];
                         ///将接收到的字节数的消息头保存到HeadBytes，//减去已经接收到的字节数
                         CutTo(RecvBuffList, HeadBytes, 0, iBytesHead);
@@ -114,7 +116,7 @@ namespace Tumo
                 }
                 if (isBody)
                 {
-                    //如果当前需要接收的字节数大于0，则循环接收
+                    ///如果当前需要接收的字节数大于0，则循环接收
                     if (surBL <= RecvBuffList.Count)
                     {
                         iBytesBody = surBL;
@@ -125,15 +127,15 @@ namespace Tumo
                         isBody = false;
                         isHead = true;
                         surHL = 4;
-                        //一个消息包接收完毕，解析消息包
+                        ///一个消息包接收完毕，解析消息包
                         byte[] BodyBytes = new byte[iBytesBody];
                         CutTo(RecvBuffList, BodyBytes, 0, iBytesBody);
-                        //一个消息包接收完毕，解析消息包
+                        ///一个消息包接收完毕，解析消息包
                         string mvcString = Encoding.UTF8.GetString(BodyBytes, 0, BodyBytes.Length);
                         ///这个方法用来处理参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
                         OnTransferParameter(mvcString, Socket);
-                        /////将字符串string,用json反序列化转换成MvcParameter参数
-                        //MvcParameter mvc = MvcTool.ToObject<MvcParameter>(mvcString);
+                        ///将字符串string,用json反序列化转换成MvcParameter参数
+                        ///MvcParameter mvc = MvcTool.ToObject<MvcParameter>(mvcString);
                     }
                 }
             }
@@ -166,22 +168,22 @@ namespace Tumo
         public void SendString(string mvcString)
         {
             Console.WriteLine(GetCurrentTime() + " (170) Send Thread Id:" + Thread.CurrentThread.ManagedThreadId);
-            ////用Json将参数（MvcParameter）,序列化转换成字符串（string）
-            //string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
+            ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
+            ///string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
             if (null == Socket.Handle || !Socket.Connected)
             {
                 Console.WriteLine("连接已中断！！！");
                 return;
             }
-            //将字符串(string)转换成字节(byte)
+            ///将字符串(string)转换成字节(byte)
             byte[] jsonsByte = Encoding.UTF8.GetBytes(mvcString);
-            //消息包长度
+            ///消息包长度
             int sendLength = 4 + jsonsByte.Length;
-            //定义数据包（消息长度4字节 + 消息体长度）
+            ///定义数据包（消息长度4字节 + 消息体长度）
             byte[] MsgsByte = new byte[sendLength];
-            //先存入消息长度数值4个字节
+            ///先存入消息长度数值4个字节
             BitConverter.GetBytes(IPAddress.HostToNetworkOrder(jsonsByte.Length)).CopyTo(MsgsByte, 0);
-            //然后存入信息体字节
+            ///然后存入信息体字节
             jsonsByte.CopyTo(MsgsByte, 4);
             AddRange(SendBuffList, MsgsByte, MsgsByte.Length);
             while (sendLength > 0)
@@ -209,7 +211,6 @@ namespace Tumo
                     OnDisconnect(Socket);
                 }
             }
-
         }
         private void SendCallback(IAsyncResult ar)
         {
