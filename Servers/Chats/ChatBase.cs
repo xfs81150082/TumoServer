@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Chats
 {
-    public abstract class ChatBase : MvcBase
+    public abstract class ChatBase : TmBase
     {
         public ChatBase()
         {

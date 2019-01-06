@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Logins
 {
-    public abstract class LoginBase : MvcBase
+    public abstract class LoginBase : TmBase
     {
         public LoginBase()
         {

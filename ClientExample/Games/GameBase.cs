@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientExample.Games
 {
-    public abstract class GameBase : MvcBase
+    public abstract class GameBase : TmBase
     {
         public GameBase()
         {

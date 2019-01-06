@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Games.Handlers
 {
-    public abstract class GameHandlerBase : MvcBase
+    public abstract class GameHandlerBase : TmBase
     {
         public GameHandlerBase()
         {

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientExample.Logins.Senders
 {
-    public abstract class LoginSenderBase : MvcBase
+    public abstract class LoginSenderBase : TmBase
     {
         public LoginSenderBase()
         {

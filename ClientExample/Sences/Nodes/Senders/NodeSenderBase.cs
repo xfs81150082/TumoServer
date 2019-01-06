@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientExample.Sences.Nodes.Senders
 {
-    public abstract class NodeSenderBase : MvcBase
+    public abstract class NodeSenderBase : TmBase
     {
         public NodeSenderBase()
         {

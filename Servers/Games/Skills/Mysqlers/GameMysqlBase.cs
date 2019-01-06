@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Games.Mysqlers
 {
-    public abstract class GameMysqlBase : MvcBase
+    public abstract class GameMysqlBase : TmBase
     {
         public GameMysqlBase()
         {

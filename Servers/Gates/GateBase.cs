@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Gates
 {
-    public abstract class GateBase : MvcBase
+    public abstract class GateBase : TmBase
     {
         public GateBase()
         {

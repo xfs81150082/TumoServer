@@ -39,6 +39,9 @@
     <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.13\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -164,6 +167,11 @@
     <Compile Include="Sences\Rolers\Senders\TeacherSender.cs" />
     <Compile Include="Sences\Rolers\Senders\TumoRolerSender.cs" />
     <Compile Include="Sences\Rolers\TumoRoler.cs" />
+    <Compile Include="TmModel\TmBase\TmJsonHelper.cs" />
+    <Compile Include="TmModel\TmBase\TmObject.cs" />
+    <Compile Include="TmModel\TmBase\TmTimeHelper.cs" />
+    <Compile Include="TmModel\TmBase\TmIdGenerater.cs" />
+    <Compile Include="TmModel\TmBase\TmComponent.cs" />
     <Compile Include="UserItemDB.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +194,9 @@
     <Folder Include="Games\Wars\Mysqlers\" />
     <Folder Include="Games\Wars\Senders\" />
     <Folder Include="Sences\Buildings\" />
+    <Folder Include="TmModel\TmComponent\" />
+    <Folder Include="TmModel\TmEntity\" />
+    <Folder Include="TmModel\TmSystem\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

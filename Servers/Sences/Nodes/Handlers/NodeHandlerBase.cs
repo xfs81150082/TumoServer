@@ -8,7 +8,7 @@ using System.Timers;
 
 namespace Servers.Sences.Nodes.Handlers
 {
-    public abstract class NodeHandlerBase : MvcBase
+    public abstract class NodeHandlerBase : TmBase
     {
         private Timer TmTimer;
         private int ValTime = 1000;

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientExample.Logins.Controllers
 {
-    public abstract class LoginControllerBase : MvcBase
+    public abstract class LoginControllerBase : TmBase
     {
         public LoginControllerBase()
         {
