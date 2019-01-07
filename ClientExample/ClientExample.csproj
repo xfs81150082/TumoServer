@@ -49,14 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main\ClientMain.cs" />
-    <Compile Include="Main\TClient.cs" />
     <Compile Include="Main\Test.cs" />
     <Compile Include="Main\TmClientHelper.cs" />
-    <Compile Include="Main\TmTcpClient.cs" />
     <Compile Include="Games\TumoGmae.cs" />
     <Compile Include="Games\GameBase.cs" />
     <Compile Include="Logins\LoginBase.cs" />
     <Compile Include="Logins\TumoLogin.cs" />
+    <Compile Include="Main\TmTcpClient.cs" />
     <Compile Include="Sences\Models\ClientCDItem.cs" />
     <Compile Include="Sences\Nodes\Controllers\PeerNode.cs" />
     <Compile Include="Sences\Nodes\NodeBase.cs" />

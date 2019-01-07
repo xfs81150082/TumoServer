@@ -19,7 +19,8 @@ namespace ClientExample.Logins.Senders
                 case (ElevenCode.EngineerLogin):
                     Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerLoginSender: " + elevenCode);
                     mvc.NineCode = NineCode.Handler;
-                    TClient.Instance.SendMsg(mvc);
+                    TmAsyncTcpClient.Instance.SendMvc(mvc);
+                    //TClient.Instance.SendMsg(mvc);
                     break;
                 case (ElevenCode.None):
                     break;

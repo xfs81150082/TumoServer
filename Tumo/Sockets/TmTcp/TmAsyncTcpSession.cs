@@ -30,8 +30,6 @@ namespace Tumo
         private bool isBody { get; set; }
         #endregion
 
-        
-
         #region Constructor
         public TmAsyncTcpSession() { }
         #endregion

@@ -10,10 +10,7 @@ namespace ClientExample
     {
         #region instance,dictionary
         private static TmClientHelper _instance;
-        private Dictionary<string, TClient> tcpClients = new Dictionary<string, TClient>();
         public static TmClientHelper Instance { get { return _instance; } }
-        public TClient TClient { get; set; }
-        public Dictionary<string, TClient> TcpClients { get => tcpClients; set => tcpClients = value; }
         public TmClientHelper() { _instance = this; }
         #endregion
         

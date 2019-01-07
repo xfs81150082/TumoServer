@@ -48,7 +48,7 @@ namespace ClientExample.Games.Controllers
         void UpdateItemdb(SoulItemDB itemDB)
         {
             MvcParameter mvc = MvcTool.ToJsonParameter<SoulItemDB>(NineCode.Game, TenCode.Engineer, ElevenCode.UpdateItemdb,TwelveCode.UpdateItemdb, "SoulItemDB", itemDB);
-            TClient.Instance.SendMsg(mvc);
+            //TClient.Instance.SendMsg(mvc);
         }
         
       

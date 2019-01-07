@@ -19,7 +19,8 @@ namespace ClientExample.Sences.Nodes.Senders
                 case (ElevenCode.HeartBeat):
                     Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerSender: " + elevenCode);
                     mvc.NineCode = NineCode.Handler;
-                    TClient.Instance.SendMsg(mvc);
+                    TmAsyncTcpClient.Instance.SendMvc(mvc);
+                    //TClient.Instance.SendMsg(mvc);
                     break;          
                 default:
                     break;

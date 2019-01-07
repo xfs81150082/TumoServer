@@ -38,10 +38,10 @@ namespace ClientExample.Sences.Models
             if (CdCount >= CoolDown.MaxCdCount + 4) 
             {
                 Close();
-                if (TmClientHelper.Instance.TClient != null)
+                if (TmAsyncTcpClient.Instance.TClient != null)
                 {
                     ///删除掉心跳包群中对应的client
-                    TmClientHelper.Instance.TClient.OnDisconnect();
+                    TmAsyncTcpClient.Instance.TClient.OnDisconnect();
                 }
             }
             Console.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmss.ffff") + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);

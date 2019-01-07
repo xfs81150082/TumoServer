@@ -79,14 +79,15 @@
     <Compile Include="Models\UserItem.cs" />
     <Compile Include="Models\UserItemDB.cs" />
     <Compile Include="Enums\AssignmentType.cs" />
+    <Compile Include="Sockets\TmTcp\TmClient\TClient.cs" />
     <Compile Include="TmParameter\TmResponse.cs" />
     <Compile Include="TmParameter\TmRequest.cs" />
     <Compile Include="Sockets\TmTcp\TmAsyncTcpSession.cs" />
     <Compile Include="TmParameter\DictionaryParameter.cs" />
     <Compile Include="Enums\InventoryType.cs" />
     <Compile Include="Logs\TmLog.cs" />
-    <Compile Include="Sockets\TmTcp\TmAsyncTcpClient.cs" />
-    <Compile Include="Sockets\TmTcp\TmAsyncTcpServer.cs" />
+    <Compile Include="Sockets\TmTcp\TmClient\TmAsyncTcpClient.cs" />
+    <Compile Include="Sockets\TmTcp\TmServer\TmAsyncTcpServer.cs" />
     <Compile Include="Tools\MD5Tool.cs" />
     <Compile Include="TmParameter\TmBase.cs" />
     <Compile Include="TmParameter\MvcParameter.cs" />
