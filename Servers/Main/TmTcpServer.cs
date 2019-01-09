@@ -11,8 +11,12 @@ namespace Servers
 {
     class TmTcpServer : TmAsyncTcpServer , TmUpdate
     {
+        public int ValTime = 20;
+        private Timer TmTimer;
+
         public TmTcpServer()
         {
+            TumoTimer(ValTime);
             //IpString = "172.17.16.15";
             IpString = "127.0.0.1";
             Port = 8115;
@@ -20,7 +24,6 @@ namespace Servers
             Init();
         }
 
-<<<<<<< HEAD
         public void TumoTimer(int time)
         {
             TmTimer = new Timer();                                         //实例化Timer类，在括号里设置间隔时间,单位为毫秒；
@@ -31,9 +34,6 @@ namespace Servers
         }
 
         public void TmUpdate(object source, ElapsedEventArgs time)
-=======
-        public override void TmUpdate(ElapsedEventArgs time)
->>>>>>> 07a544ffdca5ce83fc000e9205c588c3cc349ae8
         {
              while (RecvParameters.Count > 0)
             {
@@ -43,9 +43,6 @@ namespace Servers
             }
         }
 
-<<<<<<< HEAD
        
-=======
->>>>>>> 07a544ffdca5ce83fc000e9205c588c3cc349ae8
     }
 }
