@@ -8,7 +8,7 @@ using Tumo;
 
 namespace ClientExample
 {
-    public class TmTcpClient : TmAsyncTcpClient
+    public class TmTcpClient : TmAsyncTcpClient , TmUpdate
     {
         public int ValTime = 20;
         private Timer TmTimer;
@@ -21,22 +21,18 @@ namespace ClientExample
             Port = 8115;
             Init();
         }
-        
-        void TumoTimer(int ValTime)
+
+        public void TumoTimer(int ValTime)
         {
             TmTimer = new Timer();                                         //实例化Timer类，在括号里设置间隔时间,单位为毫秒；
-            TmTimer.Elapsed += new ElapsedEventHandler(OnTimerEvent);      //到达时间的时候执行事件；
+            TmTimer.Elapsed += new ElapsedEventHandler(TmUpdate);          //到达时间的时候执行事件；
             TmTimer.Interval = ValTime;                                    //事件执行间隔时间1000毫秒；
             TmTimer.Enabled = true;                                        //是否执行事件System.Timers.Timer.Elapsed；
             TmTimer.AutoReset = true;                                      //设置是否循环执行，是执行一次（false）还是一直执行(true)；
         }
-        // 当时间发生的时候需要进行的逻辑处理等    // 在这里仅仅是一种方式，可以实现这样的方式很多    
-        void OnTimerEvent(object source, ElapsedEventArgs time)
-        {
-            TmUpdate(time);
-        }
 
-        private void TmUpdate(ElapsedEventArgs time)
+        ///当时间发生的时候需要进行的逻辑处理等    // 在这里仅仅是一种方式，可以实现这样的方式很多 
+        public void TmUpdate(object source, ElapsedEventArgs time)
         {
             while (RecvParameters.Count > 0)
             {
@@ -45,6 +41,7 @@ namespace ClientExample
                 Console.WriteLine("RecvParameters: " + RecvParameters.Count);
             }
         }
-    }
 
+                     
+    }
 }

@@ -89,6 +89,7 @@
     <Compile Include="Logs\TmLog.cs" />
     <Compile Include="Sockets\TmTcp\TmAsyncTcpClient.cs" />
     <Compile Include="Sockets\TmTcp\TmAsyncTcpServer.cs" />
+    <Compile Include="Tools\TmUpdate.cs" />
     <Compile Include="Tools\TimerTool.cs" />
     <Compile Include="Tools\MD5Tool.cs" />
     <Compile Include="TmParameter\TmBase.cs" />

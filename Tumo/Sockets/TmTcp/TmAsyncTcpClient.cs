@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Timers;
 
 namespace Tumo
 {
     public class TmAsyncTcpClient
     {
+        #region 静态单列模式
         private static TmAsyncTcpClient _instance;
         public static TmAsyncTcpClient Instance { get => _instance; }
-        public TmAsyncTcpClient() { _instance = this; }
+        #endregion
 
         #region Properties
         public string IpString { get; set; }            //监听的IP地址  
@@ -18,23 +20,30 @@ namespace Tumo
         private bool isRunning { get; set; }             //服务器是否正在运行
         private IPAddress address { get; set; }          //连接的IP地址  
         private Socket clientSocket { get; set; }
-        #endregion
         public TClient TClient{ get; set; }
         public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
         private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
+        #endregion
 
         #region Constructor      
+        public TmAsyncTcpClient()
+        {
+            _instance = this;
+        }
+
         public TmAsyncTcpClient(string ipString, int port)
         {
             _instance = this;
             this.IpString = ipString;
             this.Port = port;
         }
+
         public void Init()
         {
             address = IPAddress.Parse(IpString);
             clientSocket = new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
         }
+
         public void Init(string ipString, int port)
         {
             this.IpString = ipString;
@@ -44,7 +53,7 @@ namespace Tumo
         }
         #endregion
 
-        #region Methods
+        #region Methods Callbacks ///接收参数消息
         public void StartConnect()
         {
             try
@@ -60,9 +69,6 @@ namespace Tumo
                 Console.WriteLine(ex.ToString());
             }
         }
-        #endregion
-
-        #region Callbacks
         private void ConnectCallback(IAsyncResult ar)
         {
             //创建一个Socket接收传递过来的TmSocket
@@ -80,7 +86,6 @@ namespace Tumo
                 Console.WriteLine(ex.ToString());
             }
         }
-        #endregion
         public void TmReceiveSocket(Socket socket)
         {
             ///创建一个TcpPeer接收socket
@@ -92,7 +97,9 @@ namespace Tumo
             TClient = new TClient();
             TClient.BeginReceiveMessage(socket);
         }
+        #endregion
 
+        #region ///发送参数消息
         public void SendMvc(MvcParameter mvc)
         {
             SendParameters.Enqueue(mvc);
@@ -109,6 +116,7 @@ namespace Tumo
                 TClient.SendString(mvcJsons);
             }
         }
+        #endregion
 
     }
 }

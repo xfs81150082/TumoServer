@@ -4,14 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Timers;
 
 namespace Tumo
 {
-    public abstract class TmAsyncTcpServer
+    public class TmAsyncTcpServer
     {
+        #region /// 静态单列模式        
         private static TmAsyncTcpServer _instance;
         public static TmAsyncTcpServer Instance { get => _instance; }
-        public TmAsyncTcpServer() { _instance = this; }
+        #endregion
 
         #region Properties
         public string IpString { get; set; }                      //监听的IP地址  
@@ -20,15 +22,18 @@ namespace Tumo
         private bool isRunning { get; set; }                       //服务器是否正在运行
         private IPAddress address { get; set; }                   //监听的IP地址  
         private Socket serverSocket { get; set; }                 //服务器使用的异步socket   
-        #endregion
         public Queue<Socket> WaitingSockets = new Queue<Socket>();  
         public Dictionary<string, TPeer> TPeers { get; set; } = new Dictionary<string, TPeer>();
         public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
         private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
+        #endregion
 
-
-
-        #region Constructor
+        #region Constructor ///构造函数 ///初始化方法
+        public TmAsyncTcpServer()
+        {
+            _instance = this;
+        }
+        
         public void Init()
         {
             address = IPAddress.Parse(IpString);
@@ -45,7 +50,7 @@ namespace Tumo
         }
         #endregion
 
-        #region Methods Callbacks //启动服务       
+        #region Methods Callbacks ///启动服务 ///接收参数消息      
         public void StartListen()
         {
             if (!isRunning)
@@ -57,6 +62,7 @@ namespace Tumo
                 isRunning = true;
             }
         }
+
         private void AcceptCallback(IAsyncResult ar)
         {
             if (isRunning)
@@ -69,8 +75,8 @@ namespace Tumo
                 server.BeginAccept(new AsyncCallback(this.AcceptCallback), server);
             }
         }
-        #endregion 
-        public void TmReceiveSocket(Socket socket)
+
+        private void TmReceiveSocket(Socket socket)
         {
             ///限制监听数量
             if (TPeers.Count >= MaxListenCount)
@@ -84,7 +90,9 @@ namespace Tumo
                 new TPeer().BeginReceiveMessage(socket);
             }
         }
+        #endregion
 
+        #region ///发送参数信息
         public void SendMvc(MvcParameter mvc)
         {
             SendParameters.Enqueue(mvc);
@@ -110,7 +118,8 @@ namespace Tumo
                 }
             }
         }
-              
+        #endregion
+             
 
     }
 }
