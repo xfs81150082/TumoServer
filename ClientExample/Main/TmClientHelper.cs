@@ -14,15 +14,16 @@ namespace ClientExample
         public TmClientHelper() { _instance = this; }
         #endregion
         
-        #region TcpClient
-        //获得服务器当前时间
-        public DateTime GetCurrentTime()
-        {
-            DateTime cuurentTime = new DateTime();
-            cuurentTime = DateTime.Now;
-            return cuurentTime;
-        }
-        #endregion
+        //#region TcpClient
+        /////获得服务器当前时间
+        //public string GetCurrentTime()
+        //{
+        //    string cuurentTime = "";
+        //    cuurentTime = DateTime.Now.ToString("yyyyMMddHHmmss.ffff");
+        //    return cuurentTime;
+        //}
+
+        //#endregion
 
     }
 }

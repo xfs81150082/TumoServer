@@ -97,7 +97,6 @@
     <Compile Include="Gates\GateBase.cs" />
     <Compile Include="Main\TmServerHelper.cs" />
     <Compile Include="Main\TmTcpServer.cs" />
-    <Compile Include="Main\TPeer.cs" />
     <Compile Include="Sences\Models\SpawnCDitem.cs" />
     <Compile Include="Sences\Models\PeerCDItem.cs" />
     <Compile Include="Main\MysqlHelper.cs" />

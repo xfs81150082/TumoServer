@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using Servers;
 using Servers.Sences.Rolers;
 using System;
@@ -38,7 +36,7 @@ namespace Servers.Sences.Models
         {
             MvcParameter mvc = MvcTool.ToParameter<Roler>(EightCode.Roler, NineCode.Handler, TenCode.Booker, ElevenCode.SyncSpawn, ElevenCode.SyncSpawn.ToString(), this);
             TumoRoler.Instance.OnTransferParameter(mvc);
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " Monster is SyncSpawn, Id:" + this.SoulItem.Id + " px:" + this.TmTransform.px);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " Monster is SyncSpawn, Id:" + this.SoulItem.Id + " px:" + this.TmTransform.px);
         }
 
 

@@ -1,8 +1,5 @@
 ﻿using Tumo;
-using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;

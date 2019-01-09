@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Tumo;
 
 namespace Servers
 {
@@ -21,8 +22,8 @@ namespace Servers
             tmTcpServer.StartListen();
 
             Thread.CurrentThread.Name = "ServerMainThread23";
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
 
             Console.ReadKey();
             Console.WriteLine("退出监听，并关闭程序。");

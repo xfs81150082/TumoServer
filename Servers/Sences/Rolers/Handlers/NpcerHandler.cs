@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +22,7 @@ namespace Servers.Sences.Rolers.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.None):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " TeacherRolerHandler: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " TeacherRolerHandler: " + elevenCode);
                     break;
                 default:
                     break;

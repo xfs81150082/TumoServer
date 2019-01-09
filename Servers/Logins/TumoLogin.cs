@@ -1,5 +1,4 @@
 ﻿using Tumo;
-using Tumo;
 using Servers.Gates;
 using Servers.Logins.Handlers;
 using Servers.Logins.Mysqlers;
@@ -8,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Servers.Logins
 {

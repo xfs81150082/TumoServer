@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using Servers.Gates;
 using Servers;
 using System;
@@ -22,10 +20,11 @@ namespace Servers.Sences.Nodes.Senders.Souls
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerSender: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerSender: " + elevenCode);
                     mvc.NineCode = NineCode.Controller;
-                    TPeer peer1 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
-                    peer1.SendMsg(mvc);
+                    //TPeer peer1 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
+                    //peer1.SendMsg(mvc);
+                    TmAsyncTcpServer.Instance.SendMvc(mvc);
                     break;
                 case (ElevenCode.None):
                     break;

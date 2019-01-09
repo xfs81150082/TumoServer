@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
 using Servers.Gates;
 using Servers;
@@ -43,13 +41,13 @@ namespace Servers.Sences.Rolers.Mysqlers
         void GetItems()
         {
             RolerMysqlInfo.Instance.Bookers  = GetSoulItems();           
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " RolerMysqlInfo-Bookers: " + RolerMysqlInfo.Instance.Bookers.Count);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " RolerMysqlInfo-Bookers: " + RolerMysqlInfo.Instance.Bookers.Count);
             foreach (var tem in GetSoulItems().Values)
             {
                 Monster monster = new Monster(tem);
                 RolerInfo.Instance.Monsters.Add(monster.SoulItem.Id, monster);
             }
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " RolerInfo-Monsters: " + RolerInfo.Instance.Monsters.Count);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " RolerInfo-Monsters: " + RolerInfo.Instance.Monsters.Count);
         }
 
         void UpdateItemdb(MvcParameter mvc)
@@ -132,7 +130,7 @@ namespace Servers.Sences.Rolers.Mysqlers
                 bool yes = false;
                 if (yes)
                 {
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " Booker: " + dbs[i].Id +" 已死亡.");                  
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " Booker: " + dbs[i].Id +" 已死亡.");                  
                 }
                 else
                 {

@@ -13,7 +13,7 @@ namespace Tumo
     {
         #region Properties
         ///客户端Socket 
-        private Socket Socket { get; set; }                ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信
+        public Socket Socket { get; set; }                ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信
         private bool IsRunning { get; set; }
         private bool noClose { get; set; } = false;
         #endregion
@@ -38,8 +38,8 @@ namespace Tumo
         public void BeginReceiveMessage(object obj)
         {
             Socket = obj as Socket;
-            OnConnect(Socket);
-            Console.WriteLine(GetCurrentTime() + " (46)BeginReceiveMsg Id/IP: " + Thread.CurrentThread.ManagedThreadId + " / " + Socket.RemoteEndPoint.ToString());
+            OnConnect();
+            Console.WriteLine(TimerTool.GetCurrentTime() + " (46)BeginReceiveMsg Id/IP: " + Thread.CurrentThread.ManagedThreadId + " / " + Socket.RemoteEndPoint.ToString());
             BufferSize = 1024;
             Buffer = new byte[BufferSize];
             isHead = true;
@@ -53,7 +53,7 @@ namespace Tumo
         {
             if (IsRunning)
             {
-                Console.WriteLine(GetCurrentTime() + " (56)ReceiveCallback Id/IP: " + Thread.CurrentThread.ManagedThreadId + " / " + Socket.RemoteEndPoint.ToString());
+                Console.WriteLine(TimerTool.GetCurrentTime() + " (56)ReceiveCallback Id/IP: " + Thread.CurrentThread.ManagedThreadId + " / " + Socket.RemoteEndPoint.ToString());
                 try
                 {
                     RecvLength = Socket.EndReceive(ar);
@@ -62,7 +62,7 @@ namespace Tumo
                         ///发送端关闭
                         Console.WriteLine("发送端{0}连接关闭", Socket.RemoteEndPoint);
                         IsRunning = false;
-                        OnDisconnect(Socket);
+                        OnDisconnect();
                         return;
                     }
                     else
@@ -77,15 +77,15 @@ namespace Tumo
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(GetCurrentTime() + ex.ToString());
+                    Console.WriteLine(TimerTool.GetCurrentTime() + ex.ToString());
                     IsRunning = false;
-                    OnDisconnect(Socket);
+                    OnDisconnect();
                 }
             }
         }
         private void ParsingBytes()
         {
-            Console.WriteLine(GetCurrentTime() + " (90), ReceiveMsg Id/IP: " + Thread.CurrentThread.ManagedThreadId + " / " + Socket.RemoteEndPoint.ToString());
+            Console.WriteLine(TimerTool.GetCurrentTime() + " (90), ReceiveMsg Id/IP: " + Thread.CurrentThread.ManagedThreadId + " / " + Socket.RemoteEndPoint.ToString());
             ///将本次要接收的消息头字节数置0
             int iBytesHead = 0;
             ///将本次要剪切的字节数置0
@@ -131,7 +131,7 @@ namespace Tumo
                         ///一个消息包接收完毕，解析消息包
                         string mvcString = Encoding.UTF8.GetString(BodyBytes, 0, BodyBytes.Length);
                         ///这个方法用来处理参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
-                        OnTransferParameter(mvcString, Socket);
+                        OnTransferParameter(mvcString);
                         ///将字符串string,用json反序列化转换成MvcParameter参数
                         ///MvcParameter mvc = MvcTool.ToObject<MvcParameter>(mvcString);
                     }
@@ -139,8 +139,8 @@ namespace Tumo
             }
             catch (Exception ex)
             {
-                Console.WriteLine(GetCurrentTime() + ex.ToString());
-                OnDisconnect(Socket);
+                Console.WriteLine(TimerTool.GetCurrentTime() + ex.ToString());
+                OnDisconnect();
             }
         }
         #endregion
@@ -165,7 +165,7 @@ namespace Tumo
         ///发送信息给客户端
         public void SendString(string mvcString)
         {
-            Console.WriteLine(GetCurrentTime() + " (170) Send Thread Id:" + Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " (170) Send Thread Id:" + Thread.CurrentThread.ManagedThreadId);
             ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
             ///string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
             if (null == Socket.Handle || !Socket.Connected)
@@ -205,8 +205,8 @@ namespace Tumo
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(GetCurrentTime() + ex.ToString());
-                    OnDisconnect(Socket);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + ex.ToString());
+                    OnDisconnect();
                 }
             }
         }
@@ -216,36 +216,20 @@ namespace Tumo
             {
                 Socket client = (Socket)ar.AsyncState;
                 int bytesSent = client.EndSend(ar);
-                Console.WriteLine(GetCurrentTime() + " Sent {0} bytes to clinet.", bytesSent);
+                Console.WriteLine(TimerTool.GetCurrentTime() + " Sent {0} bytes to clinet.", bytesSent);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(GetCurrentTime() + ex.ToString());
+                Console.WriteLine(TimerTool.GetCurrentTime() + ex.ToString());
             }
         }
         #endregion
 
-        #region
-        ///获得服务器当前时间
-        private string GetCurrentTime()
-        {
-            string cuurentTime = "";
-            cuurentTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.fffff");
-            return cuurentTime;
-        }
-        /// 抽象方法 接口
-        public void OnDisconnect()
-        {
-            if (noClose == false)
-            {
-                noClose = true;
-                IsRunning = false;
-                OnDisconnect(Socket);
-            }
-        }
-        public abstract void OnConnect(Socket socket);
-        public abstract void OnDisconnect(Socket socket);
-        public abstract void OnTransferParameter(string mvcString, Socket socket);
+        #region       
+        /// 抽象方法 接口    
+        public abstract void OnConnect();
+        public abstract void OnDisconnect();
+        public abstract void OnTransferParameter(string mvcString);
         #endregion
 
     }

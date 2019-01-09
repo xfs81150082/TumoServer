@@ -19,12 +19,12 @@ namespace ClientExample.Sences.Nodes.Controllers
             switch (elevenCode)
             {   
                 case (ElevenCode.HeartBeat):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     mvc.NineCode = NineCode.Sender;
                     TumoNode.Instance.OnTransferParameter(mvc);
                     break;
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     EngineerLogin(mvc);
                     break;
                 default:
@@ -64,7 +64,7 @@ namespace ClientExample.Sences.Nodes.Controllers
         {
             SoulItem soulItem = MvcTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
             NodeInfo.Instance.Engineer = soulItem;
-            Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " 当前角色Name: " + NodeInfo.Instance.Engineer.Name + " Id: " + NodeInfo.Instance.Engineer.Id + " px: " + NodeInfo.Instance.Engineer.px);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " 当前角色Name: " + NodeInfo.Instance.Engineer.Name + " Id: " + NodeInfo.Instance.Engineer.Id + " px: " + NodeInfo.Instance.Engineer.px);
         }
 
 

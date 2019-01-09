@@ -93,7 +93,7 @@ namespace Servers.Games.Handlers
             TPeer peer = (TPeer)obj1;
             //Console.WriteLine(peer.Socket.RemoteEndPoint.ToString());
             mvc.Parameters.Remove("TPeer");
-            peer.SendMsg(mvc);
+            //peer.SendMsg(mvc);
         }
 
     }

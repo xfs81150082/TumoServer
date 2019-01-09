@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
 using Servers.Sences.Nodes;
 using Servers.Sences.Nodes.Mysqlers;

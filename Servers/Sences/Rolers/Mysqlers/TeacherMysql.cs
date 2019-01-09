@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using System;
 using System.Collections.Generic;
 using System.Linq;

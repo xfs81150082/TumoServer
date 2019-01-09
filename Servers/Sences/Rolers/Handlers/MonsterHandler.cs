@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using Servers.Gates;
 using Servers.Sences.Nodes.Mysqlers;
 using Servers;
@@ -24,7 +22,7 @@ namespace Servers.Sences.Rolers.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.None):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " MonsterHandler: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " MonsterHandler: " + elevenCode);
                     break;
                 default:
                     break;

@@ -39,26 +39,26 @@ namespace Servers.Sences.Nodes
             }
             return nodeIds;
         }
-        public List<int> GetNineNodeIds(TPeer peer)
-        {
-            List<int> nodeIds = new List<int>();
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    int xc = (int)Math.Ceiling(peer.Player.SoulItem.px / gridDisfance);
-                    int yc = (int)Math.Ceiling(peer.Player.SoulItem.pz / gridDisfance);
-                    int xi = xc + i - 1;
-                    int yj = yc + j - 2;
-                    if (xi > 0 && xi <= gridCount && yj > 0 && yj <= gridCount)
-                    {
-                        int nodeId = xi + yj * gridCount;
-                        nodeIds.Add(nodeId);
-                    }
-                }
-            }
-            return nodeIds;
-        }
+        //public List<int> GetNineNodeIds(TPeer peer)
+        //{
+        //    List<int> nodeIds = new List<int>();
+        //    for (int i = 0; i < 3; i++)
+        //    {
+        //        for (int j = 0; j < 3; j++)
+        //        {
+        //            int xc = (int)Math.Ceiling(peer.Player.SoulItem.px / gridDisfance);
+        //            int yc = (int)Math.Ceiling(peer.Player.SoulItem.pz / gridDisfance);
+        //            int xi = xc + i - 1;
+        //            int yj = yc + j - 2;
+        //            if (xi > 0 && xi <= gridCount && yj > 0 && yj <= gridCount)
+        //            {
+        //                int nodeId = xi + yj * gridCount;
+        //                nodeIds.Add(nodeId);
+        //            }
+        //        }
+        //    }
+        //    return nodeIds;
+        //}
 
 
     }

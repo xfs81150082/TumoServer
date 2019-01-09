@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using Servers.Gates;
 using Servers;
 using Servers.Sences.Models;
@@ -24,7 +22,7 @@ namespace Servers.Sences.Rolers.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.None):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerRolerHandler: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerRolerHandler: " + elevenCode);
                     break;
                 default:
                     break;

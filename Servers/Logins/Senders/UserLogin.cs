@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using Servers;
 using System;
 using System.Collections.Generic;
@@ -20,10 +18,11 @@ namespace Servers.Logins.Senders
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() +" UserLoginSender: " + elevenCode);
-                    TPeer peer = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
+                    Console.WriteLine(TimerTool.GetCurrentTime() +" UserLoginSender: " + elevenCode);
+                    //TPeer peer = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
                     mvc.NineCode = NineCode.Controller;
-                    peer.SendMsg(mvc);
+                    //peer.SendMsg(mvc);
+                    TmAsyncTcpServer.Instance.SendMvc(mvc);
                     break;
                 case (ElevenCode.None):
                     break;

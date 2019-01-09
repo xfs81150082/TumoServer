@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +23,11 @@ namespace Servers.Sences.Nodes.Mysqlers
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " TeacherMysql: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " TeacherMysql: " + elevenCode);
                     GetItems(mvc);
                     break;
                 case (ElevenCode.Test):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " TeacherMysql: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " TeacherMysql: " + elevenCode);
                     break;
                 case (ElevenCode.None):
                     break;
@@ -48,7 +46,7 @@ namespace Servers.Sences.Nodes.Mysqlers
             MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Sender, TenCode.Teacher, ElevenCode.GetItems, ElevenCode.GetItems.ToString(), GetSoulItems());
             mvc2.Endpoint = mvc.Endpoint;
             TumoNode.Instance.OnTransferParameter(mvc2);
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " Teachers: " + GetSoulItems().Count);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " Teachers: " + GetSoulItems().Count);
         }
 
         void UpdateItemdb(MvcParameter mvc)

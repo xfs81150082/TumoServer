@@ -1,13 +1,11 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tumo;
 using Servers;
 using Servers.Gates;
 
@@ -23,7 +21,7 @@ namespace Servers.Logins.Mysqlers
             switch (elevenCode)
             {
                 case (ElevenCode.UserLogin):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerloginMysql: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerloginMysql: " + elevenCode);
                     GetItemsByUser(mvc);
                     break;
                 case (ElevenCode.None):

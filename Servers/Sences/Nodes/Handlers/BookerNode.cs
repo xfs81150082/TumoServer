@@ -1,5 +1,4 @@
 ﻿using Tumo;
-using Tumo;
 using Servers;
 using System;
 using System.Collections.Generic;
@@ -20,12 +19,12 @@ namespace Servers.Sences.Nodes.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " BookerNode: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " BookerNode: " + elevenCode);
                     mvc.NineCode = NineCode.Mysqler;
                     TumoNode.Instance.OnTransferParameter(mvc);
                     break;
                 case (ElevenCode.None):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " BookerNode: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " BookerNode: " + elevenCode);
                     break;
                 default:
                     break;

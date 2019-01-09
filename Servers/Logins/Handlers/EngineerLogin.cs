@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using Servers.Gates;
 using Servers;
 using System;
@@ -22,7 +20,7 @@ namespace Servers.Logins.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerloginHandler: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerloginHandler: " + elevenCode);
                     mvc.NineCode = NineCode.Sender;
                     TumoLogin.Instance.OnTransferParameter(mvc);
                     break;

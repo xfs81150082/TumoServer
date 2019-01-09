@@ -6,8 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
-using Tumo;
-using Tumo;
 using Servers.Gates;
 using Servers;
 using Timer = System.Timers.Timer;
@@ -25,7 +23,7 @@ namespace Servers.Logins.Senders
             switch (elevenCode)
             {
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerLoginSender: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerLoginSender: " + elevenCode);
                     LoginGetItems(mvc);
                     break;
                 case (ElevenCode.None):

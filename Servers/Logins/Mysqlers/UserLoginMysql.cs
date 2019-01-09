@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
 using Servers.Gates;
 using Servers;
@@ -22,7 +20,7 @@ namespace Servers.Logins.Mysqlers
             switch (elevenCode)
             {
                 case (ElevenCode.UserLogin):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " UserLoginMysql: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " UserLoginMysql: " + elevenCode);
                     CheckLoginPassword(mvc);
                     break;               
                 default:
@@ -41,7 +39,7 @@ namespace Servers.Logins.Mysqlers
                 if (user2.Password == mvc.Password)
                 {
                     TPeer peer = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
-                    peer.User = user2;
+                    //peer.User = user2;
                     mvc.TenCode = TenCode.Engineer;
                     mvc.ElevenCode = ElevenCode.UserLogin;
                     mvc.Parameters.Add(mvc.ElevenCode.ToString(), user2);
@@ -78,7 +76,7 @@ namespace Servers.Logins.Mysqlers
                         item.LoginCount = reader.GetInt32(6);
                         item.LoginDateTime = reader.GetString(7);
                         item.RigisterDateTime = reader.GetString(8);
-                        //Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " Username: " + item.Username + " + " + item.LoginCount);
+                        //Console.WriteLine(TimerTool.GetCurrentTime() + " Username: " + item.Username + " + " + item.LoginCount);
                     }
                 }
                 return item;

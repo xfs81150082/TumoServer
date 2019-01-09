@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using Servers;
 using Servers.Sences.Nodes;
 using System;
@@ -28,14 +26,14 @@ namespace Servers.Sences.Models
 
         void UpdateCDCount()
         {
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " PeerCDItem: " + CdCount  + "/" + CoolDown.MaxCdCount);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItem: " + CdCount  + "/" + CoolDown.MaxCdCount);
             CdCount += 1;
             if (CdCount >= CoolDown.MaxCdCount)
             {
-                Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " PeerCDItem Colseed. TcpPeers: " + TmServerHelper.Instance.TcpPeers.Count);
+                Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItem Colseed. TcpPeers: " + TmAsyncTcpServer.Instance.TPeers.Count);
                 Close();
                 TPeer peer;
-                TmServerHelper.Instance.TcpPeers.TryGetValue(Key, out peer);
+                TmAsyncTcpServer.Instance.TPeers.TryGetValue(Key, out peer);
                 if (peer != null)
                 {
                     //删除掉心跳包群中对应的peer
@@ -49,7 +47,7 @@ namespace Servers.Sences.Models
                 mvc.Endpoint = Key;
                 TumoNode.Instance.OnTransferParameter(mvc);
             }
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " PeerCDItem: " + CdCount + "/" + CoolDown.MaxCdCount);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItem: " + CdCount + "/" + CoolDown.MaxCdCount);
         }
                
 

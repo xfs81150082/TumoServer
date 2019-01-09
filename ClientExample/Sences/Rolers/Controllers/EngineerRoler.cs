@@ -18,19 +18,19 @@ namespace ClientExample.Sences.Rolers.Controllers
             switch (elevenCode)
             {
                 //case (ElevenCode.SpawnRoler):
-                //    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerRoler: " + elevenCode);
+                //    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerRoler: " + elevenCode);
                 //    SpawnRoler(mvc);
                 //    break;
                 //case (ElevenCode.RemoveRoler):
-                //    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerRoler: " + elevenCode);
+                //    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerRoler: " + elevenCode);
                 //    RemoveRoler(mvc);
                 //    break;
                 //case (ElevenCode.SyncMoveState):
-                //    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerRoler: " + elevenCode);
+                //    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerRoler: " + elevenCode);
                 //    SyncMoveState(mvc);
                 //    break;
                 case (ElevenCode.Test):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerRoler: " + elevenCode);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerRoler: " + elevenCode);
                     Test(mvc);
                     break;
                 default:
@@ -41,7 +41,7 @@ namespace ClientExample.Sences.Rolers.Controllers
         private void Test(MvcParameter mvc)
         {
             int count = MvcTool.GetJsonValue<int>(mvc, mvc.ElevenCode.ToString());
-            Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " count: " + count);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " count: " + count);
         }
 
         public EngineerRoler(){   }
@@ -50,13 +50,13 @@ namespace ClientExample.Sences.Rolers.Controllers
         {
             SoulItem soulItem = MvcTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
             RolerInfo.Instance.Engineers.Add(soulItem.Id, soulItem);
-            Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
         }
         void RemoveRoler(MvcParameter mvc)
         {
             SoulItem soulItem = MvcTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
             RolerInfo.Instance.Engineers.Remove(soulItem.Id);
-            Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
         }
         void SyncMoveState(MvcParameter mvc)
         {

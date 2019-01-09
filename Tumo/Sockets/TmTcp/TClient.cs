@@ -13,7 +13,6 @@ namespace Tumo
     {
         #region Properties
         ///客户端Socket 
-        public Socket Socket { get; set; }
         private bool isClose = false;
         #endregion
 
@@ -21,25 +20,25 @@ namespace Tumo
         public TClient()  { }
         #endregion
 
-        public override void OnTransferParameter(string mvcString, Socket socket) 
+        public override void OnTransferParameter(string mvcString) 
         {
             ///将字符串string,用json反序列化转换成MvcParameter参数
             MvcParameter mvc = MvcTool.ToObject<MvcParameter>(mvcString);
-            mvc.Endpoint = socket.RemoteEndPoint.ToString();
+            mvc.Endpoint = Socket.RemoteEndPoint.ToString();
             ///将MvcParameter参数列队
             TmAsyncTcpClient.Instance.RecvParameters.Enqueue(mvc);
         }
 
         #region OnDisconnect
         ///与服务器连接时调用 
-        public override void OnConnect(Socket socket)
+        public override void OnConnect()
         {
-            this.Socket = socket;            
+            this.Socket = Socket;            
             TmAsyncTcpClient.Instance.TClient = this;
         }
 
         ///与服务器断开时调用 
-        public override void OnDisconnect(Socket socket)
+        public override void OnDisconnect()
         {
             if (TmAsyncTcpClient.Instance.TClient != null)
             {
@@ -47,9 +46,9 @@ namespace Tumo
             }
             if (isClose == false)
             {
-                socket.Shutdown(SocketShutdown.Both);
-                socket.Close();
-                socket = null;
+                Socket.Shutdown(SocketShutdown.Both);
+                Socket.Close();
+                Socket = null;
             }
         }
 

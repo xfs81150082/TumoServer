@@ -40,9 +40,9 @@ namespace ClientExample
         {
             while (RecvParameters.Count > 0)
             {
-                MvcParameter mvc = TmAsyncTcpClient.Instance.RecvParameters.Dequeue();
+                MvcParameter mvc = RecvParameters.Dequeue();
                 TumoConnect.Instance.OnTransferParameter(mvc);
-                Console.WriteLine("RecvParameters: " + TmAsyncTcpClient.Instance.RecvParameters.Count);
+                Console.WriteLine("RecvParameters: " + RecvParameters.Count);
             }
         }
     }

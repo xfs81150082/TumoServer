@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +21,16 @@ namespace Servers.Sences.Nodes.Senders.Souls
                 case (ElevenCode.HeartBeat):
                     TPeer peer1 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
                     mvc.NineCode = NineCode.Controller;
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerSender:/nine:" + elevenCode + "/" + mvc.NineCode);
-                    peer1.SendMsg(mvc);
+                    //Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerSender:/nine:" + elevenCode + "/" + mvc.NineCode);
+                    //peer1.SendMsg(mvc);
+                    TmAsyncTcpServer.Instance.SendMvc(mvc);
                     break;
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerSender: " + elevenCode);
-                    TPeer peer2 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
+                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerSender: " + elevenCode);
                     mvc.NineCode = NineCode.Controller;
-                    peer2.SendMsg(mvc);
+                    //TPeer peer2 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
+                    //peer2.SendMsg(mvc);
+                    TmAsyncTcpServer.Instance.SendMvc(mvc);
                     break;
                 case (ElevenCode.None):                  
                     break;
