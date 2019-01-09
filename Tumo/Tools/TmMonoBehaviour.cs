@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 
-namespace Tumo.Models
+namespace Tumo
 {
-    public abstract class TmMonoBehaviour
+    public abstract class TmMonoBehaviour : IDisposable
     {
         public int ValTime = 1000;
         private Timer TmTimer;
@@ -14,7 +14,7 @@ namespace Tumo.Models
         {
             TmAwake();
             TumoTimer(ValTime);
-            Console.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmss.fffff") + " TmMonoBehaviour 实例化");
+            Console.WriteLine(TimerTool.GetCurrentTime() + " TmMonoBehaviour 实例化");
         }
         void TumoTimer(int ValTime)
         {
@@ -35,8 +35,14 @@ namespace Tumo.Models
             TmTimer.Enabled = false;                                        //是否执行事件System.Timers.Timer.Elapsed；
             TmTimer.Elapsed -= new ElapsedEventHandler(OnTimerEvent);       //到达时间的时候执行事件；
             TmTimer.Close();
+            Dispose();
+        }
+        public void Dispose()
+        {
+            Console.WriteLine(TimerTool.GetCurrentTime() + " TmMonoBehaviour 已释放资源");
         }
         public abstract void TmAwake();
         public abstract void TmUpdate(ElapsedEventArgs time);
+
     }
 }

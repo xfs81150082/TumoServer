@@ -12,6 +12,8 @@ namespace Servers.Sences.Models
 {
     public class PeerCDItem : CoolDownItem
     {
+        public string EndPoint { get; set; }
+
         public PeerCDItem() { }
       
         public override void TmAwake()
@@ -32,12 +34,12 @@ namespace Servers.Sences.Models
             {
                 Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItem Colseed. TcpPeers: " + TmAsyncTcpServer.Instance.TPeers.Count);
                 Close();
-                TPeer peer;
-                TmAsyncTcpServer.Instance.TPeers.TryGetValue(Key, out peer);
-                if (peer != null)
+                TPeer tpeer;
+                TmAsyncTcpServer.Instance.TPeers.TryGetValue(Key, out tpeer);
+                if (tpeer != null)
                 {
                     //删除掉心跳包群中对应的peer
-                    peer.OnDisconnect();
+                    tpeer.OnDisconnect();
                 }
             }
             else

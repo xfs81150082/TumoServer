@@ -33,7 +33,8 @@ namespace Tumo
         ///与服务器连接时调用 
         public override void OnConnect()
         {
-            this.Socket = Socket;            
+            ///显示与客户端连接
+            Console.WriteLine("{0}服务端{1}连接成功", TimerTool.GetCurrentTime(), Socket.RemoteEndPoint);
             TmAsyncTcpClient.Instance.TClient = this;
         }
 

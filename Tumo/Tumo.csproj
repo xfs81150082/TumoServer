@@ -73,7 +73,7 @@
     <Compile Include="Models\Soul.cs" />
     <Compile Include="Models\SoulItem.cs" />
     <Compile Include="Models\SoulItemDB.cs" />
-    <Compile Include="Models\TmMonoBehaviour.cs" />
+    <Compile Include="Tools\TmMonoBehaviour.cs" />
     <Compile Include="Models\TmTransform.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserItem.cs" />
@@ -89,6 +89,7 @@
     <Compile Include="Logs\TmLog.cs" />
     <Compile Include="Sockets\TmTcp\TmAsyncTcpClient.cs" />
     <Compile Include="Sockets\TmTcp\TmAsyncTcpServer.cs" />
+    <Compile Include="Tools\TmAwake.cs" />
     <Compile Include="Tools\TmUpdate.cs" />
     <Compile Include="Tools\TimerTool.cs" />
     <Compile Include="Tools\MD5Tool.cs" />

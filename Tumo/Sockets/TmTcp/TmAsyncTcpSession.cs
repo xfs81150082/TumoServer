@@ -11,9 +11,8 @@ namespace Tumo
 {
     public abstract class TmAsyncTcpSession
     {
-        #region Properties
-        ///客户端Socket 
-        public Socket Socket { get; set; }                ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信
+        #region Properties        
+        public Socket Socket { get; set; }                ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信///客户端Socket 
         private bool IsRunning { get; set; }
         private bool noClose { get; set; } = false;
         #endregion
@@ -39,7 +38,7 @@ namespace Tumo
         {
             Socket = obj as Socket;
             OnConnect();
-            Console.WriteLine(TimerTool.GetCurrentTime() + " (46)BeginReceiveMsg Id/IP: " + Thread.CurrentThread.ManagedThreadId + " / " + Socket.RemoteEndPoint.ToString());
+            Console.WriteLine(TimerTool.GetCurrentTime() + " BeginReceiveMsg  ThreadId: " + Thread.CurrentThread.ManagedThreadId + " EndPoint: " + Socket.RemoteEndPoint.ToString());
             BufferSize = 1024;
             Buffer = new byte[BufferSize];
             isHead = true;
@@ -53,7 +52,7 @@ namespace Tumo
         {
             if (IsRunning)
             {
-                Console.WriteLine(TimerTool.GetCurrentTime() + " (56)ReceiveCallback Id/IP: " + Thread.CurrentThread.ManagedThreadId + " / " + Socket.RemoteEndPoint.ToString());
+                Console.WriteLine(TimerTool.GetCurrentTime() + " ReceiveCallback  ThreadId: " + Thread.CurrentThread.ManagedThreadId + " EndPoint: " + Socket.RemoteEndPoint.ToString());
                 try
                 {
                     RecvLength = Socket.EndReceive(ar);
@@ -85,7 +84,7 @@ namespace Tumo
         }
         private void ParsingBytes()
         {
-            Console.WriteLine(TimerTool.GetCurrentTime() + " (90), ReceiveMsg Id/IP: " + Thread.CurrentThread.ManagedThreadId + " / " + Socket.RemoteEndPoint.ToString());
+            Console.WriteLine(TimerTool.GetCurrentTime() + " ReceiveCallback  ThreadId: " + Thread.CurrentThread.ManagedThreadId + " EndPoint: " + Socket.RemoteEndPoint.ToString());
             ///将本次要接收的消息头字节数置0
             int iBytesHead = 0;
             ///将本次要剪切的字节数置0
@@ -161,11 +160,11 @@ namespace Tumo
         }
         #endregion
 
-        #region SendMsg
+        #region SendString
         ///发送信息给客户端
         public void SendString(string mvcString)
         {
-            Console.WriteLine(TimerTool.GetCurrentTime() + " (170) Send Thread Id:" + Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " Send  ThreadId: " + Thread.CurrentThread.ManagedThreadId + " EndPoint: " + Socket.RemoteEndPoint.ToString());
             ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
             ///string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
             if (null == Socket.Handle || !Socket.Connected)
