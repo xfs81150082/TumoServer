@@ -22,14 +22,17 @@ namespace ClientExample.Sences.Models
 
         private void UpdateCDCount()
         {
-            Console.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmss.ffff") + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
+            if (CdCount <= CoolDown.MaxCdCount)
+            {
+                Console.WriteLine(TimerTool.GetCurrentTime() + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
+            }
             ///检查记录，每检查一次加1
             CdCount += 1;
             ///断线重连...写在下面
             if (CdCount >= CoolDown.MaxCdCount)
             {
                 ///断线重连...写在下面
-                Console.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmss.ffff") + " 断线重连...第 " + (CdCount - CoolDown.MaxCdCount) + " 次。");
+                Console.WriteLine(TimerTool.GetCurrentTime() + " 断线重连. 第 " + (CdCount - CoolDown.MaxCdCount) + "/4 次。");
 
                 TmTcpClient tmTcpClient = new TmTcpClient();
                 tmTcpClient.StartConnect();
@@ -44,7 +47,7 @@ namespace ClientExample.Sences.Models
                     TmAsyncTcpClient.Instance.TClient.OnDisconnect();
                 }
             }
-            Console.WriteLine(DateTime.Now.ToString("yyyyMMddHHmmss.ffff") + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
         }
 
 

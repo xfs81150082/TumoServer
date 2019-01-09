@@ -12,7 +12,7 @@ namespace Servers.Sences.Nodes.Mysqlers
         public NodeMysqlBase()
         {
             TumoNodeMysql.Instance.NodeMysqlers.Add(Code, this);
-            Console.WriteLine("MeasurementMysqls:" + this.GetType().Name + " is register.");
+            Console.WriteLine("NodeMysqls:" + this.GetType().Name + " is register.");
         }
     }
 }

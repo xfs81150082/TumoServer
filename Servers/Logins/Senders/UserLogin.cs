@@ -19,9 +19,7 @@ namespace Servers.Logins.Senders
             {
                 case (ElevenCode.GetItems):
                     Console.WriteLine(TimerTool.GetCurrentTime() +" UserLoginSender: " + elevenCode);
-                    //TPeer peer = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
                     mvc.NineCode = NineCode.Controller;
-                    //peer.SendMsg(mvc);
                     TmAsyncTcpServer.Instance.SendMvc(mvc);
                     break;
                 case (ElevenCode.None):

@@ -25,14 +25,14 @@ namespace Tumo
         public override void OnConnect()
         {
             ///显示与客户端连接
-            Console.WriteLine("{0}客户端{1}连接成功", TimerTool.GetCurrentTime() , Socket.RemoteEndPoint);     
+            Console.WriteLine("{0} 客户端{1}连接成功", TimerTool.GetCurrentTime() , Socket.RemoteEndPoint);     
             TPeer tpeer = null;
             bool yes1 = TmAsyncTcpServer.Instance.TPeers.TryGetValue(Socket.RemoteEndPoint.ToString(), out tpeer);
             if (yes1 != true)
             {
                 ///peers已经加入字典
                 TmAsyncTcpServer.Instance.TPeers.Add(Socket.RemoteEndPoint.ToString(), this);
-                Console.WriteLine(TimerTool.GetCurrentTime() + " : " + " TPeer: " + Socket.RemoteEndPoint + " 已经加入字典");
+                Console.WriteLine(TimerTool.GetCurrentTime() + " TPeer: " + Socket.RemoteEndPoint + " 已经加入字典");
             }
             ///显示客户端群中的客户端数量
             Console.WriteLine(TimerTool.GetCurrentTime() + " TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
@@ -54,7 +54,7 @@ namespace Tumo
                     ///从peers字典中删除
                     TmAsyncTcpServer.Instance.TPeers.Remove(Socket.RemoteEndPoint.ToString());
                 }
-                Console.WriteLine(TimerTool.GetCurrentTime() + " : " + "一个客户端:已经中断连接");
+                Console.WriteLine(TimerTool.GetCurrentTime() + " 一个客户端:已经中断连接");
             }
             ///显示客户端群中的客户端数量
             Console.WriteLine(TimerTool.GetCurrentTime() + " TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);

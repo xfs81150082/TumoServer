@@ -34,7 +34,7 @@ namespace Tumo
         public override void OnConnect()
         {
             ///显示与客户端连接
-            Console.WriteLine("{0}服务端{1}连接成功", TimerTool.GetCurrentTime(), Socket.RemoteEndPoint);
+            Console.WriteLine("{0} 服务端{1}连接成功", TimerTool.GetCurrentTime(), Socket.RemoteEndPoint);
             TmAsyncTcpClient.Instance.TClient = this;
         }
 

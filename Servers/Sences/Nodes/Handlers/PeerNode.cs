@@ -64,7 +64,7 @@ namespace Servers.Sences.Nodes.Handlers
             {
                 cdsCount = TmAsyncTcpServer.Instance.TPeers.Count;
                 Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCD:心跳包每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ", 毫秒针:" + ela.SignalTime.Millisecond + ")");
-                TmLog.WriteLine("EngineerTimer每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ",毫秒针:" + ela.SignalTime.Millisecond + ")");
+                TmLog.WriteLine(TimerTool.GetCurrentTime() + " EngineerTimer每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ",毫秒针:" + ela.SignalTime.Millisecond + ")");
                 //初始化服务器PeersCD字典
                 if (TmAsyncTcpServer.Instance.TPeers.Count > 0)
                 {
@@ -90,7 +90,7 @@ namespace Servers.Sences.Nodes.Handlers
                         PeerCDItems.Clear();
                     }
                 }
-                Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItems: " + PeerCDItems.Count + "/" + TmAsyncTcpServer.Instance.TPeers.Count);
+                Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItems: " + PeerCDItems.Count + "-" + TmAsyncTcpServer.Instance.TPeers.Count);
             }
         }
         void PeerSignIn(MvcParameter mvc)

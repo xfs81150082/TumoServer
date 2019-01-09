@@ -39,7 +39,7 @@ namespace Servers
             {
                 MvcParameter mvc = RecvParameters.Dequeue();
                 TumoGate.Instance.OnTransferParameter(mvc);
-                Console.WriteLine(TimerTool.GetCurrentTime() + "RecvParameters: " + RecvParameters.Count);
+                Console.WriteLine(TimerTool.GetCurrentTime() + " RecvParameters: " + RecvParameters.Count);
             }
         }
 

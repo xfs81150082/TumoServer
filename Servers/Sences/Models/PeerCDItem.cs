@@ -28,11 +28,14 @@ namespace Servers.Sences.Models
 
         void UpdateCDCount()
         {
-            Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItem: " + CdCount  + "/" + CoolDown.MaxCdCount);
+            if (CdCount <= CoolDown.MaxCdCount)
+            {
+                Console.WriteLine(TimerTool.GetCurrentTime() + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
+            }
             CdCount += 1;
             if (CdCount >= CoolDown.MaxCdCount)
             {
-                Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItem Colseed. TcpPeers: " + TmAsyncTcpServer.Instance.TPeers.Count);
+                Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItem Colseed. TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
                 Close();
                 TPeer tpeer;
                 TmAsyncTcpServer.Instance.TPeers.TryGetValue(Key, out tpeer);
@@ -49,7 +52,7 @@ namespace Servers.Sences.Models
                 mvc.Endpoint = Key;
                 TumoNode.Instance.OnTransferParameter(mvc);
             }
-            Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItem: " + CdCount + "/" + CoolDown.MaxCdCount);
+            Console.WriteLine(TimerTool.GetCurrentTime() + " CdCount: " + CdCount + "-" + CoolDown.MaxCdCount);
         }
                
 
