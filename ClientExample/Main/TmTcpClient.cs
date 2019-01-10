@@ -16,8 +16,8 @@ namespace ClientExample
         public TmTcpClient()
         {
             TumoTimer(ValTime);
-            IpString = "172.17.16.15";
-            //IpString = "127.0.0.1";
+            //IpString = "172.17.16.15";
+            IpString = "127.0.0.1";
             Port = 8115;
             Init();
         }

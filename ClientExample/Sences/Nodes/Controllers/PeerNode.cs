@@ -53,11 +53,12 @@ namespace ClientExample.Sences.Nodes.Controllers
                 item.CdCount = 0;
                 item.CoolDown.MaxCdCount = 4;
                 this.ClientCDItem = item;
-                Console.WriteLine("ClientCDItem is greate...");
+                Console.WriteLine("创建心跳 ClientCDItem.");
             }
         }
         void RemoveHeartBeat()
         {
+            ClientCDItem.Close();
             ClientCDItem = null;
         }
 
