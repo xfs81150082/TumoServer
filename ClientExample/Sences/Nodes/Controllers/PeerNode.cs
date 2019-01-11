@@ -34,32 +34,32 @@ namespace ClientExample.Sences.Nodes.Controllers
             }
         }
 
-        private ClientCDItem ClientCDItem { get; set; }
+        //private ClientCDItem ClientCDItem { get; set; }
         
         public PeerNode()
         {
-            HeartBeatSignIn();
+            //HeartBeatSignIn();
         }
 
         void HeartBeatSignIn()
         {
-            if (ClientCDItem != null)
+            if (TmAsyncTcpClient.Instance.CDItem != null)
             {
-                ClientCDItem.CdCount = 0;
+                TmAsyncTcpClient.Instance.CDItem.CdCount = 0;
             }
             else
             {
                 ClientCDItem item = new ClientCDItem();
                 item.CdCount = 0;
                 item.CoolDown.MaxCdCount = 4;
-                this.ClientCDItem = item;
+                TmAsyncTcpClient.Instance.CDItem = item;
                 Console.WriteLine("创建心跳 ClientCDItem.");
             }
         }
         void RemoveHeartBeat()
         {
-            ClientCDItem.Close();
-            ClientCDItem = null;
+            TmAsyncTcpClient.Instance.CDItem.Close();
+            TmAsyncTcpClient.Instance.CDItem = null;
         }
 
     }

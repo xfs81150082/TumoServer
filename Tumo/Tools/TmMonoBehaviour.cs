@@ -39,7 +39,7 @@ namespace Tumo
         }
         public void Dispose()
         {
-            Console.WriteLine(TimerTool.GetCurrentTime() + " TmMonoBehaviour 已释放资源");
+            Console.WriteLine(TimerTool.GetCurrentTime() + " TmMonoBehaviour 已释放资源");            
         }
         public abstract void TmAwake();
         public abstract void TmUpdate(ElapsedEventArgs time);

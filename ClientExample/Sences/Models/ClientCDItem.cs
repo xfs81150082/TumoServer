@@ -48,6 +48,7 @@ namespace ClientExample.Sences.Models
                 }
             }
             Console.WriteLine(TimerTool.GetCurrentTime() + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
+            //Debug.Print(TimerTool.GetCurrentTime() + " Debug2-CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
         }
 
 

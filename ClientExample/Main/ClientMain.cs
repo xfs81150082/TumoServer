@@ -13,6 +13,7 @@ namespace ClientExample
             new TmClientHelper();
             new TumoConnect();
             TmTcpClient tmTcpClient = new TmTcpClient();
+            tmTcpClient.Init();
             tmTcpClient.StartConnect();
             new Test();
             

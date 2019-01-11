@@ -25,7 +25,8 @@ namespace Tumo
         public override void OnConnect()
         {
             ///显示与客户端连接
-            Console.WriteLine("{0} 客户端{1}连接成功", TimerTool.GetCurrentTime() , Socket.RemoteEndPoint);     
+            Console.WriteLine("{0} 客户端{1}连接成功", TimerTool.GetCurrentTime() , Socket.RemoteEndPoint);
+            this.EndPoint = Socket.RemoteEndPoint.ToString();
             TPeer tpeer = null;
             bool yes1 = TmAsyncTcpServer.Instance.TPeers.TryGetValue(Socket.RemoteEndPoint.ToString(), out tpeer);
             if (yes1 != true)
@@ -42,7 +43,7 @@ namespace Tumo
         {
             ///关闭PeerCD
             MvcParameter mvc = MvcTool.ToParameter(EightCode.Node, NineCode.Handler, TenCode.Engineer, ElevenCode.RemoveHeartBeat);
-            mvc.Endpoint = Socket.RemoteEndPoint.ToString();
+            mvc.Endpoint = EndPoint;
             TmAsyncTcpServer.Instance.RecvParameters.Enqueue(mvc);
 
             if (TmAsyncTcpServer.Instance.TPeers.Count > 0)

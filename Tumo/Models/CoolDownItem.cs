@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 
-namespace Tumo.Models
+namespace Tumo
 {
     public abstract class CoolDownItem : TmMonoBehaviour
     {

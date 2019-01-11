@@ -45,7 +45,7 @@ namespace Servers.Sences.Nodes.Handlers
         #region TmUpdate
         private int valTime = 4000;
         private int cdsCount = -1;
-        public Dictionary<string, PeerCDItem> PeerCDItems = new Dictionary<string, PeerCDItem>();            
+        //public Dictionary<string, PeerCDItem> PeerCDItems = new Dictionary<string, PeerCDItem>();            
 
         public override void TmAwake() { }
 
@@ -71,32 +71,34 @@ namespace Servers.Sences.Nodes.Handlers
                     List<string> list1 = new List<string>(TmAsyncTcpServer.Instance.TPeers.Keys);
                     for (int i = 0; i < list1.Count; i++)
                     {
-                        PeerCDItem cd1;
-                        bool yes = PeerCDItems.TryGetValue(list1[i], out cd1);
+                        CoolDownItem cd1;
+                        //bool yes = PeerCDItems.TryGetValue(list1[i], out cd1);
+                        bool yes = TmAsyncTcpServer.Instance.CDItems.TryGetValue(list1[i], out cd1);
                         if (yes == false)
                         {
                             PeerCDItem cd2 = new PeerCDItem();
                             cd2.CdCount = 0;
                             cd2.CoolDown.MaxCdCount = 4;
                             cd2.Key = list1[i];
-                            PeerCDItems.Add(list1[i], cd2);
+                            //PeerCDItems.Add(list1[i], cd2);
+                            TmAsyncTcpServer.Instance.CDItems.Add(list1[i], cd2);
                         }
                     }
                 }
                 else
                 {
-                    if (PeerCDItems.Count > 0)
+                    if (TmAsyncTcpServer.Instance.CDItems.Count > 0)
                     {
-                        PeerCDItems.Clear();
+                        TmAsyncTcpServer.Instance.CDItems.Clear();
                     }
                 }
-                Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItems: " + PeerCDItems.Count + "-" + TmAsyncTcpServer.Instance.TPeers.Count);
+                Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItems: " + TmAsyncTcpServer.Instance.CDItems.Count + "-" + TmAsyncTcpServer.Instance.TPeers.Count);
             }
         }
         void PeerSignIn(MvcParameter mvc)
         {
-            PeerCDItem cd;
-            PeerCDItems.TryGetValue(mvc.Endpoint, out cd);
+            CoolDownItem cd;
+            TmAsyncTcpServer.Instance.CDItems.TryGetValue(mvc.Endpoint, out cd);
             if (cd != null)
             {
                 cd.CdCount = 0;
@@ -104,14 +106,14 @@ namespace Servers.Sences.Nodes.Handlers
         }
         void RemovePeerCDItem(MvcParameter mvc)
         {
-            if (PeerCDItems.Count > 0)
+            if (TmAsyncTcpServer.Instance.CDItems.Count > 0)
             {
-                PeerCDItem item;
-                PeerCDItems.TryGetValue(mvc.Endpoint, out item);
+                CoolDownItem item;
+                TmAsyncTcpServer.Instance.CDItems.TryGetValue(mvc.Endpoint, out item);
                 if (item != null)
                 {
                     item.Close();
-                    PeerCDItems.Remove(mvc.Endpoint);
+                    TmAsyncTcpServer.Instance.CDItems.Remove(mvc.Endpoint);
                 }
             }
         }

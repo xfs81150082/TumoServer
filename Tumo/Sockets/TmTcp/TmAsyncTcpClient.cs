@@ -20,7 +20,8 @@ namespace Tumo
         private bool isRunning { get; set; }             //服务器是否正在运行
         private IPAddress address { get; set; }          //连接的IP地址  
         private Socket clientSocket { get; set; }
-        public TClient TClient{ get; set; }
+        public TClient TClient { get; set; }
+        public CoolDownItem CDItem { get; set; }
         public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
         private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
         #endregion

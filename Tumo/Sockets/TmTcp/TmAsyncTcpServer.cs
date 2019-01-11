@@ -22,8 +22,9 @@ namespace Tumo
         private bool isRunning { get; set; }                       //服务器是否正在运行
         private IPAddress address { get; set; }                   //监听的IP地址  
         private Socket serverSocket { get; set; }                 //服务器使用的异步socket   
-        public Queue<Socket> WaitingSockets = new Queue<Socket>();  
+        public Queue<Socket> WaitingSockets = new Queue<Socket>();
         public Dictionary<string, TPeer> TPeers { get; set; } = new Dictionary<string, TPeer>();
+        public Dictionary<string, CoolDownItem> CDItems { get; set; } = new Dictionary<string, CoolDownItem>();
         public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
         private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
         #endregion
