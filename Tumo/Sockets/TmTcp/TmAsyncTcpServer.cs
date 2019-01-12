@@ -26,6 +26,7 @@ namespace Tumo
         public Dictionary<string, TPeer> TPeers { get; set; } = new Dictionary<string, TPeer>();
         public Dictionary<string, CoolDownItem> CDItems { get; set; } = new Dictionary<string, CoolDownItem>();
         public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
+        public Queue<MvcParameter> ReceiveParameters { get; set; } = new Queue<MvcParameter>();
         private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
         #endregion
 
@@ -59,7 +60,7 @@ namespace Tumo
                 serverSocket.Bind(new IPEndPoint(this.address, this.Port));
                 serverSocket.Listen(MaxListenCount);
                 serverSocket.BeginAccept(new AsyncCallback(this.AcceptCallback), serverSocket);
-                Console.WriteLine("{0} 服务启动，监听{1}成功", TimerTool.GetCurrentTime(), serverSocket.LocalEndPoint);
+                Console.WriteLine("{0} 服务启动，监听{1}成功", TmTimer.GetCurrentTime(), serverSocket.LocalEndPoint);
                 isRunning = true;
             }
         }
@@ -115,7 +116,7 @@ namespace Tumo
                 }
                 else
                 {
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " 没找TPeer，用Endpoint: " + mvc.Endpoint);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " 没找TPeer，用Endpoint: " + mvc.Endpoint);
                 }
             }
         }

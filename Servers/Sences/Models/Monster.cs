@@ -22,12 +22,9 @@ namespace Servers.Sences.Models
             //this.RolerMove.TargetTransform = new TmTransform(item);
         }
 
-        public override void TmAwake()
-        {
+               
 
-        }              
-
-        public override void TmUpdate(ElapsedEventArgs time)
+        public override void TmUpdate()
         {
             SyncSpawn();
         }
@@ -36,7 +33,7 @@ namespace Servers.Sences.Models
         {
             MvcParameter mvc = MvcTool.ToParameter<Roler>(EightCode.Roler, NineCode.Handler, TenCode.Booker, ElevenCode.SyncSpawn, ElevenCode.SyncSpawn.ToString(), this);
             TumoRoler.Instance.OnTransferParameter(mvc);
-            Console.WriteLine(TimerTool.GetCurrentTime() + " Monster is SyncSpawn, Id:" + this.SoulItem.Id + " px:" + this.TmTransform.px);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " Monster is SyncSpawn, Id:" + this.SoulItem.Id + " px:" + this.TmTransform.px);
         }
 
 

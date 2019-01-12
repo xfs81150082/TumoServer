@@ -33,7 +33,7 @@ namespace Servers
             }
             else
             {
-                Console.WriteLine(TimerTool.GetCurrentTime() + " 没有找到TPeer，用Endpoint:" + endpoint);
+                Console.WriteLine(TmTimer.GetCurrentTime() + " 没有找到TPeer，用Endpoint:" + endpoint);
                 return null;
             }
         }

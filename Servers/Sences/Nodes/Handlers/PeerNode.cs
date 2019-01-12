@@ -23,18 +23,18 @@ namespace Servers.Sences.Nodes.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.HeartBeat):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     PeerSignIn(mvc);
                     break;
                 case (ElevenCode.RemoveHeartBeat):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     RemovePeerCDItem(mvc);
                     break;
                 case (ElevenCode.Test):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     break;
                 case (ElevenCode.None):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     break;
                 default:
                     break;
@@ -63,8 +63,8 @@ namespace Servers.Sences.Nodes.Handlers
             if (TmAsyncTcpServer.Instance.TPeers.Count != cdsCount)
             {
                 cdsCount = TmAsyncTcpServer.Instance.TPeers.Count;
-                Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCD:心跳包每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ", 毫秒针:" + ela.SignalTime.Millisecond + ")");
-                TmLog.WriteLine(TimerTool.GetCurrentTime() + " EngineerTimer每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ",毫秒针:" + ela.SignalTime.Millisecond + ")");
+                Console.WriteLine(TmTimer.GetCurrentTime() + " PeerCD:心跳包每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ", 毫秒针:" + ela.SignalTime.Millisecond + ")");
+                TmLog.WriteLine(TmTimer.GetCurrentTime() + " EngineerTimer每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ",毫秒针:" + ela.SignalTime.Millisecond + ")");
                 //初始化服务器PeersCD字典
                 if (TmAsyncTcpServer.Instance.TPeers.Count > 0)
                 {
@@ -92,7 +92,7 @@ namespace Servers.Sences.Nodes.Handlers
                         TmAsyncTcpServer.Instance.CDItems.Clear();
                     }
                 }
-                Console.WriteLine(TimerTool.GetCurrentTime() + " PeerCDItems: " + TmAsyncTcpServer.Instance.CDItems.Count + "-" + TmAsyncTcpServer.Instance.TPeers.Count);
+                Console.WriteLine(TmTimer.GetCurrentTime() + " PeerCDItems: " + TmAsyncTcpServer.Instance.CDItems.Count + "-" + TmAsyncTcpServer.Instance.TPeers.Count);
             }
         }
         void PeerSignIn(MvcParameter mvc)

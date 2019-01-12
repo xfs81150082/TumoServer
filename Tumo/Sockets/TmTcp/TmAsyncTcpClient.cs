@@ -32,13 +32,6 @@ namespace Tumo
             _instance = this;
         }
 
-        public TmAsyncTcpClient(string ipString, int port)
-        {
-            _instance = this;
-            this.IpString = ipString;
-            this.Port = port;
-        }
-
         public void Init()
         {
             address = IPAddress.Parse(IpString);
@@ -80,7 +73,7 @@ namespace Tumo
                 tcpSocket.EndConnect(ar);
                 ///触发事件///创建一个方法接收peerSocket (在方法里创建一个peer来处理读取数据//开始接受来自该客户端的数据)
                 TmReceiveSocket(tcpSocket);
-                Console.WriteLine("{0} 连接服务器成功{1}", TimerTool.GetCurrentTime(), tcpSocket.RemoteEndPoint.ToString());
+                Console.WriteLine("{0} 连接服务器成功{1}", TmTimer.GetCurrentTime(), tcpSocket.RemoteEndPoint.ToString());
             }
             catch (Exception ex)
             {
@@ -116,6 +109,29 @@ namespace Tumo
                 string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
                 TClient.SendString(mvcJsons);
             }
+        }
+        #endregion
+
+        #region
+        void HeartBeatSignIn()
+        {
+            if (TmAsyncTcpClient.Instance.CDItem != null)
+            {
+                TmAsyncTcpClient.Instance.CDItem.CdCount = 0;
+            }
+            else
+            {
+                //ClientCDItem item = new ClientCDItem();
+                //item.CdCount = 0;
+                //item.CoolDown.MaxCdCount = 4;
+                //TmAsyncTcpClient.Instance.CDItem = item;
+                Console.WriteLine("创建心跳 ClientCDItem.");
+            }
+        }
+        void RemoveHeartBeat()
+        {
+            TmAsyncTcpClient.Instance.CDItem.Close();
+            TmAsyncTcpClient.Instance.CDItem = null;
         }
         #endregion
 

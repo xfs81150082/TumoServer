@@ -22,8 +22,8 @@ namespace Servers
             tmTcpServer.StartListen();
 
             Thread.CurrentThread.Name = "ServerMainThread23";
-            Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
-            Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
 
             Console.ReadKey();
             Console.WriteLine("退出监听，并关闭程序。");

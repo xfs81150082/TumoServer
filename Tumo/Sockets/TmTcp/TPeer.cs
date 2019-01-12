@@ -25,7 +25,7 @@ namespace Tumo
         public override void OnConnect()
         {
             ///显示与客户端连接
-            Console.WriteLine("{0} 客户端{1}连接成功", TimerTool.GetCurrentTime() , Socket.RemoteEndPoint);
+            Console.WriteLine("{0} 客户端{1}连接成功", TmTimer.GetCurrentTime() , Socket.RemoteEndPoint);
             this.EndPoint = Socket.RemoteEndPoint.ToString();
             TPeer tpeer = null;
             bool yes1 = TmAsyncTcpServer.Instance.TPeers.TryGetValue(Socket.RemoteEndPoint.ToString(), out tpeer);
@@ -33,10 +33,10 @@ namespace Tumo
             {
                 ///peers已经加入字典
                 TmAsyncTcpServer.Instance.TPeers.Add(Socket.RemoteEndPoint.ToString(), this);
-                Console.WriteLine(TimerTool.GetCurrentTime() + " TPeer: " + Socket.RemoteEndPoint + " 已经加入字典");
+                Console.WriteLine(TmTimer.GetCurrentTime() + " TPeer: " + Socket.RemoteEndPoint + " 已经加入字典");
             }
             ///显示客户端群中的客户端数量
-            Console.WriteLine(TimerTool.GetCurrentTime() + " TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
         }
 
         public override void OnDisconnect()
@@ -44,6 +44,7 @@ namespace Tumo
             ///关闭PeerCD
             MvcParameter mvc = MvcTool.ToParameter(EightCode.Node, NineCode.Handler, TenCode.Engineer, ElevenCode.RemoveHeartBeat);
             mvc.Endpoint = EndPoint;
+            //mvc.EntityId = IdGenerator.GetId();
             TmAsyncTcpServer.Instance.RecvParameters.Enqueue(mvc);
 
             if (TmAsyncTcpServer.Instance.TPeers.Count > 0)
@@ -55,10 +56,10 @@ namespace Tumo
                     ///从peers字典中删除
                     TmAsyncTcpServer.Instance.TPeers.Remove(Socket.RemoteEndPoint.ToString());
                 }
-                Console.WriteLine(TimerTool.GetCurrentTime() + " 一个客户端:已经中断连接");
+                Console.WriteLine(TmTimer.GetCurrentTime() + " 一个客户端:已经中断连接");
             }
             ///显示客户端群中的客户端数量
-            Console.WriteLine(TimerTool.GetCurrentTime() + " TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
             if (isClose == false)
             {
                 isClose = true;

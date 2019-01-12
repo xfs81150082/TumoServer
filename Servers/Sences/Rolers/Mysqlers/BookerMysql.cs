@@ -41,13 +41,13 @@ namespace Servers.Sences.Rolers.Mysqlers
         void GetItems()
         {
             RolerMysqlInfo.Instance.Bookers  = GetSoulItems();           
-            Console.WriteLine(TimerTool.GetCurrentTime() + " RolerMysqlInfo-Bookers: " + RolerMysqlInfo.Instance.Bookers.Count);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " RolerMysqlInfo-Bookers: " + RolerMysqlInfo.Instance.Bookers.Count);
             foreach (var tem in GetSoulItems().Values)
             {
                 Monster monster = new Monster(tem);
                 RolerInfo.Instance.Monsters.Add(monster.SoulItem.Id, monster);
             }
-            Console.WriteLine(TimerTool.GetCurrentTime() + " RolerInfo-Monsters: " + RolerInfo.Instance.Monsters.Count);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " RolerInfo-Monsters: " + RolerInfo.Instance.Monsters.Count);
         }
 
         void UpdateItemdb(MvcParameter mvc)
@@ -130,7 +130,7 @@ namespace Servers.Sences.Rolers.Mysqlers
                 bool yes = false;
                 if (yes)
                 {
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " Booker: " + dbs[i].Id +" 已死亡.");                  
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " Booker: " + dbs[i].Id +" 已死亡.");                  
                 }
                 else
                 {

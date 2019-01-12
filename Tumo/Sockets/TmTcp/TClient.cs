@@ -20,13 +20,20 @@ namespace Tumo
         public TClient()  { }
         #endregion
 
-        public override void OnTransferParameter(string mvcString) 
+        public override void OnTransferParameter(string mvcString)
         {
             ///将字符串string,用json反序列化转换成MvcParameter参数
             MvcParameter mvc = MvcTool.ToObject<MvcParameter>(mvcString);
-            mvc.Endpoint = Socket.RemoteEndPoint.ToString();
-            ///将MvcParameter参数列队
-            TmAsyncTcpClient.Instance.RecvParameters.Enqueue(mvc);
+            mvc.Endpoint = EndPoint;
+            if (mvc.ElevenCode == ElevenCode.HeartBeat)
+            {
+                TmAsyncTcpClient.Instance.CDItem.CdCount = 0;
+            }
+            else
+            {
+                ///将MvcParameter参数列队
+                TmAsyncTcpClient.Instance.RecvParameters.Enqueue(mvc);
+            }
         }
 
         #region OnDisconnect
@@ -34,7 +41,7 @@ namespace Tumo
         public override void OnConnect()
         {
             ///显示与客户端连接
-            Console.WriteLine("{0} 服务端{1}连接成功", TimerTool.GetCurrentTime(), Socket.RemoteEndPoint);
+            Console.WriteLine("{0} 服务端{1}连接成功", TmTimer.GetCurrentTime(), Socket.RemoteEndPoint);
             TmAsyncTcpClient.Instance.TClient = this;
         }
 

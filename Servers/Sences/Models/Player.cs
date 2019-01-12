@@ -26,12 +26,7 @@ namespace Servers.Sences.Models
             //this.RolerMove.TargetTransform = new TmTransform(item);
         }
 
-        public override void TmAwake()
-        {
-
-        }
-
-        public override void TmUpdate(ElapsedEventArgs time)
+        public override void TmUpdate()
         {
 
         }

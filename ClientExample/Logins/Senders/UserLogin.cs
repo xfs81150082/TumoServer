@@ -17,7 +17,7 @@ namespace ClientExample.Logins.Senders
             switch (elevenCode)
             {
                 case (ElevenCode.UserLogin):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " UserLoginSender: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " UserLoginSender: " + elevenCode);
                     mvc.NineCode = NineCode.Mysqler;
                     TmAsyncTcpClient.Instance.SendMvc(mvc);
                     //TClient.Instance.SendMsg(mvc);

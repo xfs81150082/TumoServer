@@ -22,7 +22,7 @@ namespace Servers.Sences.Rolers.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.None):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " TeacherRolerHandler: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " TeacherRolerHandler: " + elevenCode);
                     break;
                 default:
                     break;

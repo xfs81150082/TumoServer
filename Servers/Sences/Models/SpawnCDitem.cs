@@ -13,14 +13,9 @@ namespace Servers.Sences.Models
 {
     public class SpawnCDitem : CoolDownItem
     {
-        public SpawnCDitem() { }
+        public SpawnCDitem() {ValTime = 4000; }
 
-        public override void TmAwake()
-        {
-            ValTime = 4000;
-        }
-
-        public override void TmUpdate(ElapsedEventArgs time)
+        public override void TmUpdate()
         {
             UpdateCDTime();
         }
