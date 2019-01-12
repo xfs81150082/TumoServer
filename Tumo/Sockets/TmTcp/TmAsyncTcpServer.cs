@@ -8,7 +8,7 @@ using System.Timers;
 
 namespace Tumo
 {
-    public class TmAsyncTcpServer
+    public abstract class TmAsyncTcpServer : TmSystem
     {
         #region /// 静态单列模式        
         private static TmAsyncTcpServer _instance;
@@ -26,6 +26,7 @@ namespace Tumo
         public Dictionary<string, TPeer> TPeers { get; set; } = new Dictionary<string, TPeer>();
         public Dictionary<string, CoolDownItem> CDItems { get; set; } = new Dictionary<string, CoolDownItem>();
         public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
+        public Queue<MvcParameter> ReceiveParameters { get; set; } = new Queue<MvcParameter>();
         private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
         #endregion
 
@@ -59,7 +60,7 @@ namespace Tumo
                 serverSocket.Bind(new IPEndPoint(this.address, this.Port));
                 serverSocket.Listen(MaxListenCount);
                 serverSocket.BeginAccept(new AsyncCallback(this.AcceptCallback), serverSocket);
-                Console.WriteLine("{0} 服务启动，监听{1}成功", TimerTool.GetCurrentTime(), serverSocket.LocalEndPoint);
+                Console.WriteLine("{0} 服务启动，监听{1}成功", TmTimer.GetCurrentTime(), serverSocket.LocalEndPoint);
                 isRunning = true;
             }
         }
@@ -115,12 +116,33 @@ namespace Tumo
                 }
                 else
                 {
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " 没找TPeer，用Endpoint: " + mvc.Endpoint);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " 没找TPeer，用Endpoint: " + mvc.Endpoint);
                 }
             }
         }
         #endregion
-             
+        public void SessionSignIn(MvcParameter mvc)
+        {
+            CoolDownItem cd;
+            CDItems.TryGetValue(mvc.Endpoint, out cd);
+            if (cd != null)
+            {
+                cd.CdCount = 0;
+            }
+        }
+        public void RemoveSessionCDItem(MvcParameter mvc)
+        {
+            if (CDItems.Count > 0)
+            {
+                CoolDownItem item;
+                CDItems.TryGetValue(mvc.Endpoint, out item);
+                if (item != null)
+                {
+                    item.Close();
+                    CDItems.Remove(mvc.Endpoint);
+                }
+            }
+        }
 
     }
 }

@@ -20,7 +20,7 @@ namespace Servers.Sences.Nodes.Senders.Souls
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " TeacherSender: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " TeacherSender: " + elevenCode);
                     mvc.NineCode = NineCode.Controller;
                     //TPeer peer1 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
                     //peer1.SendMsg(mvc);

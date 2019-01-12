@@ -5,18 +5,17 @@ using System.Net.Sockets;
 using System.Text;
 using System.Timers;
 using Tumo;
-using Servers.Gates;
 
 namespace Servers
 {
-    class TmTcpServer : TmAsyncTcpServer 
+    public class TmTcpServer : TmAsyncTcpServer 
     {
-        public int ValTime = 20;
+        //public int ValTime = 20;
         private Timer Timer;
 
         public TmTcpServer()
         {
-            TumoTimer(ValTime);
+            //TumoTimer(ValTime);
             //IpString = "172.17.16.15";
             IpString = "127.0.0.1";
             Port = 8115;
@@ -24,34 +23,39 @@ namespace Servers
             Init();
         }
 
-        public void TumoTimer(int time)
+        //public void TumoTimer(int time)
+        //{
+        //    Timer = new Timer();                                         //实例化Timer类，在括号里设置间隔时间,单位为毫秒；
+        //    Timer.Elapsed += new ElapsedEventHandler(TmUpdate);          //到达时间的时候执行事件；
+        //    Timer.Interval = ValTime;                                    //事件执行间隔时间1000毫秒；
+        //    Timer.Enabled = true;                                        //是否执行事件System.Timers.Timer.Elapsed；
+        //    Timer.AutoReset = true;                                      //设置是否循环执行，是执行一次（false）还是一直执行(true)；
+        //}
+        public override void TmUpdate()
         {
-            Timer = new Timer();                                         //实例化Timer类，在括号里设置间隔时间,单位为毫秒；
-            Timer.Elapsed += new ElapsedEventHandler(TmUpdate);          //到达时间的时候执行事件；
-            Timer.Interval = ValTime;                                    //事件执行间隔时间1000毫秒；
-            Timer.Enabled = true;                                        //是否执行事件System.Timers.Timer.Elapsed；
-            Timer.AutoReset = true;                                      //设置是否循环执行，是执行一次（false）还是一直执行(true)；
+            CheckPeersCD();
+            TmRecvParameters();
         }
-
-        public void TmUpdate(object source, ElapsedEventArgs time)
+        public void TmRecvParameters()
         {
              while (RecvParameters.Count > 0)
             {
                 MvcParameter mvc = RecvParameters.Dequeue();
-                TumoGate.Instance.OnTransferParameter(mvc);
+                //TumoGate.Instance.OnTransferParameter(mvc);
                 Console.WriteLine(TmTimer.GetCurrentTime() + " RecvParameters: " + RecvParameters.Count);
             }
         }
         #region PeerCD
-        private int valTime = 4000;
+        //private int valTime = 4000;
         private int cdsCount = -1;
+       
         void CheckPeersCD()
         {
             if (TPeers.Count != cdsCount)
             {
                 cdsCount = TPeers.Count;
-                Console.WriteLine(TmTimer.GetCurrentTime() + " PeerCD:心跳包每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ")");
-                TmLog.WriteLine(TmTimer.GetCurrentTime() + " EngineerTimer每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ")");
+                Console.WriteLine(TmTimer.GetCurrentTime() + " PeerCD:心跳包每" + ValTime  + "秒钟心跳一次(秒针:" + ")");
+                TmLog.WriteLine(TmTimer.GetCurrentTime() + " EngineerTimer每" + ValTime  + "秒钟心跳一次(秒针:" + ")");
                 //初始化服务器PeersCD字典
                 if (TPeers.Count > 0)
                 {
@@ -80,28 +84,8 @@ namespace Servers
                 Console.WriteLine(TmTimer.GetCurrentTime() + " PeerCDItems: " + CDItems.Count + "-" + TPeers.Count);
             }
         }
-        void PeerSignIn(MvcParameter mvc)
-        {
-            CoolDownItem cd;
-            CDItems.TryGetValue(mvc.Endpoint, out cd);
-            if (cd != null)
-            {
-                cd.CdCount = 0;
-            }
-        }
-        void RemovePeerCDItem(MvcParameter mvc)
-        {
-            if (CDItems.Count > 0)
-            {
-                CoolDownItem item;
-                CDItems.TryGetValue(mvc.Endpoint, out item);
-                if (item != null)
-                {
-                    item.Close();
-                    CDItems.Remove(mvc.Endpoint);
-                }
-            }
-        }
+
+     
         #endregion
 
     }

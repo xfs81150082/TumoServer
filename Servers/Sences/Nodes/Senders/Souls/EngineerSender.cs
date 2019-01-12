@@ -21,12 +21,12 @@ namespace Servers.Sences.Nodes.Senders.Souls
                 case (ElevenCode.HeartBeat):
                     TPeer peer1 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
                     mvc.NineCode = NineCode.Controller;
-                    //Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerSender:/nine:" + elevenCode + "/" + mvc.NineCode);
+                    //Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerSender:/nine:" + elevenCode + "/" + mvc.NineCode);
                     //peer1.SendMsg(mvc);
                     TmAsyncTcpServer.Instance.SendMvc(mvc);
                     break;
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerSender: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerSender: " + elevenCode);
                     mvc.NineCode = NineCode.Controller;
                     //TPeer peer2 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
                     //peer2.SendMsg(mvc);

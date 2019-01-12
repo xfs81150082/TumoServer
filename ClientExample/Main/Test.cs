@@ -43,7 +43,7 @@ namespace ClientExample
             MvcParameter mvc = MvcTool.ToParameter(EightCode.Login, NineCode.Controller, TenCode.Engineer, ElevenCode.EngineerLogin);
             mvc.RolerId = Id.ToString();
             TumoConnect.Instance.OnTransferParameter(mvc);
-            Console.WriteLine(TimerTool.GetCurrentTime() + " 秒针： " + ela.SignalTime.Second + " Id:" + mvc.RolerId);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " 秒针： " + ela.SignalTime.Second + " Id:" + mvc.RolerId);
         }
 
         

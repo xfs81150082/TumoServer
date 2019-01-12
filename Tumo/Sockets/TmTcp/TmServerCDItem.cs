@@ -1,21 +1,17 @@
-﻿using Tumo;
-using Tumo.Models;
-using Servers;
-using Servers.Sences.Nodes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Timers;
 
-namespace Servers.Sences.Models
+namespace Tumo
 {
-    public class PeerCDItem : CoolDownItem
+    public class TmServerCDItem : CoolDownItem
     {
+
         public string EndPoint { get; set; }
 
-        public PeerCDItem() {ValTime = 4000; }
-           
+        public TmServerCDItem() { ValTime = 4000; }
+
         public override void TmUpdate()
         {
             UpdateCDCount();
@@ -45,11 +41,12 @@ namespace Servers.Sences.Models
                 //发送心跳检测（并等待签到，签到入口在EngineerNode）
                 MvcParameter mvc = MvcTool.ToParameter(EightCode.Node, NineCode.Sender, TenCode.Peer, ElevenCode.HeartBeat);
                 mvc.Endpoint = Key;
-                TumoNode.Instance.OnTransferParameter(mvc);
+                TmAsyncTcpServer.Instance.SendMvc(mvc);
+
+                //TumoNode.Instance.OnTransferParameter(mvc);
             }
             Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "-" + CoolDown.MaxCdCount);
         }
-               
 
     }
 }

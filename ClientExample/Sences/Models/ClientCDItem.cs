@@ -10,12 +10,9 @@ namespace ClientExample.Sences.Models
 {
     public class ClientCDItem : CoolDownItem
     {
-        public override void TmAwake()
-        {
-            ValTime = 4000;
-        }
-
-        public override void TmUpdate(ElapsedEventArgs time)
+        public ClientCDItem() { ValTime = 4000;}
+       
+        public override void TmUpdate()
         {
             UpdateCDCount();
         }
@@ -24,7 +21,7 @@ namespace ClientExample.Sences.Models
         {
             if (CdCount <= CoolDown.MaxCdCount)
             {
-                Console.WriteLine(TimerTool.GetCurrentTime() + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
+                Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
             }
             ///检查记录，每检查一次加1
             CdCount += 1;
@@ -32,7 +29,7 @@ namespace ClientExample.Sences.Models
             if (CdCount >= CoolDown.MaxCdCount)
             {
                 ///断线重连...写在下面
-                Console.WriteLine(TimerTool.GetCurrentTime() + " 断线重连. 第 " + (CdCount - CoolDown.MaxCdCount) + "/4 次。");
+                Console.WriteLine(TmTimer.GetCurrentTime() + " 断线重连. 第 " + (CdCount - CoolDown.MaxCdCount) + "/4 次。");
 
                 TmTcpClient tmTcpClient = new TmTcpClient();
                 tmTcpClient.StartConnect();
@@ -47,8 +44,8 @@ namespace ClientExample.Sences.Models
                     TmAsyncTcpClient.Instance.TClient.OnDisconnect();
                 }
             }
-            Console.WriteLine(TimerTool.GetCurrentTime() + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
-            //Debug.Print(TimerTool.GetCurrentTime() + " Debug2-CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
+            //Debug.log(TmTimer.GetCurrentTime() + " Debug2-CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
         }
 
 

@@ -20,7 +20,7 @@ namespace Servers.Logins.Mysqlers
             switch (elevenCode)
             {
                 case (ElevenCode.UserLogin):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " UserLoginMysql: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " UserLoginMysql: " + elevenCode);
                     CheckLoginPassword(mvc);
                     break;               
                 default:
@@ -76,7 +76,7 @@ namespace Servers.Logins.Mysqlers
                         item.LoginCount = reader.GetInt32(6);
                         item.LoginDateTime = reader.GetString(7);
                         item.RigisterDateTime = reader.GetString(8);
-                        //Console.WriteLine(TimerTool.GetCurrentTime() + " Username: " + item.Username + " + " + item.LoginCount);
+                        //Console.WriteLine(TmTimer.GetCurrentTime() + " Username: " + item.Username + " + " + item.LoginCount);
                     }
                 }
                 return item;

@@ -19,7 +19,7 @@ namespace Servers.Logins.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.UserLogin):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerloginHandler: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerloginHandler: " + elevenCode);
                     mvc.NineCode = NineCode.Mysqler;
                     TumoLogin.Instance.OnTransferParameter(mvc);
                     break;

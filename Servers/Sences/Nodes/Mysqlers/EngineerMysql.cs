@@ -22,11 +22,11 @@ namespace Servers.Sences.Nodes.Mysqlers
             switch (elevenCode)
             {
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerMysqlRoler: " + elevenCode /*+" : "+ mvc.RolerId*/);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerMysqlRoler: " + elevenCode /*+" : "+ mvc.RolerId*/);
                     EngineerLogin(mvc);
                     break;
                 case (ElevenCode.None):
-                    Console.WriteLine(TimerTool.GetCurrentTime() + " EngineerTimer: " + elevenCode);
+                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerTimer: " + elevenCode);
                     break;
             }
         }
@@ -44,7 +44,7 @@ namespace Servers.Sences.Nodes.Mysqlers
         void EngineerLogin(MvcParameter mvc)
         {
             SoulItem item2 = GetSoulItemById(int.Parse(mvc.RolerId));
-            Console.WriteLine(TimerTool.GetCurrentTime() + " name: " + item2.px + " mvc.rolerid: " + item2.Id);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " name: " + item2.px + " mvc.rolerid: " + item2.Id);
             MvcParameter mvc2 = MvcTool.ToJsonParameter<SoulItem>(EightCode.Node, NineCode.Sender, TenCode.Engineer, ElevenCode.EngineerLogin, ElevenCode.EngineerLogin.ToString(), item2);
             mvc2.Endpoint = mvc.Endpoint;
             mvc2.RolerId = mvc.RolerId;
