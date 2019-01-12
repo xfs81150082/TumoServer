@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Servers;
-using Servers.Gates;
 
 namespace Servers.Logins.Mysqlers
 {
@@ -43,7 +42,7 @@ namespace Servers.Logins.Mysqlers
             {
                 Console.WriteLine("EngineerloginMysqlLogin-Engineers(当前User): " + items.Count);
                 MvcParameter mvc2 = MvcTool.ToJsonParameter<List<SoulItem>>(EightCode.Login, NineCode.Sender, TenCode.User, ElevenCode.UserLogin, ElevenCode.UserLogin.ToString(), items);
-                mvc2.Endpoint = mvc.Endpoint;
+                mvc2.EcsId = mvc.EcsId;
                 TumoGate.Instance.OnTransferParameter(mvc2);
             }
             else
@@ -58,7 +57,7 @@ namespace Servers.Logins.Mysqlers
             {
                 Console.WriteLine("EngineerloginMysqlLogin-Engineer: " + item2.Name);
                 MvcParameter mvc2 = MvcTool.ToJsonParameter<SoulItem>(EightCode.Login, NineCode.Sender, TenCode.Engineer, ElevenCode.GetItem, ElevenCode.GetItem.ToString(), item2);
-                mvc2.Endpoint = mvc.Endpoint;
+                mvc2.EcsId = mvc.EcsId;
                 TumoGate.Instance.OnTransferParameter(mvc2);
             }
             else

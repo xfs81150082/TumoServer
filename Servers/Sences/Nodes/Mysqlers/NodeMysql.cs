@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Tumo;
 using Tumo.Models;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers;
 
 namespace Servers.Sences.Nodes.Mysqlers

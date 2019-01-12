@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
 using Tumo.Models;
-using Servers.Gates;
 using Servers.Sences.Nodes.Mysqlers;
 using Servers;
 using Servers.Sences.Models;

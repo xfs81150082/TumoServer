@@ -9,12 +9,11 @@ using Tumo.Models;
 
 namespace Tumo
 {
-    public abstract class TmAsyncTcpSession
+    public abstract class TmAsyncTcpSession : TmComponent
     {
         #region Properties        
         public Socket Socket { get; set; }                ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信///客户端Socket 
-        public string EntityId { get; set; }
-        public string EndPoint { get; set; }
+        //public string EndPoint { get; set; }
         private bool IsRunning { get; set; }
         private bool noClose { get; set; } = false;
         #endregion
@@ -32,7 +31,7 @@ namespace Tumo
         #endregion
 
         #region Constructor
-        public TmAsyncTcpSession() { this.EntityId = TmIdGenerator.GetId(); }
+        public TmAsyncTcpSession() {  }
         #endregion
 
         #region ReceiveMsg
@@ -40,7 +39,7 @@ namespace Tumo
         {
             Socket = obj as Socket;
             OnConnect();
-            Console.WriteLine(TmTimer.GetCurrentTime() + " BeginReceiveMsg  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  EndPoint:" + EndPoint);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " BeginReceiveMsg  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  ComponentId:" + this.ComponentId);
             BufferSize = 1024;
             Buffer = new byte[BufferSize];
             isHead = true;
@@ -54,7 +53,7 @@ namespace Tumo
         {
             if (IsRunning)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  EndPoint:" + EndPoint);
+                Console.WriteLine(TmTimer.GetCurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
                 try
                 {
                     RecvLength = Socket.EndReceive(ar);
@@ -86,7 +85,7 @@ namespace Tumo
         }
         private void ParsingBytes()
         {
-            Console.WriteLine(TmTimer.GetCurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  EndPoint:" + EndPoint);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
             ///将本次要接收的消息头字节数置0
             int iBytesHead = 0;
             ///将本次要剪切的字节数置0
@@ -166,7 +165,7 @@ namespace Tumo
         ///发送信息给客户端
         public void SendString(string mvcString)
         {
-            Console.WriteLine(TmTimer.GetCurrentTime() + " Send  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  EndPoint:" + EndPoint);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " Send  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
             ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
             ///string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
             if (null == Socket.Handle || !Socket.Connected)

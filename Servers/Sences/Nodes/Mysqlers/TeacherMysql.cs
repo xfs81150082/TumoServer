@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers.Sences.Nodes.Handlers;
 using Servers;
 
@@ -44,7 +43,7 @@ namespace Servers.Sences.Nodes.Mysqlers
         void GetItems(MvcParameter mvc)
         {
             MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Sender, TenCode.Teacher, ElevenCode.GetItems, ElevenCode.GetItems.ToString(), GetSoulItems());
-            mvc2.Endpoint = mvc.Endpoint;
+            mvc2.EcsId = mvc.EcsId;
             TumoNode.Instance.OnTransferParameter(mvc2);
             Console.WriteLine(TmTimer.GetCurrentTime() + " Teachers: " + GetSoulItems().Count);
         }

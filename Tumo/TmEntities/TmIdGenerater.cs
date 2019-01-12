@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public class TmIdGenerator
+    public class TmIdGenerater
     {
         static int idCount = 0;
         public static string GetId()

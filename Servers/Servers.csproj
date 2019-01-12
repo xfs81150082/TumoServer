@@ -95,10 +95,8 @@
     <Compile Include="Games\Skills\Senders\GameSenderBase.cs" />
     <Compile Include="Games\Skills\Senders\TumoGameSender.cs" />
     <Compile Include="Gates\GateBase.cs" />
-    <Compile Include="Main\TmServerHelper.cs" />
     <Compile Include="Main\TmTcpServer.cs" />
     <Compile Include="Sences\Models\SpawnCDitem.cs" />
-    <Compile Include="Sences\Models\PeerCDItem.cs" />
     <Compile Include="Main\MysqlHelper.cs" />
     <Compile Include="Gates\TumoGate.cs" />
     <Compile Include="Logins\Handlers\EngineerLogin.cs" />
@@ -166,12 +164,6 @@
     <Compile Include="Sences\Rolers\Senders\TeacherSender.cs" />
     <Compile Include="Sences\Rolers\Senders\TumoRolerSender.cs" />
     <Compile Include="Sences\Rolers\TumoRoler.cs" />
-    <Compile Include="TmModel\TmBase\TmJsonHelper.cs" />
-    <Compile Include="TmModel\TmBase\TmObject.cs" />
-    <Compile Include="TmModel\TmBase\TmTimeHelper.cs" />
-    <Compile Include="TmModel\TmBase\TmIdGenerater.cs" />
-    <Compile Include="TmModel\TmBase\TmComponent.cs" />
-    <Compile Include="UserItemDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -193,9 +185,6 @@
     <Folder Include="Games\Wars\Mysqlers\" />
     <Folder Include="Games\Wars\Senders\" />
     <Folder Include="Sences\Buildings\" />
-    <Folder Include="TmModel\TmComponent\" />
-    <Folder Include="TmModel\TmEntity\" />
-    <Folder Include="TmModel\TmSystem\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

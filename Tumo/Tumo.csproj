@@ -54,9 +54,9 @@
     <Compile Include="Models\Nodes\Building.cs" />
     <Compile Include="Models\Nodes\BuildingItem.cs" />
     <Compile Include="Models\Nodes\BuildingItemDB.cs" />
-    <Compile Include="Models\CoolDown.cs" />
-    <Compile Include="Models\CoolDownItem.cs" />
-    <Compile Include="Models\CoolDownItemDB.cs" />
+    <Compile Include="TmEntities\CoolDown.cs" />
+    <Compile Include="TmEntities\CoolDownItem.cs" />
+    <Compile Include="TmEntities\CoolDownItemDB.cs" />
     <Compile Include="Models\Inventorys\Inventory.cs" />
     <Compile Include="Models\Inventorys\InventoryItem.cs" />
     <Compile Include="Models\Inventorys\InventoryItemDB.cs" />
@@ -73,17 +73,15 @@
     <Compile Include="Models\Souls\Soul.cs" />
     <Compile Include="Models\Souls\SoulItem.cs" />
     <Compile Include="Models\Souls\SoulItemDB.cs" />
-<<<<<<< HEAD
     <Compile Include="Sockets\TmTcp\TmServerCDItem.cs" />
-    <Compile Include="Sockets\TmTcp\TmTcpServer.cs" />
-=======
-    <Compile Include="Sockets\TmTcp\SessionCDItem.cs" />
->>>>>>> 2fbd37fdc47a0af9fa94ec26958a9a1a22cf6643
+    <Compile Include="Sockets\TmTcp\TmClientCDItem.cs" />
     <Compile Include="TmEntities\TmEcsDictionary.cs" />
+    <Compile Include="TmEntities\TmJson.cs" />
+    <Compile Include="TmEntities\TmObject.cs" />
     <Compile Include="TmEntities\TmSystem.cs" />
     <Compile Include="TmEntities\TmComponent.cs" />
     <Compile Include="TmEntities\TmEntity.cs" />
-    <Compile Include="TmEntities\TmIdGenerator.cs" />
+    <Compile Include="TmEntities\TmIdGenerater.cs" />
     <Compile Include="TmEntities\TmMonoBehaviour.cs" />
     <Compile Include="Models\Souls\TmTransform.cs" />
     <Compile Include="Models\Souls\User.cs" />

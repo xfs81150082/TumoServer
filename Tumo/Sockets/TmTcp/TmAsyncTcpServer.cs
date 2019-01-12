@@ -19,14 +19,13 @@ namespace Tumo
         public string IpString { get; set; }                      //监听的IP地址  
         public int Port { get; set; }                             //监听的端口  
         public int MaxListenCount { get; set; }                   //服务器程序允许的最大客户端连接数  
-        private bool isRunning { get; set; }                       //服务器是否正在运行
+        public bool IsRunning { get; set; }                       //服务器是否正在运行
         private IPAddress address { get; set; }                   //监听的IP地址  
         private Socket serverSocket { get; set; }                 //服务器使用的异步socket   
         public Queue<Socket> WaitingSockets = new Queue<Socket>();
         public Dictionary<string, TPeer> TPeers { get; set; } = new Dictionary<string, TPeer>();
         public Dictionary<string, CoolDownItem> CDItems { get; set; } = new Dictionary<string, CoolDownItem>();
         public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
-        public Queue<MvcParameter> ReceiveParameters { get; set; } = new Queue<MvcParameter>();
         private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
         #endregion
 
@@ -55,19 +54,19 @@ namespace Tumo
         #region Methods Callbacks ///启动服务 ///接收参数消息      
         public void StartListen()
         {
-            if (!isRunning)
+            if (!IsRunning)
             {
                 serverSocket.Bind(new IPEndPoint(this.address, this.Port));
                 serverSocket.Listen(MaxListenCount);
                 serverSocket.BeginAccept(new AsyncCallback(this.AcceptCallback), serverSocket);
                 Console.WriteLine("{0} 服务启动，监听{1}成功", TmTimer.GetCurrentTime(), serverSocket.LocalEndPoint);
-                isRunning = true;
+                IsRunning = true;
             }
         }
 
         private void AcceptCallback(IAsyncResult ar)
         {
-            if (isRunning)
+            if (IsRunning)
             {
                 Socket server = (Socket)ar.AsyncState;
                 Socket peerSocket = server.EndAccept(ar);
@@ -103,43 +102,62 @@ namespace Tumo
 
         private void SendMvcParameters()
         {
-            while (SendParameters.Count > 0)
+            try
             {
-                MvcParameter mvc = SendParameters.Dequeue();
-                ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
-                string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
-                TPeer tpeer;
-                TPeers.TryGetValue(mvc.Endpoint, out tpeer);
-                if (tpeer != null)
+                while (SendParameters.Count > 0)
                 {
-                    tpeer.SendString(mvcJsons);
+                    MvcParameter mvc = SendParameters.Dequeue();
+                    ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
+                    string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
+                    TPeer tpeer;
+                    TPeers.TryGetValue(mvc.EcsId, out tpeer);
+                    if (tpeer != null)
+                    {
+                        tpeer.SendString(mvcJsons);
+                    }
+                    else
+                    {
+                        SendParameters.Enqueue(mvc);
+                        Console.WriteLine(TmTimer.GetCurrentTime() + " 没找TPeer，用Endpoint: " + mvc.EcsId);
+                        break;
+                    }
                 }
-                else
-                {
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " 没找TPeer，用Endpoint: " + mvc.Endpoint);
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(TmTimer.GetCurrentTime() + ex.Message);
             }
         }
         #endregion
-        public void SessionSignIn(MvcParameter mvc)
+        public TPeer GetTPeer(string ecsid)
+        {
+            TPeer peer;
+            TPeers.TryGetValue(ecsid, out peer);
+            if (peer != null)
+            {
+                return peer;
+            }
+            return null;
+        }
+        public void CoolDownItemSignIn(MvcParameter mvc)
         {
             CoolDownItem cd;
-            CDItems.TryGetValue(mvc.Endpoint, out cd);
+            CDItems.TryGetValue(mvc.EcsId, out cd);
             if (cd != null)
             {
                 cd.CdCount = 0;
             }
         }
-        public void RemoveSessionCDItem(MvcParameter mvc)
+        public void RemoveCoolDownItem(MvcParameter mvc)
         {
             if (CDItems.Count > 0)
             {
                 CoolDownItem item;
-                CDItems.TryGetValue(mvc.Endpoint, out item);
+                CDItems.TryGetValue(mvc.EcsId, out item);
                 if (item != null)
                 {
                     item.Close();
-                    CDItems.Remove(mvc.Endpoint);
+                    CDItems.Remove(mvc.EcsId);
                 }
             }
         }

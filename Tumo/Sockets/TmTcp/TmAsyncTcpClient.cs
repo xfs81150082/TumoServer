@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Tumo
 {
-    public class TmAsyncTcpClient
+    public abstract class TmAsyncTcpClient : TmSystem
     {
         #region 静态单列模式
         private static TmAsyncTcpClient _instance;
@@ -17,7 +17,7 @@ namespace Tumo
         #region Properties
         public string IpString { get; set; }            //监听的IP地址  
         public int Port { get; set; }                   //监听的端口  
-        private bool isRunning { get; set; }             //服务器是否正在运行
+        public bool IsConnecting { get; set; }             //服务器是否正在运行
         private IPAddress address { get; set; }          //连接的IP地址  
         private Socket clientSocket { get; set; }
         public TClient TClient { get; set; }
@@ -54,12 +54,12 @@ namespace Tumo
             {
                 //开始连接
                 clientSocket.BeginConnect(new IPEndPoint(address, Port), new AsyncCallback(this.ConnectCallback), clientSocket);
-                isRunning = true;
+                IsConnecting = true;
             }
             catch (Exception ex)
             {
                 clientSocket.Close();
-                isRunning = false;
+                IsConnecting = false;
                 Console.WriteLine(ex.ToString());
             }
         }
@@ -82,14 +82,18 @@ namespace Tumo
         }
         public void TmReceiveSocket(Socket socket)
         {
-            ///创建一个TcpPeer接收socket
-            if (TClient != null)
+            ///创建一个TClient接收socket
+            if (TClient!= null)
             {
+                ///触发事件///在线排队等待               
                 TClient.OnDisconnect();
                 TClient = null;
             }
-            TClient = new TClient();
-            TClient.BeginReceiveMessage(socket);
+            else
+            {
+                ///创建一个TClient接收socket
+                new TClient().BeginReceiveMessage(socket);
+            }           
         }
         #endregion
 
@@ -102,36 +106,44 @@ namespace Tumo
 
         private void SendMvcParameters()
         {
-            while (SendParameters.Count>0)
+            try
             {
-                MvcParameter mvc = SendParameters.Dequeue();
-                ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
-                string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
-                TClient.SendString(mvcJsons);
+                while (SendParameters.Count > 0)
+                {
+                    MvcParameter mvc = SendParameters.Dequeue();
+                    ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
+                    string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
+                    if (TClient != null)
+                    {
+                        TClient.SendString(mvcJsons);
+                    }
+                    else
+                    {
+                        SendParameters.Enqueue(mvc);
+                        Console.WriteLine(TmTimer.GetCurrentTime() + " TClient is null.");
+                        break;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(TmTimer.GetCurrentTime() + ex.Message);
             }
         }
         #endregion
 
-        #region
-        void HeartBeatSignIn()
+        #region       
+        public void CoolDownItemSignIn()
         {
-            if (TmAsyncTcpClient.Instance.CDItem != null)
+            if (CDItem != null)
             {
-                TmAsyncTcpClient.Instance.CDItem.CdCount = 0;
-            }
-            else
-            {
-                //ClientCDItem item = new ClientCDItem();
-                //item.CdCount = 0;
-                //item.CoolDown.MaxCdCount = 4;
-                //TmAsyncTcpClient.Instance.CDItem = item;
-                Console.WriteLine("创建心跳 ClientCDItem.");
-            }
+                CDItem.CdCount = 0;
+            }           
         }
-        void RemoveHeartBeat()
+        public void RemoveCoolDownItem()
         {
-            TmAsyncTcpClient.Instance.CDItem.Close();
-            TmAsyncTcpClient.Instance.CDItem = null;
+            CDItem.Close();
+            CDItem = null;
         }
         #endregion
 

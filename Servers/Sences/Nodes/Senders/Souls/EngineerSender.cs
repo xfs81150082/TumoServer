@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Servers.Gates;
 using Servers;
 
 namespace Servers.Sences.Nodes.Senders.Souls
@@ -19,7 +18,7 @@ namespace Servers.Sences.Nodes.Senders.Souls
             switch (elevenCode)
             {
                 case (ElevenCode.HeartBeat):
-                    TPeer peer1 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
+                    TPeer peer1 = TmAsyncTcpServer.Instance.GetTPeer(mvc.EcsId);
                     mvc.NineCode = NineCode.Controller;
                     //Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerSender:/nine:" + elevenCode + "/" + mvc.NineCode);
                     //peer1.SendMsg(mvc);

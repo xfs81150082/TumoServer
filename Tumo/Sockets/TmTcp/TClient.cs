@@ -24,16 +24,20 @@ namespace Tumo
         {
             ///将字符串string,用json反序列化转换成MvcParameter参数
             MvcParameter mvc = MvcTool.ToObject<MvcParameter>(mvcString);
-            mvc.Endpoint = EndPoint;
+            //mvc.Endpoint = EndPoint;
+            mvc.EcsId = this.ComponentId;
             if (mvc.ElevenCode == ElevenCode.HeartBeat)
             {
-                TmAsyncTcpClient.Instance.CDItem.CdCount = 0;
+                TmAsyncTcpClient.Instance.CoolDownItemSignIn();
             }
-            else
+            else if (mvc.ElevenCode == ElevenCode.RemoveHeartBeat)
+            {
+                TmAsyncTcpClient.Instance.RemoveCoolDownItem();
+            }else
             {
                 ///将MvcParameter参数列队
                 TmAsyncTcpClient.Instance.RecvParameters.Enqueue(mvc);
-            }
+            }             
         }
 
         #region OnDisconnect
@@ -43,6 +47,8 @@ namespace Tumo
             ///显示与客户端连接
             Console.WriteLine("{0} 服务端{1}连接成功", TmTimer.GetCurrentTime(), Socket.RemoteEndPoint);
             TmAsyncTcpClient.Instance.TClient = this;
+            new TmClientCDItem(this.ComponentId);
+
         }
 
         ///与服务器断开时调用 

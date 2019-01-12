@@ -16,7 +16,7 @@ namespace Tumo
 
         void TmInit()
         {
-            ComponentId = TmIdGenerator.GetId();
+            ComponentId = TmIdGenerater.GetId();
             TmEcsDictionary.Components.Add(ComponentId, this);
         }
 
@@ -27,9 +27,9 @@ namespace Tumo
         {
             //调用带参数的Dispose方法，释放托管和非托管资源
             Dispose(true);
-            TmEcsDictionary.Components.Remove(ComponentId);
             //手动调用了Dispose释放资源，那么析构函数就是不必要的了，这里阻止GC调用析构函数
             GC.SuppressFinalize(this);
+            TmEcsDictionary.Components.Remove(ComponentId);
         }
         /// <summary>
         /// 为继承类释放时使用

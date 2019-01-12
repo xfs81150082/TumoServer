@@ -1,6 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Servers.Gates;
 using Servers;
 using Servers.Sences.Models;
 using Servers.Sences.Rolers.Mysqlers;

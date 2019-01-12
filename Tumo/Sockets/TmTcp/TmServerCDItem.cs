@@ -7,16 +7,17 @@ namespace Tumo
 {
     public class TmServerCDItem : CoolDownItem
     {
-
-        public string EndPoint { get; set; }
-
-        public TmServerCDItem() { ValTime = 4000; }
-
+        public TmServerCDItem(string key)
+        {
+            ValTime = 4000;
+            this.Key = key;
+            TmAsyncTcpServer.Instance.CDItems.Add(Key, this);
+        }
+        public TmServerCDItem()   { }
         public override void TmUpdate()
         {
             UpdateCDCount();
         }
-
         void UpdateCDCount()
         {
             if (CdCount <= CoolDown.MaxCdCount)
@@ -26,7 +27,7 @@ namespace Tumo
             CdCount += 1;
             if (CdCount >= CoolDown.MaxCdCount)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " PeerCDItem Colseed. TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
+                Console.WriteLine(TmTimer.GetCurrentTime() + " TmServerCDItem Colseed. TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
                 Close();
                 TPeer tpeer;
                 TmAsyncTcpServer.Instance.TPeers.TryGetValue(Key, out tpeer);
@@ -40,13 +41,12 @@ namespace Tumo
             {
                 //发送心跳检测（并等待签到，签到入口在EngineerNode）
                 MvcParameter mvc = MvcTool.ToParameter(EightCode.Node, NineCode.Sender, TenCode.Peer, ElevenCode.HeartBeat);
-                mvc.Endpoint = Key;
+                mvc.EcsId = Key;
                 TmAsyncTcpServer.Instance.SendMvc(mvc);
-
-                //TumoNode.Instance.OnTransferParameter(mvc);
             }
             Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "-" + CoolDown.MaxCdCount);
         }
+
 
     }
 }

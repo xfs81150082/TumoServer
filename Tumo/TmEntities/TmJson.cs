@@ -3,11 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Servers.TmModel
+namespace Tumo
 {
-    public static class TmJsonHelper
+    public static class TmJson
     {
         public static T ToObject<T>(string str)
         {

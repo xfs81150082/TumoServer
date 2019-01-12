@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="Main\ClientMain.cs" />
     <Compile Include="Main\Test.cs" />
-    <Compile Include="Main\TmClientHelper.cs" />
     <Compile Include="Games\TumoGmae.cs" />
     <Compile Include="Games\GameBase.cs" />
     <Compile Include="Logins\LoginBase.cs" />

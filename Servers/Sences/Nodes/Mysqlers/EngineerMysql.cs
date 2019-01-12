@@ -8,7 +8,6 @@ using System.Timers;
 using Tumo;
 using Tumo.Models;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers;
 
 namespace Servers.Sences.Nodes.Mysqlers
@@ -46,7 +45,7 @@ namespace Servers.Sences.Nodes.Mysqlers
             SoulItem item2 = GetSoulItemById(int.Parse(mvc.RolerId));
             Console.WriteLine(TmTimer.GetCurrentTime() + " name: " + item2.px + " mvc.rolerid: " + item2.Id);
             MvcParameter mvc2 = MvcTool.ToJsonParameter<SoulItem>(EightCode.Node, NineCode.Sender, TenCode.Engineer, ElevenCode.EngineerLogin, ElevenCode.EngineerLogin.ToString(), item2);
-            mvc2.Endpoint = mvc.Endpoint;
+            mvc2.EcsId = mvc.EcsId;
             mvc2.RolerId = mvc.RolerId;
             TumoNode.Instance.OnTransferParameter(mvc2);
         }

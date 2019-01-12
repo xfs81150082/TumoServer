@@ -10,11 +10,8 @@ namespace ClientExample
     {
         static void Main(string[] args)
         {
-            new TmClientHelper();
             new TumoConnect();
             TmTcpClient tmTcpClient = new TmTcpClient();
-            tmTcpClient.Init("127.0.0.1", 8115);
-            tmTcpClient.StartConnect();
             new Test();
             
 

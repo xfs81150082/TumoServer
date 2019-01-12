@@ -6,7 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
-using Servers.Gates;
 using Servers;
 using Timer = System.Timers.Timer;
 
@@ -36,7 +35,7 @@ namespace Servers.Logins.Senders
         void LoginGetItems(MvcParameter mvc)   
         {
             MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Engineer, ElevenCode.EngineerLogin);
-            mvc2.Endpoint = mvc.Endpoint;
+            mvc2.EcsId = mvc.EcsId;
             mvc2.RolerId = mvc.RolerId;
             TumoGate.Instance.OnTransferParameter(mvc2);
 

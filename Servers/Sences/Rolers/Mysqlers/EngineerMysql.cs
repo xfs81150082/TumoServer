@@ -8,7 +8,6 @@ using System.Timers;
 using Tumo;
 using Tumo.Models;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers;
 using Servers.Sences.Models;
 

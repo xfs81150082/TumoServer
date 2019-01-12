@@ -1,7 +1,6 @@
 ﻿using Tumo;
 using Tumo.Models;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers;
 using System;
 using System.Collections.Generic;
@@ -38,7 +37,7 @@ namespace Servers.Logins.Mysqlers
             {
                 if (user2.Password == mvc.Password)
                 {
-                    TPeer peer = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
+                    TPeer peer = TmAsyncTcpServer.Instance.GetTPeer(mvc.EcsId);
                     //peer.User = user2;
                     mvc.TenCode = TenCode.Engineer;
                     mvc.ElevenCode = ElevenCode.UserLogin;

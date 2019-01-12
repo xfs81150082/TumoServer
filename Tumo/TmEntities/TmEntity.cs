@@ -17,7 +17,7 @@ namespace Tumo
         
         void TmInit()
         {
-            EntityId = TmIdGenerator.GetId();
+            EntityId = TmIdGenerater.GetId();
             TmEcsDictionary.Entities.Add(EntityId, this);
         }
         

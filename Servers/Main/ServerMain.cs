@@ -1,5 +1,4 @@
-﻿using Servers.Gates;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -16,12 +15,10 @@ namespace Servers
         static void Main(string[] args)
         {
             new MysqlHelper();
-            new TmServerHelper();
             new TumoGate();
             TmTcpServer tmTcpServer = new TmTcpServer();
-            tmTcpServer.StartListen();
 
-            Thread.CurrentThread.Name = "ServerMainThread23";
+            Thread.CurrentThread.Name = "ServerMainThread26";
             Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
             Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
 

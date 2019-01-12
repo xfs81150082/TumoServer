@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
 using Tumo.Models;
-using Servers.Gates;
 using Servers.Sences.Models;
 
 namespace Servers.Sences.Nodes.Handlers
@@ -76,7 +75,7 @@ namespace Servers.Sences.Nodes.Handlers
                         bool yes = TmAsyncTcpServer.Instance.CDItems.TryGetValue(list1[i], out cd1);
                         if (yes == false)
                         {
-                            PeerCDItem cd2 = new PeerCDItem();
+                            TmServerCDItem cd2 = new TmServerCDItem();
                             cd2.CdCount = 0;
                             cd2.CoolDown.MaxCdCount = 4;
                             cd2.Key = list1[i];
@@ -98,7 +97,7 @@ namespace Servers.Sences.Nodes.Handlers
         void PeerSignIn(MvcParameter mvc)
         {
             CoolDownItem cd;
-            TmAsyncTcpServer.Instance.CDItems.TryGetValue(mvc.Endpoint, out cd);
+            TmAsyncTcpServer.Instance.CDItems.TryGetValue(mvc.EcsId, out cd);
             if (cd != null)
             {
                 cd.CdCount = 0;
@@ -109,11 +108,11 @@ namespace Servers.Sences.Nodes.Handlers
             if (TmAsyncTcpServer.Instance.CDItems.Count > 0)
             {
                 CoolDownItem item;
-                TmAsyncTcpServer.Instance.CDItems.TryGetValue(mvc.Endpoint, out item);
+                TmAsyncTcpServer.Instance.CDItems.TryGetValue(mvc.EcsId, out item);
                 if (item != null)
                 {
                     item.Close();
-                    TmAsyncTcpServer.Instance.CDItems.Remove(mvc.Endpoint);
+                    TmAsyncTcpServer.Instance.CDItems.Remove(mvc.EcsId);
                 }
             }
         }

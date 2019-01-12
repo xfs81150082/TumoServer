@@ -10,13 +10,12 @@ namespace Tumo
     {
         public TmMonoBehaviour()
         {
-            //TmAwake();
             TumoTimer(ValTime);
             Console.WriteLine(TmTimer.GetCurrentTime() + " TmMonoBehaviour 实例化");
         }
 
         #region Timer
-        public int ValTime = 1000;
+        public int ValTime = 4000;
         private Timer Timer;
         void TumoTimer(int ValTime)
         {

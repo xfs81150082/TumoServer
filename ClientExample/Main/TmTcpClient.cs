@@ -8,47 +8,57 @@ using Tumo;
 
 namespace ClientExample
 {
-    public class TmTcpClient : TmAsyncTcpClient , TmUpdate
+    public class TmTcpClient : TmAsyncTcpClient 
     {
-        public int ValTime = 20;
-        private Timer Timer;
+        
+        public TmTcpClient() {  }
 
-        public TmTcpClient()
+        public TmTcpClient(string ipString, int port)
         {
-            TumoTimer(ValTime);
-            //IpString = "172.17.16.15";
-            //IpString = "127.0.0.1";
-            //Port = 8115;
+            IpString = ipString;
+            Port = port;
+        }
+        public override void TmUpdate()
+        {
+            ConnectToServer();
+            ClientRecvParamers();
         }
 
-        public void TumoTimer(int ValTime)
+        void ConnectToServer()
         {
-            Timer = new Timer();                                         //实例化Timer类，在括号里设置间隔时间,单位为毫秒；
-            Timer.Elapsed += new ElapsedEventHandler(TmUpdate);          //到达时间的时候执行事件；
-            Timer.Interval = ValTime;                                    //事件执行间隔时间1000毫秒；
-            Timer.Enabled = true;                                        //是否执行事件System.Timers.Timer.Elapsed；
-            Timer.AutoReset = true;                                      //设置是否循环执行，是执行一次（false）还是一直执行(true)；
-        }
-
-        ///当时间发生的时候需要进行的逻辑处理等    // 在这里仅仅是一种方式，可以实现这样的方式很多 
-        public void TmUpdate(object source, ElapsedEventArgs time)
-        {
-            while (RecvParameters.Count > 0)
+            if (IsConnecting == false)
             {
-                MvcParameter mvc = RecvParameters.Dequeue();
-                if (mvc.ElevenCode == ElevenCode.HeartBeat)
+                this.Init("127.0.0.1", 8115);
+                this.StartConnect();
+                Console.WriteLine(TmTimer.GetCurrentTime() + " Connecting...");
+            }
+        }               
+        
+        void ClientRecvParamers()
+        {
+            try
+            {
+                while (RecvParameters.Count > 0)
                 {
-
+                    MvcParameter mvc = RecvParameters.Dequeue();
+                    if (TumoConnect.Instance != null)
+                    {
+                        TumoConnect.Instance.OnTransferParameter(mvc);
+                        Console.WriteLine(TmTimer.GetCurrentTime() + " RecvParameters: " + RecvParameters.Count);
+                    }
+                    else
+                    {
+                        RecvParameters.Enqueue(mvc);
+                        Console.WriteLine(TmTimer.GetCurrentTime() + " TumoConnect is null.");
+                        break;
+                    }
                 }
-                else
-                {
-
-                }
-                TumoConnect.Instance.OnTransferParameter(mvc);
-                Console.WriteLine(TmTimer.GetCurrentTime() + " RecvParameters: " + RecvParameters.Count);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(TmTimer.GetCurrentTime() + ex.Message);
             }
         }
 
-        
     }
 }
