@@ -47,6 +47,7 @@ namespace Servers
         private int cdsCount = -1;
         void CheckPeersCD()
         {
+<<<<<<< HEAD
             if (TPeers.Count != cdsCount)
             {
                 cdsCount = TPeers.Count;
@@ -67,23 +68,60 @@ namespace Servers
                             cd2.CoolDown.MaxCdCount = 4;
                             cd2.Key = list1[i];
                             CDItems.Add(list1[i], cd2);
+=======
+            if (TmAsyncTcpServer.Instance.TPeers.Count != cdsCount)
+            {
+                cdsCount = TmAsyncTcpServer.Instance.TPeers.Count;
+                Console.WriteLine(TmTimer.GetCurrentTime() + " PeerCD:心跳包每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ", 毫秒针:" + ela.SignalTime.Millisecond + ")");
+                TmLog.WriteLine(TmTimer.GetCurrentTime() + " EngineerTimer每" + valTime / 1000 + "秒钟心跳一次(秒针:" + ela.SignalTime.Second + ",毫秒针:" + ela.SignalTime.Millisecond + ")");
+                //初始化服务器PeersCD字典
+                if (TmAsyncTcpServer.Instance.TPeers.Count > 0)
+                {
+                    List<string> list1 = new List<string>(TmAsyncTcpServer.Instance.TPeers.Keys);
+                    for (int i = 0; i < list1.Count; i++)
+                    {
+                        CoolDownItem cd1;
+                        //bool yes = PeerCDItems.TryGetValue(list1[i], out cd1);
+                        bool yes = TmAsyncTcpServer.Instance.CDItems.TryGetValue(list1[i], out cd1);
+                        if (yes == false)
+                        {
+                            PeerCDItem cd2 = new PeerCDItem();
+                            cd2.CdCount = 0;
+                            cd2.CoolDown.MaxCdCount = 4;
+                            cd2.Key = list1[i];
+                            //PeerCDItems.Add(list1[i], cd2);
+                            TmAsyncTcpServer.Instance.CDItems.Add(list1[i], cd2);
+>>>>>>> 2fbd37fdc47a0af9fa94ec26958a9a1a22cf6643
                         }
                     }
                 }
                 else
                 {
+<<<<<<< HEAD
                     if (CDItems.Count > 0)
                     {
                         CDItems.Clear();
                     }
                 }
                 Console.WriteLine(TmTimer.GetCurrentTime() + " PeerCDItems: " + CDItems.Count + "-" + TPeers.Count);
+=======
+                    if (TmAsyncTcpServer.Instance.CDItems.Count > 0)
+                    {
+                        TmAsyncTcpServer.Instance.CDItems.Clear();
+                    }
+                }
+                Console.WriteLine(TmTimer.GetCurrentTime() + " PeerCDItems: " + TmAsyncTcpServer.Instance.CDItems.Count + "-" + TmAsyncTcpServer.Instance.TPeers.Count);
+>>>>>>> 2fbd37fdc47a0af9fa94ec26958a9a1a22cf6643
             }
         }
         void PeerSignIn(MvcParameter mvc)
         {
             CoolDownItem cd;
+<<<<<<< HEAD
             CDItems.TryGetValue(mvc.Endpoint, out cd);
+=======
+            TmAsyncTcpServer.Instance.CDItems.TryGetValue(mvc.Endpoint, out cd);
+>>>>>>> 2fbd37fdc47a0af9fa94ec26958a9a1a22cf6643
             if (cd != null)
             {
                 cd.CdCount = 0;
@@ -91,6 +129,7 @@ namespace Servers
         }
         void RemovePeerCDItem(MvcParameter mvc)
         {
+<<<<<<< HEAD
             if (CDItems.Count > 0)
             {
                 CoolDownItem item;
@@ -99,6 +138,16 @@ namespace Servers
                 {
                     item.Close();
                     CDItems.Remove(mvc.Endpoint);
+=======
+            if (TmAsyncTcpServer.Instance.CDItems.Count > 0)
+            {
+                CoolDownItem item;
+                TmAsyncTcpServer.Instance.CDItems.TryGetValue(mvc.Endpoint, out item);
+                if (item != null)
+                {
+                    item.Close();
+                    TmAsyncTcpServer.Instance.CDItems.Remove(mvc.Endpoint);
+>>>>>>> 2fbd37fdc47a0af9fa94ec26958a9a1a22cf6643
                 }
             }
         }

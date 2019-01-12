@@ -61,7 +61,11 @@ namespace Tumo
         }
 
         #region Timer
+<<<<<<< HEAD
         public int ValTime = 50;
+=======
+        public int ValTime = 1000;
+>>>>>>> 2fbd37fdc47a0af9fa94ec26958a9a1a22cf6643
         private Timer Timer;
         void TumoTimer(int ValTime)
         {

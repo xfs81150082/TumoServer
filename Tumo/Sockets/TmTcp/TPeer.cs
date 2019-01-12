@@ -38,6 +38,10 @@ namespace Tumo
         {
             ///显示与客户端连接
             Console.WriteLine("{0} 客户端{1}连接成功", TmTimer.GetCurrentTime() , Socket.RemoteEndPoint);
+<<<<<<< HEAD
+=======
+            this.EndPoint = Socket.RemoteEndPoint.ToString();
+>>>>>>> 2fbd37fdc47a0af9fa94ec26958a9a1a22cf6643
             TPeer tpeer = null;
             bool yes1 = TmAsyncTcpServer.Instance.TPeers.TryGetValue(Socket.RemoteEndPoint.ToString(), out tpeer);
             if (yes1 != true)

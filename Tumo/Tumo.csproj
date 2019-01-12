@@ -73,8 +73,12 @@
     <Compile Include="Models\Souls\Soul.cs" />
     <Compile Include="Models\Souls\SoulItem.cs" />
     <Compile Include="Models\Souls\SoulItemDB.cs" />
+<<<<<<< HEAD
     <Compile Include="Sockets\TmTcp\TmServerCDItem.cs" />
     <Compile Include="Sockets\TmTcp\TmTcpServer.cs" />
+=======
+    <Compile Include="Sockets\TmTcp\SessionCDItem.cs" />
+>>>>>>> 2fbd37fdc47a0af9fa94ec26958a9a1a22cf6643
     <Compile Include="TmEntities\TmEcsDictionary.cs" />
     <Compile Include="TmEntities\TmSystem.cs" />
     <Compile Include="TmEntities\TmComponent.cs" />
