@@ -11,6 +11,11 @@ namespace Servers.Sences.Models
     [Serializable]
     public class Npcer : Roler
     {
+        public override void TmAwake()
+        {
+
+        }
+
         public Npcer()
         {
 

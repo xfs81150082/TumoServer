@@ -55,7 +55,6 @@
     <Compile Include="Logins\LoginBase.cs" />
     <Compile Include="Logins\TumoLogin.cs" />
     <Compile Include="Main\TmTcpClient.cs" />
-    <Compile Include="Sences\Models\ClientCDItem.cs" />
     <Compile Include="Sences\Nodes\Controllers\PeerNode.cs" />
     <Compile Include="Sences\Nodes\NodeBase.cs" />
     <Compile Include="Sences\Nodes\NodeHelper.cs" />
@@ -106,7 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Games\Senders\" />
-    <Folder Include="Sences\Buildings\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tumo\Tumo.csproj">

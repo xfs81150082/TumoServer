@@ -7,12 +7,16 @@ namespace Tumo
 {
     public class TmClientCDItem : CoolDownItem
     {
-        public TmClientCDItem(string key)
+        public override void TmAwake()
         {
             ValTime = 4000;
+        }
+
+        public TmClientCDItem(string key)
+        {
             this.Key = key;
             TmAsyncTcpClient.Instance.CDItem = this;
-            Console.WriteLine("创建心跳 TmClientCDItem.");
+            Console.WriteLine(TmTimer.GetCurrentTime() + " 创建心跳包 TmClientCDItem.");
         }
 
         public override void TmUpdate()
@@ -32,7 +36,7 @@ namespace Tumo
                 TmAsyncTcpClient.Instance.TClient.OnDisconnect();
                 TmAsyncTcpClient.Instance.TClient = null;
                 TmAsyncTcpClient.Instance.IsConnecting = false;
-                Console.WriteLine(TmTimer.GetCurrentTime() + " 当前CDItem Colseed." );
+                Console.WriteLine(TmTimer.GetCurrentTime() + " 当前 CDItem is Colseed." );
                 Close();
             }
             else

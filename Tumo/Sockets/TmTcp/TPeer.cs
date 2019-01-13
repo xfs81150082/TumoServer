@@ -11,16 +11,14 @@ namespace Tumo
     public class TPeer : TmAsyncTcpSession
     {
         private bool isClose { get; set; } = false;
-
         public TPeer() { }
-
+        public override void TmAwake()  {    }
+        public override void TmUpdate()  {    }
         public override void OnTransferParameter(string mvcString)
         {
             ///将字符串string,用json反序列化转换成MvcParameter参数
             MvcParameter mvc = MvcTool.ToObject<MvcParameter>(mvcString);
-            //this.EndPoint = Socket.RemoteEndPoint.ToString();
-            //mvc.Endpoint = EndPoint;
-            mvc.EcsId = this.ComponentId;
+            mvc.EcsId = this.EcsId;
             if (mvc.ElevenCode == ElevenCode.HeartBeat)
             {
                 TmAsyncTcpServer.Instance.CoolDownItemSignIn(mvc);
@@ -34,47 +32,37 @@ namespace Tumo
                 TmAsyncTcpServer.Instance.RecvParameters.Enqueue(mvc);
             }
         }
-
         public override void OnConnect()
         {
             ///显示与客户端连接
             Console.WriteLine("{0} 客户端{1}连接成功", TmTimer.GetCurrentTime() , Socket.RemoteEndPoint);
-            new TmServerCDItem(this.ComponentId);
-
-            //this.EndPoint = Socket.RemoteEndPoint.ToString();
+            new TmServerCDItem(this.EcsId);
             TPeer tpeer = null;
-            //bool yes1 = TmAsyncTcpServer.Instance.TPeers.TryGetValue(Socket.RemoteEndPoint.ToString(), out tpeer);        
-            bool yes1 = TmAsyncTcpServer.Instance.TPeers.TryGetValue(this.ComponentId, out tpeer);
+            bool yes1 = TmAsyncTcpServer.Instance.TPeers.TryGetValue(this.EcsId, out tpeer);
             if (yes1 != true)
             {
-                ///peers已经加入字典
-                //TmAsyncTcpServer.Instance.TPeers.Add(Socket.RemoteEndPoint.ToString(), this);
-                TmAsyncTcpServer.Instance.TPeers.Add(this.ComponentId, this);
-                //Console.WriteLine(TmTimer.GetCurrentTime() + " TPeer: " + Socket.RemoteEndPoint + " 已经加入字典");
-                Console.WriteLine(TmTimer.GetCurrentTime() + " ComponentId: " + this.ComponentId + " 已经加入字典");
+                ///tpeers已经加入字典
+                TmAsyncTcpServer.Instance.TPeers.Add(this.EcsId, this);
+                Console.WriteLine(TmTimer.GetCurrentTime() + " ComponentId: " + this.EcsId + " 已经加入字典");
             }
             ///显示客户端群中的客户端数量
             Console.WriteLine(TmTimer.GetCurrentTime() + " TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
         }
-
         public override void OnDisconnect()
         {
             ///关闭PeerCD
             MvcParameter mvc = MvcTool.ToParameter(EightCode.Node, NineCode.Handler, TenCode.Engineer, ElevenCode.RemoveHeartBeat);
-            //mvc.Endpoint = EndPoint;
-            mvc.EcsId = this.ComponentId;
+            mvc.EcsId = this.EcsId;
             TmAsyncTcpServer.Instance.RecvParameters.Enqueue(mvc);
-
             if (TmAsyncTcpServer.Instance.TPeers.Count > 0)
             {
                 TPeer temSession = null;
-                //bool yes1 = TmAsyncTcpServer.Instance.TPeers.TryGetValue(Socket.RemoteEndPoint.ToString(), out temSession);
-                bool yes1 = TmAsyncTcpServer.Instance.TPeers.TryGetValue(this.ComponentId, out temSession);
+                bool yes1 = TmAsyncTcpServer.Instance.TPeers.TryGetValue(this.EcsId, out temSession);
                 if (yes1)
                 {
                     ///从peers字典中删除
-                    //TmAsyncTcpServer.Instance.TPeers.Remove(Socket.RemoteEndPoint.ToString());
-                    TmAsyncTcpServer.Instance.TPeers.Remove(this.ComponentId);
+                    TmAsyncTcpServer.Instance.TPeers.Remove(this.EcsId);
+                    Close();
                 }
                 Console.WriteLine(TmTimer.GetCurrentTime() + " 一个客户端:已经中断连接");
             }
@@ -87,9 +75,9 @@ namespace Tumo
                 Socket.Shutdown(SocketShutdown.Both);
                 Socket.Close();
                 Socket = null;
+                IsRunning = false;
             }
-        }      
-
+        }
 
     }
 }

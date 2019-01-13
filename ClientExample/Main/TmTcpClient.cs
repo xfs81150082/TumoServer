@@ -10,20 +10,21 @@ namespace ClientExample
 {
     public class TmTcpClient : TmAsyncTcpClient 
     {
-        
         public TmTcpClient() {  }
-
         public TmTcpClient(string ipString, int port)
         {
             IpString = ipString;
             Port = port;
+        }
+        public override void TmAwake()
+        {
+
         }
         public override void TmUpdate()
         {
             ConnectToServer();
             ClientRecvParamers();
         }
-
         void ConnectToServer()
         {
             if (IsConnecting == false)
@@ -32,8 +33,7 @@ namespace ClientExample
                 this.StartConnect();
                 Console.WriteLine(TmTimer.GetCurrentTime() + " Connecting...");
             }
-        }               
-        
+        }
         void ClientRecvParamers()
         {
             try

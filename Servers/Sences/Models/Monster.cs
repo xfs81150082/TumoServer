@@ -13,6 +13,10 @@ namespace Servers.Sences.Models
     [Serializable]
     public class Monster : Roler
     {
+        public override void TmAwake()
+        {
+
+        }
         public Monster()  {  }
         public Monster(SoulItem item)
         {
@@ -22,7 +26,6 @@ namespace Servers.Sences.Models
             //this.RolerMove.TargetTransform = new TmTransform(item);
         }
 
-               
 
         public override void TmUpdate()
         {

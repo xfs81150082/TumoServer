@@ -13,6 +13,11 @@ namespace Servers.Sences.Models
     public class Player : Roler
     {
         public SpawnCDitem SpawnCDitem;
+        public override void TmAwake()
+        {
+
+        }
+
         public Player()
         {
 

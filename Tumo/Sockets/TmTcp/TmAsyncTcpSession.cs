@@ -12,14 +12,14 @@ namespace Tumo
     public abstract class TmAsyncTcpSession : TmComponent
     {
         #region Properties        
-        public Socket Socket { get; set; }                ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信///客户端Socket 
-        //public string EndPoint { get; set; }
-        private bool IsRunning { get; set; }
+        public Socket Socket { get; set; }  ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信///客户端Socket 
+        public bool IsRunning { get; set; }
         private bool noClose { get; set; } = false;
+        public TmAsyncTcpSession() {  }
         #endregion
 
-        #region byte[] Bytes        //接收缓冲区   
-        private byte[] Buffer { get; set; }
+        #region byte[] Bytes        
+        private byte[] Buffer { get; set; }  ///接收缓冲区   
         private int BufferSize { get; set; }
         private int RecvLength { get; set; }
         private List<byte> RecvBuffList { get; set; } = new List<byte>();
@@ -30,16 +30,12 @@ namespace Tumo
         private bool isBody { get; set; }
         #endregion
 
-        #region Constructor
-        public TmAsyncTcpSession() {  }
-        #endregion
-
         #region ReceiveMsg
         public void BeginReceiveMessage(object obj)
         {
             Socket = obj as Socket;
             OnConnect();
-            Console.WriteLine(TmTimer.GetCurrentTime() + " BeginReceiveMsg  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  ComponentId:" + this.ComponentId);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " BeginReceiveMsg  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  ComponentId:" + this.EcsId);
             BufferSize = 1024;
             Buffer = new byte[BufferSize];
             isHead = true;
@@ -145,32 +141,28 @@ namespace Tumo
         }
         #endregion
 
-        #region AddRange
-        /// 提取数据
+        #region AddRange        
         void CutTo(List<byte> BuffList, byte[] bytes, int bytesoffset, int size)
         {
             BuffList.CopyTo(0, bytes, bytesoffset, size);
             BuffList.RemoveRange(0, size);
-        }
-        /// 队列数据
+        }/// 提取数据        
         void AddRange(List<byte> BuffList, byte[] buffer, int length)
         {
             byte[] temByte = new byte[length];
             Array.Copy(buffer, 0, temByte, 0, length);
             BuffList.AddRange(temByte);
-        }
+        }/// 队列数据
         #endregion
 
-        #region SendString
-        ///发送信息给客户端
+        #region SendString       
         public void SendString(string mvcString)
         {
             Console.WriteLine(TmTimer.GetCurrentTime() + " Send  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
-            ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
-            ///string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
             if (null == Socket.Handle || !Socket.Connected)
             {
                 Console.WriteLine(TmTimer.GetCurrentTime() + " 连接已中断！！！");
+                IsRunning = false;
                 return;
             }
             ///将字符串(string)转换成字节(byte)
@@ -209,14 +201,14 @@ namespace Tumo
                     OnDisconnect();
                 }
             }
-        }
+        } ///发送信息给客户端
         private void SendCallback(IAsyncResult ar)
         {
             try
             {
                 Socket client = (Socket)ar.AsyncState;
                 int bytesSent = client.EndSend(ar);
-                Console.WriteLine(TmTimer.GetCurrentTime() + " Sent {0} bytes to clinet.", bytesSent);
+                Console.WriteLine(TmTimer.GetCurrentTime() + " Sent {0} Bytes To Clinet.", bytesSent);
             }
             catch (Exception ex)
             {
@@ -225,8 +217,7 @@ namespace Tumo
         }
         #endregion
 
-        #region       
-        /// 抽象方法 接口    
+        #region  /// 抽象方法 接口       
         public abstract void OnConnect();
         public abstract void OnDisconnect();
         public abstract void OnTransferParameter(string mvcString);

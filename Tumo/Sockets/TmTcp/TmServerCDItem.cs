@@ -7,11 +7,15 @@ namespace Tumo
 {
     public class TmServerCDItem : CoolDownItem
     {
-        public TmServerCDItem(string key)
+        public override void TmAwake()
         {
             ValTime = 4000;
+        }
+        public TmServerCDItem(string key)
+        {
             this.Key = key;
             TmAsyncTcpServer.Instance.CDItems.Add(Key, this);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " 创建心跳包 TmServerCDItem.");
         }
         public TmServerCDItem()   { }
         public override void TmUpdate()
