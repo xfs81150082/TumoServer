@@ -11,7 +11,7 @@ using System.Timers;
 
 namespace Servers.Sences.Models
 {
-    public class SpawnCDitem : CoolDownItem
+    public class SpawnCDitem : TmCoolDownItem
     {
         public override void TmAwake()
         {
@@ -37,5 +37,9 @@ namespace Servers.Sences.Models
             }
         }
 
+        public override void TmDispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

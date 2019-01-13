@@ -17,7 +17,7 @@ namespace Servers.Logins.Senders
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.GetItems):
+                case (ElevenCode.UserLogin):
                     Console.WriteLine(TmTimer.GetCurrentTime() +" UserLoginSender: " + elevenCode);
                     mvc.NineCode = NineCode.Controller;
                     TmAsyncTcpServer.Instance.SendMvc(mvc);

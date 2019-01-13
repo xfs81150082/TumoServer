@@ -15,7 +15,7 @@ namespace Tumo
         public override void TmDispose()
         {
             TmEcsDictionary.Components.Remove(EcsId);
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmComponent已释放资源");
+            Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmComponent释放资源");
         }
 
     }

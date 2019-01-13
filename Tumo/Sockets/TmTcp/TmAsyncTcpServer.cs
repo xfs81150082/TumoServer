@@ -24,7 +24,7 @@ namespace Tumo
         private Socket serverSocket { get; set; }                 //服务器使用的异步socket   
         public Queue<Socket> WaitingSockets = new Queue<Socket>();
         public Dictionary<string, TPeer> TPeers { get; set; } = new Dictionary<string, TPeer>();
-        public Dictionary<string, CoolDownItem> CDItems { get; set; } = new Dictionary<string, CoolDownItem>();
+        public Dictionary<string, TmCoolDownItem> CDItems { get; set; } = new Dictionary<string, TmCoolDownItem>();
         public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
         private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
         #endregion
@@ -141,26 +141,14 @@ namespace Tumo
         }
         public void CoolDownItemSignIn(MvcParameter mvc)
         {
-            CoolDownItem cd;
+            TmCoolDownItem cd;
             CDItems.TryGetValue(mvc.EcsId, out cd);
             if (cd != null)
             {
                 cd.CdCount = 0;
             }
         }
-        public void RemoveCoolDownItem(MvcParameter mvc)
-        {
-            if (CDItems.Count > 0)
-            {
-                CoolDownItem item;
-                CDItems.TryGetValue(mvc.EcsId, out item);
-                if (item != null)
-                {
-                    item.Close();
-                    CDItems.Remove(mvc.EcsId);
-                }
-            }
-        }
+         
 
     }
 }

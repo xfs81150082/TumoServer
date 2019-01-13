@@ -57,7 +57,7 @@ namespace ClientExample.Sences.Nodes.Controllers
         }
         void RemoveHeartBeat()
         {
-            TmAsyncTcpClient.Instance.CDItem.Close();
+            TmAsyncTcpClient.Instance.CDItem.Dispose();
             TmAsyncTcpClient.Instance.CDItem = null;
         }
 

@@ -21,7 +21,7 @@ namespace Tumo
         private IPAddress address { get; set; }          //连接的IP地址  
         private Socket clientSocket { get; set; }
         public TClient TClient { get; set; }
-        public CoolDownItem CDItem { get; set; }
+        public TmCoolDownItem CDItem { get; set; }
         public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
         private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
         #endregion
@@ -65,35 +65,28 @@ namespace Tumo
         }
         private void ConnectCallback(IAsyncResult ar)
         {
-            //创建一个Socket接收传递过来的TmSocket
-            Socket tcpSocket = (Socket)ar.AsyncState;
-            try
+            if (IsConnecting)
             {
-                //得到成功的连接
-                tcpSocket.EndConnect(ar);
-                ///触发事件///创建一个方法接收peerSocket (在方法里创建一个peer来处理读取数据//开始接受来自该客户端的数据)
-                TmReceiveSocket(tcpSocket);
-                Console.WriteLine("{0} 连接服务器成功{1}", TmTimer.GetCurrentTime(), tcpSocket.RemoteEndPoint.ToString());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
+                //创建一个Socket接收传递过来的TmSocket
+                Socket tcpSocket = (Socket)ar.AsyncState;
+                try
+                {
+                    //得到成功的连接
+                    tcpSocket.EndConnect(ar);
+                    ///触发事件///创建一个方法接收peerSocket (在方法里创建一个peer来处理读取数据//开始接受来自该客户端的数据)
+                    TmReceiveSocket(tcpSocket);
+                    Console.WriteLine("{0} 连接服务器成功{1}", TmTimer.GetCurrentTime(), tcpSocket.RemoteEndPoint.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             }
         }
         public void TmReceiveSocket(Socket socket)
         {
             ///创建一个TClient接收socket
-            if (TClient!= null)
-            {
-                ///触发事件///在线排队等待               
-                TClient.OnDisconnect();
-                TClient = null;
-            }
-            else
-            {
-                ///创建一个TClient接收socket
-                new TClient().BeginReceiveMessage(socket);
-            }           
+            new TClient().BeginReceiveMessage(socket);
         }
         #endregion
 
@@ -133,16 +126,18 @@ namespace Tumo
         #endregion
 
         #region       
-        public void CoolDownItemSignIn()
+        public void CoolDownItemSignIn(MvcParameter mvc)
         {
+            if (mvc.EcsId != CDItem.Key) return;
             if (CDItem != null)
             {
                 CDItem.CdCount = 0;
             }           
         }
-        public void RemoveCoolDownItem()
+        public void RemoveCoolDownItem(MvcParameter mvc)
         {
-            CDItem.Close();
+            if (mvc.EcsId != CDItem.Key) return;
+            CDItem.Dispose();
             CDItem = null;
         }
         #endregion

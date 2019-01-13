@@ -5,29 +5,29 @@ using System.Text;
 
 namespace Tumo
 {
-    public class CoolDown 
+    public class TmCoolDown 
     {
         public int Id { get => id; set => id = value; }
         public double MaxCdTime { get => maxCdTime; set => maxCdTime = value; }
         public int MaxCdCount { get => maxCdCount; set => maxCdCount = value; }
 
-        public CoolDown() { }
-        public CoolDown(int id, int maxcdCount)
+        public TmCoolDown() { }
+        public TmCoolDown(int id, int maxcdCount)
         {
             this.maxCdCount = maxcdCount;
         }
-        public CoolDown(int id, double maxcdTime)
+        public TmCoolDown(int id, double maxcdTime)
         {
             this.Id = id;
             this.maxCdTime = maxcdTime;
         }
-        public CoolDown(int id, double maxcdTime, int maxcdCount)
+        public TmCoolDown(int id, double maxcdTime, int maxcdCount)
         {
             this.Id = id;
             this.maxCdTime = maxcdTime;
             this.maxCdCount = maxcdCount;
         }
-        public CoolDown(double maxcdTime, int maxcdCount)
+        public TmCoolDown(double maxcdTime, int maxcdCount)
         {
             this.maxCdTime = maxcdTime;
             this.maxCdCount = maxcdCount;

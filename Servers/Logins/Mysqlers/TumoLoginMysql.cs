@@ -33,7 +33,7 @@ namespace Servers.Logins.Mysqlers
             }
             else
             {
-                Console.WriteLine("寻找LoginSender失败，通过NineCode:" + mvc.NineCode);
+                Console.WriteLine("寻找Mysql失败，通过TenCode:" + mvc.TenCode);
             }
         }
 

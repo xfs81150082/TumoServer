@@ -55,9 +55,8 @@
     <Compile Include="Models\Nodes\BuildingItem.cs" />
     <Compile Include="Models\Nodes\BuildingItemDB.cs" />
     <Compile Include="TmEntities\TmEcsBase.cs" />
-    <Compile Include="TmEntities\CoolDown.cs" />
-    <Compile Include="TmEntities\CoolDownItem.cs" />
-    <Compile Include="TmEntities\CoolDownItemDB.cs" />
+    <Compile Include="TmEntities\TmCoolDown.cs" />
+    <Compile Include="TmEntities\TmCoolDownItem.cs" />
     <Compile Include="Models\Inventorys\Inventory.cs" />
     <Compile Include="Models\Inventorys\InventoryItem.cs" />
     <Compile Include="Models\Inventorys\InventoryItemDB.cs" />

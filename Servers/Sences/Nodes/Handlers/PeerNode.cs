@@ -70,7 +70,7 @@ namespace Servers.Sences.Nodes.Handlers
                     List<string> list1 = new List<string>(TmAsyncTcpServer.Instance.TPeers.Keys);
                     for (int i = 0; i < list1.Count; i++)
                     {
-                        CoolDownItem cd1;
+                        TmCoolDownItem cd1;
                         //bool yes = PeerCDItems.TryGetValue(list1[i], out cd1);
                         bool yes = TmAsyncTcpServer.Instance.CDItems.TryGetValue(list1[i], out cd1);
                         if (yes == false)
@@ -96,7 +96,7 @@ namespace Servers.Sences.Nodes.Handlers
         }
         void PeerSignIn(MvcParameter mvc)
         {
-            CoolDownItem cd;
+            TmCoolDownItem cd;
             TmAsyncTcpServer.Instance.CDItems.TryGetValue(mvc.EcsId, out cd);
             if (cd != null)
             {
@@ -107,11 +107,11 @@ namespace Servers.Sences.Nodes.Handlers
         {
             if (TmAsyncTcpServer.Instance.CDItems.Count > 0)
             {
-                CoolDownItem item;
+                TmCoolDownItem item;
                 TmAsyncTcpServer.Instance.CDItems.TryGetValue(mvc.EcsId, out item);
                 if (item != null)
                 {
-                    item.Close();
+                    item.Dispose();
                     TmAsyncTcpServer.Instance.CDItems.Remove(mvc.EcsId);
                 }
             }

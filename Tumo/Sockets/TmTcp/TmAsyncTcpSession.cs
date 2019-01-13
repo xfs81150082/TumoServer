@@ -58,7 +58,7 @@ namespace Tumo
                         ///发送端关闭
                         Console.WriteLine("{0} 发送端{1}连接关闭", TmTimer.GetCurrentTime(), Socket.RemoteEndPoint);
                         IsRunning = false;
-                        OnDisconnect();
+                        Dispose();
                         return;
                     }
                     else
@@ -75,7 +75,7 @@ namespace Tumo
                 {
                     Console.WriteLine(TmTimer.GetCurrentTime() + ex.ToString());
                     IsRunning = false;
-                    OnDisconnect();
+                    Dispose();
                 }
             }
         }
@@ -136,7 +136,7 @@ namespace Tumo
             catch (Exception ex)
             {
                 Console.WriteLine(TmTimer.GetCurrentTime() + ex.ToString());
-                OnDisconnect();
+                Dispose();
             }
         }
         #endregion
@@ -198,7 +198,7 @@ namespace Tumo
                 catch (Exception ex)
                 {
                     Console.WriteLine(TmTimer.GetCurrentTime() + ex.ToString());
-                    OnDisconnect();
+                    Dispose();
                 }
             }
         } ///发送信息给客户端
@@ -217,9 +217,17 @@ namespace Tumo
         }
         #endregion
 
-        #region  /// 抽象方法 接口       
+        #region  /// 抽象方法 接口    
+        public override void TmDispose()
+        {
+            base.TmDispose();
+            Socket.Shutdown(SocketShutdown.Both);
+            IsRunning = false;
+            Socket.Close();
+            Socket = null;
+            Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmAsyncTcpSession释放资源");
+        }
         public abstract void OnConnect();
-        public abstract void OnDisconnect();
         public abstract void OnTransferParameter(string mvcString);
         #endregion
 

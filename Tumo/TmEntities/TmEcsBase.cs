@@ -5,7 +5,7 @@ namespace Tumo
 {
     public abstract class TmEcsBase : IDisposable
     {
-        #region
+        #region TmAwake EcsId
         /// 身份证号
         public string EcsId { get; set; }
         public TmEcsBase()
@@ -22,7 +22,7 @@ namespace Tumo
         public abstract void TmAwake();
         #endregion
 
-        #region TmAwake TmUpdate
+        #region TmUpdate Timer
         public int ValTime = 20;
         private Timer Timer;
         void TumoTimer(int ValTime)
@@ -41,49 +41,36 @@ namespace Tumo
         public abstract void TmUpdate();
         #endregion
 
-        #region Close Dispose
+        #region Dispose
         ///是否已释放了资源，true时方法都不可用了。
-        private bool _isDisposed = false;
+        private bool isDisposed = false;
         ///供程序员显式调用的Dispose方法
-        public void Close()
+        public void Dispose()
+        {
+            if (!isDisposed)
+            {
+                Close();   ///关闭Timer时钟
+                TmEcsDictionary.Ecses.Remove(EcsId);   ///从ECS管理字典中删除
+                TmDispose();   /// 为继承类释放时使用，用抽象方法
+                isDisposed = true;
+                Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmEcsBase释放资源");
+            }
+            else
+            {
+                Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmEcsBase已经释放");
+            }
+        }
+        /// 为继承类释放时使用(Note:这儿为什么要写成虚方法呢？)
+        /// 1. 为了让派生类清理自已的资源。将销毁和析构的共同工作提取出来，并让派生类也可以释放其自已分配的资源。
+        /// 2. 为派生类提供了根据Dispose()或终结器的需要进行资源清理的必要入口。
+        private void Close()
         {
             Timer.AutoReset = false;                                      ///设置是否循环执行，是执行一次（false）还是一直执行(true)；
             Timer.Enabled = false;                                        ///是否执行事件System.Timers.Timer.Elapsed；
             Timer.Elapsed -= new ElapsedEventHandler(OnTimerEvent);       ///到达时间的时候执行事件；
             Timer.Close();
-            Dispose();
+            Console.WriteLine(TmTimer.GetCurrentTime() + " Timer关闭并释放资源");
         }
-        ///供程序员显式调用的Dispose方法
-        public void Dispose()
-        {
-            ///调用带参数的Dispose方法，释放托管和非托管资源
-            Dispose(true);
-            TmEcsDictionary.Ecses.Remove(EcsId);
-            ///手动调用了Dispose释放资源，那么析构函数就是不必要的了，这里阻止GC调用析构函数
-            GC.SuppressFinalize(this);
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmEcsBase已释放资源");
-        }
-        /// 为继承类释放时使用
-        /// Note:这儿为什么要写成虚方法呢？
-        /// 1. 为了让派生类清理自已的资源。将销毁和析构的共同工作提取出来，并让派生类也可以释放其自已分配的资源。
-        /// 2. 为派生类提供了根据Dispose()或终结器的需要进行资源清理的必要入口。
-        protected virtual void Dispose(bool isDisposing)
-        {
-            if (_isDisposed) return;
-            if (isDisposing)
-            {
-                ///释放托管资源（由CLR管理分配和释放的资源，即由CLR里new出来的对象）
-                TmDispose();
-            }
-            ///释放非托管资源(不受CLR管理的对象，windows内核对象，如文件、数据库连接、套接字、COM对象等)
-            _isDisposed = true;
-        }
-        /// 如果没有非托管资源，不要实现它;供GC调用的析构函数
-        ~TmEcsBase()
-        {
-            Dispose(false);
-        }
-        /// 为继承类释放时使用
         public abstract void TmDispose();
         #endregion
 

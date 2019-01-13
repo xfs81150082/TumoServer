@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public class TmServerCDItem : CoolDownItem
+    public class TmServerCDItem : TmCoolDownItem
     {
         public override void TmAwake()
         {
@@ -26,20 +26,13 @@ namespace Tumo
         {
             if (CdCount <= CoolDown.MaxCdCount)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "/" + CoolDown.MaxCdCount);
+                Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "-" + CoolDown.MaxCdCount);
             }
             CdCount += 1;
             if (CdCount >= CoolDown.MaxCdCount)
             {
                 Console.WriteLine(TmTimer.GetCurrentTime() + " TmServerCDItem Colseed. TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
-                Close();
-                TPeer tpeer;
-                TmAsyncTcpServer.Instance.TPeers.TryGetValue(Key, out tpeer);
-                if (tpeer != null)
-                {
-                    //删除掉心跳包群中对应的peer
-                    tpeer.OnDisconnect();
-                }
+                this.Dispose();
             }
             else
             {
@@ -51,6 +44,19 @@ namespace Tumo
             Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "-" + CoolDown.MaxCdCount);
         }
 
+        public override void TmDispose()
+        {
+            TmAsyncTcpServer.Instance.CDItems.Remove(Key);
+            TPeer tpeer;
+            TmAsyncTcpServer.Instance.TPeers.TryGetValue(Key, out tpeer);
+            if (tpeer != null)
+            {
+                //删除掉心跳包群中对应的peer
+                tpeer.Dispose();
+                TmAsyncTcpServer.Instance.TPeers.Remove(Key);
+            }
+            //Console.WriteLine(TmTimer.GetCurrentTime() + " TmServerCDItem TmDispose: " + Key);
+        }
 
     }
 }

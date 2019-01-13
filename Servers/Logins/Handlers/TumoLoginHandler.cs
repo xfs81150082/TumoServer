@@ -43,6 +43,7 @@ namespace Servers.Logins.Handlers
         {
             new EngineerLogin();
             new RegisterLogin();
+            new Userlogin();
         }
     }
 }

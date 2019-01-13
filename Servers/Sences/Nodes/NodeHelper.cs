@@ -14,8 +14,8 @@ namespace Servers.Sences.Nodes
         public static NodeHelper Instance { get => _instance; }
         private int gridDisfance = 50;
         private int gridCount = 10;
-        public Dictionary<int, CoolDownItem> BookerCounterItems = new Dictionary<int, CoolDownItem>();
-        public Dictionary<int, CoolDownItem> TeacherCounterItems = new Dictionary<int, CoolDownItem>();
+        //public Dictionary<int, CoolDownItem> BookerCounterItems = new Dictionary<int, CoolDownItem>();
+        //public Dictionary<int, CoolDownItem> TeacherCounterItems = new Dictionary<int, CoolDownItem>();
 
         public NodeHelper() { _instance = this; }
 

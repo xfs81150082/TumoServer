@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public class TmClientCDItem : CoolDownItem
+    public class TmClientCDItem : TmCoolDownItem
     {
         public override void TmAwake()
         {
@@ -32,21 +32,32 @@ namespace Tumo
             CdCount += 1;
             if (CdCount >= CoolDown.MaxCdCount)
             {
-                //删除掉心跳包对应的TClient
-                TmAsyncTcpClient.Instance.TClient.OnDisconnect();
-                TmAsyncTcpClient.Instance.TClient = null;
-                TmAsyncTcpClient.Instance.IsConnecting = false;
                 Console.WriteLine(TmTimer.GetCurrentTime() + " 当前 CDItem is Colseed." );
-                Close();
+                this.Dispose();
             }
             else
             {
-                //发送心跳检测（并等待签到，签到入口在EngineerNode）
+                //发送回应的心跳检测
                 MvcParameter mvc = MvcTool.ToParameter(EightCode.Node, NineCode.Sender, TenCode.Peer, ElevenCode.HeartBeat);
+                mvc.EcsId = Key;
                 TmAsyncTcpClient.Instance.SendMvc(mvc);
             }
             Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "-" + CoolDown.MaxCdCount);
         }
+
+        public override void TmDispose()
+        {
+            Console.WriteLine(TmTimer.GetCurrentTime() + " IsConnecting: " + TmAsyncTcpClient.Instance.IsConnecting);
+            TmComponent tmc;
+            TmEcsDictionary.Components.TryGetValue(Key, out tmc);
+            if (tmc != null)
+            {
+                tmc.Dispose();            ///删除掉心跳包对应的TClient
+            }
+            TmAsyncTcpClient.Instance.IsConnecting = false;
+            Console.WriteLine(TmTimer.GetCurrentTime() + " IsConnecting: " + TmAsyncTcpClient.Instance.IsConnecting);
+        }
+
 
     }
 }
