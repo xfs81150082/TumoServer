@@ -15,6 +15,7 @@ namespace Tumo
         public Socket Socket { get; set; }  ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信///客户端Socket 
         public bool IsRunning { get; set; }
         private bool noClose { get; set; } = false;
+        public TmCoolDownItem CDItem { get; set; }
         public TmAsyncTcpSession() {  }
         #endregion
 

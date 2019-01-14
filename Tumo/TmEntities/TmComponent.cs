@@ -7,14 +7,42 @@ namespace Tumo
 {
     public abstract class TmComponent : TmEcsBase
     {
-        public TmEntity Parent { get; set; }
+        public TmEntity TmEntity { get; set; }
+        public override void TmAwake()
+        {
+            TmEcsDictionary.Components.Add(EcsId, this);         
+        }
         public TmComponent()
         {
-            TmEcsDictionary.Components.Add(EcsId, this);
-        }        
+        }
+        public TmComponent(TmEntity entity)
+        {
+            TmEntity = entity;
+        }
+        public override void TmUpdate()
+        {
+            if (TmEntity != null)
+            {
+                TmComponent tm;
+                TmEntity.Components.TryGetValue(this.GetType().Name, out tm);
+                if (tm != null) return;
+                TmEntity.Components.Add(this.GetType().Name, this);
+            }  
+        }
+      
         public override void TmDispose()
         {
             TmEcsDictionary.Components.Remove(EcsId);
+            if (TmEntity != null)
+            {
+                TmComponent tm;
+                TmEntity.Components.TryGetValue(this.GetType().Name, out tm);
+                if (tm != null)
+                {
+                    TmEntity.Components.Remove(this.GetType().Name);
+                }
+                TmEntity = null;
+            }
             Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmComponent释放资源");
         }
 

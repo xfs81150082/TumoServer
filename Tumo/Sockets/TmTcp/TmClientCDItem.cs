@@ -10,15 +10,11 @@ namespace Tumo
         public override void TmAwake()
         {
             ValTime = 4000;
-        }
-
-        public TmClientCDItem(string key)
+        }             
+        public TmClientCDItem()
         {
-            this.Key = key;
-            TmAsyncTcpClient.Instance.CDItem = this;
-            Console.WriteLine(TmTimer.GetCurrentTime() + " 创建心跳包 TmClientCDItem.");
+            Console.WriteLine(TmTimer.GetCurrentTime() + " 创建一个心跳包 TmClientCDItem.");
         }
-
         public override void TmUpdate()
         {
             UpdateCDCount();
@@ -47,15 +43,7 @@ namespace Tumo
 
         public override void TmDispose()
         {
-            Console.WriteLine(TmTimer.GetCurrentTime() + " IsConnecting: " + TmAsyncTcpClient.Instance.IsConnecting);
-            TmComponent tmc;
-            TmEcsDictionary.Components.TryGetValue(Key, out tmc);
-            if (tmc != null)
-            {
-                tmc.Dispose();            ///删除掉心跳包对应的TClient
-            }
-            TmAsyncTcpClient.Instance.IsConnecting = false;
-            Console.WriteLine(TmTimer.GetCurrentTime() + " IsConnecting: " + TmAsyncTcpClient.Instance.IsConnecting);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " TmClientCDItem TmDispose: " + Key);
         }
 
 

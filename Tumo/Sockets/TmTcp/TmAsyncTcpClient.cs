@@ -21,7 +21,7 @@ namespace Tumo
         private IPAddress address { get; set; }          //连接的IP地址  
         private Socket clientSocket { get; set; }
         public TClient TClient { get; set; }
-        public TmCoolDownItem CDItem { get; set; }
+        //public TmCoolDownItem CDItem { get; set; }
         public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
         private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
         #endregion
@@ -112,8 +112,8 @@ namespace Tumo
                     }
                     else
                     {
-                        SendParameters.Enqueue(mvc);
-                        Console.WriteLine(TmTimer.GetCurrentTime() + " TClient is null.");
+                        //SendParameters.Enqueue(mvc);
+                        Console.WriteLine(TmTimer.GetCurrentTime() + " TClient {0} is Null." , mvc.EcsId);
                         break;
                     }
                 }
@@ -126,20 +126,17 @@ namespace Tumo
         #endregion
 
         #region       
-        public void CoolDownItemSignIn(MvcParameter mvc)
-        {
-            if (mvc.EcsId != CDItem.Key) return;
-            if (CDItem != null)
-            {
-                CDItem.CdCount = 0;
-            }           
-        }
-        public void RemoveCoolDownItem(MvcParameter mvc)
-        {
-            if (mvc.EcsId != CDItem.Key) return;
-            CDItem.Dispose();
-            CDItem = null;
-        }
+        //public void CoolDownItemSignIn(MvcParameter mvc)
+        //{
+        //    if (CDItem != null && CDItem.Key == mvc.EcsId)
+        //    {
+        //        CDItem.CdCount = 0;
+        //    }
+        //    else
+        //    {
+        //        new TmClientCDItem(mvc.EcsId);
+        //    }
+        //}  
         #endregion
 
     }

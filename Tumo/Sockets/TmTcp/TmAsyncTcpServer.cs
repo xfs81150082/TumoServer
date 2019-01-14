@@ -117,8 +117,8 @@ namespace Tumo
                     }
                     else
                     {
-                        SendParameters.Enqueue(mvc);
-                        Console.WriteLine(TmTimer.GetCurrentTime() + " 没找TPeer，用Endpoint: " + mvc.EcsId);
+                        //SendParameters.Enqueue(mvc);
+                        Console.WriteLine(TmTimer.GetCurrentTime() + " 没找TPeer，用Key: " + mvc.EcsId);
                         break;
                     }
                 }

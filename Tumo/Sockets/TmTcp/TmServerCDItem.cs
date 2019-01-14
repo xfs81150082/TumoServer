@@ -11,11 +11,11 @@ namespace Tumo
         {
             ValTime = 4000;
         }
-        public TmServerCDItem(string key)
+        public TmServerCDItem(string tpeerEcsId)
         {
-            this.Key = key;
+            this.Key = tpeerEcsId;
             TmAsyncTcpServer.Instance.CDItems.Add(Key, this);
-            Console.WriteLine(TmTimer.GetCurrentTime() + " 创建心跳包 TmServerCDItem.");
+            Console.WriteLine(TmTimer.GetCurrentTime() + " 创建一个心跳包 TmServerCDItem.");
         }
         public TmServerCDItem()   { }
         public override void TmUpdate()
@@ -52,10 +52,10 @@ namespace Tumo
             if (tpeer != null)
             {
                 //删除掉心跳包群中对应的peer
-                tpeer.Dispose();
                 TmAsyncTcpServer.Instance.TPeers.Remove(Key);
+                tpeer.Dispose();
             }
-            //Console.WriteLine(TmTimer.GetCurrentTime() + " TmServerCDItem TmDispose: " + Key);
+            Console.WriteLine(TmTimer.GetCurrentTime() + " TmServerCDItem TmDispose: " + Key);
         }
 
     }
