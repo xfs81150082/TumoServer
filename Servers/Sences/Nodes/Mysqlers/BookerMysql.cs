@@ -22,11 +22,11 @@ namespace Servers.Sences.Nodes.Mysqlers
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " BookerMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " BookerMysql: " + elevenCode);
                     GetItems(mvc);
                     break;
                 case (ElevenCode.Test):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " BookerMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " BookerMysql: " + elevenCode);
                     break;
                 case (ElevenCode.None):
                     break;
@@ -42,7 +42,7 @@ namespace Servers.Sences.Nodes.Mysqlers
             MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Sender, TenCode.Booker, ElevenCode.GetItems, ElevenCode.GetItems.ToString(), GetSoulItems());
             mvc2.EcsId = mvc.EcsId;
             TumoNode.Instance.OnTransferParameter(mvc2);
-            Console.WriteLine(TmTimer.GetCurrentTime() + " Bookers: " + GetSoulItems().Count);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Bookers: " + GetSoulItems().Count);
         }      
         void UpdateItemdb(MvcParameter mvc)
         {
@@ -76,7 +76,7 @@ namespace Servers.Sences.Nodes.Mysqlers
                 bool yes = false;
                 if (yes)
                 {
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " Booker: " + dbs[i].Id +" 已死亡.");                  
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " Booker: " + dbs[i].Id +" 已死亡.");                  
                 }
                 else
                 {

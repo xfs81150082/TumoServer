@@ -30,7 +30,7 @@ namespace Tumo
                 }
                 TmEntity = null;
             }
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmComponent释放资源");
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmComponent释放资源");
         }
 
     }

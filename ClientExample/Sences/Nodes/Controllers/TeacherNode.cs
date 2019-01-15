@@ -18,7 +18,7 @@ namespace ClientExample.Sences.Nodes.Controllers
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " TeacherNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherNode: " + elevenCode);
                     GetItems(mvc);
                     break;
                 case (ElevenCode.None):
@@ -34,7 +34,7 @@ namespace ClientExample.Sences.Nodes.Controllers
         {
             Dictionary<int, SoulItem> teachers = MvcTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, mvc.ElevenCode.ToString());
             NodeInfo.Instance.Teachers = teachers;
-            Console.WriteLine(TmTimer.GetCurrentTime() + " NodeInfo.Instance.Teachers is count: " + NodeInfo.Instance.Teachers.Count);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " NodeInfo.Instance.Teachers is count: " + NodeInfo.Instance.Teachers.Count);
         }
 
 

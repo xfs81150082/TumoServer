@@ -16,7 +16,7 @@ namespace Tumo
         {
             this.Client = client;
             this.Key = client.EcsId;
-            Console.WriteLine(TmTimer.GetCurrentTime() + " 创建一个心跳包 TmClientCDItem.");
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " 创建一个心跳包 TmClientCDItem.");
         }
         public TmClientCDItem() {  }
         public override void TmUpdate()
@@ -27,12 +27,12 @@ namespace Tumo
         {
             if (CdCount <= MaxCdCount)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
             }
             CdCount += 1;
             if (CdCount >= MaxCdCount)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " 当前 TmClientCDItem is Colseed.");
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " 当前 TmClientCDItem is Colseed.");
                 this.End = true;
                 if (Client != null)
                 {
@@ -47,15 +47,15 @@ namespace Tumo
                 mvc.EcsId = Key;
                 TmAsyncTcpClient.Instance.SendMvc(mvc);
             }
-            Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
         }
 
         public override void TmDispose()
         {
             base.TmDispose();
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmClientCDItem释放资源.Key:" +Key);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmClientCDItem释放资源.Key:" +Key);
         }
 
-
+     
     }
 }

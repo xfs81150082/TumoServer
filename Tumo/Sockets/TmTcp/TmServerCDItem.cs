@@ -16,7 +16,7 @@ namespace Tumo
         {
             this.Peer = peer;
             this.Key = peer.EcsId;
-            Console.WriteLine(TmTimer.GetCurrentTime() + " 创建一个心跳包 TmServerCDItem.");
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " 创建一个心跳包 TmServerCDItem.");
         }
         public TmServerCDItem()   { }
         public override void TmUpdate()
@@ -27,12 +27,12 @@ namespace Tumo
         {
             if (CdCount <= MaxCdCount)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
             }
             CdCount += 1;
             if (CdCount >= MaxCdCount)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " TmServerCDItem is Colsed. TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " TmServerCDItem is Colsed. TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
                 this.End = true;
                 if (Peer != null)
                 {
@@ -47,14 +47,15 @@ namespace Tumo
                 mvc.EcsId = Key;
                 TmAsyncTcpServer.Instance.SendMvc(mvc);
             }
-            Console.WriteLine(TmTimer.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
         }
 
         public override void TmDispose()
         {
             base.TmDispose();
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmServerCDItem释放资源。 Key:" + Key);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmServerCDItem释放资源。 Key:" + Key);
         }
 
+      
     }
 }

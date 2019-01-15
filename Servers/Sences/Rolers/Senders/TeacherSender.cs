@@ -19,7 +19,7 @@ namespace Servers.Sences.Rolers.Senders
             switch (elevenCode)
             {                
                 case (ElevenCode.None):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " TeacherSender: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherSender: " + elevenCode);
                     break;
                 default:
                     break;

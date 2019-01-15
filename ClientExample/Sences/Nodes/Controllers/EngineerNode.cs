@@ -19,7 +19,7 @@ namespace ClientExample.Sences.Nodes.Controllers
             switch (elevenCode)
             {   
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     EngineerLogin(mvc);
                     break;
                 default:
@@ -32,7 +32,7 @@ namespace ClientExample.Sences.Nodes.Controllers
         {
             SoulItem soulItem = MvcTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
             NodeInfo.Instance.Engineer = soulItem;
-            Console.WriteLine(TmTimer.GetCurrentTime() + " 当前角色Name: " + NodeInfo.Instance.Engineer.Name + " Id: " + NodeInfo.Instance.Engineer.Id + " px: " + NodeInfo.Instance.Engineer.px);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " 当前角色Name: " + NodeInfo.Instance.Engineer.Name + " Id: " + NodeInfo.Instance.Engineer.Id + " px: " + NodeInfo.Instance.Engineer.px);
         }
 
 

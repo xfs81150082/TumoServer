@@ -22,14 +22,14 @@ namespace Servers.Sences.Nodes.Handlers
             switch (elevenCode)
             {      
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     EngineerLogin(mvc);
                     break;
                 case (ElevenCode.Test):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     break;
                 case (ElevenCode.None):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     break;
                 default:
                     break;
@@ -50,9 +50,9 @@ namespace Servers.Sences.Nodes.Handlers
             TumoNode.Instance.OnTransferParameter(mvc);
             GetBookers(mvc);
             Thread.Sleep(100);
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread);
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
             GetTeachers(mvc);
         }
         private void GetBookers(MvcParameter mvc)

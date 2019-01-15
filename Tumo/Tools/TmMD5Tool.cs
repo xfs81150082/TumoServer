@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public class MD5Tool
+    public class TmMD5Tool
     {
         public static string ToMD5String(string str)
         {
