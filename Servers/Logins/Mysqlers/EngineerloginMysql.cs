@@ -20,7 +20,7 @@ namespace Servers.Logins.Mysqlers
             switch (elevenCode)
             {
                 case (ElevenCode.UserLogin):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerloginMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerloginMysql: " + elevenCode);
                     GetItemsByUser(mvc);
                     break;
                 case (ElevenCode.None):

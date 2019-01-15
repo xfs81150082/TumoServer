@@ -22,18 +22,18 @@ namespace Servers.Sences.Nodes.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.HeartBeat):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     //PeerSignIn(mvc);
                     break;
                 case (ElevenCode.RemoveHeartBeat):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     //RemovePeerCDItem(mvc);
                     break;
                 case (ElevenCode.Test):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     break;
                 case (ElevenCode.None):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode: " + elevenCode);
                     break;
                 default:
                     break;

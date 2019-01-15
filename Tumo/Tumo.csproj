@@ -54,6 +54,8 @@
     <Compile Include="Models\Nodes\Building.cs" />
     <Compile Include="Models\Nodes\BuildingItem.cs" />
     <Compile Include="Models\Nodes\BuildingItemDB.cs" />
+    <Compile Include="TmEntities\TmBases\TmInitialize.cs" />
+    <Compile Include="TmEntities\TmBases\TmTimer.cs" />
     <Compile Include="TmEntities\TmBases\TmEcsBase.cs" />
     <Compile Include="TmEntities\TmSystems\TmCoolDown.cs" />
     <Compile Include="Models\Inventorys\Inventory.cs" />
@@ -76,7 +78,6 @@
     <Compile Include="Sockets\TmTcp\TmClientCDItem.cs" />
     <Compile Include="TmEntities\TmBases\TmEcsDictionary.cs" />
     <Compile Include="TmEntities\TmHelpers\TmJson.cs" />
-    <Compile Include="TmEntities\TmBases\TmObject.cs" />
     <Compile Include="TmEntities\TmBases\TmSystem.cs" />
     <Compile Include="TmEntities\TmBases\TmComponent.cs" />
     <Compile Include="TmEntities\TmBases\TmEntity.cs" />
@@ -96,8 +97,8 @@
     <Compile Include="Logs\TmLog.cs" />
     <Compile Include="Sockets\TmTcp\TmAsyncTcpClient.cs" />
     <Compile Include="Sockets\TmTcp\TmAsyncTcpServer.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmTimer.cs" />
-    <Compile Include="Tools\MD5Tool.cs" />
+    <Compile Include="Tools\TmTimerTool.cs" />
+    <Compile Include="Tools\TmMD5Tool.cs" />
     <Compile Include="TmParameter\TmBase.cs" />
     <Compile Include="TmParameter\MvcParameter.cs" />
     <Compile Include="TmParameter\MvcTool.cs" />

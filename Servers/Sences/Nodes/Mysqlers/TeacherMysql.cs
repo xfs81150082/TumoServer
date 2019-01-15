@@ -22,11 +22,11 @@ namespace Servers.Sences.Nodes.Mysqlers
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " TeacherMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherMysql: " + elevenCode);
                     GetItems(mvc);
                     break;
                 case (ElevenCode.Test):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " TeacherMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherMysql: " + elevenCode);
                     break;
                 case (ElevenCode.None):
                     break;
@@ -45,7 +45,7 @@ namespace Servers.Sences.Nodes.Mysqlers
             MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Sender, TenCode.Teacher, ElevenCode.GetItems, ElevenCode.GetItems.ToString(), GetSoulItems());
             mvc2.EcsId = mvc.EcsId;
             TumoNode.Instance.OnTransferParameter(mvc2);
-            Console.WriteLine(TmTimer.GetCurrentTime() + " Teachers: " + GetSoulItems().Count);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Teachers: " + GetSoulItems().Count);
         }
 
         void UpdateItemdb(MvcParameter mvc)

@@ -7,15 +7,12 @@ namespace Tumo
 {
     public abstract class TmEntity : TmEcsBase
     {
-        public Dictionary<string, TmComponent> Components { get; set; } = new Dictionary<string, TmComponent>();
+        public Dictionary<string, TmComponent> Components { get; set; } = new Dictionary<string, TmComponent>();     
         public override void TmAwake()
         {
             TmEcsDictionary.Entities.Add(EcsId, this);
         }
         public TmEntity() { }
-
-
-
         public TmComponent GetComponent<T>()
         {
             string name = typeof(T).Name;
@@ -27,22 +24,21 @@ namespace Tumo
             }
             else
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + tem.GetType().Name + "此类型组件不存在！");
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + tem.GetType().Name + "此类型组件不存在！");
                 return null;
             }
         }
-        public void AddComponent<T>(T component)
+        public void AddComponent<T>(T tm)
         {
-            TmComponent tm = component as TmComponent;
             TmComponent tem;
-            Components.TryGetValue(tm.GetType().Name, out tem);
+            Components.TryGetValue(typeof(T).Name, out tem);
             if (tem == null)
             {
-                Components.Add(tm.GetType().Name, tm);
+                Components.Add(typeof(T).Name, tm as TmComponent);
             }
             else
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + tm.GetType().Name + "此类型组件已存在！");
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + typeof(T).Name + "此类型组件已存在！");
             }
         }
         public void RemoveComponent<T>()
@@ -57,14 +53,14 @@ namespace Tumo
             }
             else
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + name + "此类型组件不存在！");
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + name + "此类型组件不存在！");
             }
         }
         public override void TmDispose()
         {
             TmEcsDictionary.Entities.Remove(EcsId);
             OnDispose();
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmEntity释放资源");
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmEntity释放资源");
         }
         void OnDispose()
         {
@@ -74,7 +70,6 @@ namespace Tumo
             }
             Components.Clear();
         }
-
-
+        
     }
 }

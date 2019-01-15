@@ -25,7 +25,7 @@ namespace Servers.Sences.Nodes.Senders.Souls
                     TmAsyncTcpServer.Instance.SendMvc(mvc);
                     break;
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerSender: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerSender: " + elevenCode);
                     mvc.NineCode = NineCode.Controller;
                     //TPeer peer2 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
                     //peer2.SendMsg(mvc);

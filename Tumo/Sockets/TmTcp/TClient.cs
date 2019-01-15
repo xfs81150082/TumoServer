@@ -35,7 +35,7 @@ namespace Tumo
         public override void OnConnect()
         {
             ///显示与客户端连接
-            Console.WriteLine("{0} 服务端{1}连接成功", TmTimer.GetCurrentTime(), EcsId);
+            Console.WriteLine("{0} 服务端{1}连接成功", TmTimerTool.GetCurrentTime(), EcsId);
         }///与服务器连接时调用  
 
         public override void TmDispose()
@@ -45,7 +45,7 @@ namespace Tumo
             {
                 TmAsyncTcpClient.Instance.TClient = null;
             }
-            Console.WriteLine("{0} 服务端{1}断开连接", TmTimer.GetCurrentTime(), EcsId);
+            Console.WriteLine("{0} 服务端{1}断开连接", TmTimerTool.GetCurrentTime(), EcsId);
         }///与服务器断开时调用 
                      
     }
