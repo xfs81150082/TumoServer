@@ -22,7 +22,7 @@ namespace Servers.Logins.Senders
             switch (elevenCode)
             {
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerLoginSender: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerLoginSender: " + elevenCode);
                     LoginGetItems(mvc);
                     break;
                 case (ElevenCode.None):

@@ -22,7 +22,7 @@ namespace Servers.Sences.Rolers.Mysqlers
             switch (elevenCode)
             {
                 case (ElevenCode.None):
-                    Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerMysqlRoler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerMysqlRoler: " + elevenCode);
                     break;
                 default:
                     break;

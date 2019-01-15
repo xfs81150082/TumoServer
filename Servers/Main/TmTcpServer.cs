@@ -41,21 +41,22 @@ namespace Servers
                     if (TumoGate.Instance != null)
                     {
                         TumoGate.Instance.OnTransferParameter(mvc);
-                        Console.WriteLine(TmTimer.GetCurrentTime() + " RecvParameters: " + RecvParameters.Count);
+                        Console.WriteLine(TmTimerTool.GetCurrentTime() + " RecvParameters: " + RecvParameters.Count);
                     }
                     else
                     {
                         //RecvParameters.Enqueue(mvc);
-                        Console.WriteLine(TmTimer.GetCurrentTime() + " TumoGate is null.");
+                        Console.WriteLine(TmTimerTool.GetCurrentTime() + " TumoGate is null.");
                         break;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + ex.Message);
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.Message);
             }
         }
-        
+
+      
     }
 }

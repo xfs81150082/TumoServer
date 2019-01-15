@@ -53,7 +53,7 @@ namespace Tumo
                 serverSocket.Bind(new IPEndPoint(this.address, this.Port));
                 serverSocket.Listen(MaxListenCount);
                 serverSocket.BeginAccept(new AsyncCallback(this.AcceptCallback), serverSocket);
-                Console.WriteLine("{0} 服务启动，监听{1}成功", TmTimer.GetCurrentTime(), serverSocket.LocalEndPoint);
+                Console.WriteLine("{0} 服务启动，监听{1}成功", TmTimerTool.GetCurrentTime(), serverSocket.LocalEndPoint);
                 IsRunning = true;
             }
         }
@@ -108,14 +108,14 @@ namespace Tumo
                     }
                     else
                     {
-                        Console.WriteLine(TmTimer.GetCurrentTime() + " 没找TPeer，用Key: " + mvc.EcsId);
+                        Console.WriteLine(TmTimerTool.GetCurrentTime() + " 没找TPeer，用Key: " + mvc.EcsId);
                         break;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " SendMvcParameters: " + ex.Message);
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " SendMvcParameters: " + ex.Message);
             }
         }
         #endregion
@@ -130,7 +130,7 @@ namespace Tumo
             }
             else
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " 没找TPeer，用Key: " + ecsid);
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " 没找TPeer，用Key: " + ecsid);
                 return null;
             }
         } 

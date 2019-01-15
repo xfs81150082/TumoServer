@@ -19,8 +19,8 @@ namespace Servers
             TmTcpServer tmTcpServer = new TmTcpServer();
 
             Thread.CurrentThread.Name = "ServerMainThread26";
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
 
             Console.ReadKey();
             Console.WriteLine("退出监听，并关闭程序。");

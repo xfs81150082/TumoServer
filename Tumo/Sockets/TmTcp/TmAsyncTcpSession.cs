@@ -36,7 +36,7 @@ namespace Tumo
         {
             Socket = obj as Socket;
             OnConnect();
-            Console.WriteLine(TmTimer.GetCurrentTime() + " BeginReceiveMsg  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  ComponentId:" + this.EcsId);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " BeginReceiveMsg  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  ComponentId:" + this.EcsId);
             BufferSize = 1024;
             Buffer = new byte[BufferSize];
             isHead = true;
@@ -50,14 +50,14 @@ namespace Tumo
         {
             if (IsRunning)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
                 try
                 {
                     RecvLength = Socket.EndReceive(ar);
                     if (RecvLength == 0)
                     {
                         ///发送端关闭
-                        Console.WriteLine("{0} 发送端{1}连接关闭", TmTimer.GetCurrentTime(), Socket.RemoteEndPoint);
+                        Console.WriteLine("{0} 发送端{1}连接关闭", TmTimerTool.GetCurrentTime(), Socket.RemoteEndPoint);
                         IsRunning = false;
                         Dispose();
                         return;
@@ -74,7 +74,7 @@ namespace Tumo
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(TmTimer.GetCurrentTime() + ex.ToString());
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.ToString());
                     IsRunning = false;
                     Dispose();
                 }
@@ -82,7 +82,7 @@ namespace Tumo
         }
         private void ParsingBytes()
         {
-            Console.WriteLine(TmTimer.GetCurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
             ///将本次要接收的消息头字节数置0
             int iBytesHead = 0;
             ///将本次要剪切的字节数置0
@@ -136,7 +136,7 @@ namespace Tumo
             }
             catch (Exception ex)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + ex.ToString());
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.ToString());
                 Dispose();
             }
         }
@@ -159,10 +159,10 @@ namespace Tumo
         #region SendString       
         public void SendString(string mvcString)
         {
-            Console.WriteLine(TmTimer.GetCurrentTime() + " Send  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Send  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
             if (null == Socket.Handle || !Socket.Connected)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + " 连接已中断！！！");
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " 连接已中断！！！");
                 IsRunning = false;
                 return;
             }
@@ -198,7 +198,7 @@ namespace Tumo
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(TmTimer.GetCurrentTime() + ex.ToString());
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.ToString());
                     Dispose();
                 }
             }
@@ -209,11 +209,11 @@ namespace Tumo
             {
                 Socket client = (Socket)ar.AsyncState;
                 int bytesSent = client.EndSend(ar);
-                Console.WriteLine(TmTimer.GetCurrentTime() + " Sent {0} Bytes To Clinet.", bytesSent);
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " Sent {0} Bytes To Clinet.", bytesSent);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(TmTimer.GetCurrentTime() + ex.ToString());
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.ToString());
             }
         }
         #endregion
@@ -226,7 +226,7 @@ namespace Tumo
             IsRunning = false;
             Socket.Close();
             Socket = null;
-            Console.WriteLine(TmTimer.GetCurrentTime() + " EcsId:" + EcsId + " TmAsyncTcpSession释放资源");
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmAsyncTcpSession释放资源");
         }
         public abstract void OnConnect();
         public abstract void OnTransferParameter(string mvcString);
