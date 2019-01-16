@@ -95,7 +95,6 @@
     <Compile Include="Games\Skills\Senders\GameSenderBase.cs" />
     <Compile Include="Games\Skills\Senders\TumoGameSender.cs" />
     <Compile Include="Gates\GateBase.cs" />
-    <Compile Include="Main\office.cs" />
     <Compile Include="Main\TmTcpServer.cs" />
     <Compile Include="Sences\Models\SpawnCDitem.cs" />
     <Compile Include="Main\MysqlHelper.cs" />
