@@ -5,10 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers;
 
 namespace Servers.Sences.Nodes.Mysqlers
@@ -17,7 +14,7 @@ namespace Servers.Sences.Nodes.Mysqlers
     {
         public override string Code => TenCode.Node.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

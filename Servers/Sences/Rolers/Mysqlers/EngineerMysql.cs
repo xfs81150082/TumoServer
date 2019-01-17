@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers;
 using Servers.Sences.Models;
 
@@ -19,13 +16,13 @@ namespace Servers.Sences.Rolers.Mysqlers
     class EngineerMysql : RolerMysqlBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.None):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerMysqlRoler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerMysqlRoler: " + elevenCode);
                     break;
                 default:
                     break;

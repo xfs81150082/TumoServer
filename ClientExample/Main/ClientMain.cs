@@ -10,18 +10,15 @@ namespace ClientExample
     {
         static void Main(string[] args)
         {
-            new TmClientHelper();
             new TumoConnect();
             TmTcpClient tmTcpClient = new TmTcpClient();
-            tmTcpClient.StartConnect();
             new Test();
             
 
             Console.ReadKey();
             Console.WriteLine("退出联接，并关闭程序。");
         }
-
-       
+               
 
     }
 }

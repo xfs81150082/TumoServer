@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Servers.Sences.Nodes.Mysqlers
 {
-    public abstract class NodeMysqlBase : MvcBase
+    public abstract class NodeMysqlBase : TmTransfer
     {
         public NodeMysqlBase()
         {
             TumoNodeMysql.Instance.NodeMysqlers.Add(Code, this);
-            Console.WriteLine("MeasurementMysqls:" + this.GetType().Name + " is register.");
+            Console.WriteLine("NodeMysqls:" + this.GetType().Name + " is register.");
         }
     }
 }

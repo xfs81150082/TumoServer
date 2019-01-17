@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
-using Servers.Gates;
 using Servers;
 using Servers.Sences.Models;
 
@@ -18,13 +15,13 @@ namespace Servers.Sences.Rolers.Handlers
     class PlayerHandler : RolerHandlerBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.None):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerRolerHandler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerRolerHandler: " + elevenCode);
                     break;
                 default:
                     break;

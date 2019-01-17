@@ -6,9 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
-using Tumo;
-using Tumo;
-using Servers.Gates;
 using Servers;
 using Timer = System.Timers.Timer;
 
@@ -19,13 +16,13 @@ namespace Servers.Logins.Senders
     {
         public override string Code => TenCode.Engineer.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerLoginSender: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerLoginSender: " + elevenCode);
                     LoginGetItems(mvc);
                     break;
                 case (ElevenCode.None):
@@ -35,10 +32,10 @@ namespace Servers.Logins.Senders
             }
         }
         
-        void LoginGetItems(MvcParameter mvc)   
+        void LoginGetItems(TmRequest mvc)   
         {
-            MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Engineer, ElevenCode.EngineerLogin);
-            mvc2.Endpoint = mvc.Endpoint;
+            TmRequest mvc2 = TmTransferTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Engineer, ElevenCode.EngineerLogin);
+            mvc2.EcsId = mvc.EcsId;
             mvc2.RolerId = mvc.RolerId;
             TumoGate.Instance.OnTransferParameter(mvc2);
 

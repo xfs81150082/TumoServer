@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Sences.Rolers
 {
-    public abstract class RolerBase : MvcBase
+    public abstract class RolerBase : TmTransfer
     {
         public RolerBase()
         {

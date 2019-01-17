@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers;
 using Servers.Sences.Models;
 using Servers.Sences.Nodes;
@@ -21,7 +18,7 @@ namespace Servers.Sences.Rolers.Mysqlers
     {
         public override string Code => TenCode.Booker.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -43,18 +40,18 @@ namespace Servers.Sences.Rolers.Mysqlers
         void GetItems()
         {
             RolerMysqlInfo.Instance.Bookers  = GetSoulItems();           
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " RolerMysqlInfo-Bookers: " + RolerMysqlInfo.Instance.Bookers.Count);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " RolerMysqlInfo-Bookers: " + RolerMysqlInfo.Instance.Bookers.Count);
             foreach (var tem in GetSoulItems().Values)
             {
                 Monster monster = new Monster(tem);
                 RolerInfo.Instance.Monsters.Add(monster.SoulItem.Id, monster);
             }
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " RolerInfo-Monsters: " + RolerInfo.Instance.Monsters.Count);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " RolerInfo-Monsters: " + RolerInfo.Instance.Monsters.Count);
         }
 
-        void UpdateItemdb(MvcParameter mvc)
+        void UpdateItemdb(TmRequest mvc)
         {
-            SoulItemDB itemDB = MvcTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
+            SoulItemDB itemDB = TmTransferTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
             UpdateItemdb(itemDB.Id, itemDB.Exp, itemDB.Level, itemDB.Hp, itemDB.Mp, itemDB.Coin, itemDB.Diamond);
             UpdateItemdb(itemDB.Id, itemDB.SenceId, itemDB.px, itemDB.py, itemDB.pz, itemDB.ax, itemDB.ay, itemDB.az);
         }
@@ -132,7 +129,7 @@ namespace Servers.Sences.Rolers.Mysqlers
                 bool yes = false;
                 if (yes)
                 {
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " Booker: " + dbs[i].Id +" 已死亡.");                  
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " Booker: " + dbs[i].Id +" 已死亡.");                  
                 }
                 else
                 {

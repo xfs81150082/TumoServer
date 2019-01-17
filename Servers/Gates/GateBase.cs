@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Servers.Gates
+namespace Servers
 {
-    public abstract class GateBase : MvcBase
+    public abstract class GateBase : TmTransfer
     {
         public GateBase()
         {

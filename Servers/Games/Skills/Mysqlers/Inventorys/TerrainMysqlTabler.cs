@@ -4,10 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tumo;
-using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
 using Servers;
 using Servers.Sences.Nodes;
@@ -19,7 +16,7 @@ namespace Servers.Games.Mysqlers.Inventorys
     {
         public override string Code => TenCode.Terrain.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode ElevenCode = mvc.ElevenCode;
             switch (ElevenCode)

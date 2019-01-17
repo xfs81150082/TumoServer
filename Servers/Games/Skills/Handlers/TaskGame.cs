@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tumo;
-using Tumo;
 
 namespace Servers.Games.Handlers
 {
@@ -12,7 +11,7 @@ namespace Servers.Games.Handlers
     {
         public override string Code => TenCode.Task.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             throw new NotImplementedException();
         }

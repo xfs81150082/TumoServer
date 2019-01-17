@@ -1,5 +1,4 @@
 ﻿using Tumo;
-using Tumo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +21,7 @@ namespace Servers.Logins.Mysqlers
             Reisters();
         }
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             //创建一个空的处理程序（handler）
             LoginMysqlBase controller;
@@ -34,7 +33,7 @@ namespace Servers.Logins.Mysqlers
             }
             else
             {
-                Console.WriteLine("寻找LoginSender失败，通过NineCode:" + mvc.NineCode);
+                Console.WriteLine("寻找Mysql失败，通过TenCode:" + mvc.TenCode);
             }
         }
 

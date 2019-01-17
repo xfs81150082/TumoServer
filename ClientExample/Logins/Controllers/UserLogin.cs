@@ -12,7 +12,7 @@ namespace ClientExample.Logins.Controllers
     {
         public override string Code => TenCode.User.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -21,7 +21,7 @@ namespace ClientExample.Logins.Controllers
                     TumoConnect.Instance.OnTransferParameter(mvc);
                     break;
                 case (ElevenCode.SpawnRolers):
-                    List<SoulItem> SoulItems2 = MvcTool.GetJsonValue<List<SoulItem>>(mvc, mvc.ElevenCode.ToString());
+                    List<SoulItem> SoulItems2 = TmTransferTool.GetJsonValue<List<SoulItem>>(mvc, mvc.ElevenCode.ToString());
                     for (int i = 0; i < SoulItems2.Count; i++)
                     {
                         Console.WriteLine("SoulItems2: " + SoulItems2.Count + " Id:" + SoulItems2[i].Id + " Name:" + SoulItems2[i].Name);
@@ -38,10 +38,10 @@ namespace ClientExample.Logins.Controllers
 
         void RolerLoginTest(SoulItem soulItem)
         {
-            MvcParameter mvc = MvcTool.ToParameter(EightCode.Login, NineCode.Sender, TenCode.Engineer, ElevenCode.EngineerLogin);
+            TmRequest mvc = TmTransferTool.ToParameter(EightCode.Login, NineCode.Sender, TenCode.Engineer, ElevenCode.EngineerLogin);
             mvc.RolerId = soulItem.Id.ToString();
             TumoConnect.Instance.OnTransferParameter(mvc);
-            Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " Test1-UserLogin: " + mvc.RolerId);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Test1-UserLogin: " + mvc.RolerId);
         }
 
     }

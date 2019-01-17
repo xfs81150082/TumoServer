@@ -11,15 +11,16 @@ namespace ClientExample.Logins.Senders
     {
         public override string Code => TenCode.Engineer.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerLoginSender: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerLoginSender: " + elevenCode);
                     mvc.NineCode = NineCode.Handler;
-                    TClient.Instance.SendMsg(mvc);
+                    TmAsyncTcpClient.Instance.SendMvc(mvc);
+                    //TClient.Instance.SendMsg(mvc);
                     break;
                 case (ElevenCode.None):
                     break;

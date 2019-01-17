@@ -4,10 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tumo;
-using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
 using Servers;
 using Servers.Sences.Nodes;
@@ -19,13 +16,13 @@ namespace Servers.Games.Mysqlers.Inventorys
     {
         public override string Code => TenCode.Smithy.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode ElevenCode = mvc.ElevenCode;
             switch (ElevenCode)
             {
                 case (ElevenCode.GetItemsByRolerId):
-                    int rolerid = MvcTool.GetValue<int>(mvc, "RolerId");
+                    int rolerid = TmTransferTool.GetValue<int>(mvc, "RolerId");
                     UpdateSmithyByRolerId(rolerid);
                     break;           
                 case (ElevenCode.None):

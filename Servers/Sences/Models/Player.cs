@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using Servers;
 using System;
 using System.Collections.Generic;
@@ -15,6 +13,11 @@ namespace Servers.Sences.Models
     public class Player : Roler
     {
         public SpawnCDitem SpawnCDitem;
+        public override void TmAwake()
+        {
+
+        }
+
         public Player()
         {
 
@@ -28,16 +31,11 @@ namespace Servers.Sences.Models
             //this.RolerMove.TargetTransform = new TmTransform(item);
         }
 
-        public override void TmAwake()
+        public override void TmUpdate()
         {
 
         }
 
-        public override void TmUpdate(ElapsedEventArgs time)
-        {
-
-        }
-
-
+      
     }
 }

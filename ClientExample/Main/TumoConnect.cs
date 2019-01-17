@@ -22,7 +22,7 @@ namespace ClientExample
             Reisters();
         }
 
-        public void OnTransferParameter(MvcParameter mvc)
+        public void OnTransferParameter(TmRequest mvc)
         {
             //创建一个空的处理程序（Views）
             ConnectBase connect;

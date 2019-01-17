@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Servers.Gates
+namespace Servers
 {
     class TumoGate
     {
@@ -30,7 +30,7 @@ namespace Servers.Gates
         //这个方法用来处理TPeer参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
         public void OnTransferParameter(object obj)
         {
-            MvcParameter mvc = obj as MvcParameter;
+            TmRequest mvc = obj as TmRequest;
             //创建一个空的处理程序（gate）
             GateBase gate;
             //根据操作代码（EightCode），从字典中取出处理程序

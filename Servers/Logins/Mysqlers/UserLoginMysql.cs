@@ -1,9 +1,6 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers;
 using System;
 using System.Collections.Generic;
@@ -16,13 +13,13 @@ namespace Servers.Logins.Mysqlers
     class UserLoginMysql : LoginMysqlBase
     {
         public override string Code => TenCode.User.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.UserLogin):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " UserLoginMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " UserLoginMysql: " + elevenCode);
                     CheckLoginPassword(mvc);
                     break;               
                 default:
@@ -33,15 +30,15 @@ namespace Servers.Logins.Mysqlers
         private string SoulName = "Users";
         public UserLoginMysql() { }
         
-        private void CheckLoginPassword(MvcParameter mvc)
+        private void CheckLoginPassword(TmRequest mvc)
         {
             User user2 = GetUserByUserName(mvc.Username);
             if (user2 != null)
             {
                 if (user2.Password == mvc.Password)
                 {
-                    TPeer peer = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
-                    peer.User = user2;
+                    TPeer peer = TmAsyncTcpServer.Instance.GetTPeer(mvc.EcsId);
+                    //peer.User = user2;
                     mvc.TenCode = TenCode.Engineer;
                     mvc.ElevenCode = ElevenCode.UserLogin;
                     mvc.Parameters.Add(mvc.ElevenCode.ToString(), user2);
@@ -78,7 +75,7 @@ namespace Servers.Logins.Mysqlers
                         item.LoginCount = reader.GetInt32(6);
                         item.LoginDateTime = reader.GetString(7);
                         item.RigisterDateTime = reader.GetString(8);
-                        //Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " Username: " + item.Username + " + " + item.LoginCount);
+                        //Console.WriteLine(TmTimer.GetCurrentTime() + " Username: " + item.Username + " + " + item.LoginCount);
                     }
                 }
                 return item;

@@ -1,5 +1,4 @@
 ﻿using Tumo;
-using Tumo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Games.Mysqlers
 {
-    public abstract class GameMysqlBase : MvcBase
+    public abstract class GameMysqlBase : TmTransfer
     {
         public GameMysqlBase()
         {

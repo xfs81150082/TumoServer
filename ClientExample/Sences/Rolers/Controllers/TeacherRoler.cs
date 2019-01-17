@@ -12,13 +12,13 @@ namespace ClientExample.Sences.Rolers.Controllers
     {
         public override string Code => TenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " TeacherRoler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherRoler: " + elevenCode);
                     Getitems(mvc);
                     break;
                 default:
@@ -26,11 +26,11 @@ namespace ClientExample.Sences.Rolers.Controllers
             }
         }
 
-        void Getitems(MvcParameter mvc)
+        void Getitems(TmRequest mvc)
         {
-            Dictionary<int, SoulItem> bookers = MvcTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, mvc.ElevenCode.ToString());
+            Dictionary<int, SoulItem> bookers = TmTransferTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, mvc.ElevenCode.ToString());
             RolerInfo.Instance.Bookers = bookers;
-            Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " Bookers:" + RolerInfo.Instance.Bookers.Count);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Bookers:" + RolerInfo.Instance.Bookers.Count);
         }
 
 

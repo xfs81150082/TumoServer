@@ -13,13 +13,13 @@ namespace ClientExample.Sences.Nodes.Controllers
     {
         public override string Code => TenCode.Booker.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " BookerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " BookerNode: " + elevenCode);
                     GetItems(mvc);
                     break;
                 case (ElevenCode.None):
@@ -31,11 +31,11 @@ namespace ClientExample.Sences.Nodes.Controllers
 
         public BookerNode() {  } 
 
-        private void GetItems(MvcParameter mvc)
+        private void GetItems(TmRequest mvc)
         {
-            Dictionary<int, SoulItem> bookers = MvcTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, mvc.ElevenCode.ToString());
+            Dictionary<int, SoulItem> bookers = TmTransferTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, mvc.ElevenCode.ToString());
             NodeInfo.Instance.Bookers = bookers;
-            Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " NodeInfo.Instance.Bookers is count: " + NodeInfo.Instance.Bookers.Count);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " NodeInfo.Instance.Bookers is count: " + NodeInfo.Instance.Bookers.Count);
         }
 
 

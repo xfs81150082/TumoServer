@@ -1,6 +1,4 @@
 ﻿using Tumo;
-using Tumo;
-using Servers.Gates;
 using Servers.Sences.Nodes.Handlers;
 using Servers.Sences.Nodes.Mysqlers;
 using Servers.Sences.Nodes.Senders;
@@ -30,7 +28,7 @@ namespace Servers.Sences.Nodes
         public void Init() { }
 
         //这个方法用来处理参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             //创建一个空的处理程序（handler）
             NodeBase node;

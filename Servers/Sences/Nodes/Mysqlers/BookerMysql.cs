@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers;
 using Servers.Sences.Nodes.Handlers;
 
@@ -19,17 +16,17 @@ namespace Servers.Sences.Nodes.Mysqlers
     {
         public override string Code => TenCode.Booker.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " BookerMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " BookerMysql: " + elevenCode);
                     GetItems(mvc);
                     break;
                 case (ElevenCode.Test):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " BookerMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " BookerMysql: " + elevenCode);
                     break;
                 case (ElevenCode.None):
                     break;
@@ -40,16 +37,16 @@ namespace Servers.Sences.Nodes.Mysqlers
         private string SoulItemName = "bookeritem";
         public BookerMysql() {    }
 
-        void GetItems(MvcParameter mvc)
+        void GetItems(TmRequest mvc)
         {
-            MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Sender, TenCode.Booker, ElevenCode.GetItems, ElevenCode.GetItems.ToString(), GetSoulItems());
-            mvc2.Endpoint = mvc.Endpoint;
+            TmRequest mvc2 = TmTransferTool.ToJsonParameter(EightCode.Node, NineCode.Sender, TenCode.Booker, ElevenCode.GetItems, ElevenCode.GetItems.ToString(), GetSoulItems());
+            mvc2.EcsId = mvc.EcsId;
             TumoNode.Instance.OnTransferParameter(mvc2);
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " Bookers: " + GetSoulItems().Count);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Bookers: " + GetSoulItems().Count);
         }      
-        void UpdateItemdb(MvcParameter mvc)
+        void UpdateItemdb(TmRequest mvc)
         {
-            SoulItemDB itemDB = MvcTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
+            SoulItemDB itemDB = TmTransferTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
             UpdateItemdb(itemDB.Id, itemDB.Exp, itemDB.Level, itemDB.Hp, itemDB.Mp, itemDB.Coin, itemDB.Diamond);
             UpdateItemdb(itemDB.Id, itemDB.SenceId, itemDB.px, itemDB.py, itemDB.pz, itemDB.ax, itemDB.ay, itemDB.az);
         }
@@ -79,7 +76,7 @@ namespace Servers.Sences.Nodes.Mysqlers
                 bool yes = false;
                 if (yes)
                 {
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " Booker: " + dbs[i].Id +" 已死亡.");                  
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " Booker: " + dbs[i].Id +" 已死亡.");                  
                 }
                 else
                 {

@@ -1,8 +1,5 @@
 ﻿using Tumo;
-using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -19,7 +16,7 @@ namespace Servers.Games.Mysqlers.Skills
     class AbilityMysqlTabler : GameMysqlBase
     {
         public override string Code => TenCode.Ability.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

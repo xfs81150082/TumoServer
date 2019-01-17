@@ -1,6 +1,4 @@
 ﻿using Tumo;
-using Tumo;
-using Servers.Gates;
 using Servers.Logins.Handlers;
 using Servers.Logins.Mysqlers;
 using Servers.Logins.Senders;
@@ -8,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Servers.Logins
 {
@@ -24,7 +21,7 @@ namespace Servers.Logins
             _instance = this;
             Registes();
         }
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             //创建一个空的处理程序（handler）
             LoginBase user;

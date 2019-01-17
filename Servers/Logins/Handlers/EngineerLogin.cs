@@ -1,8 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
-using Servers.Gates;
 using Servers;
 using System;
 using System.Collections.Generic;
@@ -16,13 +13,13 @@ namespace Servers.Logins.Handlers
     {
         public override string Code => TenCode.Engineer.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerloginHandler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerloginHandler: " + elevenCode);
                     mvc.NineCode = NineCode.Sender;
                     TumoLogin.Instance.OnTransferParameter(mvc);
                     break;

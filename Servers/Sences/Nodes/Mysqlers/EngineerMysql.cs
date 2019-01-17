@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers;
 
 namespace Servers.Sences.Nodes.Mysqlers
@@ -18,17 +15,17 @@ namespace Servers.Sences.Nodes.Mysqlers
     class EngineerMysql : NodeMysqlBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerMysqlRoler: " + elevenCode /*+" : "+ mvc.RolerId*/);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerMysqlRoler: " + elevenCode /*+" : "+ mvc.RolerId*/);
                     EngineerLogin(mvc);
                     break;
                 case (ElevenCode.None):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerTimer: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerTimer: " + elevenCode);
                     break;
             }
         }
@@ -43,12 +40,12 @@ namespace Servers.Sences.Nodes.Mysqlers
             UpdateItemdb(itemDB.Id, itemDB.SenceId, itemDB.px, itemDB.py, itemDB.pz, itemDB.ax, itemDB.ay, itemDB.az);
         }
 
-        void EngineerLogin(MvcParameter mvc)
+        void EngineerLogin(TmRequest mvc)
         {
             SoulItem item2 = GetSoulItemById(int.Parse(mvc.RolerId));
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " name: " + item2.px + " mvc.rolerid: " + item2.Id);
-            MvcParameter mvc2 = MvcTool.ToJsonParameter<SoulItem>(EightCode.Node, NineCode.Sender, TenCode.Engineer, ElevenCode.EngineerLogin, ElevenCode.EngineerLogin.ToString(), item2);
-            mvc2.Endpoint = mvc.Endpoint;
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " name: " + item2.px + " mvc.rolerid: " + item2.Id);
+            TmRequest mvc2 = TmTransferTool.ToJsonParameter<SoulItem>(EightCode.Node, NineCode.Sender, TenCode.Engineer, ElevenCode.EngineerLogin, ElevenCode.EngineerLogin.ToString(), item2);
+            mvc2.EcsId = mvc.EcsId;
             mvc2.RolerId = mvc.RolerId;
             TumoNode.Instance.OnTransferParameter(mvc2);
         }

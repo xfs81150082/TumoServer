@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
 using Servers.Sences.Nodes;
 using Servers.Sences.Nodes.Mysqlers;
@@ -20,7 +18,7 @@ namespace Servers.Sences.Nodes.Mysqlers
         private static TumoNodeMysql _instance;
         public Dictionary<string, NodeMysqlBase> NodeMysqlers = new Dictionary<string, NodeMysqlBase>();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             //创建一个空的处理程序（handler）
             NodeMysqlBase measurementMysql;

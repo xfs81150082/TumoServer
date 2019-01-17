@@ -10,13 +10,13 @@ namespace ClientExample.Sences.Rolers.Senders
     class EngineerSender : RolerSenderBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.SyncMoveState):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerRoler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerRoler: " + elevenCode);
                     mvc.NineCode = NineCode.Handler;
                     TumoRoler.Instance.OnTransferParameter(mvc);
                     break;

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Servers.Gates;
 using Servers;
 
 namespace Servers.Sences.Nodes.Senders.Souls
@@ -13,19 +12,20 @@ namespace Servers.Sences.Nodes.Senders.Souls
     class PeerNodeSender : NodeSenderBase
     {
         public override string Code => TenCode.Peer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.HeartBeat):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " PeerNodeSender:" + elevenCode);
-                    TPeer peer1 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " PeerNodeSender:" + elevenCode);
                     mvc.NineCode = NineCode.Controller;
-                    if (peer1 != null)
-                    {
-                        peer1.SendMsg(mvc);
-                    }
+                    //TPeer peer1 = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
+                    //if (peer1 != null)
+                    //{
+                    //    peer1.SendMsg(mvc);
+                    //}
+                    TmAsyncTcpServer.Instance.SendMvc(mvc);
                     break;
                 case (ElevenCode.None):                  
                     break;

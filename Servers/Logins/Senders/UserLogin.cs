@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using Servers;
 using System;
 using System.Collections.Generic;
@@ -14,16 +12,15 @@ namespace Servers.Logins.Senders
     class UserLogin : LoginSenderBase
     {
         public override string Code => TenCode.User.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.GetItems):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() +" UserLoginSender: " + elevenCode);
-                    TPeer peer = TmServerHelper.Instance.GetTcpPeer(mvc.Endpoint);
+                case (ElevenCode.UserLogin):
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() +" UserLoginSender: " + elevenCode);
                     mvc.NineCode = NineCode.Controller;
-                    peer.SendMsg(mvc);
+                    TmAsyncTcpServer.Instance.SendMvc(mvc);
                     break;
                 case (ElevenCode.None):
                     break;

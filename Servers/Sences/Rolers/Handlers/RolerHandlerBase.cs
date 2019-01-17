@@ -8,7 +8,7 @@ using System.Timers;
 
 namespace Servers.Sences.Rolers.Handlers
 {
-    public abstract class RolerHandlerBase : MvcBase
+    public abstract class RolerHandlerBase : TmTransfer
     {
         private Timer TmTimer;
         private int ValTime = 1000;

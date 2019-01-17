@@ -1,11 +1,11 @@
-﻿using Servers.Gates;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Tumo;
 
 namespace Servers
 {
@@ -15,14 +15,12 @@ namespace Servers
         static void Main(string[] args)
         {
             new MysqlHelper();
-            new TmServerHelper();
             new TumoGate();
             TmTcpServer tmTcpServer = new TmTcpServer();
-            tmTcpServer.StartListen();
 
-            Thread.CurrentThread.Name = "ServerMainThread23";
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
+            Thread.CurrentThread.Name = "ServerMainThread26";
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
 
             Console.ReadKey();
             Console.WriteLine("退出监听，并关闭程序。");

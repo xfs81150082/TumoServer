@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using Servers;
 using Servers.Sences.Rolers;
 using System;
@@ -15,6 +13,10 @@ namespace Servers.Sences.Models
     [Serializable]
     public class Monster : Roler
     {
+        public override void TmAwake()
+        {
+
+        }
         public Monster()  {  }
         public Monster(SoulItem item)
         {
@@ -24,23 +26,19 @@ namespace Servers.Sences.Models
             //this.RolerMove.TargetTransform = new TmTransform(item);
         }
 
-        public override void TmAwake()
-        {
 
-        }              
-
-        public override void TmUpdate(ElapsedEventArgs time)
+        public override void TmUpdate()
         {
             SyncSpawn();
         }
 
         void SyncSpawn()
         {
-            MvcParameter mvc = MvcTool.ToParameter<Roler>(EightCode.Roler, NineCode.Handler, TenCode.Booker, ElevenCode.SyncSpawn, ElevenCode.SyncSpawn.ToString(), this);
+            TmRequest mvc = TmTransferTool.ToParameter<Roler>(EightCode.Roler, NineCode.Handler, TenCode.Booker, ElevenCode.SyncSpawn, ElevenCode.SyncSpawn.ToString(), this);
             TumoRoler.Instance.OnTransferParameter(mvc);
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " Monster is SyncSpawn, Id:" + this.SoulItem.Id + " px:" + this.TmTransform.px);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Monster is SyncSpawn, Id:" + this.SoulItem.Id + " px:" + this.TmTransform.px);
         }
 
-
+     
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Tumo;
-using Tumo;
 using Servers;
 using System;
 using System.Collections.Generic;
@@ -14,34 +13,24 @@ namespace Servers.Sences.Nodes.Handlers
     {
         public override string Code => TenCode.Booker.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " BookerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " BookerNode: " + elevenCode);
                     mvc.NineCode = NineCode.Mysqler;
                     TumoNode.Instance.OnTransferParameter(mvc);
                     break;
                 case (ElevenCode.None):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " BookerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " BookerNode: " + elevenCode);
                     break;
                 default:
                     break;
             }
         }
-
-        public override void TmAwake()
-        {
-
-        }
-
-        public override void TmUpdate(ElapsedEventArgs time)
-        {
-
-        }  
-        
+         
 
               
     }

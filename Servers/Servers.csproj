@@ -39,6 +39,9 @@
     <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.13\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -92,11 +95,8 @@
     <Compile Include="Games\Skills\Senders\GameSenderBase.cs" />
     <Compile Include="Games\Skills\Senders\TumoGameSender.cs" />
     <Compile Include="Gates\GateBase.cs" />
-    <Compile Include="Main\TPeer.cs" />
-    <Compile Include="Main\TmServerHelper.cs" />
     <Compile Include="Main\TmTcpServer.cs" />
     <Compile Include="Sences\Models\SpawnCDitem.cs" />
-    <Compile Include="Sences\Models\PeerCDItem.cs" />
     <Compile Include="Main\MysqlHelper.cs" />
     <Compile Include="Gates\TumoGate.cs" />
     <Compile Include="Logins\Handlers\EngineerLogin.cs" />
@@ -164,7 +164,6 @@
     <Compile Include="Sences\Rolers\Senders\TeacherSender.cs" />
     <Compile Include="Sences\Rolers\Senders\TumoRolerSender.cs" />
     <Compile Include="Sences\Rolers\TumoRoler.cs" />
-    <Compile Include="UserItemDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

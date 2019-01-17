@@ -11,7 +11,7 @@ namespace ClientExample.Sences.Nodes.Senders
     class BookerSender : NodeSenderBase
     {
         public override string Code => TenCode.Booker.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             TwelveCode twelveCode = mvc.TwelveCode;
             switch (twelveCode)

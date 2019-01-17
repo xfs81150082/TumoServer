@@ -1,14 +1,11 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
-using Servers.Gates;
 using Servers.Sences.Nodes.Mysqlers;
 using Servers;
 
@@ -18,13 +15,13 @@ namespace Servers.Sences.Rolers.Handlers
     {
         public override string Code => TenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.None):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " TeacherRolerHandler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherRolerHandler: " + elevenCode);
                     break;
                 default:
                     break;

@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -18,7 +16,7 @@ namespace Servers.Games.Mysqlers.Souls
     {
         public override string Code => TenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -47,9 +45,9 @@ namespace Servers.Games.Mysqlers.Souls
             }
             Console.WriteLine("TeacherMysqlTabler-Teachers: " + NodeInfo.Instance.Teachers.Count);
         }
-        void UpdateItemdb(MvcParameter mvc)
+        void UpdateItemdb(TmRequest mvc)
         {
-            SoulItemDB itemDB = MvcTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
+            SoulItemDB itemDB = TmTransferTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
             UpdateItemdb(itemDB.Id, itemDB.Exp, itemDB.Level, itemDB.Hp, itemDB.Mp, itemDB.Coin, itemDB.Diamond);
             UpdateItemdb(itemDB.Id, itemDB.SenceId, itemDB.px, itemDB.py, itemDB.pz, itemDB.ax, itemDB.ay, itemDB.az);
         }

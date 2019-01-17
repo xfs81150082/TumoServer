@@ -11,7 +11,7 @@ namespace ClientExample.Games.Controllers
     {
         public override string Code => ElevenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -28,21 +28,21 @@ namespace ClientExample.Games.Controllers
 
         }
 
-        void SpawnRolers(MvcParameter mvc)
+        void SpawnRolers(TmRequest mvc)
         {
-            Dictionary<int, SoulItem> items = MvcTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, "SoulItems");
+            Dictionary<int, SoulItem> items = TmTransferTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, "SoulItems");
             Console.WriteLine("TeacherController-SpawnItems: " + items.Count);
         }
 
-        void SpawnRoler(MvcParameter mvc)
+        void SpawnRoler(TmRequest mvc)
         {
-            SoulItem item = MvcTool.GetJsonValue<SoulItem>(mvc, "SoulItem");
+            SoulItem item = TmTransferTool.GetJsonValue<SoulItem>(mvc, "SoulItem");
             Console.WriteLine("TeacherController-SpawnRoler: " + item.Name + item.Id);
 
         }
-        void RemoveRoler(MvcParameter mvc)
+        void RemoveRoler(TmRequest mvc)
         {
-            SoulItem item = MvcTool.GetJsonValue<SoulItem>(mvc, "SoulItem");
+            SoulItem item = TmTransferTool.GetJsonValue<SoulItem>(mvc, "SoulItem");
             Console.WriteLine("TeacherController-RemoveRoler: " + item.Name + item.Id);
 
         }

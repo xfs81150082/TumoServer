@@ -12,13 +12,13 @@ namespace ClientExample.Logins.Controllers
     {
         public override string Code => TenCode.Engineer.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerLogin: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerLogin: " + elevenCode);
                     mvc.NineCode = NineCode.Sender;
                     TumoLogin.Instance.OnTransferParameter(mvc);
                     break;         

@@ -3,35 +3,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Timers;
 using Tumo;
 
 namespace Servers
 {
-    class TmTcpServer : TmAsyncTcpServer
+    public class TmTcpServer : TmAsyncTcpServer
     {
-        private string ipString = "127.0.0.1";
-        private int port = 8115;
-        private int maxListenCount = 10;
-        public TmTcpServer()
+        public TmTcpServer()  {   }
+        public TmTcpServer(string ipString, int port, int maxListenCount)
         {
-            Init(ipString, port, maxListenCount);
-        }      
+            IpString = ipString;
+            Port = port;
+            MaxListenCount = maxListenCount;
+        }
 
-        public override void TmReceiveSocket(Socket socket)
+        public override void TmUpdate()
         {
-            ///限制监听数量
-            if (TmServerHelper.Instance.TcpPeers.Count >= maxListenCount) 
+            ServerStart();
+            ServerRecvParameters();
+        }
+        void ServerStart()
+        {
+            if (!IsRunning)
             {
-                ///触发事件///在线排队等待
-                TmServerHelper.Instance.LineUpWait.Add(socket);
+                this.Init("127.0.0.1", 8115, 10);
+                this.StartListen();
             }
-            else
+        }
+        void ServerRecvParameters()
+        {
+            try
             {
-                ///创建一个TcpPeer接收socket
-                new TPeer().BeginReceiveMessage(socket);
+                while (RecvParameters.Count > 0)
+                {
+                    TmRequest mvc = RecvParameters.Dequeue();
+                    if (TumoGate.Instance != null)
+                    {
+                        TumoGate.Instance.OnTransferParameter(mvc);
+                        Console.WriteLine(TmTimerTool.GetCurrentTime() + " RecvParameters: " + RecvParameters.Count);
+                    }
+                    else
+                    {
+                        //RecvParameters.Enqueue(mvc);
+                        Console.WriteLine(TmTimerTool.GetCurrentTime() + " TumoGate is null.");
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.Message);
             }
         }
 
-
+      
     }
 }

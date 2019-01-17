@@ -11,15 +11,16 @@ namespace ClientExample.Sences.Nodes.Senders
     class PeerNodeSender : NodeSenderBase
     {
         public override string Code => TenCode.Peer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.HeartBeat):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " EngineerSender: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " PeerSender: " + elevenCode);
                     mvc.NineCode = NineCode.Handler;
-                    TClient.Instance.SendMsg(mvc);
+                    TmAsyncTcpClient.Instance.SendMvc(mvc);
+                    //TClient.Instance.SendMsg(mvc);
                     break;          
                 default:
                     break;

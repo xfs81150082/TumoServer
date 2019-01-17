@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Logins.Handlers
 {
-    public abstract class HandlerBase : MvcBase
+    public abstract class HandlerBase : TmTransfer
     {
         public HandlerBase()
         {

@@ -5,7 +5,6 @@ using System.Net.Sockets;
 using System.Text;
 using System.Timers;
 using ClientExample;
-using ClientExample.Sences.Models;
 using Tumo;
 using Tumo.Models;
 
@@ -14,52 +13,53 @@ namespace ClientExample.Sences.Nodes.Controllers
     class PeerNode : NodeCotrollerBase
     {
         public override string Code => TenCode.Peer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.HeartBeat):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " PeerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " PeerNode: " + elevenCode);
                     mvc.NineCode = NineCode.Sender;
                     TumoNode.Instance.OnTransferParameter(mvc);
-                    HeartBeatSignIn();
+                    //HeartBeatSignIn();
                     break;
                 case (ElevenCode.RemoveHeartBeat):
-                    Console.WriteLine(TmClientHelper.Instance.GetCurrentTime() + " PeerNode: " + elevenCode);
-                    RemoveHeartBeat();
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " PeerNode: " + elevenCode);
+                    //RemoveHeartBeat();
                     break;
                 default:
                     break;
             }
         }
 
-        private ClientCDItem ClientCDItem { get; set; }
+        //private ClientCDItem ClientCDItem { get; set; }
         
         public PeerNode()
         {
-            HeartBeatSignIn();
+            //HeartBeatSignIn();
         }
 
-        void HeartBeatSignIn()
-        {
-            if (ClientCDItem != null)
-            {
-                ClientCDItem.CdCount = 0;
-            }
-            else
-            {
-                ClientCDItem item = new ClientCDItem();
-                item.CdCount = 0;
-                item.CoolDown.MaxCdCount = 4;
-                this.ClientCDItem = item;
-                Console.WriteLine("ClientCDItem is greate...");
-            }
-        }
-        void RemoveHeartBeat()
-        {
-            ClientCDItem = null;
-        }
+        //void HeartBeatSignIn()
+        //{
+        //    if (TmAsyncTcpClient.Instance.CD != null)
+        //    {
+        //        TmAsyncTcpClient.Instance.CD.CdCount = 0;
+        //    }
+        //    else
+        //    {
+        //        //TmClientCDItem item = new TmClientCDItem();
+        //        //item.CdCount = 0;
+        //        //item.CoolDown.MaxCdCount = 4;
+        //        //TmAsyncTcpClient.Instance.CDItem = item;
+        //        //Console.WriteLine("创建心跳 ClientCDItem.");
+        //    }
+        //}
+        //void RemoveHeartBeat()
+        //{
+        //    TmAsyncTcpClient.Instance.CDItem.Dispose();
+        //    TmAsyncTcpClient.Instance.CDItem = null;
+        //}
 
     }
 }

@@ -1,7 +1,5 @@
 ﻿using Tumo;
 using Tumo.Models;
-using Tumo;
-using Tumo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using MySql.Data.MySqlClient;
-using Servers.Gates;
 using Servers.Sences.Nodes.Handlers;
 using Servers;
 
@@ -19,17 +16,17 @@ namespace Servers.Sences.Nodes.Mysqlers
     {
         public override string Code => TenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " TeacherMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherMysql: " + elevenCode);
                     GetItems(mvc);
                     break;
                 case (ElevenCode.Test):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " TeacherMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherMysql: " + elevenCode);
                     break;
                 case (ElevenCode.None):
                     break;
@@ -43,17 +40,17 @@ namespace Servers.Sences.Nodes.Mysqlers
             //GetItems();
         }
         
-        void GetItems(MvcParameter mvc)
+        void GetItems(TmRequest mvc)
         {
-            MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Sender, TenCode.Teacher, ElevenCode.GetItems, ElevenCode.GetItems.ToString(), GetSoulItems());
-            mvc2.Endpoint = mvc.Endpoint;
+            TmRequest mvc2 = TmTransferTool.ToJsonParameter(EightCode.Node, NineCode.Sender, TenCode.Teacher, ElevenCode.GetItems, ElevenCode.GetItems.ToString(), GetSoulItems());
+            mvc2.EcsId = mvc.EcsId;
             TumoNode.Instance.OnTransferParameter(mvc2);
-            Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " Teachers: " + GetSoulItems().Count);
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Teachers: " + GetSoulItems().Count);
         }
 
-        void UpdateItemdb(MvcParameter mvc)
+        void UpdateItemdb(TmRequest mvc)
         {
-            SoulItemDB itemDB = MvcTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
+            SoulItemDB itemDB = TmTransferTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
             UpdateItemdb(itemDB.Id, itemDB.Exp, itemDB.Level, itemDB.Hp, itemDB.Mp, itemDB.Coin, itemDB.Diamond);
             UpdateItemdb(itemDB.Id, itemDB.SenceId, itemDB.px, itemDB.py, itemDB.pz, itemDB.ax, itemDB.ay, itemDB.az);
         }

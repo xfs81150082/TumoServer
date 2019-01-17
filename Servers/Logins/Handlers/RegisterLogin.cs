@@ -1,5 +1,4 @@
 ﻿using Tumo;
-using Tumo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +11,7 @@ namespace Servers.Logins.Handlers
     {
         public override string Code => TenCode.Register.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

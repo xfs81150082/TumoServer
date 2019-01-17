@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tumo;
-using Servers.Gates;
 using Servers;
 
 namespace Servers.Logins.Handlers
@@ -13,13 +12,13 @@ namespace Servers.Logins.Handlers
     {
         public override string Code => TenCode.User.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.UserLogin):
-                    Console.WriteLine(TmServerHelper.Instance.GetCurrentTime() + " EngineerloginHandler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " loginHandler: " + elevenCode);
                     mvc.NineCode = NineCode.Mysqler;
                     TumoLogin.Instance.OnTransferParameter(mvc);
                     break;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Logins.Senders
 {
-    public abstract class LoginSenderBase : MvcBase
+    public abstract class LoginSenderBase : TmTransfer
     {
         public LoginSenderBase()
         {
