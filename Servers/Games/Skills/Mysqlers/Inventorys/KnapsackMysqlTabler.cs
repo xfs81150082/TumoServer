@@ -16,13 +16,13 @@ namespace Servers.Games.Mysqlers.Inventorys
     {
         public override string Code => TenCode.Knapsack.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode ElevenCode = mvc.ElevenCode;
             switch (ElevenCode)
             {
                 case (ElevenCode.GetItemsByRolerId):
-                    int rolerid = MvcTool.GetValue<int>(mvc, "RolerId");
+                    int rolerid = TmTransferTool.GetValue<int>(mvc, "RolerId");
                     UpdateKnapsackByRolerId(rolerid);
                     break;           
                 case (ElevenCode.None):

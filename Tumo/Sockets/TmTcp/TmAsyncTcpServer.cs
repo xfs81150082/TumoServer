@@ -25,8 +25,8 @@ namespace Tumo
         private Socket serverSocket { get; set; }                 //服务器使用的异步socket   
         public Queue<Socket> WaitingSockets = new Queue<Socket>();
         public Dictionary<string, TPeer> TPeers { get; set; } = new Dictionary<string, TPeer>();
-        public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
-        private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
+        public Queue<TmRequest> RecvParameters { get; set; } = new Queue<TmRequest>();
+        private Queue<TmRequest> SendParameters { get; set; } = new Queue<TmRequest>();
         #endregion
 
         #region Constructor ///构造函数 ///初始化方法
@@ -86,7 +86,7 @@ namespace Tumo
         #endregion
 
         #region ///发送参数信息
-        public void SendMvc(MvcParameter mvc)
+        public void SendMvc(TmRequest mvc)
         {
             SendParameters.Enqueue(mvc);
             SendMvcParameters();
@@ -97,9 +97,9 @@ namespace Tumo
             {
                 while (SendParameters.Count > 0)
                 {
-                    MvcParameter mvc = SendParameters.Dequeue();
+                    TmRequest mvc = SendParameters.Dequeue();
                     ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
-                    string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
+                    string mvcJsons = TmTransferTool.ToString<TmRequest>(mvc);
                     TPeer tpeer;
                     TPeers.TryGetValue(mvc.EcsId, out tpeer);
                     if (tpeer != null)

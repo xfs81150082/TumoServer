@@ -34,7 +34,7 @@ namespace Servers.Sences.Models
 
         void SyncSpawn()
         {
-            MvcParameter mvc = MvcTool.ToParameter<Roler>(EightCode.Roler, NineCode.Handler, TenCode.Booker, ElevenCode.SyncSpawn, ElevenCode.SyncSpawn.ToString(), this);
+            TmRequest mvc = TmTransferTool.ToParameter<Roler>(EightCode.Roler, NineCode.Handler, TenCode.Booker, ElevenCode.SyncSpawn, ElevenCode.SyncSpawn.ToString(), this);
             TumoRoler.Instance.OnTransferParameter(mvc);
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " Monster is SyncSpawn, Id:" + this.SoulItem.Id + " px:" + this.TmTransform.px);
         }

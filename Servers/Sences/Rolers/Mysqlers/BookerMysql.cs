@@ -18,7 +18,7 @@ namespace Servers.Sences.Rolers.Mysqlers
     {
         public override string Code => TenCode.Booker.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -49,9 +49,9 @@ namespace Servers.Sences.Rolers.Mysqlers
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " RolerInfo-Monsters: " + RolerInfo.Instance.Monsters.Count);
         }
 
-        void UpdateItemdb(MvcParameter mvc)
+        void UpdateItemdb(TmRequest mvc)
         {
-            SoulItemDB itemDB = MvcTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
+            SoulItemDB itemDB = TmTransferTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
             UpdateItemdb(itemDB.Id, itemDB.Exp, itemDB.Level, itemDB.Hp, itemDB.Mp, itemDB.Coin, itemDB.Diamond);
             UpdateItemdb(itemDB.Id, itemDB.SenceId, itemDB.px, itemDB.py, itemDB.pz, itemDB.ax, itemDB.ay, itemDB.az);
         }

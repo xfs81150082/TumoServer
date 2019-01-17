@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public class DictionaryParameter
+    public class TmParameter
     {
         public EightCode EightCode { get; set; }
         public NineCode NineCode { get; set; }
@@ -13,6 +13,6 @@ namespace Tumo
         public ElevenCode ElevenCode { get; set; }
         public TwelveCode TwelveCode { get; set; }
         public Dictionary<string, object> Parameters { get; set; } = new Dictionary<string, object>();
-        public DictionaryParameter() { }
+        public TmParameter() { }
     }
 }

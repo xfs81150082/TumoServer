@@ -14,7 +14,7 @@ namespace Servers.Logins.Mysqlers
     {
         public override string Code => TenCode.Engineer.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode= mvc.ElevenCode;
             switch (elevenCode)
@@ -34,14 +34,14 @@ namespace Servers.Logins.Mysqlers
         private string SoulItemName = "engineeritem";
         public EngineerloginMysql() { }
 
-        void GetItemsByUser(MvcParameter mvc)
+        void GetItemsByUser(TmRequest mvc)
         {
-            User user1 = MvcTool.GetValue<User>(mvc, mvc.ElevenCode.ToString());
+            User user1 = TmTransferTool.GetValue<User>(mvc, mvc.ElevenCode.ToString());
             List<SoulItem> items = GetSoulItemsByUserId(user1.Id);
             if (items.Count > 0)
             {
                 Console.WriteLine("EngineerloginMysqlLogin-Engineers(当前User): " + items.Count);
-                MvcParameter mvc2 = MvcTool.ToJsonParameter<List<SoulItem>>(EightCode.Login, NineCode.Sender, TenCode.User, ElevenCode.UserLogin, ElevenCode.UserLogin.ToString(), items);
+                TmRequest mvc2 = TmTransferTool.ToJsonParameter<List<SoulItem>>(EightCode.Login, NineCode.Sender, TenCode.User, ElevenCode.UserLogin, ElevenCode.UserLogin.ToString(), items);
                 mvc2.EcsId = mvc.EcsId;
                 TumoLogin.Instance.OnTransferParameter(mvc2);
             }
@@ -50,13 +50,13 @@ namespace Servers.Logins.Mysqlers
                 Console.WriteLine("帐号不存在");
             }
         }
-        void GetItem(MvcParameter mvc)
+        void GetItem(TmRequest mvc)
         {
             SoulItem item2 = GetSoulItemById(int.Parse(mvc.RolerId));
             if (item2!=null)
             {
                 Console.WriteLine("EngineerloginMysqlLogin-Engineer: " + item2.Name);
-                MvcParameter mvc2 = MvcTool.ToJsonParameter<SoulItem>(EightCode.Login, NineCode.Sender, TenCode.Engineer, ElevenCode.GetItem, ElevenCode.GetItem.ToString(), item2);
+                TmRequest mvc2 = TmTransferTool.ToJsonParameter<SoulItem>(EightCode.Login, NineCode.Sender, TenCode.Engineer, ElevenCode.GetItem, ElevenCode.GetItem.ToString(), item2);
                 mvc2.EcsId = mvc.EcsId;
                 TumoGate.Instance.OnTransferParameter(mvc2);
             }

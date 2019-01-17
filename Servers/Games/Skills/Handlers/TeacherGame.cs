@@ -10,7 +10,7 @@ namespace Servers.Games.Handlers
     class TeacherGame : GameHandlerBase
     {
         public override string Code => TenCode.Teacher.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode ElevenCode = mvc.ElevenCode;
             switch (ElevenCode)

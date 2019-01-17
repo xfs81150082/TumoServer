@@ -16,7 +16,7 @@ namespace Servers.Games.Mysqlers.Assignments
     {
         public override string Code => TenCode.Task.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

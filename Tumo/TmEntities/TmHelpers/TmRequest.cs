@@ -6,7 +6,7 @@ using System.Text;
 namespace Tumo
 {
     [Serializable]
-    public class MvcParameter : DictionaryParameter
+    public class TmRequest : TmParameter
     {
         public int Id { get; set; }
         public string EcsId { get; set; }
@@ -14,6 +14,6 @@ namespace Tumo
         public string Username { get; set; }
         public string Password { get; set; }
         public string RolerId { get; set; }
-        public MvcParameter() { }
+        public TmRequest() { }
     }
 }

@@ -21,7 +21,7 @@ namespace Servers.Logins.Senders
             Reisters();
         }
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             //创建一个空的处理程序（handler）
             LoginSenderBase controller;

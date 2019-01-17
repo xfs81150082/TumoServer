@@ -6,7 +6,7 @@ using System.Text;
 namespace Tumo
 {
     [Serializable]
-    public class TmResponse : DictionaryParameter
+    public class TmResponse : TmParameter
     {
         public string Endpoint { get; set; }
         public int Id { get; set; }

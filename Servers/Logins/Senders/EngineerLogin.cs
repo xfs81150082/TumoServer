@@ -16,7 +16,7 @@ namespace Servers.Logins.Senders
     {
         public override string Code => TenCode.Engineer.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -32,9 +32,9 @@ namespace Servers.Logins.Senders
             }
         }
         
-        void LoginGetItems(MvcParameter mvc)   
+        void LoginGetItems(TmRequest mvc)   
         {
-            MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Engineer, ElevenCode.EngineerLogin);
+            TmRequest mvc2 = TmTransferTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Engineer, ElevenCode.EngineerLogin);
             mvc2.EcsId = mvc.EcsId;
             mvc2.RolerId = mvc.RolerId;
             TumoGate.Instance.OnTransferParameter(mvc2);

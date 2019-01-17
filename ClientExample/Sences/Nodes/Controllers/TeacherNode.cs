@@ -12,7 +12,7 @@ namespace ClientExample.Sences.Nodes.Controllers
     {
         public override string Code => TenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -30,9 +30,9 @@ namespace ClientExample.Sences.Nodes.Controllers
         
         public TeacherNode() {     }
 
-        private void GetItems(MvcParameter mvc)
+        private void GetItems(TmRequest mvc)
         {
-            Dictionary<int, SoulItem> teachers = MvcTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, mvc.ElevenCode.ToString());
+            Dictionary<int, SoulItem> teachers = TmTransferTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, mvc.ElevenCode.ToString());
             NodeInfo.Instance.Teachers = teachers;
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " NodeInfo.Instance.Teachers is count: " + NodeInfo.Instance.Teachers.Count);
         }

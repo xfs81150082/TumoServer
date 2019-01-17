@@ -12,7 +12,7 @@ namespace ClientExample.Sences.Rolers.Controllers
     class EngineerRoler : RolerControllerBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -38,27 +38,27 @@ namespace ClientExample.Sences.Rolers.Controllers
             }
         }
 
-        private void Test(MvcParameter mvc)
+        private void Test(TmRequest mvc)
         {
-            int count = MvcTool.GetJsonValue<int>(mvc, mvc.ElevenCode.ToString());
+            int count = TmTransferTool.GetJsonValue<int>(mvc, mvc.ElevenCode.ToString());
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " count: " + count);
         }
 
         public EngineerRoler(){   }
 
-        void SpawnRoler(MvcParameter mvc)
+        void SpawnRoler(TmRequest mvc)
         {
-            SoulItem soulItem = MvcTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
+            SoulItem soulItem = TmTransferTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
             RolerInfo.Instance.Engineers.Add(soulItem.Id, soulItem);
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
         }
-        void RemoveRoler(MvcParameter mvc)
+        void RemoveRoler(TmRequest mvc)
         {
-            SoulItem soulItem = MvcTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
+            SoulItem soulItem = TmTransferTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
             RolerInfo.Instance.Engineers.Remove(soulItem.Id);
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
         }
-        void SyncMoveState(MvcParameter mvc)
+        void SyncMoveState(TmRequest mvc)
         {
 
         }

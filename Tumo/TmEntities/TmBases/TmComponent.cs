@@ -19,6 +19,7 @@ namespace Tumo
         }          
         public override void TmDispose()
         {
+            //base.TmDispose();
             TmEcsDictionary.Components.Remove(EcsId);
             if (TmEntity != null)
             {
