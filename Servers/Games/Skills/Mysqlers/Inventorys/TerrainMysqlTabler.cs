@@ -16,7 +16,7 @@ namespace Servers.Games.Mysqlers.Inventorys
     {
         public override string Code => TenCode.Terrain.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode ElevenCode = mvc.ElevenCode;
             switch (ElevenCode)

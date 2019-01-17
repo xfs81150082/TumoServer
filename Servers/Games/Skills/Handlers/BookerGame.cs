@@ -10,7 +10,7 @@ namespace Servers.Games.Handlers
     class BookerGame : GameHandlerBase
     {
         public override string Code => TenCode.Booker.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode ElevenCode = mvc.ElevenCode;
             switch (ElevenCode)

@@ -20,7 +20,7 @@ namespace Tumo
         public override void OnTransferParameter(string mvcString)
         {
             ///将字符串string,用json反序列化转换成MvcParameter参数
-            MvcParameter mvc = MvcTool.ToObject<MvcParameter>(mvcString);
+            TmRequest mvc = TmTransferTool.ToObject<TmRequest>(mvcString);
             mvc.EcsId = this.EcsId;
             if (mvc.ElevenCode == ElevenCode.HeartBeat)
             {

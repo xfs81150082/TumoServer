@@ -16,7 +16,7 @@ namespace Servers.Games.Mysqlers.Skills
     class AbilityMysqlTabler : GameMysqlBase
     {
         public override string Code => TenCode.Ability.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

@@ -16,7 +16,7 @@ namespace Servers.Sences.Nodes.Handlers
     {
         #region OnTransferParameter
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -44,7 +44,7 @@ namespace Servers.Sences.Nodes.Handlers
 
 
         #region EngineerLogin
-        private void EngineerLogin(MvcParameter mvc)
+        private void EngineerLogin(TmRequest mvc)
         {
             mvc.NineCode = NineCode.Mysqler;
             TumoNode.Instance.OnTransferParameter(mvc);
@@ -55,15 +55,15 @@ namespace Servers.Sences.Nodes.Handlers
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
             GetTeachers(mvc);
         }
-        private void GetBookers(MvcParameter mvc)
+        private void GetBookers(TmRequest mvc)
         {
-            MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Booker, ElevenCode.GetItems);
+            TmRequest mvc2 = TmTransferTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Booker, ElevenCode.GetItems);
             mvc2.EcsId = mvc.EcsId;
             TumoGate.Instance.OnTransferParameter(mvc2);
         }
-        private void GetTeachers(MvcParameter mvc)
+        private void GetTeachers(TmRequest mvc)
         {
-            MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Teacher, ElevenCode.GetItems);
+            TmRequest mvc2 = TmTransferTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Teacher, ElevenCode.GetItems);
             mvc2.EcsId = mvc.EcsId;
             TumoGate.Instance.OnTransferParameter(mvc2);
         }

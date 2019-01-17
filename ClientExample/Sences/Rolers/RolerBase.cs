@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientExample.Sences.Rolers
 {
-    public abstract class RolerBase : TmBase
+    public abstract class RolerBase : TmTransfer
     {
         public RolerBase()
         {

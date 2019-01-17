@@ -16,7 +16,7 @@ namespace Servers.Sences.Nodes.Mysqlers
     {
         public override string Code => TenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -40,17 +40,17 @@ namespace Servers.Sences.Nodes.Mysqlers
             //GetItems();
         }
         
-        void GetItems(MvcParameter mvc)
+        void GetItems(TmRequest mvc)
         {
-            MvcParameter mvc2 = MvcTool.ToJsonParameter(EightCode.Node, NineCode.Sender, TenCode.Teacher, ElevenCode.GetItems, ElevenCode.GetItems.ToString(), GetSoulItems());
+            TmRequest mvc2 = TmTransferTool.ToJsonParameter(EightCode.Node, NineCode.Sender, TenCode.Teacher, ElevenCode.GetItems, ElevenCode.GetItems.ToString(), GetSoulItems());
             mvc2.EcsId = mvc.EcsId;
             TumoNode.Instance.OnTransferParameter(mvc2);
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " Teachers: " + GetSoulItems().Count);
         }
 
-        void UpdateItemdb(MvcParameter mvc)
+        void UpdateItemdb(TmRequest mvc)
         {
-            SoulItemDB itemDB = MvcTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
+            SoulItemDB itemDB = TmTransferTool.GetJsonValue<SoulItemDB>(mvc, "SoulItemDB");
             UpdateItemdb(itemDB.Id, itemDB.Exp, itemDB.Level, itemDB.Hp, itemDB.Mp, itemDB.Coin, itemDB.Diamond);
             UpdateItemdb(itemDB.Id, itemDB.SenceId, itemDB.px, itemDB.py, itemDB.pz, itemDB.ax, itemDB.ay, itemDB.az);
         }

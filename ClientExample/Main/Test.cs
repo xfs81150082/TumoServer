@@ -40,7 +40,7 @@ namespace ClientExample
         void EngineerLogin(ElapsedEventArgs ela)
         {
             int Id = 100001;
-            MvcParameter mvc = MvcTool.ToParameter(EightCode.Login, NineCode.Controller, TenCode.Engineer, ElevenCode.EngineerLogin);
+            TmRequest mvc = TmTransferTool.ToParameter(EightCode.Login, NineCode.Controller, TenCode.Engineer, ElevenCode.EngineerLogin);
             mvc.RolerId = Id.ToString();
             TumoConnect.Instance.OnTransferParameter(mvc);
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " 秒针： " + ela.SignalTime.Second + " Id:" + mvc.RolerId);

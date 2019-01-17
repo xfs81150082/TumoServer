@@ -13,7 +13,7 @@ namespace Servers.Sences.Nodes.Handlers
     {
         public override string Code => TenCode.Booker.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
