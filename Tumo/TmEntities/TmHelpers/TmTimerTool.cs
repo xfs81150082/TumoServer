@@ -15,7 +15,7 @@ namespace Tumo
             return cuurentTime;
         }
         ///获得服务器当前时间
-        public static string IdCurrentTime()
+        public static string CurrentTime()
         {
             string cuurentTime = "";
             cuurentTime = DateTime.Now.ToString("yyyyMMddHHmmss");

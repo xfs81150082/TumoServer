@@ -32,7 +32,7 @@ namespace ClientExample.Sences.Nodes.Controllers
 
         private void GetItems(TmRequest mvc)
         {
-            Dictionary<int, SoulItem> teachers = TmTransferTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, mvc.ElevenCode.ToString());
+            Dictionary<int, TmSoulerItem> teachers = TmTransferTool.GetJsonValue<Dictionary<int, TmSoulerItem>>(mvc, mvc.ElevenCode.ToString());
             NodeInfo.Instance.Teachers = teachers;
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " NodeInfo.Instance.Teachers is count: " + NodeInfo.Instance.Teachers.Count);
         }
