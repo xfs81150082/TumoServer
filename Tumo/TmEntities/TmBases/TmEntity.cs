@@ -5,11 +5,12 @@ using System.Text;
 
 namespace Tumo
 {
-    public abstract class TmEntity : TmEcsBase
+    public abstract class TmEntity : TmComponent
     {
         public Dictionary<string, TmComponent> Components { get; set; } = new Dictionary<string, TmComponent>();     
         public override void TmAwake()
         {
+            base.TmAwake();
             TmEcsDictionary.Entities.Add(EcsId, this);
         }
         public TmEntity() { }
@@ -58,6 +59,7 @@ namespace Tumo
         }
         public override void TmDispose()
         {
+            base.TmDispose();
             TmEcsDictionary.Entities.Remove(EcsId);
             OnDispose();
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmEntity释放资源");

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Sences.Nodes
 {
-    public abstract class NodeBase : TmBase
+    public abstract class NodeBase : TmTransfer
     {
         public NodeBase()
         {

@@ -21,8 +21,8 @@ namespace Tumo
         private IPAddress address { get; set; }          //连接的IP地址  
         private Socket clientSocket { get; set; }
         public TClient TClient { get; set; }
-        public Queue<MvcParameter> RecvParameters { get; set; } = new Queue<MvcParameter>();
-        private Queue<MvcParameter> SendParameters { get; set; } = new Queue<MvcParameter>();
+        public Queue<TmRequest> RecvParameters { get; set; } = new Queue<TmRequest>();
+        private Queue<TmRequest> SendParameters { get; set; } = new Queue<TmRequest>();
         #endregion
 
         #region Constructor      
@@ -90,7 +90,7 @@ namespace Tumo
         #endregion
 
         #region ///发送参数消息
-        public void SendMvc(MvcParameter mvc)
+        public void SendMvc(TmRequest mvc)
         {
             SendParameters.Enqueue(mvc);
             SendMvcParameters();
@@ -102,9 +102,9 @@ namespace Tumo
             {
                 while (SendParameters.Count > 0)
                 {
-                    MvcParameter mvc = SendParameters.Dequeue();
+                    TmRequest mvc = SendParameters.Dequeue();
                     ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
-                    string mvcJsons = MvcTool.ToString<MvcParameter>(mvc);
+                    string mvcJsons = TmTransferTool.ToString<TmRequest>(mvc);
                     if (TClient != null)
                     {
                         TClient.SendString(mvcJsons);

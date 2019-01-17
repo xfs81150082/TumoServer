@@ -37,15 +37,16 @@ namespace Tumo
             if (Comopnents.Count > 0)
             {
                 List<string> types = new List<string>(Comopnents.Keys);
+                List<TmEntity> entites = new List<TmEntity>(TmEcsDictionary.Entities.Values);
                 for (int i = 0; i < types.Count; i++)
                 {
-                    foreach (var entity in tmentites.Values)
+                    for (int j = 0; j < entites.Count; j++)
                     {
                         TmComponent com;
-                        bool yes = entity.Components.TryGetValue(types[i], out com);
+                        bool yes = entites[j].Components.TryGetValue(types[i], out com);
                         if (yes == false)
                         {
-                            tmentites.Remove(entity.EcsId);
+                            tmentites.Remove(entites[j].EcsId);
                         }
                     }
                 }
@@ -55,7 +56,7 @@ namespace Tumo
             {
                 return null;
             }
-        }
+        }      
         #endregion
 
         #region TmDispose

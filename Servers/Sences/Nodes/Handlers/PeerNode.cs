@@ -16,7 +16,7 @@ namespace Servers.Sences.Nodes.Handlers
     {
         #region OnTransferParameter
         public override string Code => TenCode.Peer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

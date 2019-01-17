@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientExample.Games.Controllers
 {
-    public abstract class GameControllerBase : TmBase
+    public abstract class GameControllerBase : TmTransfer
     {
         public GameControllerBase()
         {

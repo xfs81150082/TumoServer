@@ -12,7 +12,7 @@ namespace Servers.Sences.Rolers.Senders
     class EngineerSender : RolerSenderBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

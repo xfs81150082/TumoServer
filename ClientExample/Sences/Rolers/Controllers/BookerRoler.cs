@@ -12,7 +12,7 @@ namespace ClientExample.Sences.Rolers.Controllers
     {
         public override string Code => TenCode.Booker.ToString();
 
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -33,15 +33,15 @@ namespace ClientExample.Sences.Rolers.Controllers
                     break;
             }
         }
-        void SpawnRoler(MvcParameter mvc)
+        void SpawnRoler(TmRequest mvc)
         {
-            SoulItem soulItem = MvcTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
+            SoulItem soulItem = TmTransferTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
             //RolerInfo.Instance.Bookers.Add(soulItem.Id, soulItem);
             //Console.WriteLine(TmTimer.GetCurrentTime() + " SpawnRoler: " + soulItem.Id + " Bookers: " + RolerInfo.Instance.Bookers.Count);
             //Console.WriteLine(TmTimer.GetCurrentTime() + " SpawnRoler,Id: " + mvc.RolerId);
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " SpawnRoler,soulItem.Id: " + soulItem.Id);
         }
-        void RemoveRoler(MvcParameter mvc)
+        void RemoveRoler(TmRequest mvc)
         {
             //RolerInfo.Instance.Bookers.Remove(int.Parse(mvc.RolerId));
             //Console.WriteLine(TmTimer.GetCurrentTime() + " RemoveRoler,Id: " + mvc.RolerId + " Bookers: " + RolerInfo.Instance.Bookers.Count);

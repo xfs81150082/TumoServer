@@ -12,7 +12,7 @@ namespace Servers.Games.Senders.Games
     class BookerGame : GameSenderBase
     {
         public override string Code => TenCode.User.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;         
             switch (elevenCode)

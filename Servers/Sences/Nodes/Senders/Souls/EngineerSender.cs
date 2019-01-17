@@ -12,7 +12,7 @@ namespace Servers.Sences.Nodes.Senders.Souls
     class EngineerSender : NodeSenderBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(MvcParameter mvc)
+        public override void OnTransferParameter(TmRequest mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

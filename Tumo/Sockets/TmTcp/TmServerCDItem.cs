@@ -43,7 +43,7 @@ namespace Tumo
             else
             {
                 //发送心跳检测（并等待签到，签到入口在EngineerNode）
-                MvcParameter mvc = MvcTool.ToParameter(EightCode.Node, NineCode.Sender, TenCode.Peer, ElevenCode.HeartBeat);
+                TmRequest mvc = TmTransferTool.ToParameter(EightCode.Node, NineCode.Sender, TenCode.Peer, ElevenCode.HeartBeat);
                 mvc.EcsId = Key;
                 TmAsyncTcpServer.Instance.SendMvc(mvc);
             }

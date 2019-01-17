@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Logins.Mysqlers
 {
-    public abstract class LoginMysqlBase : TmBase
+    public abstract class LoginMysqlBase : TmTransfer
     {
         public LoginMysqlBase()
         {
