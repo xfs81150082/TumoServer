@@ -44,28 +44,28 @@ namespace Servers.Games.Handlers
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
-            SkillItemDB item = TmTransferTool.ToObject<SkillItemDB>(json.ToString());
+            SkillItemDB item = TmJson.ToObject<SkillItemDB>(json.ToString());
             //manager.InsertItemdb(item.Name, item.SkillId, item.RolerId);
         }
         void RemoveItemdb(TmRequest sp)
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
-            SkillItemDB item = TmTransferTool.ToObject<SkillItemDB>(json.ToString());
+            SkillItemDB item = TmJson.ToObject<SkillItemDB>(json.ToString());
             //manager.RemoveItemdb(item.Id);
         }
         void UpdateItemdbName(TmRequest sp)
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
-            SkillItemDB item = TmTransferTool.ToObject<SkillItemDB>(json.ToString());
+            SkillItemDB item = TmJson.ToObject<SkillItemDB>(json.ToString());
             //manager.UpdateItemdb(item.Id, item.Name);
         }
         void UpdateItemdbHpMp(TmRequest sp)
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
-            SoulItemDB item = TmTransferTool.ToObject<SoulItemDB>(json.ToString());
+            SoulItemDB item = TmJson.ToObject<SoulItemDB>(json.ToString());
             //manager.UpdateItemdb(item.Id, item.Exp, item.Level, item.Hp, item.Mp, item.Coin, item.Diamond);
         }
         void UpdateItemdbPxPyPz(TmRequest sp)
@@ -73,7 +73,7 @@ namespace Servers.Games.Handlers
             Console.WriteLine("sp:" + sp.Parameters.Count);
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
-            SoulItemDB item = TmTransferTool.ToObject<SoulItemDB>(json.ToString());
+            SoulItemDB item = TmJson.ToObject<SoulItemDB>(json.ToString());
             Console.WriteLine("SkillItemDB:" + item.py);
 
             //manager.UpdateItemdb(item.Id, item.SenceId, item.px, item.py, item.pz, item.ax, item.ay, item.az);
