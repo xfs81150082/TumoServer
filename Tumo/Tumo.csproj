@@ -96,7 +96,7 @@
     <Compile Include="Logs\TmLog.cs" />
     <Compile Include="Sockets\TmTcp\TmAsyncTcpClient.cs" />
     <Compile Include="Sockets\TmTcp\TmAsyncTcpServer.cs" />
-    <Compile Include="TmEntities\TmBases\TmTimerTool.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmTimerTool.cs" />
     <Compile Include="TmEntities\TmHelpers\TmMD5Tool.cs" />
     <Compile Include="TmEntities\TmBases\TmTransfer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmRequest.cs" />

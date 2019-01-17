@@ -99,7 +99,7 @@ namespace Tumo
                 {
                     TmRequest mvc = SendParameters.Dequeue();
                     ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
-                    string mvcJsons = TmTransferTool.ToString<TmRequest>(mvc);
+                    string mvcJsons = TmJson.ToString<TmRequest>(mvc);
                     TPeer tpeer;
                     TPeers.TryGetValue(mvc.EcsId, out tpeer);
                     if (tpeer != null)

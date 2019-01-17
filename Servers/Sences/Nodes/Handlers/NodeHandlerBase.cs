@@ -10,8 +10,6 @@ namespace Servers.Sences.Nodes.Handlers
 {
     public abstract class NodeHandlerBase : TmTransfer
     {
-        private Timer TmTimer;
-        private int ValTime = 1000;
         public NodeHandlerBase()
         {
             TumoNodeHandler.Instance.NodeHandlers.Add(Code, this);

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public class TmTimerTool
+    public static class TmTimerTool
     {
         ///获得服务器当前时间
         public static string GetCurrentTime()
