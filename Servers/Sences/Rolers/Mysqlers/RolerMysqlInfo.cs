@@ -13,9 +13,9 @@ namespace Servers.Sences.Rolers.Mysqlers
         private static RolerMysqlInfo _instance;
         public static RolerMysqlInfo Instance { get => _instance; }
         
-        public Dictionary<int, SoulItem> Engineers = new Dictionary<int, SoulItem>();
-        public Dictionary<int, SoulItem> Bookers = new Dictionary<int, SoulItem>();
-        public Dictionary<int, SoulItem> Teachers = new Dictionary<int, SoulItem>();
+        public Dictionary<int, TmSoulerItem> Engineers = new Dictionary<int, TmSoulerItem>();
+        public Dictionary<int, TmSoulerItem> Bookers = new Dictionary<int, TmSoulerItem>();
+        public Dictionary<int, TmSoulerItem> Teachers = new Dictionary<int, TmSoulerItem>();
 
 
         public RolerMysqlInfo() { _instance = this; Init(); }

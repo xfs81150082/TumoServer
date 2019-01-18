@@ -10,7 +10,7 @@ using System.Timers;
 namespace Servers.Sences.Models
 {
     [Serializable]
-    public class Player : Roler
+    public class Player : TmRoler
     {
         public SpawnCDitem SpawnCDitem;
         public override void TmAwake()
@@ -23,18 +23,18 @@ namespace Servers.Sences.Models
 
         }
 
-        public Player(SoulItem item)
-        {
-            this.SoulItem = item;
-            this.TmTransform = new TmTransform(item);
-            //this.RolerMove.SpawnTransform = new TmTransform(item);
-            //this.RolerMove.TargetTransform = new TmTransform(item);
-        }
+        //public Player(TmSoulerItem item)
+        //{
+        //    this.SoulItem = item;
+        //    this.TmTransform = new TmTransform(item);
+        //    //this.RolerMove.SpawnTransform = new TmTransform(item);
+        //    //this.RolerMove.TargetTransform = new TmTransform(item);
+        //}
 
-        public override void TmUpdate()
-        {
+        //public override void TmUpdate()
+        //{
 
-        }
+        //}
 
       
     }

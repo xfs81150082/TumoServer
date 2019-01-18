@@ -72,6 +72,5 @@ namespace Tumo
             }
             Components.Clear();
         }
-        
     }
 }

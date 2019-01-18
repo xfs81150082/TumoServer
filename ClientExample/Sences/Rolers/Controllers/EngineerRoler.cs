@@ -46,22 +46,22 @@ namespace ClientExample.Sences.Rolers.Controllers
 
         public EngineerRoler(){   }
 
-        void SpawnRoler(TmRequest mvc)
-        {
-            SoulItem soulItem = TmTransferTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
-            RolerInfo.Instance.Engineers.Add(soulItem.Id, soulItem);
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
-        }
-        void RemoveRoler(TmRequest mvc)
-        {
-            SoulItem soulItem = TmTransferTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
-            RolerInfo.Instance.Engineers.Remove(soulItem.Id);
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
-        }
-        void SyncMoveState(TmRequest mvc)
-        {
+        //void SpawnRoler(TmRequest mvc)
+        //{
+        //    TmSoulerItem soulItem = TmTransferTool.GetJsonValue<TmSoulerItem>(mvc, mvc.ElevenCode.ToString());
+        //    RolerInfo.Instance.Engineers.Add(soulItem.Id, soulItem);
+        //    Console.WriteLine(TmTimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
+        //}
+        //void RemoveRoler(TmRequest mvc)
+        //{
+        //    TmSoulerItem soulItem = TmTransferTool.GetJsonValue<TmSoulerItem>(mvc, mvc.ElevenCode.ToString());
+        //    RolerInfo.Instance.Engineers.Remove(soulItem.Id);
+        //    Console.WriteLine(TmTimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
+        //}
+        //void SyncMoveState(TmRequest mvc)
+        //{
 
-        }
+        //}
 
 
     }
