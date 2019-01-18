@@ -17,46 +17,43 @@ namespace Tumo
         #endregion
 
         #region GetTmEntities
-        private Dictionary<string, TmComponent> Comopnents { get; set; } = new Dictionary<string, TmComponent>();
-        public void AddComopnent<T>(T tm) where T : TmComponent
+        public Dictionary<string, TmComponent> Components { get; set; } = new Dictionary<string, TmComponent>();
+        public void AddComponent<T>(T tm) where T : TmComponent
         {
             TmComponent com;
-            bool have = Comopnents.TryGetValue(typeof(T).Name, out com);
+            bool have = Components.TryGetValue(typeof(T).Name, out com);
             if (have)
             {
                 Console.WriteLine(TmTimerTool.GetCurrentTime() + typeof(T).Name + "此类组件已添加");
             }
             else
             {
-                Comopnents.Add(typeof(T).Name, tm);
+                Components.Add(typeof(T).Name, tm);
             }
         }
         public Dictionary<string, TmEntity> GetTmEntities()
         {
-            Dictionary<string, TmEntity> tmentites = new Dictionary<string, TmEntity>(TmEcsDictionary.Entities);
-            if (Comopnents.Count > 0)
+            Dictionary<string, TmEntity> entites = new Dictionary<string, TmEntity>();
+            entites = TmEcsDictionary.Entities;
+            List<string> types = new List<string>(Components.Keys);
+            if (Components.Count > 0)
             {
-                List<string> types = new List<string>(Comopnents.Keys);
-                List<TmEntity> entites = new List<TmEntity>(TmEcsDictionary.Entities.Values);
                 for (int i = 0; i < types.Count; i++)
                 {
-                    for (int j = 0; j < entites.Count; j++)
+                    foreach (var entity in entites.Values)
                     {
                         TmComponent com;
-                        bool yes = entites[j].Components.TryGetValue(types[i], out com);
-                        if (yes == false)
+                        bool yes = entity.Components.TryGetValue(types[i], out com);
+                        if (!yes)
                         {
-                            tmentites.Remove(entites[j].EcsId);
+                            entites.Remove(types[i]);
                         }
                     }
                 }
-                return tmentites;
+                return entites;
             }
-            else
-            {
-                return null;
-            }
-        }      
+            return null;
+        }     
         #endregion
 
         #region TmDispose

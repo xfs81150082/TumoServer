@@ -14,9 +14,11 @@ namespace Servers
         //程序启动入口
         static void Main(string[] args)
         {
-            new MysqlHelper();
-            new TumoGate();
-            TmTcpServer tmTcpServer = new TmTcpServer();
+            //new TmMysql();
+            //new TmGate();
+            //new TmTcpServer();
+
+            new TmGame();
 
             Thread.CurrentThread.Name = "ServerMainThread26";
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.Name);

@@ -45,17 +45,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TmModels\TmFixedType.cs" />
-    <Compile Include="TmModels\TmChangeType.cs" />
-    <Compile Include="TmModels\TmBuffAdd.cs" />
-    <Compile Include="TmModels\TmName.cs" />
-    <Compile Include="TmModels\TmSkillAdd.cs" />
-    <Compile Include="TmModels\TmLabel.cs" />
+    <Compile Include="TmModels\Components\TmFixedType.cs" />
+    <Compile Include="TmModels\Components\TmChangeType.cs" />
+    <Compile Include="TmModels\Components\TmBuffAdd.cs" />
+    <Compile Include="TmModels\Components\TmName.cs" />
+    <Compile Include="TmModels\Components\TmSkillAdd.cs" />
+    <Compile Include="TmModels\Components\TmLabel.cs" />
     <Compile Include="Models\Tasks\Assignment.cs" />
     <Compile Include="Models\Tasks\AssignmentItem.cs" />
     <Compile Include="Models\Tasks\AssignmentItemDB.cs" />
-    <Compile Include="TmModels\TmInventoryAdd.cs" />
-    <Compile Include="TmModels\TmAttribute.cs" />
+    <Compile Include="TmModels\Components\TmInventoryAdd.cs" />
+    <Compile Include="TmModels\Components\TmAttribute.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmInitialize.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmTimer.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsBase.cs" />
@@ -73,8 +73,8 @@
     <Compile Include="TmModels\TmSoulers\TmSouler.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerItem.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerDB.cs" />
-    <Compile Include="TmSockets\TmTcp\TmServerCDItem.cs" />
-    <Compile Include="TmSockets\TmTcp\TmClientCDItem.cs" />
+    <Compile Include="TmSockets\Systems\TmServerCDItem.cs" />
+    <Compile Include="TmSockets\Systems\TmClientCDItem.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsDictionary.cs" />
     <Compile Include="TmEntities\TmHelpers\TmJson.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmSystem.cs" />
@@ -83,15 +83,15 @@
     <Compile Include="TmEntities\TmEcsBases\TmIdGenerater.cs" />
     <Compile Include="TmModels\TmSoulers\TmTransform.cs" />
     <Compile Include="TmModels\TmSoulers\TmUser.cs" />
-    <Compile Include="TmSockets\TmTcp\TClient.cs" />
-    <Compile Include="TmSockets\TmTcp\TPeer.cs" />
+    <Compile Include="TmSockets\Components\TClient.cs" />
+    <Compile Include="TmSockets\Components\TPeer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmResponse.cs" />
-    <Compile Include="TmSockets\TmTcp\TmAsyncTcpSession.cs" />
+    <Compile Include="TmSockets\Components\TmAsyncTcpSession.cs" />
     <Compile Include="TmEntities\TmHelpers\TmParameter.cs" />
     <Compile Include="TmModels\TmEnums\TmInfoType.cs" />
     <Compile Include="TmLogs\TmLog.cs" />
-    <Compile Include="TmSockets\TmTcp\TmAsyncTcpClient.cs" />
-    <Compile Include="TmSockets\TmTcp\TmAsyncTcpServer.cs" />
+    <Compile Include="TmSockets\Systems\TmAsyncTcpClient.cs" />
+    <Compile Include="TmSockets\Systems\TmAsyncTcpServer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmTimerTool.cs" />
     <Compile Include="TmEntities\TmHelpers\TmMD5Tool.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmTransfer.cs" />
@@ -104,10 +104,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Hotfixes\" />
-    <Folder Include="TmComponents\" />
     <Folder Include="TmEntities\TmComponents\" />
-    <Folder Include="TmSystems\" />
+    <Folder Include="TmHotfixes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,6 +12,8 @@ namespace Tumo
         {
             base.TmAwake();
             TmEcsDictionary.Entities.Add(EcsId, this);
+            //TmEcsDictionary.Entities.Add(this.GetType().Name, this);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmEntity: " + this.GetType().Name);
         }
         public TmEntity() { }
         public TmComponent GetComponent<T>()

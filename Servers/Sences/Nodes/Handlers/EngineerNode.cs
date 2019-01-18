@@ -59,13 +59,13 @@ namespace Servers.Sences.Nodes.Handlers
         {
             TmRequest mvc2 = TmTransferTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Booker, ElevenCode.GetItems);
             mvc2.EcsId = mvc.EcsId;
-            TumoGate.Instance.OnTransferParameter(mvc2);
+            TmGate.Instance.OnTransferParameter(mvc2);
         }
         private void GetTeachers(TmRequest mvc)
         {
             TmRequest mvc2 = TmTransferTool.ToJsonParameter(EightCode.Node, NineCode.Handler, TenCode.Teacher, ElevenCode.GetItems);
             mvc2.EcsId = mvc.EcsId;
-            TumoGate.Instance.OnTransferParameter(mvc2);
+            TmGate.Instance.OnTransferParameter(mvc2);
         }
         #endregion
 
