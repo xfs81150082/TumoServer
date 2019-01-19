@@ -14,9 +14,12 @@ namespace Tumo
         #region Properties        
         public Socket Socket { get; set; }  ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信///客户端Socket 
         public bool IsRunning { get; set; }
-        private bool noClose { get; set; } = false;
         public TmCoolDown CD { get; set; }
-        public TmAsyncTcpSession() {  }
+        public TmAsyncTcpSession()
+        {
+            CD = new TmSessionCDItem(EcsId);
+            CD.Key = EcsId;
+        }
         #endregion
 
         #region byte[] Bytes        
@@ -128,7 +131,9 @@ namespace Tumo
                         ///一个消息包接收完毕，解析消息包
                         string mvcString = Encoding.UTF8.GetString(BodyBytes, 0, BodyBytes.Length);
                         ///这个方法用来处理参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
-                        OnTransferParameter(mvcString);
+                        TmParameter parameter = TmJson.ToObject<TmParameter>(mvcString);
+
+                        OnTransferParameter(parameter);
                         ///将字符串string,用json反序列化转换成MvcParameter参数
                         ///MvcParameter mvc = MvcTool.ToObject<MvcParameter>(mvcString);
                     }
@@ -138,6 +143,21 @@ namespace Tumo
             {
                 Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.ToString());
                 Dispose();
+            }
+        }
+        public void OnTransferParameter(TmParameter parameter)
+        {
+            ///将字符串string,用json反序列化转换成MvcParameter参数
+            //TmParameter mvc = TmJson.ToObject<TmParameter>(mvcString);
+            parameter.EcsId = this.EcsId;
+            if (parameter.ElevenCode == ElevenCode.HeartBeat)
+            {
+                CD.CdCount = 0;
+            }
+            else
+            {
+                ///将MvcParameter参数列队
+                TmOutTcp.Instance.RecvParameters.Enqueue(parameter);
             }
         }
         #endregion
@@ -229,7 +249,7 @@ namespace Tumo
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmAsyncTcpSession释放资源");
         }
         public abstract void OnConnect();
-        public abstract void OnTransferParameter(string mvcString);
+        //public abstract void OnTransferParameter(TmParameter parameter);
         #endregion
 
     }

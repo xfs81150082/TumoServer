@@ -8,7 +8,7 @@ using System.Timers;
 
 namespace Servers.Sences.Nodes.Handlers
 {
-    public abstract class NodeHandlerBase : TmTransfer
+    public abstract class NodeHandlerBase : OnTmTransfer
     {
         public NodeHandlerBase()
         {

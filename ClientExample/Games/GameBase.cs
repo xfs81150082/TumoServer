@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientExample.Games
 {
-    public abstract class GameBase : TmTransfer
+    public abstract class GameBase : OnTmTransfer
     {
         public GameBase()
         {

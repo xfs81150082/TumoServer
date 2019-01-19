@@ -16,7 +16,7 @@ namespace Tumo
         public TmComponent(TmEntity entity)
         {
             Parent = entity;
-        }          
+        }
         public override void TmDispose()
         {
             TmEcsDictionary.Components.Remove(EcsId);

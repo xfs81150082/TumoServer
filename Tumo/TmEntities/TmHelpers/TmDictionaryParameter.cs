@@ -13,6 +13,6 @@ namespace Tumo
         public ElevenCode ElevenCode { get; set; }
         public TwelveCode TwelveCode { get; set; }
         public Dictionary<string, object> Parameters { get; set; } = new Dictionary<string, object>();
-        public TmDictionaryParameter() { }
+        public TmDictionaryParameter() { }               
     }
 }

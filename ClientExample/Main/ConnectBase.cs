@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace ClientExample
 {
-    public abstract class ConnectBase : TmTransfer
+    public abstract class ConnectBase : OnTmTransfer
     {
         public ConnectBase()
         {

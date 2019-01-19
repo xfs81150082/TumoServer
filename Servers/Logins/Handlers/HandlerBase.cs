@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Logins.Handlers
 {
-    public abstract class HandlerBase : TmTransfer
+    public abstract class HandlerBase : OnTmTransfer
     {
         public HandlerBase()
         {

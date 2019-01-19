@@ -24,9 +24,9 @@ namespace ClientExample
         }
         void ConnectToServer()
         {
-            if (!IsConnecting)
+            if (!IsRunning)
             {
-                IsConnecting = true;
+                IsRunning = true;
                 this.Init("127.0.0.1", 8115);
                 this.StartConnect();
                 Console.WriteLine(TmTimerTool.GetCurrentTime() + " Connecting...");

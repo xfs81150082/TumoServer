@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Sences.Nodes.Mysqlers
 {
-    public abstract class NodeMysqlBase : TmTransfer
+    public abstract class NodeMysqlBase : OnTmTransfer
     {
         public NodeMysqlBase()
         {
