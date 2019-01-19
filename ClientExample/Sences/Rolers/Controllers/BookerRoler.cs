@@ -18,11 +18,11 @@ namespace ClientExample.Sences.Rolers.Controllers
             switch (elevenCode)
             {
                 case (ElevenCode.SpawnRoler):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " BookerRoler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " BookerRoler: " + elevenCode);
                     //SpawnRoler(mvc);
                     break;
                 case (ElevenCode.RemoveRoler):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " BookerRoler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " BookerRoler: " + elevenCode);
                     //RemoveRoler(mvc);
                     break;
                 //case (ElevenCode.GetItems):
@@ -39,13 +39,13 @@ namespace ClientExample.Sences.Rolers.Controllers
         //    //RolerInfo.Instance.Bookers.Add(soulItem.Id, soulItem);
         //    //Console.WriteLine(TmTimer.GetCurrentTime() + " SpawnRoler: " + soulItem.Id + " Bookers: " + RolerInfo.Instance.Bookers.Count);
         //    //Console.WriteLine(TmTimer.GetCurrentTime() + " SpawnRoler,Id: " + mvc.RolerId);
-        //    //Console.WriteLine(TmTimerTool.GetCurrentTime() + " SpawnRoler,soulItem.Id: " + soulItem.Id);
+        //    //Console.WriteLine(TmTimerTool.CurrentTime() + " SpawnRoler,soulItem.Id: " + soulItem.Id);
         //}
         //void RemoveRoler(TmRequest mvc)
         //{
         //    //RolerInfo.Instance.Bookers.Remove(int.Parse(mvc.RolerId));
         //    //Console.WriteLine(TmTimer.GetCurrentTime() + " RemoveRoler,Id: " + mvc.RolerId + " Bookers: " + RolerInfo.Instance.Bookers.Count);
-        //    Console.WriteLine(TmTimerTool.GetCurrentTime() + " RemoveRoler,Id: " + mvc.RolerId);
+        //    Console.WriteLine(TmTimerTool.CurrentTime() + " RemoveRoler,Id: " + mvc.RolerId);
         //}
         ////void Getitems(MvcParameter mvc)
         //{

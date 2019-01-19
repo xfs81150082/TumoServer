@@ -12,7 +12,7 @@ namespace ClientExample
         public ConnectBase()
         {
             TumoConnect.Instance.Connects.Add(Code, this);
-            Console.WriteLine("Connect: " + this.GetType().Name + "  is register.");
+            Console.WriteLine(TmTimerTool.CurrentTime() + " Connect: " + this.GetType().Name + "  is register.");
         }
     }
 }

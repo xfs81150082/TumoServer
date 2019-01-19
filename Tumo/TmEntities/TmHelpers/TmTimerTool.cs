@@ -8,7 +8,7 @@ namespace Tumo
     public static class TmTimerTool
     {
         ///获得服务器当前时间
-        public static string GetCurrentTime()
+        public static string CurrentMoveTime()
         {
             string cuurentTime = "";
             cuurentTime = DateTime.Now.ToString("yyyyMMddHHmmss.ffff");

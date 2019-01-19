@@ -19,7 +19,7 @@ namespace Servers.Logins.Mysqlers
             switch (elevenCode)
             {
                 case (ElevenCode.UserLogin):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " UserLoginMysql: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " UserLoginMysql: " + elevenCode);
                     CheckLoginPassword(mvc);
                     break;               
                 default:

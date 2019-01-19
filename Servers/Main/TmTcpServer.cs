@@ -11,13 +11,7 @@ namespace Servers
     public class TmTcpServer : TmAsyncTcpServer
     {
         public TmTcpServer()  {   }
-        public TmTcpServer(string ipString, int port, int maxListenCount)
-        {
-            IpString = ipString;
-            Port = port;
-            MaxListenCount = maxListenCount;
-        }
-
+      
         public override void TmUpdate()
         {
             ServerStart();

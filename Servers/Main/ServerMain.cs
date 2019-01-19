@@ -23,7 +23,7 @@ namespace Servers
             Console.WriteLine(TmTimerTool.CurrentTime() + " EngineerNode Thread Name:" + Thread.CurrentThread.ManagedThreadId);
 
             Console.ReadKey();
-            Console.WriteLine("退出监听，并关闭程序。");
+            Console.WriteLine(TmTimerTool.CurrentTime() + " 退出监听，并关闭程序。");
         }
     }
 }

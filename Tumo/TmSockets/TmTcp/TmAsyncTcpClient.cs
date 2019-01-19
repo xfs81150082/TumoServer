@@ -37,7 +37,7 @@ namespace Tumo
                     tcpSocket.EndConnect(ar);
                     ///触发事件///创建一个方法接收peerSocket (在方法里创建一个peer来处理读取数据//开始接受来自该客户端的数据)
                     TmReceiveSocket(tcpSocket);
-                    Console.WriteLine("{0} 连接服务器成功 {1}", TmTimerTool.GetCurrentTime(), tcpSocket.RemoteEndPoint.ToString());
+                    Console.WriteLine("{0} 连接服务器成功 {1}", TmTimerTool.CurrentTime(), tcpSocket.RemoteEndPoint.ToString());
                 }
                 catch (Exception ex)
                 {
@@ -69,13 +69,13 @@ namespace Tumo
                     else
                     {
                         TClient = new TClient();
-                        Console.WriteLine(TmTimerTool.GetCurrentTime() + " TClient is Null. {0}", "new TClient() 重新连接。");
+                        Console.WriteLine(TmTimerTool.CurrentTime() + " TClient is Null. {0}", "new TClient() 重新连接。");
                     }
                 }
             }
             catch(Exception ex)
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " SendMvcParameters: " + ex.Message);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " SendMvcParameters: " + ex.Message);
             }
         }
         #endregion

@@ -21,12 +21,12 @@ namespace Servers.Sences.Nodes.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TeacherNode: " + elevenCode);
                     mvc.NineCode = NineCode.Mysqler;
                     TumoNode.Instance.OnTransferParameter(mvc);
                     break;
                 case (ElevenCode.None):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TeacherNode: " + elevenCode);
                     break;
                 default:
                     break;

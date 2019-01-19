@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tumo;
 
 namespace Servers
 {
@@ -40,7 +41,7 @@ namespace Servers
         {
             Connection = new MySqlConnection(connectionString);
             Connection.Open();
-            Console.WriteLine("MySql版本号： " + Connection.ServerVersion);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " MySql版本号:{0} ", Connection.ServerVersion);
         }
 
         public void QuitMysql()

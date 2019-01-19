@@ -18,7 +18,7 @@ namespace ClientExample.Logins.Controllers
             switch (elevenCode)
             {
                 case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerLogin: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " EngineerLogin: " + elevenCode);
                     mvc.NineCode = NineCode.Sender;
                     TumoLogin.Instance.OnTransferParameter(mvc);
                     break;         

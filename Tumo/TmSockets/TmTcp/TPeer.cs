@@ -13,17 +13,17 @@ namespace Tumo
         public override void OnConnect()
         {
             ///显示与客户端连接
-            Console.WriteLine("{0} 客户端{1}连接成功", TmTimerTool.GetCurrentTime() , Socket.RemoteEndPoint);
+            Console.WriteLine("{0} 客户端{1}连接成功", TmTimerTool.CurrentTime() , Socket.RemoteEndPoint);
             TmAsyncTcpSession tpeer = null;
             bool yes1 = TmOutTcp.Instance.TPeers.TryGetValue(this.EcsId, out tpeer);
             if (yes1 != true)
             {
                 ///tpeers已经加入字典
                 TmOutTcp.Instance.TPeers.Add(this.EcsId, this);
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " ComponentId: " + this.EcsId + " 已经加入字典");
+                Console.WriteLine(TmTimerTool.CurrentTime() + " ComponentId: " + this.EcsId + " 已经加入字典");
             }
             ///显示客户端群中的客户端数量
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
         }     
         public override void TmDispose()
         {
@@ -36,7 +36,7 @@ namespace Tumo
                 //删除掉心跳包群中对应的peer
                 TmOutTcp.Instance.TPeers.Remove(EcsId);
             }            ///显示客户端群中的客户端数量
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " 一个客户端:已经中断连接" + " TPeers: " + TmAsyncTcpServer.Instance.TPeers.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " 一个客户端:已经中断连接" + " TPeers: " + TmAsyncTcpServer.Instance.TPeers.Count);
         }
     }
 }
