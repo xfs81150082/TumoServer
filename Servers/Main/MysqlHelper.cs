@@ -11,8 +11,6 @@ namespace Servers
     public class MysqlHelper
     {
         public static MySqlConnection Connection;     //创建一个数据库连接                                                     
-        //private string localhost = "127.0.0.1";     //IP地址
-        //private string root = "root";               //用户名  
         private string localhost = "111.231.50.160";  //IP地址
         private string database = "tumoworld";        //数据库名    
         private string root = "tumo";                 //用户名  

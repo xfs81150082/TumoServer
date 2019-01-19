@@ -7,6 +7,7 @@ namespace Tumo
 {
     public class TmSessionCDItem : TmCoolDown
     {
+        public TmAsyncTcpSession Session { get; set; }
         public bool IsServer { get; set; } = true;
         public override void TmAwake()
         {
@@ -21,15 +22,11 @@ namespace Tumo
             UpdateCDCount();
         }
         void UpdateCDCount()
-        {
-            if (CdCount <= MaxCdCount)
-            {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
-            }
+        {            
             CdCount += 1;
             if (CdCount >= MaxCdCount)
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " TmServerCDItem is Colsed. TPeers Count: " + TmOutTcp.Instance.TPeers.Count);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} " ,TmOutTcp.Instance.TPeers.Count);
                 this.End = true;
                 if (Session != null)
                 {
@@ -42,25 +39,14 @@ namespace Tumo
                 //发送心跳检测（并等待签到，签到入口在EngineerNode）
                 TmParameter mvc = TmTransferTool.ToParameter(EightCode.Node, NineCode.Sender, TenCode.Peer, ElevenCode.HeartBeat);
                 mvc.EcsId = Key;
-                TmOutTcp.Instance.SendMvc(mvc);
-                //if (IsServer)
-                //{
-                //    TmOutTcp.Instance.SendMvc(mvc);
-                //}
-                //else
-                //{
-                //    TmAsyncTcpClient.Instance.SendMvc(mvc);
-                //}
+                TmOutTcp.Instance.SendMvc(mvc);              
             }
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " CdCount:{0}-{1} ", CdCount, MaxCdCount);
         }
-
         public override void TmDispose()
         {
             base.TmDispose();
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmServerCDItem释放资源。 Key:" + Key);
-        }
-
-      
+            Console.WriteLine(TmTimerTool.GetCurrentTime() + " TmSessionCDItem释放资源, EcsId:{0} Key:{1}", EcsId, Key);
+        }      
     }
 }

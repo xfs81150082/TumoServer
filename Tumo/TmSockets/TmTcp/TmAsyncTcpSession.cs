@@ -21,7 +21,6 @@ namespace Tumo
             CD.Key = EcsId;
         }
         #endregion
-
         #region byte[] Bytes        
         private byte[] Buffer { get; set; }  ///接收缓冲区   
         private int BufferSize { get; set; }
@@ -33,13 +32,12 @@ namespace Tumo
         private bool isHead { get; set; }
         private bool isBody { get; set; }
         #endregion
-
         #region ReceiveMsg
         public void BeginReceiveMessage(object obj)
         {
             Socket = obj as Socket;
             OnConnect();
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " BeginReceiveMsg  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  ComponentId:" + this.EcsId);
+            //Console.WriteLine(TmTimerTool.CurrentTime() + " BeginReceiveMsg  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  ComponentId:" + this.EcsId);
             BufferSize = 1024;
             Buffer = new byte[BufferSize];
             isHead = true;
@@ -53,7 +51,7 @@ namespace Tumo
         {
             if (IsRunning)
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
+                //Console.WriteLine(TmTimerTool.CurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
                 try
                 {
                     RecvLength = Socket.EndReceive(ar);
@@ -77,7 +75,7 @@ namespace Tumo
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.ToString());
+                    Console.WriteLine(TmTimerTool.CurrentTime() + ex.ToString());
                     IsRunning = false;
                     Dispose();
                 }
@@ -85,7 +83,7 @@ namespace Tumo
         }
         private void ParsingBytes()
         {
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
+            //Console.WriteLine(TmTimerTool.CurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
             ///将本次要接收的消息头字节数置0
             int iBytesHead = 0;
             ///将本次要剪切的字节数置0
@@ -130,25 +128,22 @@ namespace Tumo
                         CutTo(RecvBuffList, BodyBytes, 0, iBytesBody);
                         ///一个消息包接收完毕，解析消息包
                         string mvcString = Encoding.UTF8.GetString(BodyBytes, 0, BodyBytes.Length);
-                        ///这个方法用来处理参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
+                        Console.WriteLine(TmTimerTool.CurrentTime() + " Recv {0} Bytes. ThreadId:{1}", BodyBytes.Length, Thread.CurrentThread.ManagedThreadId);
                         TmParameter parameter = TmJson.ToObject<TmParameter>(mvcString);
-
+                        ///这个方法用来处理参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
                         OnTransferParameter(parameter);
-                        ///将字符串string,用json反序列化转换成MvcParameter参数
-                        ///MvcParameter mvc = MvcTool.ToObject<MvcParameter>(mvcString);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.ToString());
+                Console.WriteLine(TmTimerTool.CurrentTime() + ex.ToString());
                 Dispose();
             }
         }
         public void OnTransferParameter(TmParameter parameter)
         {
             ///将字符串string,用json反序列化转换成MvcParameter参数
-            //TmParameter mvc = TmJson.ToObject<TmParameter>(mvcString);
             parameter.EcsId = this.EcsId;
             if (parameter.ElevenCode == ElevenCode.HeartBeat)
             {
@@ -161,7 +156,6 @@ namespace Tumo
             }
         }
         #endregion
-
         #region AddRange        
         void CutTo(List<byte> BuffList, byte[] bytes, int bytesoffset, int size)
         {
@@ -175,14 +169,13 @@ namespace Tumo
             BuffList.AddRange(temByte);
         }/// 队列数据
         #endregion
-
         #region SendString       
         public void SendString(string mvcString)
         {
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Send  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
+            //Console.WriteLine(TmTimerTool.GetCurrentTime() + " Send  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
             if (null == Socket.Handle || !Socket.Connected)
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " 连接已中断！！！");
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 连接已中断！！！");
                 IsRunning = false;
                 return;
             }
@@ -218,7 +211,7 @@ namespace Tumo
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.ToString());
+                    Console.WriteLine(TmTimerTool.CurrentTime() + ex.ToString());
                     Dispose();
                 }
             }
@@ -229,16 +222,16 @@ namespace Tumo
             {
                 Socket client = (Socket)ar.AsyncState;
                 int bytesSent = client.EndSend(ar);
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " Sent {0} Bytes To Clinet.", bytesSent);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " Sent {0} Bytes. ThreadId:{1}", bytesSent, Thread.CurrentThread.ManagedThreadId);
+
             }
             catch (Exception ex)
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + ex.ToString());
+                Console.WriteLine(TmTimerTool.CurrentTime() + ex.ToString());
             }
         }
         #endregion
-
-        #region  /// 抽象方法 接口    
+        #region  /// dispose OnConnect
         public override void TmDispose()
         {
             base.TmDispose();
@@ -249,8 +242,6 @@ namespace Tumo
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmAsyncTcpSession释放资源");
         }
         public abstract void OnConnect();
-        //public abstract void OnTransferParameter(TmParameter parameter);
         #endregion
-
     }
 }
