@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Sences.Nodes.Senders
 {
-    public abstract class NodeSenderBase : TmTransfer
+    public abstract class NodeSenderBase : OnTmTransfer
     {
         public NodeSenderBase()
         {

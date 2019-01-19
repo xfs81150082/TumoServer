@@ -37,7 +37,7 @@ namespace Servers.Logins.Mysqlers
             {
                 if (user2.Password == mvc.Password)
                 {
-                    TPeer peer = TmAsyncTcpServer.Instance.GetTPeer(mvc.EcsId);
+                    //TPeer peer = TmOutTcp.Instance.GetTPeer(mvc.EcsId);
                     //peer.User = user2;
                     mvc.TenCode = TenCode.Engineer;
                     mvc.ElevenCode = ElevenCode.UserLogin;

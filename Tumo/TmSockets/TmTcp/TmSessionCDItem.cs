@@ -5,20 +5,17 @@ using System.Text;
 
 namespace Tumo
 {
-    public class TmServerCDItem : TmCoolDown
+    public class TmSessionCDItem : TmCoolDown
     {
-        public TPeer Peer { get; set; }
+        public bool IsServer { get; set; } = true;
         public override void TmAwake()
         {
             ValTime = 4000;
-        }    
-        public TmServerCDItem(TPeer peer)
-        {
-            this.Peer = peer;
-            this.Key = peer.EcsId;
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " 创建一个心跳包 TmServerCDItem.");
         }
-        public TmServerCDItem()   { }
+        public TmSessionCDItem() { }
+        public TmSessionCDItem(int time) { this.ValTime = time; }
+        public TmSessionCDItem(string key) { this.Key = key; }
+        public TmSessionCDItem(bool isServer) { IsServer = isServer; }
         public override void TmUpdate()
         {
             UpdateCDCount();
@@ -32,11 +29,11 @@ namespace Tumo
             CdCount += 1;
             if (CdCount >= MaxCdCount)
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " TmServerCDItem is Colsed. TPeers Count: " + TmAsyncTcpServer.Instance.TPeers.Count);
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " TmServerCDItem is Colsed. TPeers Count: " + TmOutTcp.Instance.TPeers.Count);
                 this.End = true;
-                if (Peer != null)
+                if (Session != null)
                 {
-                    Peer.Dispose();
+                    Session.Dispose();
                 }
                 this.Dispose();
             }
@@ -45,7 +42,15 @@ namespace Tumo
                 //发送心跳检测（并等待签到，签到入口在EngineerNode）
                 TmParameter mvc = TmTransferTool.ToParameter(EightCode.Node, NineCode.Sender, TenCode.Peer, ElevenCode.HeartBeat);
                 mvc.EcsId = Key;
-                TmAsyncTcpServer.Instance.SendMvc(mvc);
+                TmOutTcp.Instance.SendMvc(mvc);
+                //if (IsServer)
+                //{
+                //    TmOutTcp.Instance.SendMvc(mvc);
+                //}
+                //else
+                //{
+                //    TmAsyncTcpClient.Instance.SendMvc(mvc);
+                //}
             }
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " CdCount: " + CdCount + "-" + MaxCdCount);
         }

@@ -6,7 +6,7 @@ namespace Tumo
 {
     public abstract class TmEcsBase : TmInitialize, IDisposable
     {
-        #region TmAwake EcsId        
+        #region Awake        
         public string EcsId { get; set; }           /// 身份证号
         public TmEcsBase()
         {

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientExample.Logins.Senders
 {
-    public abstract class LoginSenderBase : TmTransfer
+    public abstract class LoginSenderBase : OnTmTransfer
     {
         public LoginSenderBase()
         {

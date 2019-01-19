@@ -7,7 +7,8 @@ using System.Timers;
 namespace Tumo
 {
     public abstract class TmCoolDown : TmSystem
-    {       
+    {
+        public TmAsyncTcpSession Session { get; set; }
         public string Key { get; set; }
         public int CdCount { get; set; } = 0;
         public int MaxCdCount { get; set; } = 4;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers
 {
-    public abstract class GateBase : TmTransfer
+    public abstract class GateBase : OnTmTransfer
     {
         public GateBase()
         {

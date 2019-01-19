@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public abstract class TmTransfer
+    public abstract class OnTmTransfer
     {
         public abstract string Code { get; }
         public abstract void OnTransferParameter(TmParameter mvc);

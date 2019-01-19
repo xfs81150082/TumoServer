@@ -18,8 +18,8 @@ namespace Servers.Sences.Nodes.Senders.Souls
             switch (elevenCode)
             {
                 case (ElevenCode.HeartBeat):
-                    TPeer peer1 = TmAsyncTcpServer.Instance.GetTPeer(mvc.EcsId);
-                    mvc.NineCode = NineCode.Controller;
+                    //TPeer peer1 = TmAsyncTcpServer.Instance.GetTPeer(mvc.EcsId);
+                    //mvc.NineCode = NineCode.Controller;
                     //Console.WriteLine(TmTimer.GetCurrentTime() + " EngineerSender:/nine:" + elevenCode + "/" + mvc.NineCode);
                     //peer1.SendMsg(mvc);
                     TmAsyncTcpServer.Instance.SendMvc(mvc);

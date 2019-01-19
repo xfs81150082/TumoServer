@@ -7,64 +7,27 @@ using System.Timers;
 
 namespace Tumo
 {
-    public abstract class TmAsyncTcpClient : TmSystem
-    {
-        #region 静态单列模式
-        private static TmAsyncTcpClient _instance;
-        public static TmAsyncTcpClient Instance { get => _instance; }
-        #endregion
-
-        #region Properties
-        public string IpString { get; set; }            //监听的IP地址  
-        public int Port { get; set; }                   //监听的端口  
-        public bool IsConnecting { get; set; }             //服务器是否正在运行
-        private IPAddress address { get; set; }          //连接的IP地址  
-        private Socket clientSocket { get; set; }
-        public TClient TClient { get; set; }
-        public Queue<TmParameter> RecvParameters { get; set; } = new Queue<TmParameter>();
-        private Queue<TmParameter> SendParameters { get; set; } = new Queue<TmParameter>();
-        #endregion
-
-        #region Constructor      
-        public TmAsyncTcpClient()
-        {
-            _instance = this;
-        }
-
-        public void Init()
-        {
-            address = IPAddress.Parse(IpString);
-            clientSocket = new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-        }
-
-        public void Init(string ipString, int port)
-        {
-            this.IpString = ipString;
-            this.Port = port;
-            address = IPAddress.Parse(IpString);
-            clientSocket = new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-        }
-        #endregion
-
+    public abstract class TmAsyncTcpClient : TmOutTcp
+    {      
         #region Methods Callbacks ///接收参数消息
         public void StartConnect()
         {
             try
             {
                 //开始连接
-                clientSocket.BeginConnect(new IPEndPoint(address, Port), new AsyncCallback(this.ConnectCallback), clientSocket);
-                IsConnecting = true;
+                netSocket.BeginConnect(new IPEndPoint(address, Port), new AsyncCallback(this.ConnectCallback), netSocket);
+                IsRunning = true;
             }
             catch (Exception ex)
             {
-                clientSocket.Close();
-                IsConnecting = false;
+                netSocket.Close();
+                IsRunning = false;
                 Console.WriteLine(ex.ToString());
             }
         }
         private void ConnectCallback(IAsyncResult ar)
         {
-            if (IsConnecting)
+            if (IsRunning)
             {
                 //创建一个Socket接收传递过来的TmSocket
                 Socket tcpSocket = (Socket)ar.AsyncState;
@@ -89,14 +52,8 @@ namespace Tumo
         }
         #endregion
 
-        #region ///发送参数消息
-        public void SendMvc(TmParameter mvc)
-        {
-            SendParameters.Enqueue(mvc);
-            SendMvcParameters();
-        }
-
-        private void SendMvcParameters()
+        #region ///接收参数消息的抽象方法
+        public override void OnSendMvcParameters()
         {
             try
             {
@@ -122,7 +79,6 @@ namespace Tumo
             }
         }
         #endregion
-
 
     }
 }

@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TmEntities\TmEcsBases\TmTransfer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmRequest.cs" />
     <Compile Include="TmModels\TmFixedType.cs" />
     <Compile Include="TmModels\TmChangeType.cs" />
@@ -74,7 +75,8 @@
     <Compile Include="TmModels\TmSoulers\TmSouler.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerItem.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerDB.cs" />
-    <Compile Include="TmSockets\TmTcp\TmServerCDItem.cs" />
+    <Compile Include="TmSockets\TmTcp\TmOutTcp.cs" />
+    <Compile Include="TmSockets\TmTcp\TmSessionCDItem.cs" />
     <Compile Include="TmSockets\TmTcp\TmClientCDItem.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsDictionary.cs" />
     <Compile Include="TmEntities\TmHelpers\TmJson.cs" />
@@ -95,7 +97,7 @@
     <Compile Include="TmSockets\TmTcp\TmAsyncTcpServer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmTimerTool.cs" />
     <Compile Include="TmEntities\TmHelpers\TmMD5Tool.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmTransfer.cs" />
+    <Compile Include="TmEntities\TmHelpers\OnTmTransfer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmParameter.cs" />
     <Compile Include="TmEntities\TmHelpers\TmTransferTool.cs" />
     <Compile Include="TmModels\TmEnums\TmParamterCode.cs" />

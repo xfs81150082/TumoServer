@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ClientExample.Logins
 {
-    public abstract class LoginBase : TmTransfer
+    public abstract class LoginBase : OnTmTransfer
     {
         public LoginBase()
         {
