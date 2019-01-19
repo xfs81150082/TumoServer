@@ -38,7 +38,7 @@ namespace Tumo
         public override void TmDispose()
         {
             Close();       ///关闭Timer时钟
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " Timer释放资源");
+            Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " Timer释放资源");
         }
         #endregion
 

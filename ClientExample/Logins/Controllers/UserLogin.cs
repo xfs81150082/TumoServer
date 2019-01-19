@@ -41,7 +41,7 @@ namespace ClientExample.Logins.Controllers
             //TmRequest mvc = TmTransferTool.ToParameter(EightCode.Login, NineCode.Sender, TenCode.Engineer, ElevenCode.EngineerLogin);
             //mvc.RolerId = soulItem.Id.ToString();
             //TumoConnect.Instance.OnTransferParameter(mvc);
-            //Console.WriteLine(TmTimerTool.GetCurrentTime() + " Test1-UserLogin: " + mvc.RolerId);
+            //Console.WriteLine(TmTimerTool.CurrentTime() + " Test1-UserLogin: " + mvc.RolerId);
         }
 
     }

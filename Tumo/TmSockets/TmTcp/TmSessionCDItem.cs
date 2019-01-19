@@ -46,7 +46,7 @@ namespace Tumo
         public override void TmDispose()
         {
             base.TmDispose();
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " TmSessionCDItem释放资源, EcsId:{0} Key:{1}", EcsId, Key);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem释放资源, EcsId:{0} Key:{1}", EcsId, Key);
         }      
     }
 }

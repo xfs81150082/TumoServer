@@ -16,7 +16,7 @@ namespace Servers.Sences.Rolers.Senders
             switch (elevenCode)
             {                
                 case (ElevenCode.None):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " BookerSender: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " BookerSender: " + elevenCode);
                     break;
                 default:
                     break;

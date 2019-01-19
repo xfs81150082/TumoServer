@@ -17,7 +17,7 @@ namespace ClientExample.Sences.Nodes.Senders
             switch (elevenCode)
             {
                 case (ElevenCode.HeartBeat):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " PeerSender: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " PeerSender: " + elevenCode);
                     mvc.NineCode = NineCode.Handler;
                     TmAsyncTcpClient.Instance.SendMvc(mvc);
                     //TClient.Instance.SendMsg(mvc);

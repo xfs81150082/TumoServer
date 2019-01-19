@@ -71,7 +71,7 @@ namespace Tumo
             }
             else
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " 没找TPeer，用Key: " + ecsid);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 没找TPeer，用Key: " + ecsid);
                 return null;
             }
         }

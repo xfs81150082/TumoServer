@@ -58,7 +58,7 @@ namespace Tumo
                     if (RecvLength == 0)
                     {
                         ///发送端关闭
-                        Console.WriteLine("{0} 发送端{1}连接关闭", TmTimerTool.GetCurrentTime(), Socket.RemoteEndPoint);
+                        Console.WriteLine("{0} 发送端{1}连接关闭", TmTimerTool.CurrentTime(), Socket.RemoteEndPoint);
                         IsRunning = false;
                         Dispose();
                         return;
@@ -172,7 +172,7 @@ namespace Tumo
         #region SendString       
         public void SendString(string mvcString)
         {
-            //Console.WriteLine(TmTimerTool.GetCurrentTime() + " Send  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
+            //Console.WriteLine(TmTimerTool.CurrentTime() + " Send  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
             if (null == Socket.Handle || !Socket.Connected)
             {
                 Console.WriteLine(TmTimerTool.CurrentTime() + " 连接已中断！！！");
@@ -239,7 +239,7 @@ namespace Tumo
             IsRunning = false;
             Socket.Close();
             Socket = null;
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmAsyncTcpSession释放资源");
+            Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmAsyncTcpSession释放资源");
         }
         public abstract void OnConnect();
         #endregion

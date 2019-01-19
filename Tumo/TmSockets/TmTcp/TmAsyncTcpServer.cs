@@ -19,7 +19,7 @@ namespace Tumo
                 netSocket.Bind(new IPEndPoint(this.address, this.Port));
                 netSocket.Listen(MaxListenCount);
                 netSocket.BeginAccept(new AsyncCallback(this.AcceptCallback), netSocket);
-                Console.WriteLine(TmTimerTool.CurrentTime() + " {0} 服务启动，监听{1}成功", TmTimerTool.GetCurrentTime(), netSocket.LocalEndPoint);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " {0} 服务启动，监听{1}成功", TmTimerTool.CurrentTime(), netSocket.LocalEndPoint);
                 IsRunning = true;
             }
         }
@@ -47,6 +47,10 @@ namespace Tumo
             {
                 ///创建一个TPeer接收socket
                 new TPeer().BeginReceiveMessage(socket);
+
+                //RecvThread = new Thread(new ParameterizedThreadStart(new TPeer().BeginReceiveMessage));
+                //RecvThread.Start(socket);
+                //Console.WriteLine(TmTimerTool.CurrentTime() + " AsyncRecv ThreadId:{0}", Thread.CurrentThread.ManagedThreadId);
             }
         }
         #endregion
@@ -69,14 +73,14 @@ namespace Tumo
                     }
                     else
                     {
-                        Console.WriteLine(TmTimerTool.GetCurrentTime() + " 没找TPeer，用Key: " + mvc.EcsId);
+                        Console.WriteLine(TmTimerTool.CurrentTime() + " 没找TPeer，用Key: " + mvc.EcsId);
                         break;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " SendMvcParameters: " + ex.Message);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " SendMvcParameters: " + ex.Message);
             }
         }
         #endregion

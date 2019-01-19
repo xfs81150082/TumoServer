@@ -21,7 +21,7 @@ namespace Servers.Sences.Rolers.Handlers
             switch (elevenCode)
             {
                 case (ElevenCode.None):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerRolerHandler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " EngineerRolerHandler: " + elevenCode);
                     break;
                 default:
                     break;
