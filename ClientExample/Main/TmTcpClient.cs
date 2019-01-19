@@ -29,7 +29,7 @@ namespace ClientExample
                 IsRunning = true;
                 this.Init("127.0.0.1", 8115);
                 this.StartConnect();
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " Connecting...");
+                Console.WriteLine(TmTimerTool.CurrentTime() + " Connecting...");
             }
         }
         void ClientRecvParamers()
@@ -42,19 +42,19 @@ namespace ClientExample
                     if (TumoConnect.Instance != null)
                     {
                         TumoConnect.Instance.OnTransferParameter(mvc); ///与客户端的接口函数
-                        Console.WriteLine(TmTimerTool.GetCurrentTime() + " RecvParameters: " + RecvParameters.Count);
+                        Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + RecvParameters.Count);
                     }
                     else
                     {
                         //RecvParameters.Enqueue(mvc);
-                        Console.WriteLine(TmTimerTool.GetCurrentTime() + " TumoConnect is null.");
+                        Console.WriteLine(TmTimerTool.CurrentTime() + " TumoConnect is null.");
                         break;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " " + ex.Message);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " " + ex.Message);
             }
         }
 
