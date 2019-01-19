@@ -15,8 +15,7 @@ namespace Servers
             AddComponent(new TmMysql());
             AddComponent(new TmTcpServer());
             AddComponent(new TmLogin());
-            TmLog.WriteLine(TmTimerTool.CurrentTime() + this.GetType().Name+ " 注册组件完成。 ");
-
+            TmLog.WriteLine(TmTimerTool.CurrentTime() + " " + this.GetType().Name + " 组件加载完成。 ");
         }
         public override void OnTransferParameter(TmParameter parameter)
         {
