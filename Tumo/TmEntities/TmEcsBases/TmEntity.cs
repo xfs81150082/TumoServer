@@ -59,10 +59,6 @@ namespace Tumo
                 Console.WriteLine(TmTimerTool.GetCurrentTime() + name + "此类型组件不存在！");
             }
         }
-        public void OnTransferParameter(TmParameter parameter)
-        {
-
-        }
         public override void TmDispose()
         {
             base.TmDispose();

@@ -8,52 +8,17 @@ using System.Timers;
 
 namespace Tumo
 {
-    public abstract class TmAsyncTcpServer : TmSystem
-    {
-        #region /// 静态单列模式        
-        private static TmAsyncTcpServer _instance;
-        public static TmAsyncTcpServer Instance { get => _instance; }
-        public TmAsyncTcpServer() { _instance = this; }
-        #endregion
-
-        #region Properties
-        public string IpString { get; set; }                      //监听的IP地址  
-        public int Port { get; set; }                             //监听的端口  
-        public int MaxListenCount { get; set; }                   //服务器程序允许的最大客户端连接数  
-        public bool IsRunning { get; set; }                       //服务器是否正在运行
-        private IPAddress address { get; set; }                   //监听的IP地址  
-        private Socket serverSocket { get; set; }                 //服务器使用的异步socket   
-        public Queue<Socket> WaitingSockets = new Queue<Socket>();
-        public Dictionary<string, TPeer> TPeers { get; set; } = new Dictionary<string, TPeer>();
-        public Queue<TmParameter> RecvParameters { get; set; } = new Queue<TmParameter>();
-        private Queue<TmParameter> SendParameters { get; set; } = new Queue<TmParameter>();
-        #endregion
-
-        #region Constructor ///构造函数 ///初始化方法
-        public void Init()
-        {
-            address = IPAddress.Parse(IpString);
-            serverSocket = new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-        }
-        public void Init(string ipString, int port, int maxListenCount)
-        {
-            this.IpString = ipString;
-            this.Port = port;
-            this.MaxListenCount = maxListenCount;
-            address = IPAddress.Parse(ipString);
-            serverSocket = new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-        }
-        #endregion
-
+    public abstract class TmAsyncTcpServer : TmOutTcp
+    {      
         #region Methods Callbacks ///启动服务 ///接收参数消息      
         public void StartListen()
         {
             if (!IsRunning)
             {
-                serverSocket.Bind(new IPEndPoint(this.address, this.Port));
-                serverSocket.Listen(MaxListenCount);
-                serverSocket.BeginAccept(new AsyncCallback(this.AcceptCallback), serverSocket);
-                Console.WriteLine("{0} 服务启动，监听{1}成功", TmTimerTool.GetCurrentTime(), serverSocket.LocalEndPoint);
+                netSocket.Bind(new IPEndPoint(this.address, this.Port));
+                netSocket.Listen(MaxListenCount);
+                netSocket.BeginAccept(new AsyncCallback(this.AcceptCallback), netSocket);
+                Console.WriteLine("{0} 服务启动，监听{1}成功", TmTimerTool.GetCurrentTime(), netSocket.LocalEndPoint);
                 IsRunning = true;
             }
         }
@@ -85,13 +50,8 @@ namespace Tumo
         }
         #endregion
 
-        #region ///发送参数信息
-        public void SendMvc(TmParameter mvc)
-        {
-            SendParameters.Enqueue(mvc);
-            SendMvcParameters();
-        }
-        private void SendMvcParameters()
+        #region ///发送参数信息       
+        public override void OnSendMvcParameters()
         {
             try
             {
@@ -100,7 +60,7 @@ namespace Tumo
                     TmParameter mvc = SendParameters.Dequeue();
                     ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
                     string mvcJsons = TmJson.ToString<TmParameter>(mvc);
-                    TPeer tpeer;
+                    TmAsyncTcpSession tpeer;
                     TPeers.TryGetValue(mvc.EcsId, out tpeer);
                     if (tpeer != null)
                     {
@@ -119,22 +79,6 @@ namespace Tumo
             }
         }
         #endregion
-
-        public TPeer GetTPeer(string ecsid)
-        {
-            TPeer peer;
-            TPeers.TryGetValue(ecsid, out peer);
-            if (peer != null)
-            {
-                return peer;
-            }
-            else
-            {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " 没找TPeer，用Key: " + ecsid);
-                return null;
-            }
-        } 
-
 
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Sences.Rolers.Mysqlers
 {
-    public abstract class RolerMysqlBase : TmTransfer
+    public abstract class RolerMysqlBase : OnTmTransfer
     {
         public RolerMysqlBase()
         {

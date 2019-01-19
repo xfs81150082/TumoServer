@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Games
 {
-    public abstract class GameBase : TmTransfer
+    public abstract class GameBase : OnTmTransfer
     {
         public GameBase()
         {

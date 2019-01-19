@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Logins
 {
-    public abstract class LoginBase : TmTransfer
+    public abstract class LoginBase : OnTmTransfer
     {
         public LoginBase()
         {

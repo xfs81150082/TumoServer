@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Sences.Rolers.Senders
 {
-    public abstract class RolerSenderBase : TmTransfer
+    public abstract class RolerSenderBase : OnTmTransfer
     {
         public RolerSenderBase()
         {

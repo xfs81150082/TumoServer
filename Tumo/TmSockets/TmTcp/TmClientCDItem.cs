@@ -7,15 +7,15 @@ namespace Tumo
 {
     public class TmClientCDItem : TmCoolDown
     {
-        public TClient Client { get; set; }
+        //public TClient Client { get; set; }
         public override void TmAwake()
         {
             ValTime = 4000;
         }
-        public TmClientCDItem(TClient client)
+        public TmClientCDItem(TmAsyncTcpSession session)
         {
-            this.Client = client;
-            this.Key = client.EcsId;
+            this.Session = session;
+            this.Key = session.EcsId;
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " 创建一个心跳包 TmClientCDItem.");
         }
         public TmClientCDItem() {  }
@@ -34,9 +34,9 @@ namespace Tumo
             {
                 Console.WriteLine(TmTimerTool.GetCurrentTime() + " 当前 TmClientCDItem is Colseed.");
                 this.End = true;
-                if (Client != null)
+                if (Session != null)
                 {
-                    Client.Dispose();
+                    Session.Dispose();
                 }
                 this.Dispose();
             }

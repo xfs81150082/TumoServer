@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Servers.Chats
 {
-    public abstract class ChatBase : TmTransfer
+    public abstract class ChatBase : OnTmTransfer
     {
         public ChatBase()
         {
