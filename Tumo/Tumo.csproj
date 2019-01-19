@@ -77,7 +77,6 @@
     <Compile Include="TmModels\TmSoulers\TmSoulerDB.cs" />
     <Compile Include="TmSockets\TmTcp\TmOutTcp.cs" />
     <Compile Include="TmSockets\TmTcp\TmSessionCDItem.cs" />
-    <Compile Include="TmSockets\TmTcp\TmClientCDItem.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsDictionary.cs" />
     <Compile Include="TmEntities\TmHelpers\TmJson.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmSystem.cs" />
