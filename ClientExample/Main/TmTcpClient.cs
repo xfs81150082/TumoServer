@@ -10,12 +10,7 @@ namespace ClientExample
 {
     public class TmTcpClient : TmAsyncTcpClient 
     {
-        public TmTcpClient() {  }
-        public TmTcpClient(string ipString, int port)
-        {
-            IpString = ipString;
-            Port = port;
-        }
+        public TmTcpClient() {  }     
 
         public override void TmUpdate()
         {

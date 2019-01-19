@@ -4,13 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Timers;
 
 namespace Tumo
 {
     public abstract class TmAsyncTcpServer : TmOutTcp
-    {      
-        #region Methods Callbacks ///启动服务 ///接收参数消息      
+    {
+        #region Methods Callbacks ///启动服务 ///接收参数消息     
         public void StartListen()
         {
             if (!IsRunning)
@@ -18,7 +19,7 @@ namespace Tumo
                 netSocket.Bind(new IPEndPoint(this.address, this.Port));
                 netSocket.Listen(MaxListenCount);
                 netSocket.BeginAccept(new AsyncCallback(this.AcceptCallback), netSocket);
-                Console.WriteLine("{0} 服务启动，监听{1}成功", TmTimerTool.GetCurrentTime(), netSocket.LocalEndPoint);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " {0} 服务启动，监听{1}成功", TmTimerTool.GetCurrentTime(), netSocket.LocalEndPoint);
                 IsRunning = true;
             }
         }
