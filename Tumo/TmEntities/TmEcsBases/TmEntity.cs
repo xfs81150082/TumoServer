@@ -37,11 +37,11 @@ namespace Tumo
             {
                 tm.Parent = this;
                 Components.Add(typeof(T).Name, tm);
-                Console.WriteLine(TmTimerTool.CurrentTime() + " 实例 {0} 添加组件 {1} 成功。", this.GetType().Name, typeof(T).Name);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 实例 {0} 添加组件 {1} 成功, 父类型名称为 {2}。", this.GetType().Name, typeof(T).Name, tm.Parent.GetType().Name);
             }
             else
             {
-                Console.WriteLine(TmTimerTool.CurrentTime() + typeof(T).Name + "此类型组件已存在！");
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 此类型组件 {} 已存在！", typeof(T).Name);
             }
         }
         public void RemoveComponent<T>()

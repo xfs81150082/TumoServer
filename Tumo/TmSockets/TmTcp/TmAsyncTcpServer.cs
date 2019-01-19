@@ -19,7 +19,7 @@ namespace Tumo
                 netSocket.Bind(new IPEndPoint(this.address, this.Port));
                 netSocket.Listen(MaxListenCount);
                 netSocket.BeginAccept(new AsyncCallback(this.AcceptCallback), netSocket);
-                Console.WriteLine(TmTimerTool.CurrentTime() + " {0} 服务启动，监听{1}成功", TmTimerTool.CurrentTime(), netSocket.LocalEndPoint);
+                Console.WriteLine("{0} 服务启动，监听{1}成功", TmTimerTool.CurrentTime(), netSocket.LocalEndPoint);
                 IsRunning = true;
             }
         }
