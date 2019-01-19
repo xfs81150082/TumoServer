@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using Tumo;
 
 namespace ClientExample
@@ -11,6 +12,7 @@ namespace ClientExample
     {
         static void Main(string[] args)
         {
+            Thread.Sleep(1000);
             new TumoConnect();
             TmTcpClient tmTcpClient = new TmTcpClient();
             new Test();

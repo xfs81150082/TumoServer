@@ -141,11 +141,11 @@ namespace Tumo
                 Dispose();
             }
         }
-        public void OnTransferParameter(TmParameter parameter)
+        public override void OnTransferParameter(TmParameter parameter)
         {
             ///将字符串string,用json反序列化转换成MvcParameter参数
             parameter.EcsId = this.EcsId;
-            if (parameter.ElevenCode == ElevenCode.HeartBeat)
+            if (parameter.NineCode == NineCode.TmEessionCD)
             {
                 CD.CdCount = 0;
             }

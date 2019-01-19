@@ -45,7 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TmEntities\TmEcsBases\TmTransfer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmRequest.cs" />
     <Compile Include="TmModels\TmFixedType.cs" />
     <Compile Include="TmModels\TmChangeType.cs" />
@@ -91,7 +90,7 @@
     <Compile Include="TmSockets\TmTcp\TmAsyncTcpSession.cs" />
     <Compile Include="TmEntities\TmHelpers\TmDictionaryParameter.cs" />
     <Compile Include="TmModels\TmEnums\TmInfoType.cs" />
-    <Compile Include="TmLogs\TmLog.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmLoger.cs" />
     <Compile Include="TmSockets\TmTcp\TmAsyncTcpClient.cs" />
     <Compile Include="TmSockets\TmTcp\TmAsyncTcpServer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmTimerTool.cs" />

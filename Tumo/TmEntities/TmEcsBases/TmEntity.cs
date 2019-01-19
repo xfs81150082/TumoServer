@@ -7,7 +7,7 @@ namespace Tumo
 {
     public abstract class TmEntity : TmComponent
     {
-        public Dictionary<string, TmComponent> Components { get; set; } = new Dictionary<string, TmComponent>();     
+        public Dictionary<string, TmComponent> Components { get; set; } = new Dictionary<string, TmComponent>();
         public override void TmAwake()
         {
             base.TmAwake();

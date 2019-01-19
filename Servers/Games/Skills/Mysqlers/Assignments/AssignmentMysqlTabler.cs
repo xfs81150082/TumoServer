@@ -66,7 +66,7 @@ namespace Servers.Games.Mysqlers.Assignments
         }
         List< Assignment> GetsByTeacherId(int teacherId)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TableName + " where teacherid = '" + teacherId + "'", MysqlHelper.Connection);//读取数据函数  
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TableName + " where teacherid = '" + teacherId + "'", TmMysql.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
@@ -116,7 +116,7 @@ namespace Servers.Games.Mysqlers.Assignments
         }        //得到userid所有角色列表
         List<AssignmentItemDB> GetItemdbsByRolerId(int rolerid)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + ItemTableName + " where rolerid = '" + rolerid + "'", MysqlHelper.Connection);  //读取数据函数  
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + ItemTableName + " where rolerid = '" + rolerid + "'", TmMysql.Connection);  //读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
@@ -148,7 +148,7 @@ namespace Servers.Games.Mysqlers.Assignments
         }               //读取表格
         Assignment GetById(int id)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TableName + " where id = '" + id + "'", MysqlHelper.Connection);//读取数据函数  
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TableName + " where id = '" + id + "'", TmMysql.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
