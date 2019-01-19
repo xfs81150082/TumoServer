@@ -11,7 +11,7 @@ namespace Servers.Games.Handlers
     class EngineerGame : GameHandlerBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode ElevenCode = mvc.ElevenCode;
             switch (ElevenCode)

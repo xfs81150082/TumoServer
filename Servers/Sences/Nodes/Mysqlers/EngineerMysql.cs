@@ -15,7 +15,7 @@ namespace Servers.Sences.Nodes.Mysqlers
     class EngineerMysql : NodeMysqlBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

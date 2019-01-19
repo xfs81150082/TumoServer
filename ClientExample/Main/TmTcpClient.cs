@@ -38,7 +38,7 @@ namespace ClientExample
             {
                 while (RecvParameters.Count > 0)
                 {
-                    TmRequest mvc = RecvParameters.Dequeue();
+                    TmParameter mvc = RecvParameters.Dequeue();
                     if (TumoConnect.Instance != null)
                     {
                         TumoConnect.Instance.OnTransferParameter(mvc); ///与客户端的接口函数

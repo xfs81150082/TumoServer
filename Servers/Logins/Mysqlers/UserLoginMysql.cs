@@ -13,7 +13,7 @@ namespace Servers.Logins.Mysqlers
     class UserLoginMysql : LoginMysqlBase
     {
         public override string Code => TenCode.User.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -30,7 +30,7 @@ namespace Servers.Logins.Mysqlers
         private string SoulName = "Users";
         public UserLoginMysql() { }
         
-        private void CheckLoginPassword(TmRequest mvc)
+        private void CheckLoginPassword(TmParameter mvc)
         {
             TmUser user2 = GetUserByUserName(mvc.Username);
             if (user2 != null)

@@ -13,7 +13,7 @@ namespace ClientExample.Sences.Nodes.Controllers
     {
         public override string Code => TenCode.Booker.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -31,7 +31,7 @@ namespace ClientExample.Sences.Nodes.Controllers
 
         public BookerNode() {  } 
 
-        private void GetItems(TmRequest mvc)
+        private void GetItems(TmParameter mvc)
         {
             Dictionary<int, TmSoulerItem> bookers = TmTransferTool.GetJsonValue<Dictionary<int, TmSoulerItem>>(mvc, mvc.ElevenCode.ToString());
             NodeInfo.Instance.Bookers = bookers;

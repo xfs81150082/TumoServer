@@ -11,7 +11,7 @@ namespace ClientExample.Games.Controllers
     {
         public override string Code => TenCode.Engineer.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -25,7 +25,7 @@ namespace ClientExample.Games.Controllers
 
         public EngineerGame()  {    }
 
-        void RecvEngineerItems(TmRequest mvc)
+        void RecvEngineerItems(TmParameter mvc)
         {
             List<TmSoulerItem> items = TmTransferTool.GetJsonValue<List<TmSoulerItem>>(mvc, "GetItemsByUser");
             Console.WriteLine("EngineerController-items: " + items.Count);
@@ -35,7 +35,7 @@ namespace ClientExample.Games.Controllers
                 //UpdateItemdb(tem.CreatSoulItemDB());
             }
 
-            TmRequest mvc2 = TmTransferTool.ToJsonParameter<TmSoulerItem>(NineCode.User, TenCode.EngineerLogin, ElevenCode.Engineer, TwelveCode.SpawnRoler, "SoulItem", items[0]);
+            TmParameter mvc2 = TmTransferTool.ToJsonParameter<TmSoulerItem>(NineCode.User, TenCode.EngineerLogin, ElevenCode.Engineer, TwelveCode.SpawnRoler, "SoulItem", items[0]);
             TumoConnect.Instance.OnTransferParameter(mvc2);
         }
         //void SpawnRoler(TmRequest mvc)
@@ -47,7 +47,7 @@ namespace ClientExample.Games.Controllers
 
         void UpdateItemdb(TmSoulerDB itemDB)
         {
-            TmRequest mvc = TmTransferTool.ToJsonParameter<TmSoulerDB>(NineCode.Game, TenCode.Engineer, ElevenCode.UpdateItemdb,TwelveCode.UpdateItemdb, "SoulItemDB", itemDB);
+            TmParameter mvc = TmTransferTool.ToJsonParameter<TmSoulerDB>(NineCode.Game, TenCode.Engineer, ElevenCode.UpdateItemdb,TwelveCode.UpdateItemdb, "SoulItemDB", itemDB);
             //TClient.Instance.SendMsg(mvc);
         }
         

@@ -8,6 +8,6 @@ namespace Tumo
     public abstract class TmTransfer
     {
         public abstract string Code { get; }
-        public abstract void OnTransferParameter(TmRequest mvc);
+        public abstract void OnTransferParameter(TmParameter mvc);
     }
 }

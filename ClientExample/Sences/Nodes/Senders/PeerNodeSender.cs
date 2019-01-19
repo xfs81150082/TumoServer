@@ -11,7 +11,7 @@ namespace ClientExample.Sences.Nodes.Senders
     class PeerNodeSender : NodeSenderBase
     {
         public override string Code => TenCode.Peer.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

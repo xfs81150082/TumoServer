@@ -23,7 +23,7 @@ namespace ClientExample.Games
             Reisters();
         }
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             //创建一个空的处理程序（handler）
             GameBase controller;

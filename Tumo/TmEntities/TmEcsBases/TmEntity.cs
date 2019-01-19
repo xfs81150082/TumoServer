@@ -29,13 +29,15 @@ namespace Tumo
                 return null;
             }
         }
-        public void AddComponent<T>(T tm)
+        public void AddComponent<T>(T tm) where T : TmComponent
         {
             TmComponent tem;
             Components.TryGetValue(typeof(T).Name, out tem);
             if (tem == null)
             {
-                Components.Add(typeof(T).Name, tm as TmComponent);
+                tm.Parent = this;
+                Components.Add(typeof(T).Name, tm);
+                Console.WriteLine(TmTimerTool.GetCurrentTime() + " 实例{0}添加组件{1}成功。", this.GetType().Name, typeof(T).Name);
             }
             else
             {
@@ -57,6 +59,10 @@ namespace Tumo
                 Console.WriteLine(TmTimerTool.GetCurrentTime() + name + "此类型组件不存在！");
             }
         }
+        public void OnTransferParameter(TmParameter parameter)
+        {
+
+        }
         public override void TmDispose()
         {
             base.TmDispose();
@@ -67,7 +73,7 @@ namespace Tumo
         void OnDispose()
         {
             foreach(var tem in Components.Values)
-            {                
+            {           
                 tem.Dispose();
             }
             Components.Clear();

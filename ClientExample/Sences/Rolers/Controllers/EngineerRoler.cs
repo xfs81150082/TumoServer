@@ -12,7 +12,7 @@ namespace ClientExample.Sences.Rolers.Controllers
     class EngineerRoler : RolerControllerBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -38,7 +38,7 @@ namespace ClientExample.Sences.Rolers.Controllers
             }
         }
 
-        private void Test(TmRequest mvc)
+        private void Test(TmParameter mvc)
         {
             int count = TmTransferTool.GetJsonValue<int>(mvc, mvc.ElevenCode.ToString());
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " count: " + count);

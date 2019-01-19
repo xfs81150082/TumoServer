@@ -11,7 +11,7 @@ namespace ClientExample.Logins.Senders
     class UserLogin : LoginSenderBase
     {
         public override string Code => TenCode.User.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

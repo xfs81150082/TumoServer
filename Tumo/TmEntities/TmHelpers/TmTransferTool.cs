@@ -8,9 +8,9 @@ namespace Tumo
 {
     public static class TmTransferTool
     {
-        public static TmRequest ToJsonParameter<T>(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve, string key, T value)
+        public static TmParameter ToJsonParameter<T>(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve, string key, T value)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
             string json = TmJson.ToString<T>(value);
             mvc.EightCode = eight;
             mvc.NineCode = nine;
@@ -20,9 +20,9 @@ namespace Tumo
             mvc.Parameters.Add(key, json);
             return mvc;
         }
-        public static TmRequest ToJsonParameter<T>(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, string key, T value)
+        public static TmParameter ToJsonParameter<T>(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, string key, T value)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
             string json = TmJson.ToString<T>(value);
             mvc.EightCode = eight;
             mvc.NineCode = nine;
@@ -31,9 +31,9 @@ namespace Tumo
             mvc.Parameters.Add(key, json);
             return mvc;
         }
-        public static TmRequest ToJsonParameter<T>(NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve, string key, T value)
+        public static TmParameter ToJsonParameter<T>(NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve, string key, T value)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
             string json = TmJson.ToString<T>(value);
             mvc.NineCode = nine;
             mvc.TenCode = ten;
@@ -42,9 +42,9 @@ namespace Tumo
             mvc.Parameters.Add(key, json);
             return mvc;
         }
-        public static TmRequest ToJsonParameter<T>(NineCode nine, TenCode ten, ElevenCode eleven, string key, T value)
+        public static TmParameter ToJsonParameter<T>(NineCode nine, TenCode ten, ElevenCode eleven, string key, T value)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
             string json = TmJson.ToString<T>(value);
             mvc.NineCode = nine;
             mvc.TenCode = ten;
@@ -52,9 +52,9 @@ namespace Tumo
             mvc.Parameters.Add(key, json);
             return mvc;
         }
-        public static TmRequest ToJsonParameter(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve)
+        public static TmParameter ToJsonParameter(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
             mvc.EightCode = eight;
             mvc.NineCode = nine;
             mvc.TenCode = ten;
@@ -62,39 +62,19 @@ namespace Tumo
             mvc.TwelveCode = twelve;
             return mvc;
         }
-        public static TmRequest ToJsonParameter(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven)
+        public static TmParameter ToJsonParameter(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
             mvc.EightCode = eight;
             mvc.NineCode = nine;
             mvc.TenCode = ten;
             mvc.ElevenCode = eleven;
             return mvc;
         }
-        public static TmRequest ToParameter<T>(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve, string key, T value)
+        public static TmParameter ToParameter<T>(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve, string key, T value)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
             mvc.EightCode = eight;
-            mvc.NineCode = nine;
-            mvc.TenCode = ten;
-            mvc.ElevenCode = eleven;
-            mvc.TwelveCode = twelve;
-            mvc.Parameters.Add(key, value);
-            return mvc;
-        }
-        public static TmRequest ToParameter<T>(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, string key, T value)
-        {
-            TmRequest mvc = new TmRequest();
-            mvc.EightCode = eight;
-            mvc.NineCode = nine;
-            mvc.TenCode = ten;
-            mvc.ElevenCode = eleven;
-            mvc.Parameters.Add(key, value);
-            return mvc;
-        }
-        public static TmRequest ToParameter<T>(NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve, string key, T value)
-        {
-            TmRequest mvc = new TmRequest();
             mvc.NineCode = nine;
             mvc.TenCode = ten;
             mvc.ElevenCode = eleven;
@@ -102,18 +82,38 @@ namespace Tumo
             mvc.Parameters.Add(key, value);
             return mvc;
         }
-        public static TmRequest ToParameter<T>(NineCode nine, TenCode ten, ElevenCode eleven, string key, T value)
+        public static TmParameter ToParameter<T>(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, string key, T value)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
+            mvc.EightCode = eight;
             mvc.NineCode = nine;
             mvc.TenCode = ten;
             mvc.ElevenCode = eleven;
             mvc.Parameters.Add(key, value);
             return mvc;
         }
-        public static TmRequest ToParameter(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve)
+        public static TmParameter ToParameter<T>(NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve, string key, T value)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
+            mvc.NineCode = nine;
+            mvc.TenCode = ten;
+            mvc.ElevenCode = eleven;
+            mvc.TwelveCode = twelve;
+            mvc.Parameters.Add(key, value);
+            return mvc;
+        }
+        public static TmParameter ToParameter<T>(NineCode nine, TenCode ten, ElevenCode eleven, string key, T value)
+        {
+            TmParameter mvc = new TmParameter();
+            mvc.NineCode = nine;
+            mvc.TenCode = ten;
+            mvc.ElevenCode = eleven;
+            mvc.Parameters.Add(key, value);
+            return mvc;
+        }
+        public static TmParameter ToParameter(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve)
+        {
+            TmParameter mvc = new TmParameter();
             mvc.EightCode = eight;
             mvc.NineCode = nine;
             mvc.TenCode = ten;
@@ -121,42 +121,42 @@ namespace Tumo
             mvc.TwelveCode = twelve;
             return mvc;
         }
-        public static TmRequest ToParameter(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven)
+        public static TmParameter ToParameter(EightCode eight, NineCode nine, TenCode ten, ElevenCode eleven)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
             mvc.EightCode = eight;
             mvc.NineCode = nine;
             mvc.TenCode = ten;
             mvc.ElevenCode = eleven;
             return mvc;
         }
-        public static TmRequest ToParameter(NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve)
+        public static TmParameter ToParameter(NineCode nine, TenCode ten, ElevenCode eleven, TwelveCode twelve)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
             mvc.NineCode = nine;
             mvc.TenCode = ten;
             mvc.ElevenCode = eleven;
             mvc.TwelveCode = twelve;
             return mvc;
         }
-        public static TmRequest ToParameter(NineCode nine, TenCode ten, ElevenCode eleven)
+        public static TmParameter ToParameter(NineCode nine, TenCode ten, ElevenCode eleven)
         {
-            TmRequest mvc = new TmRequest();
+            TmParameter mvc = new TmParameter();
             mvc.NineCode = nine;
             mvc.TenCode = ten;
             mvc.ElevenCode = eleven;
             return mvc;
         }
-        public static void AddJsonParameter<T>(TmRequest mvc, string key, T value)
+        public static void AddJsonParameter<T>(TmParameter mvc, string key, T value)
         {
             string json = TmJson.ToString<T>(value);
             mvc.Parameters.Add(key, json);
         }
-        public static void AddParameter<T>(TmRequest mvc, string key, T value)
+        public static void AddParameter<T>(TmParameter mvc, string key, T value)
         {
             mvc.Parameters.Add(key, value);
         }
-        public static T GetJsonValue<T>(TmRequest mvc, string key)
+        public static T GetJsonValue<T>(TmParameter mvc, string key)
         {
             object obj = null;
             mvc.Parameters.TryGetValue(key, out obj);
@@ -165,7 +165,7 @@ namespace Tumo
             T t = JsonConvert.DeserializeObject<T>(json);
             return t;
         }
-        public static T GetValue<T>(TmRequest mvc, string key)
+        public static T GetValue<T>(TmParameter mvc, string key)
         {            
             object obj = null;
             mvc.Parameters.TryGetValue(key, out obj);
