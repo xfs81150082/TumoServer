@@ -42,6 +42,10 @@ namespace Tumo
     public enum NineCode
     {
         None,
+        TmEessionCD,  /// 链接心跳包
+        TmLogin,      /// 登录
+
+
         Handler,
         Mysqler,
         Sender,
@@ -52,19 +56,21 @@ namespace Tumo
         Game,
         User,
         Login,
-
         Gate,
         Valuation,
         Case,
         Administration,
         Measurement,
-
         Test,
     }
     [Serializable]
     public enum TenCode
     {
         None,
+        TmUser,       /// 用户注册、登录
+        TmEngineer,   /// 角色注册、登录、保存
+
+        HeartBeat,    /// 链接心跳包
         Server,
         Register,
         UserLogin,
@@ -76,7 +82,6 @@ namespace Tumo
         User,
         Node,
         Login,
-
         Gate,
         Game,
         Chat,
@@ -85,7 +90,6 @@ namespace Tumo
         Case,
         Administration,
         Measurement,
-
         Message,
         Text,
         Image,
@@ -93,8 +97,6 @@ namespace Tumo
         Sender,
         Peer,
         Timer,
-        HeartBeat,
-
         Camera,
         Engineer,
         Booker,

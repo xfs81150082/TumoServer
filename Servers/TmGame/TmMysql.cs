@@ -9,53 +9,36 @@ using Tumo;
 
 namespace Servers
 {
-    public class MysqlHelper
+    public class TmMysql : TmComponent
     {
         public static MySqlConnection Connection;     //创建一个数据库连接                                                     
         private string localhost = "111.231.50.160";  //IP地址
         private string database = "tumoworld";        //数据库名    
         private string root = "tumo";                 //用户名  
         private string password = "qq81150082";       //密码  
-
-        public MysqlHelper()
+        public TmMysql()
         {
-            StartConnecting(new object());
+            StartConnectToMysql();
         }
-
-        public void StartConnecting(object obj)
+        ///连接到数据库
+        public void StartConnectToMysql()
         {
             if (Connection == null || Connection.State != ConnectionState.Connecting)
             {
-                ConnectMysql();
+                //ConnectMysql();
+                string connectionString = string.Format("Server = {0}; Database = {1}; User ID = {2}; Password = {3};", localhost, database, root, password);
+                //OpenMysqlConnection(connectionString);
+                Connection = new MySqlConnection(connectionString);
+                Connection.Open();
+                Console.WriteLine(TmTimerTool.CurrentTime() + " MySql版本号:{0} ", Connection.ServerVersion);
             }
         }
-
-        public void ConnectMysql()
-        {
-            string connectionString = string.Format("Server = {0}; Database = {1}; User ID = {2}; Password = {3};", localhost, database, root, password);
-            OpenMysqlConnection(connectionString);
-        } //连接到数据库
-        
-        // Connect to database    
-        private void OpenMysqlConnection(string connectionString)
-        {
-            Connection = new MySqlConnection(connectionString);
-            Connection.Open();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " MySql版本号:{0} ", Connection.ServerVersion);
-        }
-
+        ///退出数据库
         public void QuitMysql()
-        {
-            CloseMysqlConnection();
-        } //退出数据库
-
-        // Disconnect from database    
-        private void CloseMysqlConnection()
         {
             Connection.Close();
             Connection = null;
-        }
-
+        }               
         // MySQL Query    
         public void DoQuery(string sqlQuery)
         {
@@ -67,7 +50,6 @@ namespace Servers
             dbCommand.Dispose();
             dbCommand = null;
         }
-
         // Get DataSet    
         public DataSet GetDataSet(string sqlString)
         {
@@ -83,6 +65,5 @@ namespace Servers
             }
             return ds;
         }
-
     }
 }

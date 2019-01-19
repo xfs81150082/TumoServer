@@ -264,7 +264,7 @@ namespace Servers.Games.Mysqlers.Skills
 
         void InsertItemdb(string name, int inventoryid, int rolerid)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + ItemTableName + "(name,inventoryid,rolerid) values('" + name + "','" + inventoryid + "','" + rolerid + "')", MysqlHelper.Connection); //插入列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + ItemTableName + "(name,inventoryid,rolerid) values('" + name + "','" + inventoryid + "','" + rolerid + "')", TmMysql.Connection); //插入列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -277,7 +277,7 @@ namespace Servers.Games.Mysqlers.Skills
         }
         void InsertItemdb(string name, int inventoryid, int rolerid, int equipquality, int place, int level, int count, int durability, int pice)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + ItemTableName + "(name,inventoryid,rolerid,equipquality,place,level,count,durability,pice) values('" + name + "','" + inventoryid + "','" + rolerid + "','" + equipquality + "','" + place + "','" + level + "','" + count + "','" + durability + "','" + pice + "')", MysqlHelper.Connection); //插入列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + ItemTableName + "(name,inventoryid,rolerid,equipquality,place,level,count,durability,pice) values('" + name + "','" + inventoryid + "','" + rolerid + "','" + equipquality + "','" + place + "','" + level + "','" + count + "','" + durability + "','" + pice + "')", TmMysql.Connection); //插入列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -290,7 +290,7 @@ namespace Servers.Games.Mysqlers.Skills
         }
         void UpdateItemdb(int id, string name, int equipquality, int level)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set name = '" + name + "', equipquality = '" + equipquality + "', level = '" + level + "' where id = '" + id + "'", MysqlHelper.Connection); //更新列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set name = '" + name + "', equipquality = '" + equipquality + "', level = '" + level + "' where id = '" + id + "'", TmMysql.Connection); //更新列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -303,7 +303,7 @@ namespace Servers.Games.Mysqlers.Skills
         }
         void UpdateItemdb(int id, int rolerid, int place)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set rolerid = '" + rolerid + "', place = '" + place + "' where id = '" + id + "'", MysqlHelper.Connection); //更新列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set rolerid = '" + rolerid + "', place = '" + place + "' where id = '" + id + "'", TmMysql.Connection); //更新列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -316,7 +316,7 @@ namespace Servers.Games.Mysqlers.Skills
         }
         void UpdateItemdb(int id, int count, int durability, int pice)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set count = '" + count + "', durability = '" + durability + "', pice = '" + pice + "' where id = '" + id + "'", MysqlHelper.Connection); //更新列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set count = '" + count + "', durability = '" + durability + "', pice = '" + pice + "' where id = '" + id + "'", TmMysql.Connection); //更新列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -329,7 +329,7 @@ namespace Servers.Games.Mysqlers.Skills
         }
         void RemoveItemdb(int id)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("delete from " + ItemTableName + " where id = '" + id + "'", MysqlHelper.Connection); //插入用户  
+            MySqlCommand mySqlCommand = new MySqlCommand("delete from " + ItemTableName + " where id = '" + id + "'", TmMysql.Connection); //插入用户  
             try
             {
                 mySqlCommand.ExecuteNonQuery();

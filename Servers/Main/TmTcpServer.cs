@@ -10,8 +10,6 @@ namespace Servers
 {
     public class TmTcpServer : TmAsyncTcpServer
     {
-        public TmTcpServer()  {   }
-      
         public override void TmUpdate()
         {
             ServerStart();
@@ -50,7 +48,5 @@ namespace Servers
                 Console.WriteLine(TmTimerTool.CurrentTime() + ex.Message);
             }
         }
-
-      
     }
 }

@@ -66,6 +66,9 @@
   <ItemGroup>
     <Compile Include="Chats\ChatBase.cs" />
     <Compile Include="Chats\TumoChat.cs" />
+    <Compile Include="Main\TmLog.cs" />
+    <Compile Include="TmGame\TmLogin.cs" />
+    <Compile Include="TmGame\TmGame.cs" />
     <Compile Include="Games\Skills\Handlers\AbilityGame.cs" />
     <Compile Include="Games\Skills\Handlers\BookerGame.cs" />
     <Compile Include="Games\Skills\Handlers\TumoGameHandler.cs" />
@@ -97,7 +100,7 @@
     <Compile Include="Gates\GateBase.cs" />
     <Compile Include="Main\TmTcpServer.cs" />
     <Compile Include="Sences\Models\SpawnCDitem.cs" />
-    <Compile Include="Main\MysqlHelper.cs" />
+    <Compile Include="TmGame\TmMysql.cs" />
     <Compile Include="Gates\TumoGate.cs" />
     <Compile Include="Logins\Handlers\EngineerLogin.cs" />
     <Compile Include="Logins\Handlers\HandlerBase.cs" />
@@ -164,6 +167,7 @@
     <Compile Include="Sences\Rolers\Senders\TeacherSender.cs" />
     <Compile Include="Sences\Rolers\Senders\TumoRolerSender.cs" />
     <Compile Include="Sences\Rolers\TumoRoler.cs" />
+    <Compile Include="TmGame\TmGate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
