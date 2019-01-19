@@ -16,7 +16,7 @@ namespace ClientExample.Sences.Rolers.Senders
             switch (elevenCode)
             {
                 case (ElevenCode.SyncMoveState):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " EngineerRoler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " EngineerRoler: " + elevenCode);
                     mvc.NineCode = NineCode.Handler;
                     TumoRoler.Instance.OnTransferParameter(mvc);
                     break;

@@ -18,7 +18,7 @@ namespace ClientExample.Sences.Rolers.Controllers
             switch (elevenCode)
             {
                 case (ElevenCode.GetItems):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " TeacherRoler: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TeacherRoler: " + elevenCode);
                     Getitems(mvc);
                     break;
                 default:
@@ -30,7 +30,7 @@ namespace ClientExample.Sences.Rolers.Controllers
         {
             Dictionary<int, TmSoulerItem> bookers = TmTransferTool.GetJsonValue<Dictionary<int, TmSoulerItem>>(mvc, mvc.ElevenCode.ToString());
             RolerInfo.Instance.Bookers = bookers;
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Bookers:" + RolerInfo.Instance.Bookers.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " Bookers:" + RolerInfo.Instance.Bookers.Count);
         }
 
 

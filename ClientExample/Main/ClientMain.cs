@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Tumo;
 
 namespace ClientExample
 {
@@ -16,7 +17,7 @@ namespace ClientExample
             
 
             Console.ReadKey();
-            Console.WriteLine("退出联接，并关闭程序。");
+            Console.WriteLine(TmTimerTool.CurrentTime() + " 退出联接，并关闭程序。");
         }
                
 

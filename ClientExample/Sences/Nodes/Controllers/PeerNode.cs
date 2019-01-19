@@ -19,13 +19,13 @@ namespace ClientExample.Sences.Nodes.Controllers
             switch (elevenCode)
             {
                 case (ElevenCode.HeartBeat):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " PeerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " PeerNode: " + elevenCode);
                     mvc.NineCode = NineCode.Sender;
                     TumoNode.Instance.OnTransferParameter(mvc);
                     //HeartBeatSignIn();
                     break;
                 case (ElevenCode.RemoveHeartBeat):
-                    Console.WriteLine(TmTimerTool.GetCurrentTime() + " PeerNode: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " PeerNode: " + elevenCode);
                     //RemoveHeartBeat();
                     break;
                 default:

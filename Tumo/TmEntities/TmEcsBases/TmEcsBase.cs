@@ -28,11 +28,11 @@ namespace Tumo
                 TmEcsDictionary.Ecses.Remove(EcsId);   ///从ECS管理字典中删除
                 TmDispose();   /// 为继承类释放时使用，用抽象方法
                 isDisposed = true;
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmEcsBase释放资源");
+                Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmEcsBase释放资源");
             }
             else
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmEcsBase已经释放");
+                Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmEcsBase已经释放");
             }
         }
         /// 为继承类释放时使用(Note:这儿为什么要写成虚方法呢？)

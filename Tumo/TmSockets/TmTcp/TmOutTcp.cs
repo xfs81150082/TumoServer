@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace Tumo
 {
@@ -12,7 +13,6 @@ namespace Tumo
         private static TmOutTcp _instance;
         public static TmOutTcp Instance { get => _instance;  }
         public TmOutTcp() { _instance = this; }
-
         #region Properties
         public string IpString { get; set; }                      //监听的IP地址  
         public int Port { get; set; }                             //监听的端口  
@@ -25,8 +25,11 @@ namespace Tumo
         public TmAsyncTcpSession TClient { get; set; }
         public Queue<TmParameter> RecvParameters { get; set; } = new Queue<TmParameter>();
         protected Queue<TmParameter> SendParameters { get; set; } = new Queue<TmParameter>();
+        protected Thread RecvThread { get; set; }
+        private Thread SendThread { get; set; }
         #endregion
         #region Constructor ///构造函数 ///初始化方法
+
         public void Init()
         {
             address = IPAddress.Parse(IpString);
@@ -68,7 +71,7 @@ namespace Tumo
             }
             else
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " 没找TPeer，用Key: " + ecsid);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 没找TPeer，用Key: " + ecsid);
                 return null;
             }
         }
