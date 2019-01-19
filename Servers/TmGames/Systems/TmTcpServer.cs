@@ -30,9 +30,9 @@ namespace Servers
                 while (RecvParameters.Count > 0)
                 {
                     TmParameter mvc = RecvParameters.Dequeue();
-                    if (TumoGate.Instance != null)
+                    if (TmGate.Instance != null)
                     {
-                        TumoGate.Instance.OnTransferParameter(mvc);
+                        TmGate.Instance.OnTransferParameter(mvc);
                         Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + RecvParameters.Count);
                     }
                     else

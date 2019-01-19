@@ -44,7 +44,17 @@ namespace Tumo
         None,
         TmEessionCD,  /// 链接心跳包
         TmLogin,      /// 登录
+        TmUser,
+        TmEngineer,
+        TmBooker,
+        TmTeacher,
+        TmInventory,
+        TmSkill,
+        TmTask,
+        TmWar,
+        TmSence,
 
+        End,
 
         Handler,
         Mysqler,
@@ -69,6 +79,17 @@ namespace Tumo
         None,
         TmUser,       /// 用户注册、登录
         TmEngineer,   /// 角色注册、登录、保存
+        TmLogin,      /// 登录
+        TmBooker,
+        TmTeacher,
+        TmInventory,
+        TmSkill,
+        TmTask,
+        TmWar,
+        TmSence,
+
+        End,
+
 
         HeartBeat,    /// 链接心跳包
         Server,

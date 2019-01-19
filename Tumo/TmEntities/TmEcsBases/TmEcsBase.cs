@@ -8,11 +8,9 @@ namespace Tumo
     {
         #region Awake        
         public string EcsId { get; set; }           /// 身份证号
-        //public string TypeName { get; set; }        /// 类型名称
         public TmEcsBase()
         {
             EcsId = TmIdGenerater.GetId();
-            //TypeName = this.GetType().Name;
             TmEcsDictionary.Ecses.Add(EcsId, this);
             TmAwake();
         }
