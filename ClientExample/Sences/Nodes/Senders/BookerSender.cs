@@ -24,15 +24,15 @@ namespace ClientExample.Sences.Nodes.Senders
             }
         }
 
-       void SpawnRolers(SoulItem roler)
+       void SpawnRolers(TmSoulerItem roler)
         {
         }
 
-        void SpawnRoler(SoulItem roler)
+        void SpawnRoler(TmSoulerItem roler)
         {
         }
 
-        void RemoveRoler(SoulItem roler)
+        void RemoveRoler(TmSoulerItem roler)
         {
         }
            

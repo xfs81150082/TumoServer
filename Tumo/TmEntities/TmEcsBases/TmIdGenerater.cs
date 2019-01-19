@@ -16,7 +16,7 @@ namespace Tumo
             {
                 idCount = 2600;
             }
-            tmId = TmTimerTool.IdCurrentTime() + idCount;
+            tmId = TmTimerTool.CurrentTime() + idCount;
             return tmId;
         }
     }

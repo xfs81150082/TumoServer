@@ -44,28 +44,28 @@ namespace Servers.Games.Handlers
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
-            SkillItemDB item = TmJson.ToObject<SkillItemDB>(json.ToString());
+            TmSkillDB item = TmJson.ToObject<TmSkillDB>(json.ToString());
             //manager.InsertItemdb(item.Name, item.SkillId, item.RolerId);
         }
         void RemoveItemdb(TmRequest sp)
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
-            SkillItemDB item = TmJson.ToObject<SkillItemDB>(json.ToString());
+            TmSkillDB item = TmJson.ToObject<TmSkillDB>(json.ToString());
             //manager.RemoveItemdb(item.Id);
         }
         void UpdateItemdbName(TmRequest sp)
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
-            SkillItemDB item = TmJson.ToObject<SkillItemDB>(json.ToString());
+            TmSkillDB item = TmJson.ToObject<TmSkillDB>(json.ToString());
             //manager.UpdateItemdb(item.Id, item.Name);
         }
         void UpdateItemdbHpMp(TmRequest sp)
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
-            SoulItemDB item = TmJson.ToObject<SoulItemDB>(json.ToString());
+            TmSoulerDB item = TmJson.ToObject<TmSoulerDB>(json.ToString());
             //manager.UpdateItemdb(item.Id, item.Exp, item.Level, item.Hp, item.Mp, item.Coin, item.Diamond);
         }
         void UpdateItemdbPxPyPz(TmRequest sp)
@@ -73,7 +73,7 @@ namespace Servers.Games.Handlers
             Console.WriteLine("sp:" + sp.Parameters.Count);
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
-            SoulItemDB item = TmJson.ToObject<SoulItemDB>(json.ToString());
+            TmSoulerDB item = TmJson.ToObject<TmSoulerDB>(json.ToString());
             Console.WriteLine("SkillItemDB:" + item.py);
 
             //manager.UpdateItemdb(item.Id, item.SenceId, item.px, item.py, item.pz, item.ax, item.ay, item.az);

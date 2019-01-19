@@ -33,7 +33,7 @@ namespace ClientExample.Sences.Nodes.Controllers
 
         private void GetItems(TmRequest mvc)
         {
-            Dictionary<int, SoulItem> bookers = TmTransferTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, mvc.ElevenCode.ToString());
+            Dictionary<int, TmSoulerItem> bookers = TmTransferTool.GetJsonValue<Dictionary<int, TmSoulerItem>>(mvc, mvc.ElevenCode.ToString());
             NodeInfo.Instance.Bookers = bookers;
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " NodeInfo.Instance.Bookers is count: " + NodeInfo.Instance.Bookers.Count);
         }

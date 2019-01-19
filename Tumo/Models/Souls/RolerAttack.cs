@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Tumo.Models
+namespace Tumo
 {
     public class RolerAttack
     {
-        void TakeDamager(Roler myself, Roler attacker)
+        void TakeDamager(TmAttribute myself, TmAttribute attacker)
         {
-            if (myself.SoulItem.Hp <= 0)
+            if (myself.Hp <= 0)
             {
                 Died();
             }
-            myself.SoulItem.Hp -= attacker.SoulItem.Hp;
-            if (myself.SoulItem.Hp <= 0)
+            myself.Hp -= attacker.Hp;
+            if (myself.Hp <= 0)
             {
                 Died();
             }
@@ -22,7 +22,7 @@ namespace Tumo.Models
 
         private void Died()
         {
-            throw new NotImplementedException();
+
         }
     }
 }

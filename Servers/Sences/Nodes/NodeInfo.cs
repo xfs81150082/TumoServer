@@ -15,11 +15,11 @@ namespace Servers.Sences.Nodes
 
         public int gridCount = 10;
         public int gridDisfance = 50;
-        public NodeItem[,] MapNodes = new NodeItem[10, 10];
-        public Dictionary<int, NodeItem> NodeItems = new Dictionary<int, NodeItem>();                                                      //计量村地图100个节点，每个节点里有三个列表分别为engineers,bookers,teachers;其中2个不变，1个可变的。
-        public Dictionary<int, SoulItem> Engineers = new Dictionary<int, SoulItem>();
-        public Dictionary<int, SoulItem> Bookers = new Dictionary<int, SoulItem>();
-        public Dictionary<int, SoulItem> Teachers = new Dictionary<int, SoulItem>();                          
+        //public NodeItem[,] MapNodes = new NodeItem[10, 10];
+        //public Dictionary<int, NodeItem> NodeItems = new Dictionary<int, NodeItem>();                                                      //计量村地图100个节点，每个节点里有三个列表分别为engineers,bookers,teachers;其中2个不变，1个可变的。
+        public Dictionary<int, TmSoulerItem> Engineers = new Dictionary<int, TmSoulerItem>();
+        public Dictionary<int, TmSoulerItem> Bookers = new Dictionary<int, TmSoulerItem>();
+        public Dictionary<int, TmSoulerItem> Teachers = new Dictionary<int, TmSoulerItem>();                          
 
         public NodeInfo() { _instance = this; Init(); }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 
-namespace Tumo.Models
+namespace Tumo
 {
     public class RolerMove
     {
@@ -13,7 +13,7 @@ namespace Tumo.Models
         public bool IsCanSeeing = false;
         public bool IsAttacking = false;
         public TmTransform SpawnTransform;
-        private Roler target;
+        private TmRoler target;
         private double canSeeDistance = 225.0;
         private double arriveDistance = 25.0;
         private double runSpeed = 4.0;
@@ -30,15 +30,15 @@ namespace Tumo.Models
                 this.SpawnTransform = spawn;
             }
         }
-        public RolerMove(SoulItem soulItem)
+        public RolerMove(TmSoulerItem soulItem)
         {
             if (soulItem != null)
             {
-                this.SpawnTransform = new TmTransform(soulItem);
+                this.SpawnTransform = new TmTransform();
             }
         }
 
-        public void AIPatrols(Roler myself, List<Roler> targets)
+        public void AIPatrols(TmRoler myself, List<TmRoler> targets)
         {
             if (targets.Count > 0)
             {
@@ -87,7 +87,7 @@ namespace Tumo.Models
                 IsAttacking = false;
             }
         }
-        void Patrols(Roler myself)
+        void Patrols(TmRoler myself)
         {
             double dis = Distance(myself.TmTransform, TargetTransform);
             if (dis < arriveDistance)
@@ -112,9 +112,9 @@ namespace Tumo.Models
                 MoveSpeed = walkSpeed;
             }
         }
-        Roler NearestTarget(Roler myself, List<Roler> targets)
+        TmRoler NearestTarget(TmRoler myself, List<TmRoler> targets)
         {
-            Roler target = null;
+            TmRoler target = null;
             double distance = 1000000;
             for (int i = 0; i < targets.Count; i++)
             {

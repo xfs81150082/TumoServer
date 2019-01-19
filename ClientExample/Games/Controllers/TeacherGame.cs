@@ -30,22 +30,22 @@ namespace ClientExample.Games.Controllers
 
         void SpawnRolers(TmRequest mvc)
         {
-            Dictionary<int, SoulItem> items = TmTransferTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, "SoulItems");
+            Dictionary<int, TmSoulerItem> items = TmTransferTool.GetJsonValue<Dictionary<int, TmSoulerItem>>(mvc, "SoulItems");
             Console.WriteLine("TeacherController-SpawnItems: " + items.Count);
         }
 
-        void SpawnRoler(TmRequest mvc)
-        {
-            SoulItem item = TmTransferTool.GetJsonValue<SoulItem>(mvc, "SoulItem");
-            Console.WriteLine("TeacherController-SpawnRoler: " + item.Name + item.Id);
+        //void SpawnRoler(TmRequest mvc)
+        //{
+        //    TmSoulerItem item = TmTransferTool.GetJsonValue<TmSoulerItem>(mvc, "SoulItem");
+        //    Console.WriteLine("TeacherController-SpawnRoler: " + item.Name + item.Id);
 
-        }
-        void RemoveRoler(TmRequest mvc)
-        {
-            SoulItem item = TmTransferTool.GetJsonValue<SoulItem>(mvc, "SoulItem");
-            Console.WriteLine("TeacherController-RemoveRoler: " + item.Name + item.Id);
+        //}
+        //void RemoveRoler(TmRequest mvc)
+        //{
+        //    TmSoulerItem item = TmTransferTool.GetJsonValue<TmSoulerItem>(mvc, "SoulItem");
+        //    Console.WriteLine("TeacherController-RemoveRoler: " + item.Name + item.Id);
 
-        }
+        //}
 
 
 

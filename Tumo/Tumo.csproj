@@ -45,70 +45,69 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TmModels\TmFixedType.cs" />
+    <Compile Include="TmModels\TmChangeType.cs" />
+    <Compile Include="TmModels\TmBuffAdd.cs" />
+    <Compile Include="TmModels\TmName.cs" />
+    <Compile Include="TmModels\TmSkillAdd.cs" />
+    <Compile Include="TmModels\TmLabel.cs" />
     <Compile Include="Models\Tasks\Assignment.cs" />
     <Compile Include="Models\Tasks\AssignmentItem.cs" />
     <Compile Include="Models\Tasks\AssignmentItemDB.cs" />
-    <Compile Include="Models\Souls\Attribute.cs" />
-    <Compile Include="Models\Souls\AttributeAdd.cs" />
-    <Compile Include="Models\Souls\AttributeValue.cs" />
-    <Compile Include="Models\Nodes\Building.cs" />
-    <Compile Include="Models\Nodes\BuildingItem.cs" />
-    <Compile Include="Models\Nodes\BuildingItemDB.cs" />
+    <Compile Include="TmModels\TmInventoryAdd.cs" />
+    <Compile Include="TmModels\TmAttribute.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmInitialize.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmTimer.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsBase.cs" />
     <Compile Include="TmEntities\TmSystems\TmCoolDown.cs" />
-    <Compile Include="Models\Inventorys\Inventory.cs" />
-    <Compile Include="Models\Inventorys\InventoryItem.cs" />
-    <Compile Include="Models\Inventorys\InventoryItemDB.cs" />
+    <Compile Include="TmModels\TmInventorys\TmInventory.cs" />
+    <Compile Include="TmModels\TmInventorys\TmInventoryItem.cs" />
+    <Compile Include="TmModels\TmInventorys\TmInventoryDB.cs" />
     <Compile Include="Models\Souls\MoveState.cs" />
-    <Compile Include="Models\Nodes\Node.cs" />
-    <Compile Include="Models\Nodes\NodeItem.cs" />
-    <Compile Include="Models\Nodes\NodeItemDB.cs" />
-    <Compile Include="Models\Souls\Roler.cs" />
+    <Compile Include="Models\Souls\TmRoler.cs" />
     <Compile Include="Models\Souls\RolerAttack.cs" />
     <Compile Include="Models\Souls\RolerMove.cs" />
-    <Compile Include="Models\Skills\Skill.cs" />
-    <Compile Include="Models\Skills\SkillItem.cs" />
-    <Compile Include="Models\Skills\SkillItemDB.cs" />
-    <Compile Include="Models\Souls\Soul.cs" />
-    <Compile Include="Models\Souls\SoulItem.cs" />
-    <Compile Include="Models\Souls\SoulItemDB.cs" />
-    <Compile Include="Sockets\TmTcp\TmServerCDItem.cs" />
-    <Compile Include="Sockets\TmTcp\TmClientCDItem.cs" />
+    <Compile Include="TmModels\TmSkills\TmSkill.cs" />
+    <Compile Include="TmModels\TmSkills\TmSkillItem.cs" />
+    <Compile Include="TmModels\TmSkills\TmSkillDB.cs" />
+    <Compile Include="TmModels\TmSoulers\TmSouler.cs" />
+    <Compile Include="TmModels\TmSoulers\TmSoulerItem.cs" />
+    <Compile Include="TmModels\TmSoulers\TmSoulerDB.cs" />
+    <Compile Include="TmSockets\TmTcp\TmServerCDItem.cs" />
+    <Compile Include="TmSockets\TmTcp\TmClientCDItem.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsDictionary.cs" />
     <Compile Include="TmEntities\TmHelpers\TmJson.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmSystem.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmComponent.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEntity.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmIdGenerater.cs" />
-    <Compile Include="Models\Souls\TmTransform.cs" />
-    <Compile Include="Models\Souls\User.cs" />
-    <Compile Include="Models\Souls\UserItem.cs" />
-    <Compile Include="Models\Souls\UserItemDB.cs" />
-    <Compile Include="Enums\AssignmentType.cs" />
-    <Compile Include="Sockets\TmTcp\TClient.cs" />
-    <Compile Include="Sockets\TmTcp\TPeer.cs" />
+    <Compile Include="TmModels\TmSoulers\TmTransform.cs" />
+    <Compile Include="TmModels\TmSoulers\TmUser.cs" />
+    <Compile Include="TmSockets\TmTcp\TClient.cs" />
+    <Compile Include="TmSockets\TmTcp\TPeer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmResponse.cs" />
-    <Compile Include="Sockets\TmTcp\TmAsyncTcpSession.cs" />
+    <Compile Include="TmSockets\TmTcp\TmAsyncTcpSession.cs" />
     <Compile Include="TmEntities\TmHelpers\TmParameter.cs" />
-    <Compile Include="Enums\InventoryType.cs" />
-    <Compile Include="Logs\TmLog.cs" />
-    <Compile Include="Sockets\TmTcp\TmAsyncTcpClient.cs" />
-    <Compile Include="Sockets\TmTcp\TmAsyncTcpServer.cs" />
+    <Compile Include="TmModels\TmEnums\TmInfoType.cs" />
+    <Compile Include="TmLogs\TmLog.cs" />
+    <Compile Include="TmSockets\TmTcp\TmAsyncTcpClient.cs" />
+    <Compile Include="TmSockets\TmTcp\TmAsyncTcpServer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmTimerTool.cs" />
     <Compile Include="TmEntities\TmHelpers\TmMD5Tool.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmTransfer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmRequest.cs" />
     <Compile Include="TmEntities\TmHelpers\TmTransferTool.cs" />
-    <Compile Include="Enums\RoleType.cs" />
-    <Compile Include="Enums\SkillPlace.cs" />
-    <Compile Include="Enums\TenCode.cs" />
+    <Compile Include="TmModels\TmEnums\TmParamterCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Hotfixes\" />
+    <Folder Include="TmComponents\" />
+    <Folder Include="TmEntities\TmComponents\" />
+    <Folder Include="TmSystems\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
