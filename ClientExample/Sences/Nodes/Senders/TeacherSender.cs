@@ -11,7 +11,7 @@ namespace ClientExample.Sences.Nodes.Senders
     {
         public override string Code => TenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             TwelveCode twelveCode = mvc.TwelveCode;
             switch (twelveCode)
@@ -24,15 +24,15 @@ namespace ClientExample.Sences.Nodes.Senders
             }
         }
 
-        void SpawnRolers(SoulItem roler)
+        void SpawnRolers(TmSoulerItem roler)
         {
         }
 
-        void SpawnRoler(SoulItem roler)
+        void SpawnRoler(TmSoulerItem roler)
         {
         }
 
-        void RemoveRoler(SoulItem roler)
+        void RemoveRoler(TmSoulerItem roler)
         {
         }
 

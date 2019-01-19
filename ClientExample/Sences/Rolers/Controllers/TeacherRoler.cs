@@ -12,7 +12,7 @@ namespace ClientExample.Sences.Rolers.Controllers
     {
         public override string Code => TenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -26,9 +26,9 @@ namespace ClientExample.Sences.Rolers.Controllers
             }
         }
 
-        void Getitems(TmRequest mvc)
+        void Getitems(TmParameter mvc)
         {
-            Dictionary<int, SoulItem> bookers = TmTransferTool.GetJsonValue<Dictionary<int, SoulItem>>(mvc, mvc.ElevenCode.ToString());
+            Dictionary<int, TmSoulerItem> bookers = TmTransferTool.GetJsonValue<Dictionary<int, TmSoulerItem>>(mvc, mvc.ElevenCode.ToString());
             RolerInfo.Instance.Bookers = bookers;
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " Bookers:" + RolerInfo.Instance.Bookers.Count);
         }

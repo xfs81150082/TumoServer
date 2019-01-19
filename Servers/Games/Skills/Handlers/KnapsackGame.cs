@@ -11,7 +11,7 @@ namespace Servers.Games.Handlers
     class KnapsackGame : GameHandlerBase
     {
         public override string Code => TenCode.Knapsack.ToString();
-        public override void OnTransferParameter(TmRequest sp)
+        public override void OnTransferParameter(TmParameter sp)
         {
             ElevenCode ElevenCode = sp.ElevenCode;
             switch (ElevenCode)

@@ -13,7 +13,7 @@ namespace ClientExample.Sences.Nodes.Controllers
     class EngineerNode : NodeCotrollerBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -28,11 +28,11 @@ namespace ClientExample.Sences.Nodes.Controllers
         }
 
    
-        void EngineerLogin(TmRequest mvc)
+        void EngineerLogin(TmParameter mvc)
         {
-            SoulItem soulItem = TmTransferTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
+            TmSoulerItem soulItem = TmTransferTool.GetJsonValue<TmSoulerItem>(mvc, mvc.ElevenCode.ToString());
             NodeInfo.Instance.Engineer = soulItem;
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " 当前角色Name: " + NodeInfo.Instance.Engineer.Name + " Id: " + NodeInfo.Instance.Engineer.Id + " px: " + NodeInfo.Instance.Engineer.px);
+            //Console.WriteLine(TmTimerTool.GetCurrentTime() + " 当前角色Name: " + NodeInfo.Instance.Engineer.Name + " Id: " + NodeInfo.Instance.Engineer.Id + " px: " + NodeInfo.Instance.Engineer.px);
         }
 
 

@@ -11,15 +11,15 @@ namespace ClientExample.Sences.Rolers
     {
         private static RolerInfo _instance;
         public static RolerInfo Instance { get => _instance; }
-        public Dictionary<int, SoulItem> Bookers { get => bookers; set => bookers = value; }
-        public Dictionary<int, SoulItem> Teachers { get => teachers; set => teachers = value; }
-        public Dictionary<int, SoulItem> Engineers { get => engineers; set => engineers = value; }
-        public SoulItem Engineer { get => engineer; set => engineer = value; }
+        public Dictionary<int, TmSoulerItem> Bookers { get => bookers; set => bookers = value; }
+        public Dictionary<int, TmSoulerItem> Teachers { get => teachers; set => teachers = value; }
+        public Dictionary<int, TmSoulerItem> Engineers { get => engineers; set => engineers = value; }
+        public TmSoulerItem Engineer { get => engineer; set => engineer = value; }
 
-        private Dictionary<int, SoulItem> bookers;
-        private Dictionary<int, SoulItem> teachers;
-        private Dictionary<int, SoulItem> engineers;
-        private SoulItem engineer;   //当前客户端 当前角色
+        private Dictionary<int, TmSoulerItem> bookers;
+        private Dictionary<int, TmSoulerItem> teachers;
+        private Dictionary<int, TmSoulerItem> engineers;
+        private TmSoulerItem engineer;   //当前客户端 当前角色
 
         public RolerInfo()
         {

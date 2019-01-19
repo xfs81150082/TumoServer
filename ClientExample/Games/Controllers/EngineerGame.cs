@@ -11,7 +11,7 @@ namespace ClientExample.Games.Controllers
     {
         public override string Code => TenCode.Engineer.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -25,29 +25,29 @@ namespace ClientExample.Games.Controllers
 
         public EngineerGame()  {    }
 
-        void RecvEngineerItems(TmRequest mvc)
+        void RecvEngineerItems(TmParameter mvc)
         {
-            List<SoulItem> items = TmTransferTool.GetJsonValue<List<SoulItem>>(mvc, "GetItemsByUser");
+            List<TmSoulerItem> items = TmTransferTool.GetJsonValue<List<TmSoulerItem>>(mvc, "GetItemsByUser");
             Console.WriteLine("EngineerController-items: " + items.Count);
             foreach (var tem in items)
             {
-                tem.Coin = 26;
+                //tem.Coin = 26;
                 //UpdateItemdb(tem.CreatSoulItemDB());
             }
 
-            TmRequest mvc2 = TmTransferTool.ToJsonParameter<SoulItem>(NineCode.User, TenCode.EngineerLogin, ElevenCode.Engineer, TwelveCode.SpawnRoler, "SoulItem", items[0]);
+            TmParameter mvc2 = TmTransferTool.ToJsonParameter<TmSoulerItem>(NineCode.User, TenCode.EngineerLogin, ElevenCode.Engineer, TwelveCode.SpawnRoler, "SoulItem", items[0]);
             TumoConnect.Instance.OnTransferParameter(mvc2);
         }
-        void SpawnRoler(TmRequest mvc)
-        {
-            SoulItem item = TmTransferTool.GetJsonValue<SoulItem>(mvc, "SoulItem");
-            Console.WriteLine("Spawn-Id: " + item.Id + " Name: " + item.Name);        
+        //void SpawnRoler(TmRequest mvc)
+        //{
+        //    TmSoulerItem item = TmTransferTool.GetJsonValue<TmSoulerItem>(mvc, "SoulItem");
+        //    Console.WriteLine("Spawn-Id: " + item.Id + " Name: " + item.Name);        
 
-        }
+        //}
 
-        void UpdateItemdb(SoulItemDB itemDB)
+        void UpdateItemdb(TmSoulerDB itemDB)
         {
-            TmRequest mvc = TmTransferTool.ToJsonParameter<SoulItemDB>(NineCode.Game, TenCode.Engineer, ElevenCode.UpdateItemdb,TwelveCode.UpdateItemdb, "SoulItemDB", itemDB);
+            TmParameter mvc = TmTransferTool.ToJsonParameter<TmSoulerDB>(NineCode.Game, TenCode.Engineer, ElevenCode.UpdateItemdb,TwelveCode.UpdateItemdb, "SoulItemDB", itemDB);
             //TClient.Instance.SendMsg(mvc);
         }
         

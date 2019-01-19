@@ -13,7 +13,7 @@ namespace Servers.Logins.Mysqlers
     class UserLoginMysql : LoginMysqlBase
     {
         public override string Code => TenCode.User.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -30,9 +30,9 @@ namespace Servers.Logins.Mysqlers
         private string SoulName = "Users";
         public UserLoginMysql() { }
         
-        private void CheckLoginPassword(TmRequest mvc)
+        private void CheckLoginPassword(TmParameter mvc)
         {
-            User user2 = GetUserByUserName(mvc.Username);
+            TmUser user2 = GetUserByUserName(mvc.Username);
             if (user2 != null)
             {
                 if (user2.Password == mvc.Password)
@@ -54,13 +54,13 @@ namespace Servers.Logins.Mysqlers
                 Console.WriteLine("帐号不存在");
             }
         }      
-        User GetUserByUserName(string username)
+        TmUser GetUserByUserName(string username)
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + SoulName + " where username = '" + username + "'", MysqlHelper.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
-                User item = new User();
+                TmUser item = new TmUser();
                 while (reader.Read())
                 {
                     if (reader.HasRows)

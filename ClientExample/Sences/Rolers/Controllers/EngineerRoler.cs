@@ -12,7 +12,7 @@ namespace ClientExample.Sences.Rolers.Controllers
     class EngineerRoler : RolerControllerBase
     {
         public override string Code => TenCode.Engineer.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -38,7 +38,7 @@ namespace ClientExample.Sences.Rolers.Controllers
             }
         }
 
-        private void Test(TmRequest mvc)
+        private void Test(TmParameter mvc)
         {
             int count = TmTransferTool.GetJsonValue<int>(mvc, mvc.ElevenCode.ToString());
             Console.WriteLine(TmTimerTool.GetCurrentTime() + " count: " + count);
@@ -46,22 +46,22 @@ namespace ClientExample.Sences.Rolers.Controllers
 
         public EngineerRoler(){   }
 
-        void SpawnRoler(TmRequest mvc)
-        {
-            SoulItem soulItem = TmTransferTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
-            RolerInfo.Instance.Engineers.Add(soulItem.Id, soulItem);
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
-        }
-        void RemoveRoler(TmRequest mvc)
-        {
-            SoulItem soulItem = TmTransferTool.GetJsonValue<SoulItem>(mvc, mvc.ElevenCode.ToString());
-            RolerInfo.Instance.Engineers.Remove(soulItem.Id);
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
-        }
-        void SyncMoveState(TmRequest mvc)
-        {
+        //void SpawnRoler(TmRequest mvc)
+        //{
+        //    TmSoulerItem soulItem = TmTransferTool.GetJsonValue<TmSoulerItem>(mvc, mvc.ElevenCode.ToString());
+        //    RolerInfo.Instance.Engineers.Add(soulItem.Id, soulItem);
+        //    Console.WriteLine(TmTimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
+        //}
+        //void RemoveRoler(TmRequest mvc)
+        //{
+        //    TmSoulerItem soulItem = TmTransferTool.GetJsonValue<TmSoulerItem>(mvc, mvc.ElevenCode.ToString());
+        //    RolerInfo.Instance.Engineers.Remove(soulItem.Id);
+        //    Console.WriteLine(TmTimerTool.GetCurrentTime() + " Name: " + RolerInfo.Instance.Engineer.Name + " Id: " + RolerInfo.Instance.Engineer.Id + " px: " + RolerInfo.Instance.Engineer.px);
+        //}
+        //void SyncMoveState(TmRequest mvc)
+        //{
 
-        }
+        //}
 
 
     }

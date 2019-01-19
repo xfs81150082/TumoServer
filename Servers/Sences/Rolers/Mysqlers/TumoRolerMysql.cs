@@ -18,7 +18,7 @@ namespace Servers.Sences.Rolers.Mysqlers
         private static TumoRolerMysql _instance;
         public Dictionary<string, RolerMysqlBase> RolerMysqls = new Dictionary<string, RolerMysqlBase>();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             //创建一个空的处理程序（handler）
             RolerMysqlBase measurementMysql;
