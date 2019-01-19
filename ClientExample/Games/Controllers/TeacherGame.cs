@@ -11,7 +11,7 @@ namespace ClientExample.Games.Controllers
     {
         public override string Code => ElevenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -28,7 +28,7 @@ namespace ClientExample.Games.Controllers
 
         }
 
-        void SpawnRolers(TmRequest mvc)
+        void SpawnRolers(TmParameter mvc)
         {
             Dictionary<int, TmSoulerItem> items = TmTransferTool.GetJsonValue<Dictionary<int, TmSoulerItem>>(mvc, "SoulItems");
             Console.WriteLine("TeacherController-SpawnItems: " + items.Count);

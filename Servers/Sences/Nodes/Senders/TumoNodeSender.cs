@@ -26,7 +26,7 @@ namespace Servers.Sences.Nodes.Senders
         public void Init() { }
 
         //这个方法用来处理参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             //创建一个空的处理程序（handler）
             NodeSenderBase sender;

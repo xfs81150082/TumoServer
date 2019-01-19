@@ -18,7 +18,7 @@ namespace Servers.Sences.Rolers.Mysqlers
     {
         public override string Code => TenCode.Teacher.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

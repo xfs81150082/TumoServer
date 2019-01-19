@@ -14,7 +14,7 @@ namespace Servers.Sences.Nodes.Mysqlers
     {
         public override string Code => TenCode.Node.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

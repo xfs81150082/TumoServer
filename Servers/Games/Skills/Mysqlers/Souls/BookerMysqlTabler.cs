@@ -16,7 +16,7 @@ namespace Servers.Games.Mysqlers.Souls
     {
         public override string Code => TenCode.Booker.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

@@ -37,7 +37,7 @@ namespace Servers
             {
                 while (RecvParameters.Count > 0)
                 {
-                    TmRequest mvc = RecvParameters.Dequeue();
+                    TmParameter mvc = RecvParameters.Dequeue();
                     if (TumoGate.Instance != null)
                     {
                         TumoGate.Instance.OnTransferParameter(mvc);

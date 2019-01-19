@@ -11,7 +11,7 @@ namespace Servers.Games.Handlers
     {
         public override string Code => TenCode.Task.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             throw new NotImplementedException();
         }

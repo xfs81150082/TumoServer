@@ -11,7 +11,7 @@ namespace ClientExample.Sences.Rolers.Senders
     class BookerSender : RolerSenderBase
     {
         public override string Code => TenCode.Booker.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)
@@ -31,7 +31,7 @@ namespace ClientExample.Sences.Rolers.Senders
             }
         }
 
-        void SynchronizationMoveState(TmRequest mvc)
+        void SynchronizationMoveState(TmParameter mvc)
         {
             //Monster monster = MvcTool.GetJsonValue<Monster>(mvc, mvc.ElevenCode.ToString());
             //List<Player> players = RolerInfo.Instance.GetPlayersByIdxzs(monster.NineNodeIdxzs);

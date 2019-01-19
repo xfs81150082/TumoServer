@@ -16,7 +16,7 @@ namespace Servers.Games.Mysqlers.Skills
     class InbornMysqlTabler : GameMysqlBase
     {
         public override string Code => TenCode.Inborn.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

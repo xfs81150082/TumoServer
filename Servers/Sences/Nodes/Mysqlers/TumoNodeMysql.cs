@@ -18,7 +18,7 @@ namespace Servers.Sences.Nodes.Mysqlers
         private static TumoNodeMysql _instance;
         public Dictionary<string, NodeMysqlBase> NodeMysqlers = new Dictionary<string, NodeMysqlBase>();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             //创建一个空的处理程序（handler）
             NodeMysqlBase measurementMysql;

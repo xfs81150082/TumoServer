@@ -11,7 +11,7 @@ namespace Servers.Logins.Handlers
     {
         public override string Code => TenCode.Register.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode = mvc.ElevenCode;
             switch (elevenCode)

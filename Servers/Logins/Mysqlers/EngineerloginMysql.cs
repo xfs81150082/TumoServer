@@ -14,7 +14,7 @@ namespace Servers.Logins.Mysqlers
     {
         public override string Code => TenCode.Engineer.ToString();
 
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode elevenCode= mvc.ElevenCode;
             switch (elevenCode)
@@ -34,7 +34,7 @@ namespace Servers.Logins.Mysqlers
         //private string SoulItemName = "engineeritem";
         public EngineerloginMysql() { }
 
-        void GetItemsByUser(TmRequest mvc)
+        void GetItemsByUser(TmParameter mvc)
         {
             //TmUser user1 = TmTransferTool.GetValue<TmUser>(mvc, mvc.ElevenCode.ToString());
             //List<TmSoulerItem> items = GetSoulItemsByUserId(user1.Id);

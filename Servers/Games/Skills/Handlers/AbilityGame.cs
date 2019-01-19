@@ -12,7 +12,7 @@ namespace Servers.Games.Handlers
     class AbilityGame : GameHandlerBase
     {
         public override string Code => TenCode.Ability.ToString();
-        public override void OnTransferParameter(TmRequest mvc)
+        public override void OnTransferParameter(TmParameter mvc)
         {
             ElevenCode ElevenCode = mvc.ElevenCode;
             switch (ElevenCode)
@@ -28,7 +28,7 @@ namespace Servers.Games.Handlers
 
         public AbilityGame()  {  }
 
-        void Test(TmRequest mvc)
+        void Test(TmParameter mvc)
         {
             Console.WriteLine("GameAbilityTest:" + mvc.NineCode);
             //object obj1 = null;
@@ -40,35 +40,35 @@ namespace Servers.Games.Handlers
         }
 
 
-        void SpawnItemdb(TmRequest sp)
+        void SpawnItemdb(TmParameter sp)
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
             TmSkillDB item = TmJson.ToObject<TmSkillDB>(json.ToString());
             //manager.InsertItemdb(item.Name, item.SkillId, item.RolerId);
         }
-        void RemoveItemdb(TmRequest sp)
+        void RemoveItemdb(TmParameter sp)
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
             TmSkillDB item = TmJson.ToObject<TmSkillDB>(json.ToString());
             //manager.RemoveItemdb(item.Id);
         }
-        void UpdateItemdbName(TmRequest sp)
+        void UpdateItemdbName(TmParameter sp)
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
             TmSkillDB item = TmJson.ToObject<TmSkillDB>(json.ToString());
             //manager.UpdateItemdb(item.Id, item.Name);
         }
-        void UpdateItemdbHpMp(TmRequest sp)
+        void UpdateItemdbHpMp(TmParameter sp)
         {
             object json;
             sp.Parameters.TryGetValue("SkillItemDB", out json);
             TmSoulerDB item = TmJson.ToObject<TmSoulerDB>(json.ToString());
             //manager.UpdateItemdb(item.Id, item.Exp, item.Level, item.Hp, item.Mp, item.Coin, item.Diamond);
         }
-        void UpdateItemdbPxPyPz(TmRequest sp)
+        void UpdateItemdbPxPyPz(TmParameter sp)
         {
             Console.WriteLine("sp:" + sp.Parameters.Count);
             object json;
@@ -78,7 +78,7 @@ namespace Servers.Games.Handlers
 
             //manager.UpdateItemdb(item.Id, item.SenceId, item.px, item.py, item.pz, item.ax, item.ay, item.az);
         }
-        void GetItems(TmRequest mvc)
+        void GetItems(TmParameter mvc)
         {
             //向mysql取得玩家数据列表
             //List<SkillItem> list1 = manager.ReaderItems();
