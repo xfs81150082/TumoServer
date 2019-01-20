@@ -10,15 +10,16 @@ namespace Tumo
         public TmEntity Parent { get; set; }
         public override void TmAwake()
         {
-            TmEcsDictionary.Components.Add(EcsId, this);  
+            TmEcsDictionary.Components.Add(EcsId, this);         
         }
         public TmComponent() { }
         public TmComponent(TmEntity entity)
         {
             Parent = entity;
-        }          
+        }       
         public override void TmDispose()
         {
+            base.TmDispose();
             TmEcsDictionary.Components.Remove(EcsId);
             if (Parent != null)
             {
@@ -30,7 +31,7 @@ namespace Tumo
                 }
                 Parent = null;
             }
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmComponent释放资源");
+            Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmComponent释放资源");
         }
 
     }

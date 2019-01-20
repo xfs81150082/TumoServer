@@ -23,5 +23,6 @@ namespace Tumo
         public string RigisterDateTime { get; set; }
         public string LoginDateTime { get; set; }
         public int LoginCount { get; set; }
+             
     }
 }

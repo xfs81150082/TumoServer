@@ -7,7 +7,7 @@ namespace Tumo
 {
     public abstract class TmEntity : TmComponent
     {
-        public Dictionary<string, TmComponent> Components { get; set; } = new Dictionary<string, TmComponent>();     
+        public Dictionary<string, TmComponent> Components { get; set; } = new Dictionary<string, TmComponent>();
         public override void TmAwake()
         {
             base.TmAwake();
@@ -25,7 +25,7 @@ namespace Tumo
             }
             else
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + tem.GetType().Name + "此类型组件不存在！");
+                Console.WriteLine(TmTimerTool.CurrentTime() + tem.GetType().Name + "此类型组件不存在！");
                 return null;
             }
         }
@@ -37,11 +37,11 @@ namespace Tumo
             {
                 tm.Parent = this;
                 Components.Add(typeof(T).Name, tm);
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + " 实例{0}添加组件{1}成功。", this.GetType().Name, typeof(T).Name);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 实例 {0} 添加组件 {1} 成功, 父类型名称为 {2}。", this.GetType().Name, typeof(T).Name, tm.Parent.GetType().Name);
             }
             else
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + typeof(T).Name + "此类型组件已存在！");
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 此类型组件 {} 已存在！", typeof(T).Name);
             }
         }
         public void RemoveComponent<T>()
@@ -56,19 +56,15 @@ namespace Tumo
             }
             else
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + name + "此类型组件不存在！");
+                Console.WriteLine(TmTimerTool.CurrentTime() + name + "此类型组件不存在！");
             }
-        }
-        public void OnTransferParameter(TmParameter parameter)
-        {
-
         }
         public override void TmDispose()
         {
             base.TmDispose();
             TmEcsDictionary.Entities.Remove(EcsId);
             OnDispose();
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmEntity释放资源");
+            Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmEntity释放资源");
         }
         void OnDispose()
         {

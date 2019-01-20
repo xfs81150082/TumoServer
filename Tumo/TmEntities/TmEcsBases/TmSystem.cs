@@ -24,7 +24,7 @@ namespace Tumo
             bool have = Comopnents.TryGetValue(typeof(T).Name, out com);
             if (have)
             {
-                Console.WriteLine(TmTimerTool.GetCurrentTime() + typeof(T).Name + "此类组件已添加");
+                Console.WriteLine(TmTimerTool.CurrentTime() + typeof(T).Name + "此类组件已添加");
             }
             else
             {
@@ -64,7 +64,7 @@ namespace Tumo
         {
             base.TmDispose();
             TmEcsDictionary.Systems.Remove(EcsId);
-            Console.WriteLine(TmTimerTool.GetCurrentTime() + " EcsId:" + EcsId + " TmSystem释放资源");
+            Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmSystem释放资源");
         }
 
         #endregion
