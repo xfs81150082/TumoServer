@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tumo;
 
 namespace Servers
@@ -25,9 +22,7 @@ namespace Servers
         {
             if (Connection == null || Connection.State != ConnectionState.Connecting)
             {
-                //ConnectMysql();
                 string connectionString = string.Format("Server = {0}; Database = {1}; User ID = {2}; Password = {3};", localhost, database, root, password);
-                //OpenMysqlConnection(connectionString);
                 Connection = new MySqlConnection(connectionString);
                 Connection.Open();
                 Console.WriteLine(TmTimerTool.CurrentTime() + " MySql版本号:{0} ", Connection.ServerVersion);

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Tumo;
 
 namespace Servers
@@ -22,24 +21,30 @@ namespace Servers
         }
 
         public TmUser User;
+        public List<TmSoulerDB> TmSoulerDbs;
         public static event EventHandler<TmParameter> OnGetTmUserItemEvent;
+        public static event EventHandler<TmParameter> OnGetTmEngineertemEvent;
 
         private void CheckLoginPassword(TmParameter parameter)
         {
+            TmUser user1 = TmTransferTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
             OnGetTmUserItemEvent(this, parameter);
-            Console.WriteLine(TmTimerTool.CurrentTime() + "parameter:" + parameter.Username);
-            Console.WriteLine(TmTimerTool.CurrentTime() + " User:" + this.User.Username);
-            TmUser user2 = this.User;
-            if (user2 != null)
+            if (this.User != null)
             {
-                if (user2.Password == parameter.Password)
+                if (User.Password == user1.Password)
                 {
-                    parameter.TenCode = TenCode.TmEngineerHandler;
-                    parameter.ElevenCode = ElevenCode.Login;
-                    parameter.Parameters.Add(parameter.ElevenCode.ToString(), user2);
+                    parameter.Parameters.Clear();
+                    TmTransferTool.AddJsonParameter(parameter, parameter.ElevenCode.ToString(), this.User);
+                    OnGetTmEngineertemEvent(this, parameter);
 
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " 41this.TmSoulerDbs:" + this.TmSoulerDbs.Count);
 
-
+                    if (this.TmSoulerDbs != null)
+                    {
+                        TmParameter response = TmTransferTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.TmUserController, ElevenCode.Login, ElevenCode.Login.ToString(), this.TmSoulerDbs);
+                        response.EcsId = parameter.EcsId;
+                        TmNetTcp.Instance.Send(response);
+                    }
                 }
                 else
                 {

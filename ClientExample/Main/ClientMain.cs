@@ -14,10 +14,14 @@ namespace ClientExample
         {
             Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");
             ///创建控制台客户端并运行
-            Thread.Sleep(4000);
+            Thread.Sleep(2000);
 
             TmGame.TmSence.AddComponent(new TmConnect());
             TmGame.TmSence.AddComponent(new TmClientSocket());
+            TmGame.TmSence.AddComponent(new TmEngineerController());
+            TmGame.TmSence.AddComponent(new TmUserController());
+            TmGame.TmSence.AddComponent(new TmTest());
+
 
             //new TumoConnect();
             //TmTcpClient tmTcpClient = new TmTcpClient();

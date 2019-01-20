@@ -25,12 +25,16 @@ namespace Servers
             switch (tenCode)
             {
                 case (TenCode.TmUserHandler):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmLogin: " + tenCode);
-                    this.GetComponent<TmUserHandler>().OnTransferParameter(parameter);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
+
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmGame.TmSence.GetComponent<TmUserHandler>().GetType().Name:" + TmGame.TmSence.GetComponent<TmUserHandler>().GetType().Name);
+
+
+                    TmGame.TmSence.GetComponent<TmUserHandler>().OnTransferParameter(parameter);
                     break;
                 case (TenCode.TmEngineerHandler):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmLogin: " + tenCode);
-                    this.GetComponent<TmEngineerHandler>().OnTransferParameter(parameter);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
+                    TmGame.TmSence.GetComponent<TmEngineerHandler>().OnTransferParameter(parameter);
                     break;
                 case (TenCode.None):
                     break;

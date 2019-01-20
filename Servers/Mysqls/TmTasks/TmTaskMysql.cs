@@ -10,7 +10,7 @@ using Servers;
 
 namespace Servers
 {
-    class AssignmentMysqlTabler 
+    class TmTaskMysql : TmComponent
     {
         //public override string Code => TenCode.Task.ToString();
 
