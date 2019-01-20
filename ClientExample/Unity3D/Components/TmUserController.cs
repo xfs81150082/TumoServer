@@ -6,9 +6,9 @@ using Tumo;
 using Tumo.Models;
 using ClientExample;
 
-namespace ClientExample.Logins.Controllers
+namespace ClientExample
 {
-    class UserLogin : TmComponent
+    class TmUserController : TmComponent
     {
       
 

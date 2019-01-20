@@ -6,9 +6,9 @@ using ClientExample;
 using Tumo;
 using Tumo.Models;
 
-namespace ClientExample.Logins.Controllers
+namespace ClientExample
 {
-    class EngineerLogin : TmComponent
+    class TmEngineerController : TmComponent
     {
 
         public override void OnTransferParameter(TmParameter mvc)

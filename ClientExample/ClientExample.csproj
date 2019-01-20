@@ -48,13 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Unity3D\Components\GameClient.cs" />
     <Compile Include="Main\ClientMain.cs" />
-    <Compile Include="Unity3D\Components\Test.cs" />
-    <Compile Include="Unity3D\Systems\TmTcpClient.cs" />
-    <Compile Include="Unity3D\Components\TumoConnect.cs" />
-    <Compile Include="Unity3D\Components\EngineerLogin.cs" />
-    <Compile Include="Unity3D\Components\UserLogin.cs" />
+    <Compile Include="Unity3D\Components\TmTest.cs" />
+    <Compile Include="Unity3D\Systems\TmClientSocket.cs" />
+    <Compile Include="Unity3D\Components\TmConnect.cs" />
+    <Compile Include="Unity3D\Components\TmEngineerController.cs" />
+    <Compile Include="Unity3D\Components\TmUserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

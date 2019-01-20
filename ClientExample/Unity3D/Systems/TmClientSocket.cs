@@ -10,10 +10,13 @@ using Tumo;
 
 namespace ClientExample
 {
-    public class TmTcpClient : Tumo.TmTcpClient 
+    public class TmClientSocket : TmSystem 
     {
-        public TmTcpClient() {  }     
-
+        public TmTcpClient TmClient = null;
+        public TmClientSocket()
+        {
+            TmClient = new TmTcpClient();
+        }
         public override void TmUpdate()
         {
             ConnectToServer();
@@ -21,11 +24,11 @@ namespace ClientExample
         }
         void ConnectToServer()
         {
-            if (!IsRunning)
+            if (!TmClient.IsRunning)
             {
-                IsRunning = true;
-                this.Init("127.0.0.1", 8115);
-                this.StartConnect();
+                TmClient.IsRunning = true;
+                TmClient.Init("127.0.0.1", 8115);
+                TmClient.StartConnect();
                 Console.WriteLine(TmTimerTool.CurrentTime() + " Connecting...");
             }
         }
@@ -33,13 +36,13 @@ namespace ClientExample
         {
             try
             {
-                while (RecvParameters.Count > 0)
+                while (TmClient.RecvParameters.Count > 0)
                 {
-                    TmParameter mvc = RecvParameters.Dequeue();
+                    TmParameter mvc = TmClient.RecvParameters.Dequeue();
                     if (TmConnect.Instance != null)
                     {
                         TmConnect.Instance.OnTransferParameter(mvc); ///与客户端的接口函数
-                        Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + RecvParameters.Count);
+                        Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + TmClient.RecvParameters.Count);
                     }
                     else
                     {

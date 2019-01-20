@@ -14,6 +14,7 @@ namespace Tumo
         #region Properties        
         public Socket Socket { get; set; }  ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信///客户端Socket 
         public bool IsRunning { get; set; }
+        public bool IsServer { get; set; } = true;
         public TmCoolDown CD { get; set; }
         public TmTcpSession()
         {
@@ -235,11 +236,18 @@ namespace Tumo
         public override void TmDispose()
         {
             base.TmDispose();
-            Socket.Shutdown(SocketShutdown.Both);
-            IsRunning = false;
-            Socket.Close();
-            Socket = null;
-            Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmAsyncTcpSession释放资源");
+            try
+            {
+                Socket.Shutdown(SocketShutdown.Both);
+                IsRunning = false;
+                Socket.Close();
+                Socket = null;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmTcpSession释放资源");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(TmTimerTool.CurrentTime() + " " + ex.Message);
+            }
         }
         public abstract void OnConnect();
         #endregion
