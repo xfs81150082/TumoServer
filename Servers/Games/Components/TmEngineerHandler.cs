@@ -7,7 +7,7 @@ using Tumo;
 
 namespace Servers
 {
-    public class TmEngineer : TmComponent
+    public class TmEngineerHandler : TmComponent
     {
 
         public override void OnTransferParameter(TmParameter mvc)
@@ -15,7 +15,7 @@ namespace Servers
             TenCode tenCode = mvc.TenCode;
             switch (tenCode)
             {
-                case (TenCode.TmUser):
+                case (TenCode.TmUserHandler):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineer: " + tenCode);
                
 
