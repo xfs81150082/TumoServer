@@ -18,6 +18,14 @@ namespace Tumo
             AddComponent(new TmSkillDB());
             AddComponent(new TmSkillAdd());
         }
-        public TmSkillItem() { }     
+        public TmSkillItem() { }
+        public TmSkillItem(TmSkillDB itemDB)
+        {
+            if (GetComponent<TmSkillDB>() != null)
+            {
+                TmSkillDB tem = GetComponent<TmSkillDB>() as TmSkillDB;
+                tem = itemDB;
+            }
+        }
     }
 }

@@ -15,40 +15,23 @@ namespace Servers
         private string SoulName = "Users";
         public TmUserMysql()
         {
-            TmUserHandler.OnGetTmUserItemEvent += GetTmUser;
+            TmUserHandler.OnGetTmUserItemEvent += GetTmUserByName;
         }
-        
-        private void GetTmUser(object obj, TmParameter mvc)
+         public override void TmDispose()
         {
-            TmUser user2 = GetUserByUserName(mvc.Username);
+            base.TmDispose();
+            TmUserHandler.OnGetTmUserItemEvent -= GetTmUserByName;
+        }
+       
+        private void GetTmUserByName(object obj, TmParameter parameter)
+        {
+            TmUser user1 = TmTransferTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
+            TmUser user2 = GetUserByUserName(user1.Username);
             if (user2 != null)
             {
                 (obj as TmUserHandler).User = user2;
             }
         }
-
-        //private void CheckLoginPassword(object obj,TmParameter mvc)
-        //{
-        //    TmUser user2 = GetUserByUserName(mvc.Username);
-        //    if (user2 != null)
-        //    {
-        //        if (user2.Password == mvc.Password)
-        //        {
-        //            //mvc.TenCode = TenCode.Engineer;
-        //            //mvc.ElevenCode = ElevenCode.UserLogin;
-        //            //mvc.Parameters.Add(mvc.ElevenCode.ToString(), user2);
-        //            //TumoLogin.Instance.OnTransferParameter(mvc);
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("密码不正确");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("帐号不存在");
-        //    }
-        //}
 
         #region  //取得user，插入，删除，更新
         private TmUser GetUserByUserName(string username)
@@ -127,7 +110,6 @@ namespace Servers
             }
         }
         #endregion
-
 
     }
 }

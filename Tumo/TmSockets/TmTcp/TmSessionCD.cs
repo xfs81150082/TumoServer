@@ -39,7 +39,7 @@ namespace Tumo
                 //发送心跳检测（并等待签到，签到入口在TmAsyncTcpSession里）
                 TmParameter mvc = TmTransferTool.ToJsonParameter(TenCode.TmEessionCD, ElevenCode.Login);
                 mvc.EcsId = Key;
-                TmNetTcp.Instance.SendMvc(mvc);              
+                TmNetTcp.Instance.Send(mvc);              
             }
             Console.WriteLine(TmTimerTool.CurrentTime() + " CdCount:{0}-{1} ", CdCount, MaxCdCount);
         }

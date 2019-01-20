@@ -53,7 +53,7 @@ namespace Tumo
         #endregion
 
         #region ///发送参数信息
-        public void SendMvc(TmParameter mvc)
+        public void Send(TmParameter mvc)
         {
             SendParameters.Enqueue(mvc);
             OnSendMvcParameters();
@@ -61,17 +61,17 @@ namespace Tumo
         public abstract void OnSendMvcParameters();
         #endregion
 
-        public TmTcpSession TPeer(string ecsid)
+        public TmTcpSession TPeer(string ecsId)
         {
             TmTcpSession peer;
-            TPeers.TryGetValue(ecsid, out peer);
+            TPeers.TryGetValue(ecsId, out peer);
             if (peer != null)
             {
                 return peer;
             }
             else
             {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " 没找TPeer，用Key: " + ecsid);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 没找TPeer，用Key: " + ecsId);
                 return null;
             }
         }

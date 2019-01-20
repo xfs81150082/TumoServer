@@ -67,9 +67,7 @@
     <Compile Include="Games\Components\TmUserHandler.cs" />
     <Compile Include="Games\Components\TmEngineerHandler.cs" />
     <Compile Include="Mysqls\Components\TmUserMysql.cs" />
-    <Compile Include="Logs\TmLog.cs" />
-    <Compile Include="Mysqls\Assignments\AssignmentMysqlTabler.cs" />
-    <Compile Include="Mysqls\GameMysqlBase.cs" />
+    <Compile Include="Mysqls\TmTasks\TmTaskMysql.cs" />
     <Compile Include="Mysqls\Inventorys\DressedMysqlTabler.cs" />
     <Compile Include="Mysqls\Inventorys\KnapsackMysqlTabler.cs" />
     <Compile Include="Mysqls\Inventorys\SmithyMysqlTabler.cs" />
@@ -80,7 +78,6 @@
     <Compile Include="Mysqls\Souls\BookerMysqlTabler.cs" />
     <Compile Include="Mysqls\Souls\EngineerMysqlTabler.cs" />
     <Compile Include="Mysqls\Souls\TeacherMysqlTabler.cs" />
-    <Compile Include="Mysqls\TumoGameMysql.cs" />
     <Compile Include="Games\Systems\TmServerSocket.cs" />
     <Compile Include="Games\Models\SpawnCDitem.cs" />
     <Compile Include="Games\Components\TmMysql.cs" />

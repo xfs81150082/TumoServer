@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Tumo
 {
-    public static class TmLoger
+    public static class TmLog
     {
         private static string unityPath = Application.streamingAssetsPath + "log.txt";
         //private static string unityPath = Application.streamingAssetsPath + "TumoLog/log.txt";

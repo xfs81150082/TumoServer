@@ -5,9 +5,8 @@ namespace Tumo
     [Serializable]
     public class TmSoulerDB : TmComponent
     {    
-        public TmSoulerDB() { }
         public int Id { get; set; } = 100001;
-        public string NameTm { get; set; } = "tumo";
+        public string Name { get; set; } = "tumo";
         public int SoulId { get; set; } = 15101;
         public int UserId { get; set; } = 0;             //用户名
         public int Exp { get; set; } = 0;                //经验数

@@ -52,6 +52,8 @@ namespace Tumo
             if (tem != null)
             {
                 Components.Remove(name);
+                tem.Parent = null;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 实例 {0} 删除组件 {1} 成功", this.GetType().Name, typeof(T).Name);
                 tem.Dispose();
             }
             else

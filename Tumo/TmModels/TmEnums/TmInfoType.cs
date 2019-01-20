@@ -105,14 +105,14 @@ namespace Tumo
         Weapon,     //武器电芒
     }
     [Serializable]
-    public enum AssignmentType
+    public enum TaskType
     {
         Main,          //主线任务
         Reward,        //赏金任务
         Daily,         //日常任务
     }
     [Serializable]
-    public enum AssignmentState
+    public enum TaskState
     {
         NoAccept,        //不能领取    /**0 不可接状态*/  
         NoStart,         //没开始      /**1 可接  但还未接的状态*/ 

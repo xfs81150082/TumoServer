@@ -7,7 +7,6 @@ namespace Tumo
 {
     public class TmAttribute : TmComponent
     {      
-        public TmAttribute() { }
         public int Stamina { get; set; } = 0;            //耐力，案例，每升1级加1，影响血量
         public int Brains { get; set; } = 0;             //智力，计价，每升1级加1，影响魔法攻击强度，魔法防御
         public int Power { get; set; } = 0;              //力量，计量，每升1级加1，影响物理攻击强度，物理防御
