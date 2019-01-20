@@ -16,11 +16,6 @@ namespace Servers
         {
             base.TmAwake();
             _instance = this;
-            //AddComponent(new TmLogin());
-            //AddComponent(new TmUser());
-            //AddComponent(new TmEngineer());
-
-            TmLog.WriteLine(TmTimerTool.CurrentTime() + " " + this.GetType().Name + " 组件加载完成。 ");
         }
         
         //这个方法用来处理TPeer参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
@@ -29,13 +24,13 @@ namespace Servers
             TenCode tenCode = parameter.TenCode;
             switch (tenCode)
             {
-                case (TenCode.TmUser):
+                case (TenCode.TmUserHandler):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmLogin: " + tenCode);
-                    this.GetComponent<TmUser>().OnTransferParameter(parameter);
+                    this.GetComponent<TmUserHandler>().OnTransferParameter(parameter);
                     break;
-                case (TenCode.TmEngineer):
+                case (TenCode.TmEngineerHandler):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmLogin: " + tenCode);
-                    this.GetComponent<TmEngineer>().OnTransferParameter(parameter);
+                    this.GetComponent<TmEngineerHandler>().OnTransferParameter(parameter);
                     break;
                 case (TenCode.None):
                     break;

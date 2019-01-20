@@ -11,9 +11,10 @@ namespace Tumo
         None,
         All,
         TmEessionCD,  /// 链接心跳包
-        TmLogin,      /// 登录
-        TmUser,
-        TmEngineer,
+        TmUserHandler,
+        TmEngineerHandler,
+        TmUserController,
+        TmEngineerController,
         TmBooker,
         TmTeacher,
         TmInventory,
@@ -23,9 +24,9 @@ namespace Tumo
         TmSence,
 
         End,
-       
 
-    
+
+
     }
     [Serializable]
     public enum ElevenCode

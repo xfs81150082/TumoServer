@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace Tumo
 {
-    public abstract class TmNetTcp : TmSystem
+    public abstract class TmNetTcp : TmComponent
     {
         private static TmNetTcp _instance;
         public static TmNetTcp Instance { get => _instance;  }

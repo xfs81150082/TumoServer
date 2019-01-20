@@ -23,7 +23,7 @@ namespace Servers
             ///服务器加载组件
             TmGame.TmSence.AddComponent(new TmMysql());       ///数据库链接组件
             TmGame.TmSence.AddComponent(new TmGate());        ///服务器网关
-            TmGame.TmSence.AddComponent(new TmTcpServer());   ///套接字 外网 传输数据
+            TmGame.TmSence.AddComponent(new TmServerSocket());   ///套接字 外网 传输数据
 
             
             Thread.CurrentThread.Name = "TumoWorld";

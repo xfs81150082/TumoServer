@@ -8,12 +8,13 @@ using Tumo;
 
 namespace ClientExample
 {
-    class Test : TmSystem
+    class TmTest : TmSystem
     {
         private bool IsLogin = false;
 
         public override void TmUpdate()
         {
+
             TestLogin();
         }
 
@@ -31,9 +32,10 @@ namespace ClientExample
         void EngineerLogin()
         {
             int Id = 100001;
-            TmParameter mvc = TmTransferTool.ToJsonParameter(TenCode.TmEngineer, ElevenCode.Login);
+            TmParameter mvc = TmTransferTool.ToJsonParameter(TenCode.TmUserHandler, ElevenCode.Login);
             mvc.RolerId = Id.ToString();
-            TmConnect.Instance.OnTransferParameter(mvc);
+            //TmConnect.Instance.OnTransferParameter(mvc);
+            TmNetTcp.Instance.SendMvc(mvc);
             Console.WriteLine(TmTimerTool.CurrentTime() + " Id:{0}", mvc.RolerId);
         }
 

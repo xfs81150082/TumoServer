@@ -34,7 +34,7 @@ namespace Servers
             {
                 if (user2.Password == parameter.Password)
                 {
-                    parameter.TenCode = TenCode.TmEngineer;
+                    parameter.TenCode = TenCode.TmEngineerHandler;
                     parameter.ElevenCode = ElevenCode.Login;
                     parameter.Parameters.Add(parameter.ElevenCode.ToString(), user2);
 

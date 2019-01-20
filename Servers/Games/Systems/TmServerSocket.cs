@@ -8,8 +8,13 @@ using Tumo;
 
 namespace Servers
 {
-    public class TmTcpServer : Tumo.TmTcpServer
+    public class TmServerSocket : TmSystem
     {
+        public TmTcpServer TcpServer = null;
+        public TmServerSocket()
+        {
+            TcpServer = new TmTcpServer();
+        }
         public override void TmUpdate()
         {
             ServerStart();
@@ -17,23 +22,23 @@ namespace Servers
         }
         void ServerStart()
         {
-            if (!IsRunning)
+            if (!TcpServer.IsRunning)
             {
-                this.Init("127.0.0.1", 8115, 10);
-                this.StartListen();
+                TcpServer.Init("127.0.0.1", 8115, 10);
+                TcpServer.StartListen();
             }
         }
         void ServerRecvParameters()
         {
             try
             {
-                while (RecvParameters.Count > 0)
+                while (TcpServer.RecvParameters.Count > 0)
                 {
-                    TmParameter mvc = RecvParameters.Dequeue();
+                    TmParameter mvc = TcpServer.RecvParameters.Dequeue();
                     if (TmGate.Instance != null)
                     {
                         TmGate.Instance.OnTransferParameter(mvc);
-                        Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + RecvParameters.Count);
+                        Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + TcpServer.RecvParameters.Count);
                     }
                     else
                     {

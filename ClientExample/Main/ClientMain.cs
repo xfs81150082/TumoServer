@@ -16,7 +16,8 @@ namespace ClientExample
             ///创建控制台客户端并运行
             Thread.Sleep(4000);
 
-            new GameClient();
+            TmGame.TmSence.AddComponent(new TmConnect());
+            TmGame.TmSence.AddComponent(new TmClientSocket());
 
             //new TumoConnect();
             //TmTcpClient tmTcpClient = new TmTcpClient();
