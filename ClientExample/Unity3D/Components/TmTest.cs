@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Timers;
 using Tumo;
 
@@ -10,34 +11,52 @@ namespace ClientExample
 {
     class TmTest : TmSystem
     {
+        private bool IsUserLogin = false;
         private bool IsLogin = false;
-
         public override void TmUpdate()
         {
-
-            TestLogin();
+            TestTmUserLogin();
         }
 
-        // 当时间发生的时候需要进行的逻辑处理等    // 在这里仅仅是一种方式，可以实现这样的方式很多    
+        #region
+        void TestTmUserLogin()
+        {
+            Thread.Sleep(4000);
+            if (IsUserLogin == false)
+            {
+                IsUserLogin = true;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " IsUserLogin:{0}", IsUserLogin.ToString());
+                TmUserLogin();
+            }
+        }
+        void TmUserLogin()
+        {            
+            TmUser tmUser = new TmUser();
+            tmUser.Username = "Tumo";
+            tmUser.Password = "123456";
+            TmParameter mvc = TmTransferTool.ToJsonParameter(TenCode.TmUserHandler, ElevenCode.Login, ElevenCode.Login.ToString(), tmUser);
+            TmNetTcp.Instance.Send(mvc);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " 用户登录, Username:{0} Password:{1}", tmUser.Username, tmUser.Password);
+        }
+        #endregion
+
+        #region
         void TestLogin()
         {
             if (IsLogin == false)
             {
                 IsLogin = true;
                 Console.WriteLine(TmTimerTool.CurrentTime() + " IsLogin:{0}", IsLogin.ToString());
-                EngineerLogin();
+                EngineerLogin(100001);
             }
         }
-
-        void EngineerLogin()
+        void EngineerLogin(int rolerId)
         {
-            int Id = 100001;
-            TmParameter mvc = TmTransferTool.ToJsonParameter(TenCode.TmUserHandler, ElevenCode.Login);
-            mvc.RolerId = Id.ToString();
-            //TmConnect.Instance.OnTransferParameter(mvc);
-            TmNetTcp.Instance.SendMvc(mvc);
-            Console.WriteLine(TmTimerTool.CurrentTime() + " Id:{0}", mvc.RolerId);
+            TmParameter mvc = TmTransferTool.ToJsonParameter(TenCode.TmUserHandler, ElevenCode.Login, ElevenCode.Login.ToString(), rolerId);
+            TmNetTcp.Instance.Send(mvc);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " Id:{0}", rolerId);
         }
+        #endregion
 
     }
 }

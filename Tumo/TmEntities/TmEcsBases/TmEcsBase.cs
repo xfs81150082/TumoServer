@@ -11,11 +11,17 @@ namespace Tumo
         public TmEcsBase()
         {
             EcsId = TmIdGenerater.GetId();
+            TmEcsBase tmEcs;
+            TmEcsDictionary.Ecses.TryGetValue(EcsId, out tmEcs);
+            if (tmEcs != null)
+            {
+                EcsId += 5200;
+            }
             TmEcsDictionary.Ecses.Add(EcsId, this);
             TmAwake();
         }
         public virtual void TmAwake() { }
-        public virtual void OnTransferParameter(TmParameter parameter) { }
+        public virtual void OnTransferParameter(TmParameter tmp) { }
         #endregion
         #region Dispose
         ///是否已释放了资源，true时方法都不可用了。
