@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO;
-using Tumo;
 
-namespace Servers
+namespace Tumo
 {
-    public static class TmLog
+    public static class TmConsoleLog
     {
         private static string consolePath = AppDomain.CurrentDomain.BaseDirectory + "log.txt";
         //private static string logpath = AppDomain.CurrentDomain.BaseDirectory + "TumoLog/log.txt";

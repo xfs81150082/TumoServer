@@ -12,11 +12,6 @@ namespace Tumo
         {
             TmEcsDictionary.Components.Add(EcsId, this);         
         }
-        public TmComponent() { }
-        public TmComponent(TmEntity entity)
-        {
-            Parent = entity;
-        }       
         public override void TmDispose()
         {
             base.TmDispose();

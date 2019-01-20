@@ -9,26 +9,19 @@ using ClientExample;
 namespace ClientExample
 {
     class TmUserController : TmComponent
-    {
-      
-
-        public override void OnTransferParameter(TmParameter mvc)
+    {    
+        public override void OnTransferParameter(TmParameter tmp)
         {
-            ElevenCode elevenCode = mvc.ElevenCode;
+            ElevenCode elevenCode = tmp.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.Get):
-                    TmConnect.Instance.OnTransferParameter(mvc);
-                    break;
-                case (ElevenCode.None):
-                    List<TmSoulerItem> SoulItems2 = TmTransferTool.GetJsonValue<List<TmSoulerItem>>(mvc, mvc.ElevenCode.ToString());
-                    for (int i = 0; i < SoulItems2.Count; i++)
+                case (ElevenCode.Login):
+                    List<TmSoulerDB> engineers = TmTransferTool.GetJsonValue<List<TmSoulerDB>>(tmp, tmp.ElevenCode.ToString());
+                    for (int i = 0; i < engineers.Count; i++)
                     {
-                        //Console.WriteLine("SoulItems2: " + SoulItems2.Count + " Id:" + SoulItems2[i].Id + " Name:" + SoulItems2[i].Name);
-                        //TmLog.WriteLine("SoulItems: " + SoulItems2.Count + " Id:" + SoulItems2[i].Id + " Name:" + SoulItems2[i].Name);
+                        Console.WriteLine(TmTimerTool.CurrentTime() + " engineers: " + engineers.Count + " Id:" + engineers[i].Id + " Name:" + engineers[i].Name);
+                        TmConsoleLog.WriteLine(TmTimerTool.CurrentTime() + " engineers: " + engineers.Count + " Id:" + engineers[i].Id + " Name:" + engineers[i].Name);
                     }
-
-                    RolerLoginTest(SoulItems2[0]);
                     
                     break;
                 default:
@@ -36,12 +29,11 @@ namespace ClientExample
             }
         }
 
-        void RolerLoginTest(TmSoulerItem soulItem)
+        void RolerLoginTest(TmSoulerDB soulerDB)
         {
-            //TmRequest mvc = TmTransferTool.ToParameter(EightCode.Login, NineCode.Sender, TenCode.Engineer, ElevenCode.EngineerLogin);
-            //mvc.RolerId = soulItem.Id.ToString();
-            //TumoConnect.Instance.OnTransferParameter(mvc);
-            //Console.WriteLine(TmTimerTool.CurrentTime() + " Test1-UserLogin: " + mvc.RolerId);
+            TmParameter tm = TmTransferTool.ToJsonParameter(TenCode.TmEngineerHandler, ElevenCode.Login, ElevenCode.Login.ToString(), soulerDB.Id);
+            TmNetTcp.Instance.Send(tm);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " Test1-EngineerLogin: " + soulerDB.Id);
         }
 
     }

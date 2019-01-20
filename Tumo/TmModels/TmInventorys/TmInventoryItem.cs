@@ -12,31 +12,27 @@ namespace Tumo
         {
             base.TmAwake();
             AddComponent(new TmName());
-            AddComponent(new TmAttribute());
-            AddComponent(new TmChangeType());
             AddComponent(new TmInventory());
             AddComponent(new TmInventoryDB());
+            AddComponent(new TmAttribute());
             AddComponent(new TmInventoryAdd());            
+            AddComponent(new TmChangeType());
         }
-        
+        public TmInventoryItem() { }
+        public TmInventoryItem(TmInventoryDB itemDB)
+        {
+            if (GetComponent<TmInventoryDB>() != null)
+            {
+                TmInventoryDB tem = GetComponent<TmInventoryDB>() as TmInventoryDB;
+                tem = itemDB;
+            }
+        }
         //public InventoryItem(Inventory inventory)
         //{
         //    this.Inventory = inventory;
         //    UpdateItem();
         //}
-        //public InventoryItem(InventoryItemDB itemDB)
-        //{
-        //    this.inventoryItemDB = itemDB;
-        //    this.id = itemDB.Id;
-        //    this.name2 = itemDB.Name;
-        //    this.place = itemDB.Place;
-        //    this.equipQuality = itemDB.EquipQuality;
-        //    this.count = itemDB.Count;
-        //    this.level = itemDB.Level;
-        //    this.durability = itemDB.Durability;
-        //    this.pice = itemDB.Pice;
-        //    UpdateItem();//属性初始化   
-        //}
+   
         //public InventoryItemDB CreatInventoryItemDB()
         //{
         //    UpdateItem();//属性初始化
