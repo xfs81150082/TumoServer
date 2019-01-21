@@ -12,12 +12,12 @@ namespace Tumo
         {
             EcsId = TmIdGenerater.GetId();
             TmEcsBase tmEcs;
-            TmEcsDictionary.Ecses.TryGetValue(EcsId, out tmEcs);
+            TmDictionary.Ecses.TryGetValue(EcsId, out tmEcs);
             if (tmEcs != null)
             {
                 EcsId += 5200;
             }
-            TmEcsDictionary.Ecses.Add(EcsId, this);
+            TmDictionary.Ecses.Add(EcsId, this);
             TmAwake();
         }
         public virtual void TmAwake() { }
@@ -44,7 +44,7 @@ namespace Tumo
         /// 2. 为派生类提供了根据Dispose()或终结器的需要进行资源清理的必要入口。
         public virtual void TmDispose()
         {
-            TmEcsDictionary.Ecses.Remove(EcsId);   ///从ECS管理字典中删除
+            TmDictionary.Ecses.Remove(EcsId);   ///从ECS管理字典中删除
             Console.WriteLine(TmTimerTool.CurrentTime() + " TmDispose EcsId:" + EcsId + " TmEcsBase释放资源");
         }
         #endregion

@@ -11,7 +11,7 @@ namespace Tumo
         public override void TmAwake()
         {
             base.TmAwake();
-            TmEcsDictionary.Entities.Add(EcsId, this);
+            TmDictionary.Entities.Add(EcsId, this);
         }
         public TmEntity() { }
         public TmComponent GetComponent<T>()
@@ -64,7 +64,7 @@ namespace Tumo
         public override void TmDispose()
         {
             base.TmDispose();
-            TmEcsDictionary.Entities.Remove(EcsId);
+            TmDictionary.Entities.Remove(EcsId);
             try
             {
                 if (Components.Count > 0)

@@ -25,11 +25,8 @@ namespace Tumo
         public TmTcpSession TClient { get; set; }
         public Queue<TmParameter> RecvParameters { get; set; } = new Queue<TmParameter>();
         protected Queue<TmParameter> SendParameters { get; set; } = new Queue<TmParameter>();
-        protected Thread RecvThread { get; set; }
-        private Thread SendThread { get; set; }
         #endregion
         #region Constructor ///构造函数 ///初始化方法
-
         public void Init()
         {
             address = IPAddress.Parse(IpString);
@@ -60,21 +57,6 @@ namespace Tumo
         }
         public abstract void OnSendMvcParameters();
         #endregion
-
-        public TmTcpSession TPeer(string ecsId)
-        {
-            TmTcpSession peer;
-            TPeers.TryGetValue(ecsId, out peer);
-            if (peer != null)
-            {
-                return peer;
-            }
-            else
-            {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " 没找TPeer，用Key: " + ecsId);
-                return null;
-            }
-        }
 
     }
 }

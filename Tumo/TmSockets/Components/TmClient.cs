@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public class TestTwo : TmComponent
+    public class TmClient : TmComponent
     {
     }
 }
