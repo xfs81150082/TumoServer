@@ -45,10 +45,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TmEntities\TmComponents\TmSystemManangerDll.cs" />
+    <Compile Include="TmEntities\TmComponents\TmSystemMananger.cs" />
     <Compile Include="TmEntities\TmComponents\TmSence.cs" />
     <Compile Include="TmEntities\TmComponents\TmGame.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmRequest.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmConsoleLog.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmRequest.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
+    <Compile Include="TmEntities\TmSystems\TestTwo.cs" />
+    <Compile Include="TmEntities\TmSystems\TestOne.cs" />
+    <Compile Include="TmEntities\TmSystems\TmCoolDownSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
     <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />
     <Compile Include="TmModels\TmModelBase\TmBuffAdd.cs" />
@@ -63,7 +68,7 @@
     <Compile Include="TmEntities\TmEcsBases\TmInitialize.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmTimer.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsBase.cs" />
-    <Compile Include="TmEntities\TmSystems\TmCoolDown.cs" />
+    <Compile Include="TmEntities\TmComponents\TmCoolDown.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventory.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventoryItem.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventoryDB.cs" />
@@ -80,7 +85,7 @@
     <Compile Include="TmSockets\TmTcp\TmNetTcp.cs" />
     <Compile Include="TmSockets\TmTcp\TmSessionCD.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsDictionary.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmJson.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmJson.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmSystem.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmComponent.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEntity.cs" />
@@ -89,17 +94,17 @@
     <Compile Include="TmModels\TmSoulers\TmUser.cs" />
     <Compile Include="TmSockets\TmTcp\TmClient.cs" />
     <Compile Include="TmSockets\TmTcp\TmPeer.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmResponse.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmResponse.cs" />
     <Compile Include="TmSockets\TmTcp\TmTcpSession.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmDictionaryParameter.cs" />
+    <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryParameter.cs" />
     <Compile Include="TmModels\TmEnums\TmInfoType.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmLog.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmLog.cs" />
     <Compile Include="TmSockets\TmTcp\TmTcpClient.cs" />
     <Compile Include="TmSockets\TmTcp\TmTcpServer.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmTimerTool.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmMD5Tool.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmParameter.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmTransferTool.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmTimerTool.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmMD5Tool.cs" />
+    <Compile Include="TmEntities\TmHelpers\Components\TmParameter.cs" />
+    <Compile Include="TmParameterTool.cs" />
     <Compile Include="TmModels\TmEnums\TmParamterCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

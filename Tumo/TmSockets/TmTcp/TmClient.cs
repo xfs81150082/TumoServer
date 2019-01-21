@@ -14,7 +14,7 @@ namespace Tumo
         public TmClient()
         {
             TmNetTcp.Instance.TClient = this;
-            (CD as TmSessionCD).IsServer = false;
+            (this.GetComponent<TmCoolDown>() as TmCoolDown).IsServer = false;
         }                 
         public override void OnConnect()
         {

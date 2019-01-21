@@ -10,24 +10,30 @@ namespace Tumo
         public TmEntity Parent { get; set; }
         public override void TmAwake()
         {
-            TmEcsDictionary.Components.Add(EcsId, this);         
+            TmEcsDictionary.Components.Add(EcsId, this);
         }
         public override void TmDispose()
         {
             base.TmDispose();
             TmEcsDictionary.Components.Remove(EcsId);
-            if (Parent != null)
+            try
             {
-                TmComponent tm;
-                Parent.Components.TryGetValue(this.GetType().Name, out tm);
-                if (tm != null)
+                if (Parent != null)
                 {
-                    Parent.Components.Remove(this.GetType().Name);
+                    TmComponent tm;
+                    Parent.Components.TryGetValue(this.GetType().Name, out tm);
+                    if (tm != null)
+                    {
+                        Parent.Components.Remove(this.GetType().Name);
+                    }
+                    Parent = null;
                 }
-                Parent = null;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmComponent释放资源");
             }
-            Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmComponent释放资源");
+            catch (Exception ex)
+            {
+                Console.WriteLine(TmTimerTool.CurrentTime() + " ex:" + ex.Message + " TmComponent释放资源异常...");
+            }
         }
-
     }
 }
