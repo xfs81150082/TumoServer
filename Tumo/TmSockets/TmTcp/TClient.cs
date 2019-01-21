@@ -9,9 +9,9 @@ using System.Threading;
 
 namespace Tumo
 {
-    public class TmClient : TmTcpSession
+    public class TClient : TmTcpSession
     {
-        public TmClient()
+        public TClient()
         {
             TmNetTcp.Instance.TClient = this;
             (this.GetComponent<TmCoolDown>() as TmCoolDown).IsServer = false;

@@ -51,8 +51,6 @@
     <Compile Include="TmEntities\TmComponents\TmGame.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmRequest.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
-    <Compile Include="TmEntities\TmSystems\TestTwo.cs" />
-    <Compile Include="TmEntities\TmSystems\TestOne.cs" />
     <Compile Include="TmEntities\TmSystems\TmCoolDownSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
     <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />
@@ -82,9 +80,20 @@
     <Compile Include="TmModels\TmSoulers\TmSouler.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerItem.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerDB.cs" />
+    <Compile Include="TmSockets\Components\TmClient.cs" />
+    <Compile Include="TmSockets\Components\TmServer.cs" />
+    <Compile Include="TmSockets\Components\TmNetClient.cs" />
+    <Compile Include="TmSockets\Components\TmNetServer.cs" />
+    <Compile Include="TmSockets\Components\TmSendQueue.cs" />
+    <Compile Include="TmSockets\Components\TmRecvQueue.cs" />
+    <Compile Include="TmSockets\Components\TmTcp.cs" />
+    <Compile Include="TmSockets\Components\TmQueue.cs" />
+    <Compile Include="TmSockets\Components\TmSocket.cs" />
+    <Compile Include="TmSockets\Systems\TmNetClientSystem.cs" />
+    <Compile Include="TmSockets\Systems\TmNetServerSystem.cs" />
     <Compile Include="TmSockets\TmTcp\TmNetTcp.cs" />
     <Compile Include="TmSockets\TmTcp\TmSession.cs" />
-    <Compile Include="TmEntities\TmEcsBases\TmEcsDictionary.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmDictionary.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmJson.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmSystem.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmComponent.cs" />
@@ -92,7 +101,7 @@
     <Compile Include="TmEntities\TmEcsBases\TmIdGenerater.cs" />
     <Compile Include="TmModels\TmSoulers\TmTransform.cs" />
     <Compile Include="TmModels\TmSoulers\TmUser.cs" />
-    <Compile Include="TmSockets\TmTcp\TmClient.cs" />
+    <Compile Include="TmSockets\TmTcp\TClient.cs" />
     <Compile Include="TmSockets\TmTcp\TmPeer.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmResponse.cs" />
     <Compile Include="TmSockets\TmTcp\TmTcpSession.cs" />
@@ -104,7 +113,7 @@
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmTimerTool.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmMD5Tool.cs" />
     <Compile Include="TmEntities\TmHelpers\Components\TmParameter.cs" />
-    <Compile Include="TmParameterTool.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmParameterTool.cs" />
     <Compile Include="TmModels\TmEnums\TmParamterCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

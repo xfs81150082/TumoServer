@@ -15,17 +15,13 @@ namespace Tumo
         public Socket Socket { get; set; }  ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信///客户端Socket 
         public bool IsRunning { get; set; }
         public bool IsServer { get; set; } = true;
-        //public TmCoolDown CD { get; set; }
         public override void TmAwake()
         {
             base.TmAwake();
             AddComponent(new TmCoolDown(EcsId));
             AddComponent(new TmSession());
         }
-        public TmTcpSession()
-        {
-            //CD = new TmCoolDown(EcsId);
-        }
+        public TmTcpSession() { }
         #endregion
         #region byte[] Bytes        
         private byte[] Buffer { get; set; }  ///接收缓冲区   
@@ -43,7 +39,6 @@ namespace Tumo
         {
             Socket = obj as Socket;
             OnConnect();
-            //Console.WriteLine(TmTimerTool.CurrentTime() + " BeginReceiveMsg  ThreadId:" + Thread.CurrentThread.ManagedThreadId + "  ComponentId:" + this.EcsId);
             BufferSize = 1024;
             Buffer = new byte[BufferSize];
             isHead = true;
@@ -87,7 +82,6 @@ namespace Tumo
         }
         private void ParsingBytes()
         {
-            //Console.WriteLine(TmTimerTool.CurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
             ///将本次要接收的消息头字节数置0
             int iBytesHead = 0;
             ///将本次要剪切的字节数置0
@@ -151,7 +145,6 @@ namespace Tumo
             parameter.EcsId = this.EcsId;
             if (parameter.TenCode == TenCode.TmEessionCD)
             {
-                //CD.CdCount = 0;
                 (this.GetComponent<TmCoolDown>() as TmCoolDown).CdCount = 0;
             }
             else
@@ -177,7 +170,6 @@ namespace Tumo
         #region SendString       
         public void SendString(string mvcString)
         {
-            //Console.WriteLine(TmTimerTool.CurrentTime() + " Send  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
             if (null == Socket.Handle || !Socket.Connected)
             {
                 Console.WriteLine(TmTimerTool.CurrentTime() + " 连接已中断！！！");
