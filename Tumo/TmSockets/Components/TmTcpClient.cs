@@ -48,7 +48,7 @@ namespace Tumo
         public void TmReceiveSocket(Socket socket)
         {
             ///创建一个TClient接收socket            
-            new TClient().BeginReceiveMessage(socket);
+            new TmClient().BeginReceiveMessage(socket);
         }
         #endregion
 
@@ -68,7 +68,7 @@ namespace Tumo
                     }
                     else
                     {
-                        TClient = new TClient();
+                        TClient = new TmClient();
                         Console.WriteLine(TmTimerTool.CurrentTime() + " TClient is Null. {0}", "new TClient() 重新连接。");
                     }
                 }
