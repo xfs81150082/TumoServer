@@ -11,7 +11,7 @@ namespace Tumo
         #region TmSystem       
         public override void TmAwake()
         {
-            TmEcsDictionary.Systems.Add(EcsId, this);
+            TmDictionary.Systems.Add(EcsId, this);
         }
         public TmSystem() { }
         #endregion
@@ -34,7 +34,7 @@ namespace Tumo
         public List<TmEntity> GetTmEntities()
         {
             List<TmEntity> tms = new List<TmEntity>();
-            List<TmEntity> entites = new List<TmEntity>(TmEcsDictionary.Entities.Values);
+            List<TmEntity> entites = new List<TmEntity>(TmDictionary.Entities.Values);
             List<string> coms = new List<string>(Comopnents.Keys);
             if (Comopnents.Count > 0)
             {         
@@ -66,7 +66,7 @@ namespace Tumo
         public override void TmDispose()
         {
             base.TmDispose();
-            TmEcsDictionary.Systems.Remove(EcsId);
+            TmDictionary.Systems.Remove(EcsId);
             Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmSystem释放资源");
         }
         #endregion

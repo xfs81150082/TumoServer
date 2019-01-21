@@ -43,11 +43,21 @@ namespace Tumo
             return t;
         }
         public static T GetValue<T>(TmParameter mvc, string key)
-        {            
+        {
             object obj = null;
             mvc.Parameters.TryGetValue(key, out obj);
-            T tp = (T)obj;           
+            T tp = (T)obj;
             return tp;
+        }
+        public static T OutOfDictionary<T>(string key, Dictionary<string, T> dictionary)
+        {
+            T val;
+            bool yes = dictionary.TryGetValue(key, out val);
+            if (yes)
+            {
+                return val;
+            }
+            return default(T);
         }
     }
 }

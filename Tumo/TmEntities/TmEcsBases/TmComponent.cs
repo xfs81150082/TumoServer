@@ -10,12 +10,12 @@ namespace Tumo
         public TmEntity Parent { get; set; }
         public override void TmAwake()
         {
-            TmEcsDictionary.Components.Add(EcsId, this);
+            TmDictionary.Components.Add(EcsId, this);
         }
         public override void TmDispose()
         {
             base.TmDispose();
-            TmEcsDictionary.Components.Remove(EcsId);
+            TmDictionary.Components.Remove(EcsId);
             try
             {
                 if (Parent != null)
