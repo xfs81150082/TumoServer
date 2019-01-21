@@ -19,7 +19,6 @@ namespace Tumo
         {
             base.TmAwake();
             AddComponent(new TmCoolDown(EcsId));
-            AddComponent(new TmSession());
         }
         public TmTcpSession() { }
         #endregion
@@ -228,7 +227,7 @@ namespace Tumo
             }
         }
         #endregion
-        #region  /// dispose OnConnect
+        #region   dispose OnConnect
         public override void TmDispose()
         {
             base.TmDispose();
