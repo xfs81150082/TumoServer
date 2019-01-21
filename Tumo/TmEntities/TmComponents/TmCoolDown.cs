@@ -6,7 +6,7 @@ using System.Timers;
 
 namespace Tumo
 {
-    public abstract class TmCoolDown : TmSystem
+    public class TmCoolDown : TmComponent
     {
         public string Key { get; set; }
         public int CdCount { get; set; } = 0;
@@ -15,6 +15,8 @@ namespace Tumo
         public double MaxCdTime { get; set; } = 14.0;
         public bool Start { get; set; }
         public bool End { get; set; }
-        public TmCoolDown() { }
+        public bool IsServer { get; set; } = true;
+        public TmCoolDown(string key) { this.Key = key; }
+        public TmCoolDown() {  }
     }
 }

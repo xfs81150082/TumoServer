@@ -27,21 +27,21 @@ namespace Servers
 
         private void CheckLoginPassword(TmParameter parameter)
         {
-            TmUser user1 = TmTransferTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
+            TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
             OnGetTmUserItemEvent(this, parameter);
             if (this.User != null)
             {
                 if (User.Password == user1.Password)
                 {
                     parameter.Parameters.Clear();
-                    TmTransferTool.AddJsonParameter(parameter, parameter.ElevenCode.ToString(), this.User);
+                    TmParameterTool.AddJsonParameter(parameter, parameter.ElevenCode.ToString(), this.User);
                     OnGetTmEngineertemEvent(this, parameter);
 
                     Console.WriteLine(TmTimerTool.CurrentTime() + " 41this.TmSoulerDbs:" + this.TmSoulerDbs.Count);
 
                     if (this.TmSoulerDbs != null)
                     {
-                        TmParameter response = TmTransferTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.TmUserController, ElevenCode.Login, ElevenCode.Login.ToString(), this.TmSoulerDbs);
+                        TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.TmUserController, ElevenCode.Login, ElevenCode.Login.ToString(), this.TmSoulerDbs);
                         response.EcsId = parameter.EcsId;
                         TmNetTcp.Instance.Send(response);
                     }

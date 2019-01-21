@@ -15,11 +15,9 @@ namespace Servers
         //程序启动入口
         static void Main(string[] args)
         {
-            Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");
-            ///创建游戏服务器
-            new TmGame();
-            ///线程暂停1毫秒
-            Thread.Sleep(1);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");  
+            Thread.Sleep(1);            ///线程暂停1毫秒
+
             ///服务器加载组件
             TmGame.TmSence.AddComponent(new TmMysql());       ///数据库链接组件
             TmGame.TmSence.AddComponent(new TmGate());        ///服务器网关
@@ -28,6 +26,7 @@ namespace Servers
             TmGame.TmSence.AddComponent(new TmUserMysql());
             TmGame.TmSence.AddComponent(new TmEngineerHandler());
             TmGame.TmSence.AddComponent(new TmEngineerMysql());
+
             
             Thread.CurrentThread.Name = "TumoWorld";
             Console.WriteLine(TmTimerTool.CurrentTime() + " ThreadName:" + Thread.CurrentThread.Name);

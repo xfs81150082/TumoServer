@@ -18,7 +18,7 @@ namespace Tumo
 
         #region GetTmEntities
         private Dictionary<string, TmComponent> Comopnents { get; set; } = new Dictionary<string, TmComponent>();
-        public void AddComopnent<T>(T tm) where T : TmComponent
+        public void AddComponent<T>(T tm) where T : TmComponent
         {
             TmComponent com;
             bool have = Comopnents.TryGetValue(typeof(T).Name, out com);
@@ -31,26 +31,29 @@ namespace Tumo
                 Comopnents.Add(typeof(T).Name, tm);
             }
         }
-        public Dictionary<string, TmEntity> GetTmEntities()
+        public List<TmEntity> GetTmEntities()
         {
-            Dictionary<string, TmEntity> tmentites = new Dictionary<string, TmEntity>(TmEcsDictionary.Entities);
+            List<TmEntity> tms = new List<TmEntity>();
+            List<TmEntity> entites = new List<TmEntity>(TmEcsDictionary.Entities.Values);
+            List<string> coms = new List<string>(Comopnents.Keys);
             if (Comopnents.Count > 0)
-            {
-                List<string> types = new List<string>(Comopnents.Keys);
-                List<TmEntity> entites = new List<TmEntity>(TmEcsDictionary.Entities.Values);
-                for (int i = 0; i < types.Count; i++)
+            {         
+                for (int i = 0; i < entites.Count; i++)
                 {
-                    for (int j = 0; j < entites.Count; j++)
+                    List<string> entC = new List<string>(entites[i].Components.Keys);
+                    if (coms.Except(entC).ToList().Count == 0) 
                     {
-                        TmComponent com;
-                        bool yes = entites[j].Components.TryGetValue(types[i], out com);
-                        if (yes == false)
-                        {
-                            tmentites.Remove(entites[j].EcsId);
-                        }
+                        tms.Add(entites[i]);
                     }
                 }
-                return tmentites;
+                if (tms.Count > 0)
+                {
+                    for (int x = 0; x < tms.Count; x++)
+                    {
+                        Console.WriteLine(TmTimerTool.CurrentTime() + " TmSystem, tms-entites: " + tms.Count + "-" + entites.Count + " Name:" + tms[x].GetType().Name);
+                    }
+                }
+                return tms;
             }
             else
             {
@@ -66,7 +69,6 @@ namespace Tumo
             TmEcsDictionary.Systems.Remove(EcsId);
             Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmSystem释放资源");
         }
-
         #endregion
 
     }
