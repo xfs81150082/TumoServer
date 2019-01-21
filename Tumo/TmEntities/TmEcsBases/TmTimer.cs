@@ -32,7 +32,7 @@ namespace Tumo
             Timer.Elapsed -= new ElapsedEventHandler(OnTimerEvent);       ///到达时间的时候执行事件；
             Timer.Close();
         }
-        public virtual void TmUpdate() { }
+        public abstract void TmUpdate();
         #endregion
         #region TmDispose  
         public override void TmDispose()
