@@ -12,7 +12,6 @@ namespace Tumo
             base.TmAwake();
             ValTime = 4000;
             AddComponent(new TmCoolDown());
-            AddComponent(new TmSession());
         }
 
         public override void TmUpdate()
