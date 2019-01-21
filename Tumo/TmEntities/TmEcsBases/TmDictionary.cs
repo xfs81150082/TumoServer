@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public static class TmEcsDictionary
+    public static class TmDictionary
     {
         public static Dictionary<string, TmEcsBase> Ecses { get; set; } = new Dictionary<string, TmEcsBase>();
         public static Dictionary<string, TmEntity> Entities { get; set; } = new Dictionary<string, TmEntity>();

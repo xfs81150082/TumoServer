@@ -65,8 +65,8 @@ namespace Tumo
                     TmParameter mvc = SendParameters.Dequeue();
                     ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
                     string mvcJsons = TmJson.ToString<TmParameter>(mvc);
-                    TmTcpSession tpeer;
-                    TPeers.TryGetValue(mvc.EcsId, out tpeer);
+                    TmTcpSession tpeer = TmParameterTool.OutOfDictionary(mvc.EcsId, TPeers);
+                    //TPeers.TryGetValue(mvc.EcsId, out tpeer);
                     if (tpeer != null)
                     {
                         tpeer.SendString(mvcJsons);
