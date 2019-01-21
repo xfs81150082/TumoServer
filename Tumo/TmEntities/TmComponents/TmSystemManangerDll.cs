@@ -11,6 +11,8 @@ namespace Tumo
         {
             base.TmAwake();
             AddComponent(new TmCoolDownSystem());
+
+
         }
     }
 }

@@ -20,9 +20,7 @@ namespace Tumo
         {
             base.TmAwake();
             AddComponent(new TmCoolDown(EcsId));
-            AddComponent(new TestOne());
-            AddComponent(new TestTwo());
-
+            AddComponent(new TmSession());
         }
         public TmTcpSession()
         {

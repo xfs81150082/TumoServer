@@ -83,7 +83,7 @@
     <Compile Include="TmModels\TmSoulers\TmSoulerItem.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerDB.cs" />
     <Compile Include="TmSockets\TmTcp\TmNetTcp.cs" />
-    <Compile Include="TmSockets\TmTcp\TmSessionCD.cs" />
+    <Compile Include="TmSockets\TmTcp\TmSession.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsDictionary.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmJson.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmSystem.cs" />

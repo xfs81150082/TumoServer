@@ -7,6 +7,10 @@ namespace Tumo
 {
     public class TmSence : TmEntity
     {
-        private TmSystemManangerDll TmSystemDll { get; set; } = new TmSystemManangerDll();
+        public override void TmAwake()
+        {
+            base.TmAwake();
+            this.AddComponent(new TmSystemManangerDll());
+        }
     }
 }
