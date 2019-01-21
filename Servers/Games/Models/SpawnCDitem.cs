@@ -9,27 +9,27 @@ namespace Servers.Sences.Models
     {
         public override void TmAwake()
         {
-            ValTime = 4000;
+            //ValTime = 4000;
         }
 
         public SpawnCDitem() { }
 
-        public override void TmUpdate()
-        {
-            UpdateCDTime();
-        }
+        //public override void TmUpdate()
+        //{
+        //    UpdateCDTime();
+        //}
 
-        void UpdateCDTime()
-        {
-            if (Start)
-            {
-                CdTime += ValTime/1000;
-                if (CdTime > MaxCdTime)
-                {
-                    Start = false;
-                }                
-            }
-        }
+        //void UpdateCDTime()
+        //{
+        //    if (Start)
+        //    {
+        //        //CdTime += ValTime/1000;
+        //        if (CdTime > MaxCdTime)
+        //        {
+        //            Start = false;
+        //        }                
+        //    }
+        //}
 
         public override void TmDispose()
         {

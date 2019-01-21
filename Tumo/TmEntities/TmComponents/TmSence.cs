@@ -7,6 +7,6 @@ namespace Tumo
 {
     public class TmSence : TmEntity
     {
-        public TmSence() { }
+        private TmSystemManangerDll TmSystemDll { get; set; } = new TmSystemManangerDll();
     }
 }

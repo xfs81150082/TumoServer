@@ -25,7 +25,7 @@ namespace Servers
        
         private void GetTmUserByName(object obj, TmParameter parameter)
         {
-            TmUser user1 = TmTransferTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
+            TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
             TmUser user2 = GetUserByUserName(user1.Username);
             if (user2 != null)
             {

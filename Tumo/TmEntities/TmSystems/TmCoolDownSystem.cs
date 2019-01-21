@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Tumo
+{
+    public class TmCoolDownSystem : TmSystem
+    {
+        public override void TmAwake()
+        {
+            base.TmAwake();
+            AddComponent(new TmCoolDown());
+            AddComponent(new TestOne());
+            AddComponent(new TestTwo());
+            ValTime = 4000;
+        }
+
+        public override void TmUpdate()
+        {
+            base.TmUpdate();
+            foreach(var com in GetTmEntities())
+            {
+                UpdateCDCount(com);
+            }
+        }
+
+        void UpdateCDCount(TmEntity entity)
+        {
+            TmCoolDown cd = entity.GetComponent<TmCoolDown>() as TmCoolDown;
+            cd.CdCount += 1;
+            if (cd.CdCount >= cd.MaxCdCount)
+            {
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmNetTcp.Instance.TPeers.Count);
+                cd.End = true;
+                if (cd.Parent != null)
+                {
+                    cd.Parent.Dispose();
+                }
+                this.Dispose();
+            }
+            else
+            {
+                //发送心跳检测（并等待签到，签到入口在TmAsyncTcpSession里）
+                TmParameter mvc = TmParameterTool.ToJsonParameter(TenCode.TmEessionCD, ElevenCode.Login);
+                mvc.EcsId = cd.Key;
+                TmNetTcp.Instance.Send(mvc);
+            }
+            Console.WriteLine(TmTimerTool.CurrentTime() + " CdCount:{0}-{1} ", cd.CdCount, cd.MaxCdCount);
+        }
+      
+
+    }
+}

@@ -12,20 +12,15 @@ namespace ClientExample
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");
-            ///创建控制台客户端并运行
-            Thread.Sleep(2000);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");            
+            Thread.Sleep(2000);       ///线程暂停2000毫秒
 
+            ///客户端加载组件
             TmGame.TmSence.AddComponent(new TmConnect());
             TmGame.TmSence.AddComponent(new TmClientSocket());
             TmGame.TmSence.AddComponent(new TmEngineerController());
             TmGame.TmSence.AddComponent(new TmUserController());
             TmGame.TmSence.AddComponent(new TmTest());
-
-
-            //new TumoConnect();
-            //TmTcpClient tmTcpClient = new TmTcpClient();
-            //new Test();
 
 
             Console.ReadKey();
