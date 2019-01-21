@@ -16,7 +16,7 @@ namespace ClientExample
             switch (elevenCode)
             {
                 case (ElevenCode.Login):
-                    List<TmSoulerDB> engineers = TmTransferTool.GetJsonValue<List<TmSoulerDB>>(tmp, tmp.ElevenCode.ToString());
+                    List<TmSoulerDB> engineers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(tmp, tmp.ElevenCode.ToString());
                     for (int i = 0; i < engineers.Count; i++)
                     {
                         Console.WriteLine(TmTimerTool.CurrentTime() + " engineers: " + engineers.Count + " Id:" + engineers[i].Id + " Name:" + engineers[i].Name);
@@ -31,7 +31,7 @@ namespace ClientExample
 
         void RolerLoginTest(TmSoulerDB soulerDB)
         {
-            TmParameter tm = TmTransferTool.ToJsonParameter(TenCode.TmEngineerHandler, ElevenCode.Login, ElevenCode.Login.ToString(), soulerDB.Id);
+            TmParameter tm = TmParameterTool.ToJsonParameter(TenCode.TmEngineerHandler, ElevenCode.Login, ElevenCode.Login.ToString(), soulerDB.Id);
             TmNetTcp.Instance.Send(tm);
             Console.WriteLine(TmTimerTool.CurrentTime() + " Test1-EngineerLogin: " + soulerDB.Id);
         }

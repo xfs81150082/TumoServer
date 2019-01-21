@@ -25,7 +25,7 @@ namespace Servers
 
         void GetItemsByUser(object obj,TmParameter tmp)
         {
-            TmUser user1 = TmTransferTool.GetJsonValue<TmUser>(tmp, tmp.ElevenCode.ToString());
+            TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(tmp, tmp.ElevenCode.ToString());
             List<TmSoulerDB> itemDBs = GetSoulItemdbsByUserId(user1.Id);
             if (itemDBs.Count > 0)
             {

@@ -9,17 +9,24 @@ using Tumo.Models;
 
 namespace Tumo
 {
-    public abstract class TmTcpSession : TmComponent
+    public class TmTcpSession : TmEntity
     {
         #region Properties        
         public Socket Socket { get; set; }  ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信///客户端Socket 
         public bool IsRunning { get; set; }
         public bool IsServer { get; set; } = true;
-        public TmCoolDown CD { get; set; }
+        //public TmCoolDown CD { get; set; }
+        public override void TmAwake()
+        {
+            base.TmAwake();
+            AddComponent(new TmCoolDown(EcsId));
+            AddComponent(new TestOne());
+            AddComponent(new TestTwo());
+
+        }
         public TmTcpSession()
         {
-            CD = new TmSessionCD(EcsId);
-            CD.Key = EcsId;
+            //CD = new TmCoolDown(EcsId);
         }
         #endregion
         #region byte[] Bytes        
@@ -52,7 +59,6 @@ namespace Tumo
         {
             if (IsRunning)
             {
-                //Console.WriteLine(TmTimerTool.CurrentTime() + " ReceiveCallback  ThreadId:" + Thread.CurrentThread.ManagedThreadId);
                 try
                 {
                     RecvLength = Socket.EndReceive(ar);
@@ -70,13 +76,12 @@ namespace Tumo
                     }
                     ///触发事件 解析缓存池RecvBuffList<byte> 读取数据字节
                     ParsingBytes();
-
                     ///继续接收来自来客户端的数据  
                     Socket.BeginReceive(Buffer, 0, BufferSize, SocketFlags.None, new AsyncCallback(this.ReceiveCallback), this);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(TmTimerTool.CurrentTime() + ex.ToString());
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " " + ex.ToString());
                     IsRunning = false;
                     Dispose();
                 }
@@ -148,7 +153,8 @@ namespace Tumo
             parameter.EcsId = this.EcsId;
             if (parameter.TenCode == TenCode.TmEessionCD)
             {
-                CD.CdCount = 0;
+                //CD.CdCount = 0;
+                (this.GetComponent<TmCoolDown>() as TmCoolDown).CdCount = 0;
             }
             else
             {
@@ -249,7 +255,7 @@ namespace Tumo
                 Console.WriteLine(TmTimerTool.CurrentTime() + " " + ex.Message);
             }
         }
-        public abstract void OnConnect();
+        public virtual void OnConnect() { }
         #endregion
     }
 }

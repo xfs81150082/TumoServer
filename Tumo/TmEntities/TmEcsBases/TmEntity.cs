@@ -65,16 +65,23 @@ namespace Tumo
         {
             base.TmDispose();
             TmEcsDictionary.Entities.Remove(EcsId);
-            OnDispose();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmEntity释放资源");
-        }
-        void OnDispose()
-        {
-            foreach(var tem in Components.Values)
-            {           
-                tem.Dispose();
+            try
+            {
+                if (Components.Count > 0)
+                {
+                    foreach (var tem in Components.Values)
+                    {
+                        tem.Dispose();
+                    }
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " EcsId:" + EcsId + " TmEntity释放资源");
+
+                }
+                Components.Clear();
             }
-            Components.Clear();
+            catch (Exception ex)
+            {
+                Console.WriteLine(TmTimerTool.CurrentTime() + " ex: " + ex.Message + " TmEntity释放资源异常...");
+            }
         }
     }
 }
