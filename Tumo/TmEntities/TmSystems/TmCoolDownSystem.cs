@@ -10,10 +10,9 @@ namespace Tumo
         public override void TmAwake()
         {
             base.TmAwake();
-            AddComponent(new TmCoolDown());
-            AddComponent(new TestOne());
-            AddComponent(new TestTwo());
             ValTime = 4000;
+            AddComponent(new TmCoolDown());
+            AddComponent(new TmSession());
         }
 
         public override void TmUpdate()
