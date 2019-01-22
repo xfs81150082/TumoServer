@@ -13,7 +13,7 @@ namespace Tumo
     {
         public TmClient()
         {
-            TmNetTcp.Instance.TClient = this;
+            TmTcpSocket.Instance.TClient = this;
             (this.GetComponent<TmCoolDown>() as TmCoolDown).IsServer = false;
         }                 
         public override void OnConnect()
@@ -24,9 +24,9 @@ namespace Tumo
         public override void TmDispose()
         {
             base.TmDispose();
-            if (TmNetTcp.Instance.TClient != null && TmNetTcp.Instance.TClient == this)
+            if (TmTcpSocket.Instance.TClient != null && TmTcpSocket.Instance.TClient == this)
             {
-                TmNetTcp.Instance.TClient = null;
+                TmTcpSocket.Instance.TClient = null;
             }
             Console.WriteLine("{0} 服务端{1}断开连接", TmTimerTool.CurrentTime(), EcsId);
         }///与服务器断开时调用                      

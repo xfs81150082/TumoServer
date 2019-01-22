@@ -8,11 +8,11 @@ using System.Threading;
 
 namespace Tumo
 {
-    public abstract class TmNetTcp : TmComponent
+    public abstract class TmTcpSocket : TmComponent
     {
-        private static TmNetTcp _instance;
-        public static TmNetTcp Instance { get => _instance;  }
-        public TmNetTcp() { _instance = this; }
+        private static TmTcpSocket _instance;
+        public static TmTcpSocket Instance { get => _instance;  }
+        public TmTcpSocket() { _instance = this; }
         #region Properties
         public string IpString { get; set; }                      //监听的IP地址  
         public int Port { get; set; }                             //监听的端口  
