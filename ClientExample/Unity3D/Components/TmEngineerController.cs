@@ -23,8 +23,14 @@ namespace ClientExample
                     break;
             }
         }
+        void GetBookersAndTeachers(TmParameter parameter)
+        {
+            List<TmSoulerDB> bookers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, "bookers");
+            List<TmSoulerDB> teachers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, "teachers");
 
-      
+            Console.WriteLine(TmTimerTool.CurrentTime() + " Test1-EngineerLogin: "  );
+        }
+
 
     }
 }
