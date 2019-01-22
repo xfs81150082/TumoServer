@@ -6,7 +6,7 @@ using System.Text;
 using System.Timers;
 using Tumo;
 
-namespace TumoUntity
+namespace ClientExample
 {
     public class TmClientSocket : TmSystem 
     {

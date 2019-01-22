@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("TumoUntity")]
+[assembly: AssemblyTitle("ClientExample")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TumoUntity")]
+[assembly: AssemblyProduct("ClientExample")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("f6794e81-3d95-426c-adc5-e61f8f83a76f")]
+[assembly: Guid("d6cb914b-edd0-475a-9900-f9ac7460d07d")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

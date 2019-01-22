@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F6794E81-3D95-426C-ADC5-E61F8F83A76F}</ProjectGuid>
+    <ProjectGuid>{D6CB914B-EDD0-475A-9900-F9AC7460D07D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TumoUntity</RootNamespace>
-    <AssemblyName>TumoUntity</AssemblyName>
+    <RootNamespace>ClientExample</RootNamespace>
+    <AssemblyName>ClientExample</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main\UnityProgram.cs" />
+    <Compile Include="Main\TmClientMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unity3D\Components\TmConnect.cs" />
     <Compile Include="Unity3D\Components\TmEngineerController.cs" />
@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tumo\Tumo.csproj">
-      <Project>{e4f11a08-46c4-4ba8-9c58-bf6c2e3cff07}</Project>
+      <Project>{E4F11A08-46C4-4BA8-9C58-BF6C2E3CFF07}</Project>
       <Name>Tumo</Name>
     </ProjectReference>
   </ItemGroup>
