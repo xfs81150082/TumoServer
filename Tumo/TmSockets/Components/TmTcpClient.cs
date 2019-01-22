@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Tumo
 {
-    public class TmTcpClient : TmNetTcp
+    public class TmTcpClient : TmTcpSocket
     {      
         #region Methods Callbacks ///接收参数消息
         public void StartConnect()

@@ -43,7 +43,7 @@ namespace Servers
                     {
                         TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.TmUserController, ElevenCode.Login, ElevenCode.Login.ToString(), this.TmSoulerDbs);
                         response.EcsId = parameter.EcsId;
-                        TmNetTcp.Instance.Send(response);
+                        TmTcpSocket.Instance.Send(response);
                     }
                 }
                 else

@@ -32,7 +32,7 @@ namespace ClientExample
         void RolerLoginTest(TmSoulerDB soulerDB)
         {
             TmParameter tm = TmParameterTool.ToJsonParameter(TenCode.TmEngineerHandler, ElevenCode.Login, ElevenCode.Login.ToString(), soulerDB.Id);
-            TmNetTcp.Instance.Send(tm);
+            TmTcpSocket.Instance.Send(tm);
             Console.WriteLine(TmTimerTool.CurrentTime() + " Test1-EngineerLogin: " + soulerDB.Id);
         }
 

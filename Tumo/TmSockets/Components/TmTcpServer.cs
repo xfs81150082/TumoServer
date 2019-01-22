@@ -9,7 +9,7 @@ using System.Timers;
 
 namespace Tumo
 {
-    public class TmTcpServer : TmNetTcp
+    public class TmTcpServer : TmTcpSocket
     {
         #region Methods Callbacks ///启动服务 ///接收参数消息     
         public void StartListen()
