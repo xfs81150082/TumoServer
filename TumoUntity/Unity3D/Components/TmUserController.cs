@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using Tumo;
 using Tumo.Models;
-using ClientExample;
 
-namespace ClientExample
+namespace TumoUntity
 {
     class TmUserController : TmComponent
     {
