@@ -149,7 +149,7 @@ namespace Tumo
             else
             {
                 ///将MvcParameter参数列队
-                TmNetTcp.Instance.RecvParameters.Enqueue(parameter);
+                TmTcpSocket.Instance.RecvParameters.Enqueue(parameter);
             }
         }
         #endregion

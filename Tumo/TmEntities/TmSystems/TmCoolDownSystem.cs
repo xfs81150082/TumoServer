@@ -29,7 +29,7 @@ namespace Tumo
             cd.CdCount += 1;
             if (cd.CdCount >= cd.MaxCdCount)
             {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmNetTcp.Instance.TPeers.Count);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmTcpSocket.Instance.TPeers.Count);
                 cd.End = true;
                 if (cd.Parent != null)
                 {
@@ -42,7 +42,7 @@ namespace Tumo
                 //发送心跳检测（并等待签到，签到入口在TmAsyncTcpSession里）
                 TmParameter mvc = TmParameterTool.ToJsonParameter(TenCode.TmEessionCD, ElevenCode.Login);
                 mvc.EcsId = cd.Key;
-                TmNetTcp.Instance.Send(mvc);
+                TmTcpSocket.Instance.Send(mvc);
             }
             Console.WriteLine(TmTimerTool.CurrentTime() + " CdCount:{0}-{1} ", cd.CdCount, cd.MaxCdCount);
         }

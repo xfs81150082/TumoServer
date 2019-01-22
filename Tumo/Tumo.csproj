@@ -80,7 +80,7 @@
     <Compile Include="TmModels\TmSoulers\TmSouler.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerItem.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerDB.cs" />
-    <Compile Include="TmSockets\Components\TmNetTcp.cs" />
+    <Compile Include="TmTcpSocket.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmDictionary.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmJson.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmSystem.cs" />
