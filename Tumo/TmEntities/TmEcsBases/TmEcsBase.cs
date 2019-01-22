@@ -21,7 +21,7 @@ namespace Tumo
             TmAwake();
         }
         public virtual void TmAwake() { }
-        public virtual void OnTransferParameter(TmParameter tmp) { }
+        public virtual void OnTransferParameter(object obj, TmParameter tmp) { }
         #endregion
         #region Dispose
         ///是否已释放了资源，true时方法都不可用了。

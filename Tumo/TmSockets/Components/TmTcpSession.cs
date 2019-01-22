@@ -128,7 +128,7 @@ namespace Tumo
                         Console.WriteLine(TmTimerTool.CurrentTime() + " Recv {0} Bytes. ThreadId:{1}", BodyBytes.Length, Thread.CurrentThread.ManagedThreadId);
                         TmParameter parameter = TmJson.ToObject<TmParameter>(mvcString);
                         ///这个方法用来处理参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
-                        OnTransferParameter(parameter);
+                        OnTransferParameter(this, parameter);
                     }
                 }
             }
@@ -138,7 +138,7 @@ namespace Tumo
                 Dispose();
             }
         }
-        public override void OnTransferParameter(TmParameter parameter)
+        public override void OnTransferParameter(object obj, TmParameter parameter)
         {
             ///将字符串string,用json反序列化转换成MvcParameter参数
             parameter.EcsId = this.EcsId;

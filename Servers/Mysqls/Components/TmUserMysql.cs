@@ -1,29 +1,13 @@
 ﻿using Tumo;
-using Tumo.Models;
 using MySql.Data.MySqlClient;
-using Servers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Servers
 {
     class TmUserMysql : TmComponent
     {      
         private string SoulName = "Users";
-        public TmUserMysql()
-        {
-            TmUserHandler.OnGetTmUserItemEvent += GetTmUserByName;
-        }
-         public override void TmDispose()
-        {
-            base.TmDispose();
-            TmUserHandler.OnGetTmUserItemEvent -= GetTmUserByName;
-        }
-       
-        private void GetTmUserByName(object obj, TmParameter parameter)
+        public void GetTmUserByName(object obj, TmParameter parameter)
         {
             TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
             TmUser user2 = GetUserByUserName(user1.Username);
@@ -32,8 +16,7 @@ namespace Servers
                 (obj as TmUserHandler).User = user2;
             }
         }
-
-        #region  //取得user，插入，删除，更新
+        #region  ///取得user，插入，删除，更新
         private TmUser GetUserByUserName(string username)
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + SoulName + " where username = '" + username + "'", TmMysql.Connection);//读取数据函数  
@@ -110,6 +93,5 @@ namespace Servers
             }
         }
         #endregion
-
     }
 }

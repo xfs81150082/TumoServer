@@ -64,8 +64,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Games\Components\TmEventHandlers.cs" />
     <Compile Include="Games\Components\TmUserHandler.cs" />
     <Compile Include="Games\Components\TmEngineerHandler.cs" />
+    <Compile Include="Mysqls\Components\TmSoulerdbMysql.cs" />
+    <Compile Include="Mysqls\Components\TmBookerMysql.cs" />
+    <Compile Include="Mysqls\Components\TmTeacherMysql.cs" />
     <Compile Include="Mysqls\Components\TmUserMysql.cs" />
     <Compile Include="Mysqls\TmTasks\TmTaskMysql.cs" />
     <Compile Include="Mysqls\Inventorys\DressedMysqlTabler.cs" />

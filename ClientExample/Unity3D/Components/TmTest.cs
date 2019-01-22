@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Timers;
 using Tumo;
-
 namespace ClientExample
 {
-    class TmTest : TmSystem
+     class TmTest : TmSystem
     {
+        private static TmTest _instance;
+        public static TmTest Instance { get => _instance;  }
+        public override void TmAwake() { base.TmAwake(); _instance = this; }
+
         private bool IsUserLogin = false;
         private bool IsLogin = false;
         public override void TmUpdate()
         {
             TestTmUserLogin();
         }
-
         #region
         void TestTmUserLogin()
         {
@@ -37,8 +35,13 @@ namespace ClientExample
             TmTcpSocket.Instance.Send(mvc);
             Console.WriteLine(TmTimerTool.CurrentTime() + " 用户登录, Username:{0} Password:{1}", tmUser.Username, tmUser.Password);
         }
+        public void EngineerLogin(int rolerId)
+        {
+            TmParameter parameter = TmParameterTool.ToJsonParameter(TenCode.TmEngineerHandler, ElevenCode.Login, ElevenCode.Login.ToString(), rolerId);
+            TmTcpSocket.Instance.Send(parameter);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " Id:{0}", rolerId);
+        }
         #endregion
-
         #region
         void TestLogin()
         {
@@ -49,13 +52,6 @@ namespace ClientExample
                 EngineerLogin(100001);
             }
         }
-        void EngineerLogin(int rolerId)
-        {
-            TmParameter mvc = TmParameterTool.ToJsonParameter(TenCode.TmUserHandler, ElevenCode.Login, ElevenCode.Login.ToString(), rolerId);
-            TmTcpSocket.Instance.Send(mvc);
-            Console.WriteLine(TmTimerTool.CurrentTime() + " Id:{0}", rolerId);
-        }
         #endregion
-
     }
 }

@@ -18,19 +18,18 @@ namespace Servers
             _instance = this;
         }        
         //这个方法用来处理TPeer参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
-        public override void OnTransferParameter(TmParameter parameter)
+        public override void OnTransferParameter(object obj, TmParameter parameter)
         {
             TenCode tenCode = parameter.TenCode;
             switch (tenCode)
             {
                 case (TenCode.TmUserHandler):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
-                    //Console.WriteLine(TmTimerTool.CurrentTime() + " TmGame.TmSence.GetComponent<TmUserHandler>().GetType().Name:" + TmGame.TmSence.GetComponent<TmUserHandler>().GetType().Name);
-                    TmGame.TmSence.GetComponent<TmUserHandler>().OnTransferParameter(parameter);
+                    TmGame.TmSence.GetComponent<TmUserHandler>().OnTransferParameter(this, parameter);
                     break;
                 case (TenCode.TmEngineerHandler):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
-                    TmGame.TmSence.GetComponent<TmEngineerHandler>().OnTransferParameter(parameter);
+                    TmGame.TmSence.GetComponent<TmEngineerHandler>().OnTransferParameter(this, parameter);
                     break;
                 case (TenCode.None):
                     break;
