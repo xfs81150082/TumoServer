@@ -46,7 +46,6 @@ namespace ClientExample
                     }
                     else
                     {
-                        //RecvParameters.Enqueue(mvc);
                         Console.WriteLine(TmTimerTool.CurrentTime() + " TumoConnect is null.");
                         break;
                     }
@@ -57,9 +56,5 @@ namespace ClientExample
                 Console.WriteLine(TmTimerTool.CurrentTime() + " " + ex.Message);
             }
         }
-
-    
-        ///与客户端的接口函数
-
     }
 }

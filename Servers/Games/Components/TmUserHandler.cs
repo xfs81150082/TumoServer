@@ -17,14 +17,16 @@ namespace Servers
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmUser: " + elevenCode);
                     CheckLoginPassword(parameter);
                     break;
+                case (ElevenCode.None):
+                    break;
+                default:
+                    break;
             }
         }
-
         public TmUser User;
         public List<TmSoulerDB> TmSoulerDbs;
         public static event EventHandler<TmParameter> OnGetTmUserItemEvent;
         public static event EventHandler<TmParameter> OnGetTmEngineertemEvent;
-
         private void CheckLoginPassword(TmParameter parameter)
         {
             TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
@@ -56,9 +58,5 @@ namespace Servers
                 Console.WriteLine("帐号不存在");
             }
         }
-
-
-
-
     }
 }

@@ -48,7 +48,6 @@ namespace Tumo
             netSocket = new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
         }
         #endregion
-
         #region ///发送参数信息
         public void Send(TmParameter mvc)
         {
@@ -57,6 +56,5 @@ namespace Tumo
         }
         public abstract void OnSendMvcParameters();
         #endregion
-
     }
 }
