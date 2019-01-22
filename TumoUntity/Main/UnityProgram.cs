@@ -1,18 +1,18 @@
-﻿using ClientExample;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using Tumo;
 
-namespace ClientExample
+namespace TumoUntity
 {
-    class ClientMain
+    class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");            
+            Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");
             Thread.Sleep(2000);       ///线程暂停2000毫秒
 
             ///客户端加载组件
@@ -26,7 +26,5 @@ namespace ClientExample
             Console.ReadKey();
             Console.WriteLine(TmTimerTool.CurrentTime() + " 退出联接，并关闭程序。");
         }
-               
-
     }
 }
