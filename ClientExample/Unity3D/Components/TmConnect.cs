@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TumoUntity
+namespace ClientExample
 {
     public class TmConnect : TmEntity
     {
