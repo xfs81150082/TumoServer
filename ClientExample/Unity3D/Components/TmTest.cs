@@ -35,7 +35,7 @@ namespace ClientExample
             tmUser.Username = "Tumo";
             tmUser.Password = "123456";
             TmParameter mvc = TmParameterTool.ToJsonParameter(TenCode.TmUserHandler, ElevenCode.Login, ElevenCode.Login.ToString(), tmUser);
-            TmNetTcp.Instance.Send(mvc);
+            TmTcpSocket.Instance.Send(mvc);
             Console.WriteLine(TmTimerTool.CurrentTime() + " 用户登录, Username:{0} Password:{1}", tmUser.Username, tmUser.Password);
         }
         #endregion
@@ -53,7 +53,7 @@ namespace ClientExample
         void EngineerLogin(int rolerId)
         {
             TmParameter mvc = TmParameterTool.ToJsonParameter(TenCode.TmUserHandler, ElevenCode.Login, ElevenCode.Login.ToString(), rolerId);
-            TmNetTcp.Instance.Send(mvc);
+            TmTcpSocket.Instance.Send(mvc);
             Console.WriteLine(TmTimerTool.CurrentTime() + " Id:{0}", rolerId);
         }
         #endregion
