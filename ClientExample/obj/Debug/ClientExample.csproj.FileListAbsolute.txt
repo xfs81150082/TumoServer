@@ -1,0 +1,13 @@
+I:\TumoServerHome\ClientExample\bin\Debug\ClientExample.exe.config
+I:\TumoServerHome\ClientExample\bin\Debug\ClientExample.exe
+I:\TumoServerHome\ClientExample\bin\Debug\ClientExample.pdb
+I:\TumoServerHome\ClientExample\bin\Debug\Tumo.dll
+I:\TumoServerHome\ClientExample\bin\Debug\Newtonsoft.Json.dll
+I:\TumoServerHome\ClientExample\bin\Debug\UnityEngine.dll
+I:\TumoServerHome\ClientExample\bin\Debug\Tumo.pdb
+I:\TumoServerHome\ClientExample\bin\Debug\Newtonsoft.Json.xml
+I:\TumoServerHome\ClientExample\obj\Debug\ClientExample.csprojAssemblyReference.cache
+I:\TumoServerHome\ClientExample\obj\Debug\ClientExample.csproj.CoreCompileInputs.cache
+I:\TumoServerHome\ClientExample\obj\Debug\ClientExample.csproj.CopyComplete
+I:\TumoServerHome\ClientExample\obj\Debug\ClientExample.exe
+I:\TumoServerHome\ClientExample\obj\Debug\ClientExample.pdb

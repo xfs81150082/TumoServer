@@ -6,7 +6,7 @@ using System.Threading;
 using System.Timers;
 using Tumo;
 
-namespace TumoUntity
+namespace ClientExample
 {
     class TmTest : TmSystem
     {
