@@ -4,12 +4,12 @@ using System;
 using System.Collections.Generic;
 namespace Servers
 {
-    class TmEngineerMysql : TmSoulerdbMysql
+    class TmTeacherMysql : TmSoulerdbMysql
     {
         public override void TmAwake()
         {
             base.TmAwake();
-            TmSoulerdbName = "engineeritem";
+            TmSoulerdbName = "teacheritem";
         }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Timers;
 using Tumo;
 
 namespace Servers
@@ -34,15 +31,14 @@ namespace Servers
             {
                 while (TcpServer.RecvParameters.Count > 0)
                 {
-                    TmParameter mvc = TcpServer.RecvParameters.Dequeue();
+                    TmParameter parameter = TcpServer.RecvParameters.Dequeue();
                     if (TmGate.Instance != null)
                     {
-                        TmGate.Instance.OnTransferParameter(mvc);
+                        TmGate.Instance.OnTransferParameter(this, parameter);
                         Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + TcpServer.RecvParameters.Count);
                     }
                     else
                     {
-                        //RecvParameters.Enqueue(mvc);
                         Console.WriteLine(TmTimerTool.CurrentTime() + " TumoGate is null.");
                         break;
                     }

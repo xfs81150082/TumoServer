@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Tumo;
-using Tumo.Models;
-
 namespace ClientExample
 {
     class TmEngineerController : TmComponent
     {
-        public override void OnTransferParameter(TmParameter mvc)
+        public override void OnTransferParameter(object obj, TmParameter parameter)
         {
-            ElevenCode elevenCode = mvc.ElevenCode;
+            ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.Login):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " EngineerLogin: " + elevenCode);
-
+                    GetBookersAndTeachers(parameter);
                     break;         
                 default:
                     break;
@@ -29,7 +25,5 @@ namespace ClientExample
 
             Console.WriteLine(TmTimerTool.CurrentTime() + " Test1-EngineerLogin: "  );
         }
-
-
     }
 }

@@ -1,41 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using Tumo;
-using Tumo.Models;
-
 namespace ClientExample
 {
     class TmUserController : TmComponent
     {
-        public static event EventHandler<TmParameter> OnLoginEngineersEvent;
-        public override void OnTransferParameter(TmParameter tmp)
+        public override void OnTransferParameter(object obj, TmParameter parameter)
         {
-            ElevenCode elevenCode = tmp.ElevenCode;
+            ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.Login):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmUserController: " + elevenCode);
-                    RolerLoginOfEngineer(tmp);
+                    UserLoginGetEngineer(parameter);
                     break;
                 default:
                     break;
             }
-        }        
-        void RolerLoginOfEngineer(TmParameter tmp)
+        }
+        public TmSoulerDB SoulerDB;
+        void UserLoginGetEngineer(TmParameter tmp)
         {
             List<TmSoulerDB> engineers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(tmp, tmp.ElevenCode.ToString());
-             Console.WriteLine(TmTimerTool.CurrentTime() + " engineers: " + engineers.Count);
-
-            //OnLoginEngineersEvent(this, tmp);
-
+            Console.WriteLine(TmTimerTool.CurrentTime() + " engineers: " + engineers.Count);
+            SoulerDB = engineers[0];
             for (int i = 0; i < engineers.Count; i++)
             {
                 Console.WriteLine(TmTimerTool.CurrentTime() + " engineers: " + engineers.Count + " Id:" + engineers[i].Id + " Name:" + engineers[i].Name);
                 TmConsoleLog.WriteLine(TmTimerTool.CurrentTime() + " engineers: " + engineers.Count + " Id:" + engineers[i].Id + " Name:" + engineers[i].Name);
             }
+            EngineerLoginToServer(SoulerDB.Id);
         }
-
+        void EngineerLoginToServer(int id)
+        {
+            Thread.Sleep(2000);
+            TmTest.Instance.EngineerLogin(id);
+        }
     }
 }
