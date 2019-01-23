@@ -4,16 +4,30 @@ using System;
 using System.Collections.Generic;
 namespace Servers
 {
-    public class TmUserMysql : TmComponent
-    {      
+     class TmUserMysql : TmComponent
+    {
+        public override void OnTransferParameter(object sender, TmParameter parameter)
+        {
+            ElevenCode elevenCode = parameter.ElevenCode;
+            switch (elevenCode)
+            {
+                case (ElevenCode.Login):
+                    GetTmUserByName(sender, parameter);
+                    break;
+                case (ElevenCode.None):
+                    break;
+                default:
+                    break;
+            }
+        }
         private string SoulName = "Users";
-        public void GetTmUserByName(object obj, TmParameter parameter)
+        private void GetTmUserByName(object sender, TmParameter parameter)
         {
             TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
             TmUser user2 = GetUserByUserName(user1.Username);
             if (user2 != null)
             {
-                (obj as TmUserHandler).User = user2;
+                (sender as TmUserHandler).User = user2;
             }
         }
         #region  ///取得user，插入，删除，更新
@@ -28,7 +42,6 @@ namespace Servers
                 {
                     if (reader.HasRows)
                     {
-                        //Console.WriteLine(reader.RecordsAffected + "*" + reader.FieldCount);
                         item.Id = reader.GetInt32(0);
                         item.Username = reader.GetString(1);
                         item.Password = reader.GetString(2);
