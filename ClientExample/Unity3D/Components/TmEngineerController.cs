@@ -13,17 +13,19 @@ namespace ClientExample
                 case (ElevenCode.Login):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " EngineerLogin: " + elevenCode);
                     GetBookersAndTeachers(parameter);
-                    break;         
+                    break;
                 default:
                     break;
             }
         }
         void GetBookersAndTeachers(TmParameter parameter)
         {
-            List<TmSoulerDB> bookers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, "bookers");
-            List<TmSoulerDB> teachers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, "teachers");
-
-            Console.WriteLine(TmTimerTool.CurrentTime() + " Test1-EngineerLogin: "  );
+            List<TmSoulerDB> bookers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, "Bookers");
+            List<TmSoulerDB> teachers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, "Teachers");
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerController-Bookers: " + bookers.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerController-Teachers: " + teachers.Count);
         }
+
+
     }
 }

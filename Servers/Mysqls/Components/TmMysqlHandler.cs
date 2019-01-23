@@ -17,6 +17,8 @@ namespace Servers
             _instance = this;
             this.AddComponent(new TmUserMysql());
             this.AddComponent(new TmEngineerMysql());
+            this.AddComponent(new TmBookerMysql());
+            this.AddComponent(new TmTeacherMysql());
         }
     }
 }

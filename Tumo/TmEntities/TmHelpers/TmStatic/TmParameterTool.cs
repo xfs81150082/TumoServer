@@ -26,11 +26,17 @@ namespace Tumo
         }
         public static void AddJsonParameter<T>(TmParameter mvc, string key, T value)
         {
+            object obj;
+            bool yes = mvc.Parameters.TryGetValue(key, out obj);
+            if (yes) { mvc.Parameters.Remove(key); }
             string json = TmJson.ToString<T>(value);
             mvc.Parameters.Add(key, json);
         }
         public static void AddParameter<T>(TmParameter mvc, string key, T value)
         {
+            object obj;
+            bool yes = mvc.Parameters.TryGetValue(key, out obj);
+            if (yes) { mvc.Parameters.Remove(key); }
             mvc.Parameters.Add(key, value);
         }
         public static T GetJsonValue<T>(TmParameter mvc, string key)

@@ -10,7 +10,7 @@ namespace Tumo
     {  
         public TmSkillDB() { }
         public int Id { get; set; } = 151011;
-        public string Name2 { get; set; } = "tumo";
+        public string Name { get; set; } = "tumo";
         public int SkillId { get; set; } = 11101;
         public int RolerId { get; set; } = 100001;
         public int Level { get; set; } = 10;

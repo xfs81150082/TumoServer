@@ -2,52 +2,14 @@
 using System;
 using System.Collections.Generic;
 using Tumo;
-
 namespace Servers
 {
-    public class TmSoulerdbMysql : TmComponent
+     class TmSoulerdbMysql : TmComponent
     {
-        public string TmSoulerdbName { get; set; } = "engineeritem";
-        public void GetItemsByUser(object obj, TmParameter tmp)
+        internal string DatabaseFormName { get; set; }
+        internal List<TmSoulerDB> GetTmSoulerdbs()
         {
-            TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(tmp, tmp.ElevenCode.ToString());
-            List<TmSoulerDB> itemDBs = GetSoulItemdbsByUserId(user1.Id);
-            if (itemDBs.Count > 0)
-            {
-                (obj as TmUserHandler).TmSoulerDbs = itemDBs;
-            }
-            else
-            {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
-            }
-        }
-        public void GetTmSoulerdbs(object obj)
-        {
-            List<TmSoulerDB> dbs = GetSoulItemdbs();
-            if (dbs.Count > 0)
-            {
-                //(obj as TmEngineerHandler).TmSoulerDbs = dbs;
-            }
-            else
-            {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
-            }
-        }
-        void GetTmSoulerDB(TmParameter tmp)
-        {
-            TmSoulerDB item2 = GetSoulerdbById(int.Parse(tmp.Key));
-            if (item2 != null)
-            {
-                Console.WriteLine("TmSoulerdbMysql: " + item2.Name);
-            }
-            else
-            {
-                Console.WriteLine("角色不存在");
-            }
-        }
-        List<TmSoulerDB> GetSoulItemdbs()
-        {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TmSoulerdbName, TmMysqlConnection.Connection);//读取数据函数  
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName, TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
@@ -93,9 +55,9 @@ namespace Servers
                 reader.Close();
             }
         }                          //读取表格//得到所有角色列表         
-        List<TmSoulerDB> GetSoulItemdbsByUserId(int userId)
+        internal List<TmSoulerDB> GetTmSoulerdbsByUserId(int userId)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TmSoulerdbName + " where userid = '" + userId + "'", TmMysqlConnection.Connection);//读取数据函数  
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName + " where userid = '" + userId + "'", TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
@@ -141,9 +103,9 @@ namespace Servers
                 reader.Close();
             }
         }        //读取表格//得到userid所有角色列表         
-        TmSoulerDB GetSoulerdbById(int id)
+        internal TmSoulerDB GetTmSoulerdbById(int id)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TmSoulerdbName + " where id = '" + id + "'", TmMysqlConnection.Connection);//读取数据函数  
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName + " where id = '" + id + "'", TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
@@ -185,10 +147,10 @@ namespace Servers
             {
                 reader.Close();
             }
-        }                         //读取表格//得到id单个角色列表
-        void InsertItemdb(string name, int soulId, int userid, int exp, int level, int hp, int mp, int coin, int diamond, int senceId, double px, double py, double pz, double ax, double ay, double az, int serverid)
+        }                       //读取表格//得到id单个角色列表
+        internal void InsertItemdb(string name, int soulId, int userid, int exp, int level, int hp, int mp, int coin, int diamond, int senceId, double px, double py, double pz, double ax, double ay, double az, int serverid)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + TmSoulerdbName + "(name,soulId,userid,exp,level,hp,mp,coin,diamond,senceId,px,py,pz,ax,ay,az,serverid) values('" + name + "','" + soulId + "','" + userid + "','" + exp + "','" + level + "','" + hp + "','" + mp + "','" + coin + "','" + diamond + "','" + senceId + "','" + px + "','" + py + "','" + pz + "','" + ax + "','" + ay + "','" + az + "','" + serverid + "')", TmMysqlConnection.Connection);  //插入列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + DatabaseFormName + "(name,soulId,userid,exp,level,hp,mp,coin,diamond,senceId,px,py,pz,ax,ay,az,serverid) values('" + name + "','" + soulId + "','" + userid + "','" + exp + "','" + level + "','" + hp + "','" + mp + "','" + coin + "','" + diamond + "','" + senceId + "','" + px + "','" + py + "','" + pz + "','" + ax + "','" + ay + "','" + az + "','" + serverid + "')", TmMysqlConnection.Connection);  //插入列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -199,9 +161,9 @@ namespace Servers
                 Console.WriteLine("插入数据失败..." + message);
             }
         }
-        void UpdateItemdb(int id, int exp, int level, int hp, int mp, int coin, int diamond)
+        internal void UpdateItemdb(int id, int exp, int level, int hp, int mp, int coin, int diamond)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("update " + TmSoulerdbName + " set exp = '" + exp + "', level = '" + level + "', hp = '" + hp + "', mp = '" + mp + "', coin = '" + coin + "', diamond = '" + diamond + "' where id = '" + id + "'", TmMysqlConnection.Connection); //更新列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("update " + DatabaseFormName + " set exp = '" + exp + "', level = '" + level + "', hp = '" + hp + "', mp = '" + mp + "', coin = '" + coin + "', diamond = '" + diamond + "' where id = '" + id + "'", TmMysqlConnection.Connection); //更新列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -212,9 +174,9 @@ namespace Servers
                 Console.WriteLine("修改数据失败..." + message);
             }
         }
-        void RemoveItemdb(int id)
+        internal void RemoveItemdb(int id)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("delete from " + TmSoulerdbName + " where id = '" + id + "'", TmMysqlConnection.Connection); //插入用户  
+            MySqlCommand mySqlCommand = new MySqlCommand("delete from " + DatabaseFormName + " where id = '" + id + "'", TmMysqlConnection.Connection); //插入用户  
             try
             {
                 mySqlCommand.ExecuteNonQuery();
