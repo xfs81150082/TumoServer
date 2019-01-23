@@ -6,7 +6,7 @@ using Tumo;
 
 namespace Servers
 {
-    public class TmUserHandler : TmComponent
+     class TmUserHandler : TmComponent
     {
         public override void TmAwake()
         {
@@ -14,14 +14,10 @@ namespace Servers
         }
         public TmUserHandler()
         {
-            //OnGetTmUserItemEvent += new TmUserMysql().GetTmUserByName;
-            //OnGetTmEngineertemEvent += new TmEngineerMysql().GetItemsByUser;
         }
         public override void TmDispose()
         {
             base.TmDispose();
-            //OnGetTmUserItemEvent -= new TmUserMysql().GetTmUserByName;
-            //OnGetTmEngineertemEvent += new TmEngineerMysql().GetItemsByUser;
         }
         public override void OnTransferParameter(object obj, TmParameter parameter)
         {
@@ -40,21 +36,18 @@ namespace Servers
         }
         public TmUser User;
         public List<TmSoulerDB> TmSoulerDbs;
-        //public event EventHandler<TmParameter> OnGetTmUserItemEvent;
-        //public event EventHandler<TmParameter> OnGetTmEngineertemEvent;
         private void CheckLoginPassword(TmParameter parameter)
         {
             TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
-            //OnGetTmUserItemEvent(this, parameter);
-            new TmUserMysql().GetTmUserByName(this, parameter);
+            (TmMysqlHandler.Instance.GetComponent<TmUserMysql>() as TmUserMysql).GetTmUserByName(this, parameter);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " this.User:" + this.User.Phone);
             if (this.User != null)
             {
                 if (User.Password == user1.Password)
                 {
                     parameter.Parameters.Clear();
                     TmParameterTool.AddJsonParameter(parameter, parameter.ElevenCode.ToString(), this.User);
-                    //OnGetTmEngineertemEvent(this, parameter);
-                    new TmEngineerMysql().GetItemsByUser(this, parameter);
+                    (TmMysqlHandler.Instance.GetComponent<TmEngineerMysql>() as TmEngineerMysql).GetItemsByUser(this, parameter);
                     Console.WriteLine(TmTimerTool.CurrentTime() + " this.TmSoulerDbs:" + this.TmSoulerDbs.Count);
 
                     if (this.TmSoulerDbs != null)

@@ -67,6 +67,7 @@
     <Compile Include="Games\Components\TmEventHandlers.cs" />
     <Compile Include="Games\Components\TmUserHandler.cs" />
     <Compile Include="Games\Components\TmEngineerHandler.cs" />
+    <Compile Include="Mysqls\Components\TmMysqlHandler.cs" />
     <Compile Include="Mysqls\Components\TmSoulerdbMysql.cs" />
     <Compile Include="Mysqls\Components\TmBookerMysql.cs" />
     <Compile Include="Mysqls\Components\TmTeacherMysql.cs" />
@@ -84,7 +85,7 @@
     <Compile Include="Mysqls\Souls\TeacherMysqlTabler.cs" />
     <Compile Include="Games\Systems\TmServerSocket.cs" />
     <Compile Include="Games\Models\SpawnCDitem.cs" />
-    <Compile Include="Games\Components\TmMysql.cs" />
+    <Compile Include="Mysqls\Components\TmMysqlConnection.cs" />
     <Compile Include="Mysqls\Components\TmEngineerMysql.cs" />
     <Compile Include="Main\TmServerMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
