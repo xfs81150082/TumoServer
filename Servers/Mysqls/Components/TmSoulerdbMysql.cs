@@ -47,7 +47,7 @@ namespace Servers
         }
         List<TmSoulerDB> GetSoulItemdbs()
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TmSoulerdbName, TmMysql.Connection);//读取数据函数  
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TmSoulerdbName, TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
@@ -95,7 +95,7 @@ namespace Servers
         }                          //读取表格//得到所有角色列表         
         List<TmSoulerDB> GetSoulItemdbsByUserId(int userId)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TmSoulerdbName + " where userid = '" + userId + "'", TmMysql.Connection);//读取数据函数  
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TmSoulerdbName + " where userid = '" + userId + "'", TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
@@ -143,7 +143,7 @@ namespace Servers
         }        //读取表格//得到userid所有角色列表         
         TmSoulerDB GetSoulerdbById(int id)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TmSoulerdbName + " where id = '" + id + "'", TmMysql.Connection);//读取数据函数  
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + TmSoulerdbName + " where id = '" + id + "'", TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
@@ -188,7 +188,7 @@ namespace Servers
         }                         //读取表格//得到id单个角色列表
         void InsertItemdb(string name, int soulId, int userid, int exp, int level, int hp, int mp, int coin, int diamond, int senceId, double px, double py, double pz, double ax, double ay, double az, int serverid)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + TmSoulerdbName + "(name,soulId,userid,exp,level,hp,mp,coin,diamond,senceId,px,py,pz,ax,ay,az,serverid) values('" + name + "','" + soulId + "','" + userid + "','" + exp + "','" + level + "','" + hp + "','" + mp + "','" + coin + "','" + diamond + "','" + senceId + "','" + px + "','" + py + "','" + pz + "','" + ax + "','" + ay + "','" + az + "','" + serverid + "')", TmMysql.Connection);  //插入列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + TmSoulerdbName + "(name,soulId,userid,exp,level,hp,mp,coin,diamond,senceId,px,py,pz,ax,ay,az,serverid) values('" + name + "','" + soulId + "','" + userid + "','" + exp + "','" + level + "','" + hp + "','" + mp + "','" + coin + "','" + diamond + "','" + senceId + "','" + px + "','" + py + "','" + pz + "','" + ax + "','" + ay + "','" + az + "','" + serverid + "')", TmMysqlConnection.Connection);  //插入列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -201,7 +201,7 @@ namespace Servers
         }
         void UpdateItemdb(int id, int exp, int level, int hp, int mp, int coin, int diamond)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("update " + TmSoulerdbName + " set exp = '" + exp + "', level = '" + level + "', hp = '" + hp + "', mp = '" + mp + "', coin = '" + coin + "', diamond = '" + diamond + "' where id = '" + id + "'", TmMysql.Connection); //更新列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("update " + TmSoulerdbName + " set exp = '" + exp + "', level = '" + level + "', hp = '" + hp + "', mp = '" + mp + "', coin = '" + coin + "', diamond = '" + diamond + "' where id = '" + id + "'", TmMysqlConnection.Connection); //更新列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -214,7 +214,7 @@ namespace Servers
         }
         void RemoveItemdb(int id)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("delete from " + TmSoulerdbName + " where id = '" + id + "'", TmMysql.Connection); //插入用户  
+            MySqlCommand mySqlCommand = new MySqlCommand("delete from " + TmSoulerdbName + " where id = '" + id + "'", TmMysqlConnection.Connection); //插入用户  
             try
             {
                 mySqlCommand.ExecuteNonQuery();

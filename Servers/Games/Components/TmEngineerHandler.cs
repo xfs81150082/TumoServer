@@ -11,7 +11,7 @@ namespace Servers
             switch (elevenCode)
             {
                 case (ElevenCode.Login):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmUser: " + elevenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerHandler: " + elevenCode);
                     EngineerLogin(parameter);
                     break;
                 case (ElevenCode.None):
@@ -24,7 +24,8 @@ namespace Servers
         private void EngineerLogin(TmParameter parameter)
         {
             int rolerId = TmParameterTool.GetJsonValue<int>(parameter, parameter.ElevenCode.ToString());
-            new TmEngineerMysql().GetItemsByUser(this, parameter);
+            //(TmMysqlHandler.Instance.GetComponent<TmEngineerMysql>() as TmEngineerMysql).GetItemsByUser(this, parameter);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " EngineerLogin.rolerId:" + rolerId);
         }
 
     }
