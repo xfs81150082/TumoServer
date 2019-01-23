@@ -6,14 +6,14 @@ using Tumo;
 
 namespace Servers
 {
-    public class TmMysql : TmComponent
+    public class TmMysqlConnection : TmComponent
     {
         public static MySqlConnection Connection;     //创建一个数据库连接                                                     
         private string localhost = "111.231.50.160";  //IP地址
         private string database = "tumoworld";        //数据库名    
         private string root = "tumo";                 //用户名  
         private string password = "qq81150082";       //密码  
-        public TmMysql()
+        public TmMysqlConnection()
         {
             StartConnectToMysql();
         }

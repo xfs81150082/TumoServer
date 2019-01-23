@@ -245,7 +245,7 @@ namespace Servers
         //}                       //读取表格
         void InsertItemdb(string name, int soulId, int userid)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + ItemTableName + "(name,soulId,userid) values('" + name + "','" + soulId + "','" + userid + "')", TmMysql.Connection); //插入列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + ItemTableName + "(name,soulId,userid) values('" + name + "','" + soulId + "','" + userid + "')", TmMysqlConnection.Connection); //插入列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -258,7 +258,7 @@ namespace Servers
         }
         void InsertItemdb(string name, int soulId, int userid, int exp, int level, int hp, int mp, int coin, int diamond, int senceId, double px, double py, double pz, double ax, double ay, double az, int serverid)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + ItemTableName + "(name,soulId,userid,exp,level,hp,mp,coin,diamond,senceId,px,py,pz,ax,ay,az,serverid) values('" + name + "','" + soulId + "','" + userid + "','" + exp + "','" + level + "','" + hp + "','" + mp + "','" + coin + "','" + diamond + "','" + senceId + "','" + px + "','" + py + "','" + pz + "','" + ax + "','" + ay + "','" + az + "','" + serverid + "')", TmMysql.Connection);  //插入列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + ItemTableName + "(name,soulId,userid,exp,level,hp,mp,coin,diamond,senceId,px,py,pz,ax,ay,az,serverid) values('" + name + "','" + soulId + "','" + userid + "','" + exp + "','" + level + "','" + hp + "','" + mp + "','" + coin + "','" + diamond + "','" + senceId + "','" + px + "','" + py + "','" + pz + "','" + ax + "','" + ay + "','" + az + "','" + serverid + "')", TmMysqlConnection.Connection);  //插入列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -271,7 +271,7 @@ namespace Servers
         }
         void UpdateItemdb(int id, string name)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set name = '" + name + "' where id = '" + id + "'", TmMysql.Connection); //更新列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set name = '" + name + "' where id = '" + id + "'", TmMysqlConnection.Connection); //更新列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -284,7 +284,7 @@ namespace Servers
         }
         void UpdateItemdb(int id, int exp, int level, int hp, int mp, int coin, int diamond)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set exp = '" + exp + "', level = '" + level + "', hp = '" + hp + "', mp = '" + mp + "', coin = '" + coin + "', diamond = '" + diamond + "' where id = '" + id + "'", TmMysql.Connection); //更新列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set exp = '" + exp + "', level = '" + level + "', hp = '" + hp + "', mp = '" + mp + "', coin = '" + coin + "', diamond = '" + diamond + "' where id = '" + id + "'", TmMysqlConnection.Connection); //更新列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -297,7 +297,7 @@ namespace Servers
         }
         void UpdateItemdb(int id, int senceId, double px, double py, double pz, double ax, double ay, double az)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set senceId = '" + senceId + "', px = '" + px + "', py = '" + py + "', pz = '" + pz + "', ax = '" + ax + "', ay = '" + ay + "', az = '" + az + "' where id = '" + id + "'", TmMysql.Connection); //更新列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("update " + ItemTableName + " set senceId = '" + senceId + "', px = '" + px + "', py = '" + py + "', pz = '" + pz + "', ax = '" + ax + "', ay = '" + ay + "', az = '" + az + "' where id = '" + id + "'", TmMysqlConnection.Connection); //更新列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -310,7 +310,7 @@ namespace Servers
         }
         void RemoveItemdb(int id)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("delete from " + ItemTableName + " where id = '" + id + "'", TmMysql.Connection); //插入用户  
+            MySqlCommand mySqlCommand = new MySqlCommand("delete from " + ItemTableName + " where id = '" + id + "'", TmMysqlConnection.Connection); //插入用户  
             try
             {
                 mySqlCommand.ExecuteNonQuery();

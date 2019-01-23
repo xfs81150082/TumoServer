@@ -19,9 +19,10 @@ namespace Servers
             Thread.Sleep(1);            ///线程暂停1毫秒
 
             ///服务器加载组件
-            TmGame.TmSence.AddComponent(new TmMysql());       ///数据库链接组件
+            TmGame.TmSence.AddComponent(new TmMysqlConnection());       ///数据库链接组件
             TmGame.TmSence.AddComponent(new TmGate());        ///服务器网关
             TmGame.TmSence.AddComponent(new TmServerSocket());   ///套接字 外网 传输数据
+            TmGame.TmSence.AddComponent(new TmMysqlHandler());
             TmGame.TmSence.AddComponent(new TmUserHandler());
             TmGame.TmSence.AddComponent(new TmUserMysql());
             TmGame.TmSence.AddComponent(new TmEngineerHandler());
