@@ -1,24 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tumo;
-using Tumo.Models;
 using MySql.Data.MySqlClient;
-using Servers;
-
 namespace Servers
 {
     class EngineerMysqlTabler 
-    {
-       
-
+    {      
         //private string SoulName = "soul";
         private string SoulItemName = "engineeritem";
-
         public EngineerMysqlTabler()  {  }
-
         //void GetItemsByUser(MvcParameter mvc)
         //{
         //    User user1 = MvcTool.GetValue<User>(mvc, "User");
@@ -35,13 +25,11 @@ namespace Servers
         //        Console.WriteLine("帐号不存在");
         //    }
         //}
-
         void UpdateItemdb(TmSoulerDB itemDB)
         {
             UpdateItemdb(itemDB.Id, itemDB.Exp, itemDB.Level, itemDB.Hp, itemDB.Mp, itemDB.Coin, itemDB.Diamond);
             UpdateItemdb(itemDB.Id, itemDB.SenceId, itemDB.px, itemDB.py, itemDB.pz, itemDB.ax, itemDB.ay, itemDB.az);
         }
-
         //TmSoulerItem GetSoulItemById(int id)
         //{
         //    TmSoulerDB itemDB = GetSoulItemdbById(id);
@@ -319,7 +307,6 @@ namespace Servers
         //        reader.Close();
         //    }
         //}                 //读取表格
-
         void InsertItemdb(string name, int soulId, int userid)
         {
             MySqlCommand mySqlCommand = new MySqlCommand("insert into " + SoulItemName + "(name,soulId,userid) values('" + name + "','" + soulId + "','" + userid + "')", TmMysql.Connection); //插入列表行
@@ -387,8 +374,5 @@ namespace Servers
                 Console.WriteLine("删除数据失败..." + message);
             }
         }
-
-
-
     }
 }

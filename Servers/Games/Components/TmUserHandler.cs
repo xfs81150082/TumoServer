@@ -8,7 +8,22 @@ namespace Servers
 {
     public class TmUserHandler : TmComponent
     {
-        public override void OnTransferParameter(TmParameter parameter)
+        public override void TmAwake()
+        {
+            base.TmAwake();
+        }
+        public TmUserHandler()
+        {
+            //OnGetTmUserItemEvent += new TmUserMysql().GetTmUserByName;
+            //OnGetTmEngineertemEvent += new TmEngineerMysql().GetItemsByUser;
+        }
+        public override void TmDispose()
+        {
+            base.TmDispose();
+            //OnGetTmUserItemEvent -= new TmUserMysql().GetTmUserByName;
+            //OnGetTmEngineertemEvent += new TmEngineerMysql().GetItemsByUser;
+        }
+        public override void OnTransferParameter(object obj, TmParameter parameter)
         {
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
@@ -25,21 +40,22 @@ namespace Servers
         }
         public TmUser User;
         public List<TmSoulerDB> TmSoulerDbs;
-        public static event EventHandler<TmParameter> OnGetTmUserItemEvent;
-        public static event EventHandler<TmParameter> OnGetTmEngineertemEvent;
+        //public event EventHandler<TmParameter> OnGetTmUserItemEvent;
+        //public event EventHandler<TmParameter> OnGetTmEngineertemEvent;
         private void CheckLoginPassword(TmParameter parameter)
         {
             TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
-            OnGetTmUserItemEvent(this, parameter);
+            //OnGetTmUserItemEvent(this, parameter);
+            new TmUserMysql().GetTmUserByName(this, parameter);
             if (this.User != null)
             {
                 if (User.Password == user1.Password)
                 {
                     parameter.Parameters.Clear();
                     TmParameterTool.AddJsonParameter(parameter, parameter.ElevenCode.ToString(), this.User);
-                    OnGetTmEngineertemEvent(this, parameter);
-
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " 41this.TmSoulerDbs:" + this.TmSoulerDbs.Count);
+                    //OnGetTmEngineertemEvent(this, parameter);
+                    new TmEngineerMysql().GetItemsByUser(this, parameter);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " this.TmSoulerDbs:" + this.TmSoulerDbs.Count);
 
                     if (this.TmSoulerDbs != null)
                     {
@@ -58,5 +74,6 @@ namespace Servers
                 Console.WriteLine("帐号不存在");
             }
         }
+
     }
 }

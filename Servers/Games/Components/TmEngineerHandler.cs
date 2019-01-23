@@ -1,36 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tumo;
-
 namespace Servers
 {
     public class TmEngineerHandler : TmComponent
     {
-
-        public override void OnTransferParameter(TmParameter mvc)
+        public override void OnTransferParameter(object obj , TmParameter parameter)
         {
-            TenCode tenCode = mvc.TenCode;
-            switch (tenCode)
+            ElevenCode elevenCode = parameter.ElevenCode;
+            switch (elevenCode)
             {
-                case (TenCode.TmUserHandler):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineer: " + tenCode);
-               
-
+                case (ElevenCode.Login):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmUser: " + elevenCode);
+                    EngineerLogin(parameter);
                     break;
-                case (TenCode.None):
+                case (ElevenCode.None):
                     break;
                 default:
                     break;
             }
         }
 
-
-
-
-
+        private void EngineerLogin(TmParameter parameter)
+        {
+            int rolerId = TmParameterTool.GetJsonValue<int>(parameter, parameter.ElevenCode.ToString());
+            new TmEngineerMysql().GetItemsByUser(this, parameter);
+        }
 
     }
 }
