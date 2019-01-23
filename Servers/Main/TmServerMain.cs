@@ -1,13 +1,7 @@
-﻿using Servers.Games;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Tumo;
-
 namespace Servers
 {
     class TmServerMain
@@ -16,19 +10,18 @@ namespace Servers
         static void Main(string[] args)
         {
             Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");  
-            Thread.Sleep(1);            ///线程暂停1毫秒
+            Thread.Sleep(1);                                           
 
-            ///服务器加载组件
-            TmGame.TmSence.AddComponent(new TmMysqlConnection());       ///数据库链接组件
-            TmGame.TmSence.AddComponent(new TmGate());        ///服务器网关
-            TmGame.TmSence.AddComponent(new TmServerSocket());   ///套接字 外网 传输数据
-            TmGame.TmSence.AddComponent(new TmMysqlHandler());
-            TmGame.TmSence.AddComponent(new TmUserHandler());
-            TmGame.TmSence.AddComponent(new TmUserMysql());
-            TmGame.TmSence.AddComponent(new TmEngineerHandler());
-            TmGame.TmSence.AddComponent(new TmEngineerMysql());
+            TmGame.TmSence.AddComponent(new TmMysqlConnection());       ///服务器加载组件 : 数据库链接组件
+            TmGame.TmSence.AddComponent(new TmGate());                  ///服务器加载组件 : 服务器网关组件
+            TmGame.TmSence.AddComponent(new TmServerSocket());          ///服务器加载组件 : 套接字 外网 传输数据组件
+            TmGame.TmSence.AddComponent(new TmMysqlHandler());          ///服务器加载组件 : 服务器网关组件
+            TmGame.TmSence.AddComponent(new TmUserHandler());           ///服务器加载组件 :
+            TmGame.TmSence.AddComponent(new TmUserMysql());             ///服务器加载组件 :
+            TmGame.TmSence.AddComponent(new TmEngineerHandler());       ///服务器加载组件 :
+            TmGame.TmSence.AddComponent(new TmBookerMysql());           ///服务器加载组件 :
 
-            
+
             Thread.CurrentThread.Name = "TumoWorld";
             Console.WriteLine(TmTimerTool.CurrentTime() + " ThreadName:" + Thread.CurrentThread.Name);
             Console.WriteLine(TmTimerTool.CurrentTime() + " ThreadId:" + Thread.CurrentThread.ManagedThreadId);
