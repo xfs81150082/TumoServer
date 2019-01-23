@@ -6,42 +6,41 @@ using Tumo;
 
 namespace Servers
 {
-    public class TmUserHandler : TmComponent
+    class TmUserHandler : TmComponent
     {
-        public override void OnTransferParameter(TmParameter parameter)
+        public override void OnTransferParameter(object obj, TmParameter parameter)
         {
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.Login):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmUser: " + elevenCode);
-                    CheckLoginPassword(parameter);
+                    CheckUserLoginPassword(parameter);
+                    break;
+                case (ElevenCode.None):
+                    break;
+                default:
                     break;
             }
         }
-
-        public TmUser User;
-        public List<TmSoulerDB> TmSoulerDbs;
-        public static event EventHandler<TmParameter> OnGetTmUserItemEvent;
-        public static event EventHandler<TmParameter> OnGetTmEngineertemEvent;
-
-        private void CheckLoginPassword(TmParameter parameter)
+        internal TmUser User;
+        internal List<TmSoulerDB> Engineers;
+        private void CheckUserLoginPassword(TmParameter parameter)
         {
             TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
-            OnGetTmUserItemEvent(this, parameter);
+            TmMysqlHandler.Instance.GetComponent<TmUserMysql>().OnTransferParameter(this, parameter);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " user1:" + user1.Username + " user1:" + this.User.Password);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " this.User:" + user1.Username + " this.User:" + this.User.Password + " this.User.Phone:" + this.User.Phone);
             if (this.User != null)
             {
                 if (User.Password == user1.Password)
                 {
-                    parameter.Parameters.Clear();
-                    TmParameterTool.AddJsonParameter(parameter, parameter.ElevenCode.ToString(), this.User);
-                    OnGetTmEngineertemEvent(this, parameter);
-
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " 41this.TmSoulerDbs:" + this.TmSoulerDbs.Count);
-
-                    if (this.TmSoulerDbs != null)
+                    TmParameterTool.AddParameter(parameter, parameter.ElevenCode.ToString(), this.User);
+                    TmMysqlHandler.Instance.GetComponent<TmEngineerMysql>().OnTransferParameter(this, parameter);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " this.Engineers:" + this.Engineers.Count);
+                    if (this.Engineers != null)
                     {
-                        TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.TmUserController, ElevenCode.Login, ElevenCode.Login.ToString(), this.TmSoulerDbs);
+                        TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.TmUserController, ElevenCode.Login, ElevenCode.Login.ToString(), this.Engineers);
                         response.EcsId = parameter.EcsId;
                         TmTcpSocket.Instance.Send(response);
                     }
@@ -56,9 +55,6 @@ namespace Servers
                 Console.WriteLine("帐号不存在");
             }
         }
-
-
-
 
     }
 }

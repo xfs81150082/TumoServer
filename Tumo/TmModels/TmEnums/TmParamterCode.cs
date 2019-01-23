@@ -44,6 +44,16 @@ namespace Tumo
 
 
     }
+    [Serializable]
+    public enum KeyCode
+    {
+        None,
+        One,
+        Two,
+
+        All,     
+        End,
+    }
 
 
 }

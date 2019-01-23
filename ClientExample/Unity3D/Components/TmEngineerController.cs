@@ -1,30 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ClientExample;
 using Tumo;
-using Tumo.Models;
-
 namespace ClientExample
 {
     class TmEngineerController : TmComponent
     {
-        public override void OnTransferParameter(TmParameter mvc)
+        public override void OnTransferParameter(object obj, TmParameter parameter)
         {
-            ElevenCode elevenCode = mvc.ElevenCode;
+            ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
                 case (ElevenCode.Login):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " EngineerLogin: " + elevenCode);
-
-                    break;         
+                    GetBookersAndTeachers(parameter);
+                    break;
                 default:
                     break;
             }
         }
+        void GetBookersAndTeachers(TmParameter parameter)
+        {
+            List<TmSoulerDB> bookers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, "Bookers");
+            List<TmSoulerDB> teachers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, "Teachers");
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerController-Bookers: " + bookers.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerController-Teachers: " + teachers.Count);
+        }
 
-      
 
     }
 }

@@ -8,12 +8,12 @@ namespace Tumo
 {
     public abstract class TmInitialize : ISupportInitialize
     {
-        public void BeginInit()
+        public virtual void BeginInit()
         {
 
         }
 
-        public void EndInit()
+        public virtual void EndInit()
         {
 
         }

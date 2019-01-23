@@ -1,11 +1,6 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
-using System.Timers;
 using Tumo;
 
 namespace ClientExample
@@ -38,15 +33,14 @@ namespace ClientExample
             {
                 while (TmClient.RecvParameters.Count > 0)
                 {
-                    TmParameter mvc = TmClient.RecvParameters.Dequeue();
+                    TmParameter parameter = TmClient.RecvParameters.Dequeue();
                     if (TmConnect.Instance != null)
                     {
-                        TmConnect.Instance.OnTransferParameter(mvc); ///与客户端的接口函数
+                        TmConnect.Instance.OnTransferParameter(this, parameter); ///与客户端的接口函数
                         Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + TmClient.RecvParameters.Count);
                     }
                     else
                     {
-                        //RecvParameters.Enqueue(mvc);
                         Console.WriteLine(TmTimerTool.CurrentTime() + " TumoConnect is null.");
                         break;
                     }
@@ -57,9 +51,5 @@ namespace ClientExample
                 Console.WriteLine(TmTimerTool.CurrentTime() + " " + ex.Message);
             }
         }
-
-    
-        ///与客户端的接口函数
-
     }
 }

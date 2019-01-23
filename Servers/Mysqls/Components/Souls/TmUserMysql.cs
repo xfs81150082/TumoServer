@@ -1,42 +1,39 @@
 ﻿using Tumo;
-using Tumo.Models;
 using MySql.Data.MySqlClient;
-using Servers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Servers
 {
-    class TmUserMysql : TmComponent
-    {      
+     class TmUserMysql : TmComponent
+    {
+        public override void OnTransferParameter(object sender, TmParameter parameter)
+        {
+            ElevenCode elevenCode = parameter.ElevenCode;
+            switch (elevenCode)
+            {
+                case (ElevenCode.Login):
+                    GetTmUserByName(sender, parameter);
+                    break;
+                case (ElevenCode.None):
+                    break;
+                default:
+                    break;
+            }
+        }
         private string SoulName = "Users";
-        public TmUserMysql()
-        {
-            TmUserHandler.OnGetTmUserItemEvent += GetTmUserByName;
-        }
-         public override void TmDispose()
-        {
-            base.TmDispose();
-            TmUserHandler.OnGetTmUserItemEvent -= GetTmUserByName;
-        }
-       
-        private void GetTmUserByName(object obj, TmParameter parameter)
+        private void GetTmUserByName(object sender, TmParameter parameter)
         {
             TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
             TmUser user2 = GetUserByUserName(user1.Username);
             if (user2 != null)
             {
-                (obj as TmUserHandler).User = user2;
+                (sender as TmUserHandler).User = user2;
             }
         }
-
-        #region  //取得user，插入，删除，更新
+        #region  ///取得user，插入，删除，更新
         private TmUser GetUserByUserName(string username)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + SoulName + " where username = '" + username + "'", TmMysql.Connection);//读取数据函数  
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + SoulName + " where username = '" + username + "'", TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
@@ -45,7 +42,6 @@ namespace Servers
                 {
                     if (reader.HasRows)
                     {
-                        //Console.WriteLine(reader.RecordsAffected + "*" + reader.FieldCount);
                         item.Id = reader.GetInt32(0);
                         item.Username = reader.GetString(1);
                         item.Password = reader.GetString(2);
@@ -72,7 +68,7 @@ namespace Servers
         }     //得到user用户  //读取表格
         private void InsertItemdb(string name, int soulId, int userid, int exp, int level, int hp, int mp, int coin, int diamond, int senceId, double px, double py, double pz, double ax, double ay, double az, int serverid)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + SoulName + "(name,soulId,userid,exp,level,hp,mp,coin,diamond,senceId,px,py,pz,ax,ay,az,serverid) values('" + name + "','" + soulId + "','" + userid + "','" + exp + "','" + level + "','" + hp + "','" + mp + "','" + coin + "','" + diamond + "','" + senceId + "','" + px + "','" + py + "','" + pz + "','" + ax + "','" + ay + "','" + az + "','" + serverid + "')", TmMysql.Connection);  //插入列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("insert into " + SoulName + "(name,soulId,userid,exp,level,hp,mp,coin,diamond,senceId,px,py,pz,ax,ay,az,serverid) values('" + name + "','" + soulId + "','" + userid + "','" + exp + "','" + level + "','" + hp + "','" + mp + "','" + coin + "','" + diamond + "','" + senceId + "','" + px + "','" + py + "','" + pz + "','" + ax + "','" + ay + "','" + az + "','" + serverid + "')", TmMysqlConnection.Connection);  //插入列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -85,7 +81,7 @@ namespace Servers
         }
         private void RemoveItemdb(int id)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("delete from " + SoulName + " where id = '" + id + "'", TmMysql.Connection); //插入用户  
+            MySqlCommand mySqlCommand = new MySqlCommand("delete from " + SoulName + " where id = '" + id + "'", TmMysqlConnection.Connection); //插入用户  
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -98,7 +94,7 @@ namespace Servers
         }
         private void UpdateItemdb(int id, int exp, int level, int hp, int mp, int coin, int diamond)
         {
-            MySqlCommand mySqlCommand = new MySqlCommand("update " + SoulName + " set exp = '" + exp + "', level = '" + level + "', hp = '" + hp + "', mp = '" + mp + "', coin = '" + coin + "', diamond = '" + diamond + "' where id = '" + id + "'", TmMysql.Connection); //更新列表行
+            MySqlCommand mySqlCommand = new MySqlCommand("update " + SoulName + " set exp = '" + exp + "', level = '" + level + "', hp = '" + hp + "', mp = '" + mp + "', coin = '" + coin + "', diamond = '" + diamond + "' where id = '" + id + "'", TmMysqlConnection.Connection); //更新列表行
             try
             {
                 mySqlCommand.ExecuteNonQuery();
@@ -110,6 +106,5 @@ namespace Servers
             }
         }
         #endregion
-
     }
 }
