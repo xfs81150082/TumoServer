@@ -30,10 +30,11 @@ namespace Servers
         {
             int rolerId = TmParameterTool.GetValue<int>(parameter, parameter.ElevenCode.ToString());
             Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql,rolerId:" + rolerId);
-            List<TmSoulerDB> dbs = GetTmSoulerdbsByUserId((parameter.Parameters[parameter.ElevenCode.ToString()] as TmUser).Id);
+            List<TmSoulerDB> dbs = GetTmSoulerdbsByUserId(rolerId);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {
-                (sender as TmUserHandler).Engineers = dbs;
+                (sender as TmEngineerHandler).Engineers = dbs;
             }
             else
             {

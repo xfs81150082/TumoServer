@@ -38,7 +38,8 @@ namespace Servers
                 if (User.Password == word)
                 {
                     TmParameterTool.AddParameter(parameter, parameter.ElevenCode.ToString(), this.User.Id);
-                    Parent.GetComponent<TmEngineerHandler>().OnTransferParameter(this, parameter);                   
+                    Parent.GetComponent<TmEngineerHandler>().OnTransferParameter(this, parameter);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " Username:" + name + " Password:" + word);
                 }
                 else
                 {
