@@ -19,6 +19,13 @@ namespace Servers
             this.AddComponent(new TmEngineerMysql());
             this.AddComponent(new TmBookerMysql());
             this.AddComponent(new TmTeacherMysql());
+            this.AddComponent(new TmDressedMysql());
+            this.AddComponent(new TmKnapsackMysql());
+            this.AddComponent(new TmSmithyMysql());
+            this.AddComponent(new TmAbilityMysql());
+            this.AddComponent(new TmBuffMysql());
+            this.AddComponent(new TmInbornMysql());
+            this.AddComponent(new TmTaskMysql());
         }
     }
 }

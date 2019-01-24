@@ -46,6 +46,8 @@
     <Compile Include="Main\TmClientMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unity3D\Components\TmConnect.cs" />
+    <Compile Include="Unity3D\Components\TmBookerController.cs" />
+    <Compile Include="Unity3D\Components\TmTeacherController.cs" />
     <Compile Include="Unity3D\Components\TmEngineerController.cs" />
     <Compile Include="Unity3D\Components\TmTest.cs" />
     <Compile Include="Unity3D\Components\TmUserController.cs" />

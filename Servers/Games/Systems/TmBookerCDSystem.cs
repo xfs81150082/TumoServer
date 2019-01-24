@@ -1,35 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Tumo
+using Tumo;
+namespace Servers.Games.Systems
 {
-    public class TmCoolDownSystem : TmSystem
+    class TmBookercdSystem : TmSystem
     {
         public override void TmAwake()
         {
             base.TmAwake();
             ValTime = 4000;
+            AddComponent(new TmBooker());
             AddComponent(new TmCoolDown());
         }
-
         public override void TmUpdate()
         {
             base.TmUpdate();
-            foreach(var com in GetTmEntities())
+            foreach(var entity in GetTmEntities())
             {
-                UpdateCDCount(com);
+                UpdateCDTime(entity);
             }
         }
-
-        void UpdateCDCount(TmEntity entity)
+        void UpdateCDTime(TmEntity entity)
         {
             TmCoolDown cd = entity.GetComponent<TmCoolDown>() as TmCoolDown;
-            cd.CdCount += 1;
-            if (cd.CdCount >= cd.MaxCdCount)
+            cd.CdTime += 1;
+            if (cd.CdTime >= cd.MaxCdTime)
             {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmTcpSocket.Instance.TPeers.Count);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookercd Colsed. Booker Id{0} 刷新。 ", TmTcpSocket.Instance.TPeers.Count);
                 cd.End = true;
                 if (cd.Parent != null)
                 {
@@ -40,13 +37,11 @@ namespace Tumo
             else
             {
                 //发送心跳检测（并等待签到，签到入口在TmAsyncTcpSession里）
-                TmParameter mvc = TmParameterTool.ToJsonParameter(TenCode.TmEessionCD, ElevenCode.Login);
-                mvc.EcsId = cd.Key;
-                TmTcpSocket.Instance.Send(mvc);
+                TmParameter parameter = TmParameterTool.ToJsonParameter(TenCode.Booker, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), (Parent.GetComponent<TmSoulerDB>() as TmSoulerDB));
+                parameter.EcsId = cd.Key;
+                TmTcpSocket.Instance.Send(parameter);
             }
             Console.WriteLine(TmTimerTool.CurrentTime() + " CdCount:{0}-{1} ", cd.CdCount, cd.MaxCdCount);
         }
-      
-
     }
 }

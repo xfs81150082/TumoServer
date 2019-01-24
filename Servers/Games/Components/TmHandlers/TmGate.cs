@@ -23,13 +23,21 @@ namespace Servers
             TenCode tenCode = parameter.TenCode;
             switch (tenCode)
             {
-                case (TenCode.TmUserHandler):
+                case (TenCode.User):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
                     TmGame.TmSence.GetComponent<TmUserHandler>().OnTransferParameter(this, parameter);
                     break;
-                case (TenCode.TmEngineerHandler):
+                case (TenCode.Engineer):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
                     TmGame.TmSence.GetComponent<TmEngineerHandler>().OnTransferParameter(this, parameter);
+                    break;
+                case (TenCode.Booker):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
+                    TmGame.TmSence.GetComponent<TmBookerHandler>().OnTransferParameter(this, parameter);
+                    break;
+                case (TenCode.Teacher):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
+                    TmGame.TmSence.GetComponent<TmTeacherHandler>().OnTransferParameter(this, parameter);
                     break;
                 case (TenCode.None):
                     break;

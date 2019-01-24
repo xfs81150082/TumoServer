@@ -13,13 +13,13 @@ namespace Servers
             Thread.Sleep(1);                                           
 
             TmGame.TmSence.AddComponent(new TmMysqlConnection());       ///服务器加载组件 : 数据库链接组件
+            TmGame.TmSence.AddComponent(new TmMysqlHandler());         ///服务器加载组件 : 数据库表格组件集
             TmGame.TmSence.AddComponent(new TmGate());                  ///服务器加载组件 : 服务器网关组件
             TmGame.TmSence.AddComponent(new TmServerSocket());          ///服务器加载组件 : 套接字 外网 传输数据组件
-            TmGame.TmSence.AddComponent(new TmMysqlHandler());          ///服务器加载组件 : 服务器网关组件
-            TmGame.TmSence.AddComponent(new TmUserHandler());           ///服务器加载组件 :
-            TmGame.TmSence.AddComponent(new TmUserMysql());             ///服务器加载组件 :
-            TmGame.TmSence.AddComponent(new TmEngineerHandler());       ///服务器加载组件 :
-            TmGame.TmSence.AddComponent(new TmBookerMysql());           ///服务器加载组件 :
+            TmGame.TmSence.AddComponent(new TmUserHandler());           ///服务器加载组件 : 用户处理组件
+            TmGame.TmSence.AddComponent(new TmEngineerHandler());       ///服务器加载组件 : Engineer处理组件
+            TmGame.TmSence.AddComponent(new TmBookerHandler());         ///服务器加载组件 : Booker处理组件
+            TmGame.TmSence.AddComponent(new TmTeacherHandler());        ///服务器加载组件 : Teacher处理组件
 
 
             Thread.CurrentThread.Name = "TumoWorld";

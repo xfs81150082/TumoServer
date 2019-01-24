@@ -16,7 +16,7 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.Login):
+                case (ElevenCode.GetRolers):
                     this.GetSoulerdbs(sender, parameter);
                     break;
                 case (ElevenCode.None):
@@ -28,10 +28,10 @@ namespace Servers
         private void GetSoulerdbs(object sender, TmParameter parameter)
         {
             List<TmSoulerDB> dbs = GetTmSoulerdbs();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql,dbs:" + dbs.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql-dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {
-                (sender as TmEngineerHandler).Bookers = dbs;
+                (sender as TmBookerHandler).Bookers = dbs;
             }
             else
             {
