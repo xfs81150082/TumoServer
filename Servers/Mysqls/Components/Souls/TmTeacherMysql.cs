@@ -31,7 +31,7 @@ namespace Servers
             Console.WriteLine(TmTimerTool.CurrentTime() + " TmTeacherMysql,dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {
-                (sender as TmEngineerHandler).Teachers = dbs;
+                (sender as TmTeacherHandler).Teachers = dbs;
             }
             else
             {

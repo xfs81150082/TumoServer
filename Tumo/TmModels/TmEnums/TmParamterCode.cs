@@ -10,18 +10,19 @@ namespace Tumo
     {
         None,
         All,
-        TmEessionCD,  /// 链接心跳包
-        TmUserHandler,
-        TmEngineerHandler,
-        TmUserController,
-        TmEngineerController,
-        TmBooker,
-        TmTeacher,
-        TmInventory,
-        TmSkill,
-        TmTask,
-        TmWar,
-        TmSence,
+        EessionCD,  /// 链接心跳包
+        User,
+        Engineer,
+        Booker,
+        Teacher,
+        Inventory,
+        Dressed,
+        Knapsack,
+        Smithy,
+        Skill,
+        Task,
+        War,
+        Sence,
 
         End,
 
@@ -36,6 +37,8 @@ namespace Tumo
         Register,    /// 注册
         Get,         /// 得到
         Login,       /// 登录
+        UserLogin,       /// 登录
+        EngineerLogin,       /// 登录
         Save,        /// 保存
         Remove,      /// 删除
         Update,      /// 更新

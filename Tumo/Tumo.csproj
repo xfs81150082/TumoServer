@@ -51,7 +51,7 @@
     <Compile Include="TmEntities\TmComponents\TmGame.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmRequest.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
-    <Compile Include="TmEntities\TmSystems\TmCoolDownSystem.cs" />
+    <Compile Include="TmSockets\Systems\TmCoolDownSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
     <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />
     <Compile Include="TmModels\TmModelBase\TmBuffAdd.cs" />
