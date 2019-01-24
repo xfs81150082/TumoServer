@@ -11,7 +11,7 @@ namespace Tumo
             Open();
         }
         #region TmUpdate Timer
-        public int ValTime = 20;
+        public int ValTime = 50;
         private Timer Timer;
         private void Open()
         {
