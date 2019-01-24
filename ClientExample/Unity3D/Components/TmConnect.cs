@@ -15,12 +15,20 @@ namespace ClientExample
             switch (tenCode)
             {
                 case (TenCode.User):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmLogin: " + tenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmConnect: " + tenCode);
                     TmGame.TmSence.GetComponent<TmUserController>().OnTransferParameter(this, parameter);
                     break;
                 case (TenCode.Engineer):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmLogin: " + tenCode);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmConnect: " + tenCode);
                     TmGame.TmSence.GetComponent<TmEngineerController>().OnTransferParameter(this, parameter);
+                    break;
+                case (TenCode.Booker):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmConnect: " + tenCode);
+                    TmGame.TmSence.GetComponent<TmBookerController>().OnTransferParameter(this, parameter);
+                    break;
+                case (TenCode.Teacher):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmConnect: " + tenCode);
+                    TmGame.TmSence.GetComponent<TmTeacherController>().OnTransferParameter(this, parameter);
                     break;
                 case (TenCode.None):
                     break;

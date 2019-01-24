@@ -16,7 +16,7 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.UserLogin):
+                case (ElevenCode.GetRolers):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
                     GetDbsByEngineerLogin(sender, parameter);
                     break;
@@ -28,7 +28,7 @@ namespace Servers
         }
         void GetDbsByEngineerLogin(object sender, TmParameter parameter)
         {
-            int rolerId = TmParameterTool.GetValue<int>(parameter, parameter.ElevenCode.ToString());
+            int rolerId = TmParameterTool.GetValue<int>(parameter, ElevenCode.UserLogin.ToString());
             Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql,rolerId:" + rolerId);
             List<TmSoulerDB> dbs = GetTmSoulerdbsByUserId(rolerId);
             Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);

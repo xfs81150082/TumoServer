@@ -7,10 +7,10 @@ using Tumo;
 
 namespace Servers
 {
-    public class TmMysqlHandlers : TmEntity
+    public class TmMysqlHandler : TmEntity
     {
-        private static TmMysqlHandlers _instance;
-        public static TmMysqlHandlers Instance { get => _instance;  }
+        private static TmMysqlHandler _instance;
+        public static TmMysqlHandler Instance { get => _instance;  }
         public override void TmAwake()
         {
             base.TmAwake();

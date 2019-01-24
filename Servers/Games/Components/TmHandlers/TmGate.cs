@@ -31,6 +31,14 @@ namespace Servers
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
                     TmGame.TmSence.GetComponent<TmEngineerHandler>().OnTransferParameter(this, parameter);
                     break;
+                case (TenCode.Booker):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
+                    TmGame.TmSence.GetComponent<TmBookerHandler>().OnTransferParameter(this, parameter);
+                    break;
+                case (TenCode.Teacher):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
+                    TmGame.TmSence.GetComponent<TmTeacherHandler>().OnTransferParameter(this, parameter);
+                    break;
                 case (TenCode.None):
                     break;
                 default:

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using Tumo;
-
 namespace ClientExample
 {
     class Program
@@ -13,8 +12,10 @@ namespace ClientExample
 
             TmGame.TmSence.AddComponent(new TmConnect());              ///客户端加载组件 : 接收分发组件
             TmGame.TmSence.AddComponent(new TmClientSocket());         ///客户端加载组件 : 套接字网络组件
-            TmGame.TmSence.AddComponent(new TmEngineerController());   ///客户端加载组件 : Engineer处理组件
             TmGame.TmSence.AddComponent(new TmUserController());       ///客户端加载组件 : User处理组件
+            TmGame.TmSence.AddComponent(new TmEngineerController());   ///客户端加载组件 : Engineer处理组件
+            TmGame.TmSence.AddComponent(new TmBookerController());     ///客户端加载组件 : Booker处理组件
+            TmGame.TmSence.AddComponent(new TmTeacherController());    ///客户端加载组件 : Teacher处理组件
             TmGame.TmSence.AddComponent(new TmTest());                 ///客户端加载组件 : 测试组件
 
 
