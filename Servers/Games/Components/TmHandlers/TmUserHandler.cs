@@ -31,13 +31,14 @@ namespace Servers
             string name = TmParameterTool.GetValue<string>(parameter, "Username");
             string word = TmParameterTool.GetValue<string>(parameter, "Password");
             Console.WriteLine(TmTimerTool.CurrentTime() + " Username:" + name + " Password:" + word);
-            TmMysqlHandlers.Instance.GetComponent<TmUserMysql>().OnTransferParameter(this, parameter);
+            TmMysqlHandler.Instance.GetComponent<TmUserMysql>().OnTransferParameter(this, parameter);
             Console.WriteLine(TmTimerTool.CurrentTime() + " this.User:" + this.User.Username + " this.User:" + this.User.Password + " this.User.Phone:" + this.User.Phone);
             if (this.User != null)
             {
                 if (User.Password == word)
                 {
                     TmParameterTool.AddParameter(parameter, parameter.ElevenCode.ToString(), this.User.Id);
+                    parameter.ElevenCode = ElevenCode.GetRolers;
                     Parent.GetComponent<TmEngineerHandler>().OnTransferParameter(this, parameter);
                     Console.WriteLine(TmTimerTool.CurrentTime() + " Username:" + name + " Password:" + word);
                 }

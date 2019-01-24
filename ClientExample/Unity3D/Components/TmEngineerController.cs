@@ -11,21 +11,19 @@ namespace ClientExample
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.UserLogin):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " EngineerLogin: " + elevenCode);
-                    UserLoginGetEngineer(parameter);
+                case (ElevenCode.GetRolers):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerController: " + elevenCode);
+                    GetEngineersByUserId(parameter);
                     break;
-                case (ElevenCode.EngineerLogin):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " EngineerLogin: " + elevenCode);
-                    //GetBookersAndTeachers(parameter);
+                case (ElevenCode.None):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerController: " + elevenCode);
                     break;
                 default:
                     break;
             }
         }
-
         public TmSoulerDB SoulerDB;
-        void UserLoginGetEngineer(TmParameter tmp)
+        void GetEngineersByUserId(TmParameter tmp)
         {
             List<TmSoulerDB> engineers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(tmp, tmp.ElevenCode.ToString());
             Console.WriteLine(TmTimerTool.CurrentTime() + " engineers: " + engineers.Count);

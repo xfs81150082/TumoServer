@@ -12,13 +12,13 @@ namespace Tumo
         {
             base.TmAwake();
             AddComponent(new TmName());
+            AddComponent(new TmTransform());
             AddComponent(new TmSouler());
             AddComponent(new TmSoulerDB());
             AddComponent(new TmAttribute());
             AddComponent(new TmInventoryAdd());
             AddComponent(new TmBuffAdd());
             AddComponent(new TmSkillAdd());
-            AddComponent(new TmTransform());
             AddComponent(new TmChangeType());
         }
         public TmSoulerItem() { }                        ///构造函数 

@@ -70,7 +70,7 @@
     <Compile Include="TmModels\TmInventorys\TmInventory.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventoryItem.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventoryDB.cs" />
-    <Compile Include="TmModels\TmSoulers\Souls\MoveState.cs" />
+    <Compile Include="TmStatus.cs" />
     <Compile Include="TmModels\TmSoulers\Souls\TmRoler.cs" />
     <Compile Include="TmModels\TmSoulers\Souls\RolerAttack.cs" />
     <Compile Include="TmModels\TmSoulers\Souls\RolerMove.cs" />
