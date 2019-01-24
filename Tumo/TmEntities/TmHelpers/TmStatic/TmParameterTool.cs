@@ -17,13 +17,6 @@ namespace Tumo
             mvc.Parameters.Add(key, json);
             return mvc;
         }
-        public static TmParameter ToJsonParameter(TenCode ten, ElevenCode eleven)
-        {
-            TmParameter mvc = new TmParameter();
-            mvc.TenCode = ten;
-            mvc.ElevenCode = eleven;
-            return mvc;
-        }
         public static void AddJsonParameter<T>(TmParameter mvc, string key, T value)
         {
             object obj;
@@ -31,13 +24,6 @@ namespace Tumo
             if (yes) { mvc.Parameters.Remove(key); }
             string json = TmJson.ToString<T>(value);
             mvc.Parameters.Add(key, json);
-        }
-        public static void AddParameter<T>(TmParameter mvc, string key, T value)
-        {
-            object obj;
-            bool yes = mvc.Parameters.TryGetValue(key, out obj);
-            if (yes) { mvc.Parameters.Remove(key); }
-            mvc.Parameters.Add(key, value);
         }
         public static T GetJsonValue<T>(TmParameter mvc, string key)
         {
@@ -47,6 +33,20 @@ namespace Tumo
             //Json.NET反序列化
             T t = JsonConvert.DeserializeObject<T>(json);
             return t;
+        }
+        public static TmParameter ToParameter(TenCode ten, ElevenCode eleven)
+        {
+            TmParameter mvc = new TmParameter();
+            mvc.TenCode = ten;
+            mvc.ElevenCode = eleven;
+            return mvc;
+        }
+        public static void AddParameter<T>(TmParameter mvc, string key, T value)
+        {
+            object obj;
+            bool yes = mvc.Parameters.TryGetValue(key, out obj);
+            if (yes) { mvc.Parameters.Remove(key); }
+            mvc.Parameters.Add(key, value);
         }
         public static T GetValue<T>(TmParameter mvc, string key)
         {
