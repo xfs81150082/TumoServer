@@ -31,7 +31,7 @@ namespace Servers
             Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql,dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {
-                (sender as TmEngineerHandler).Bookers = dbs;
+                (sender as TmBookerHandler).Bookers = dbs;
             }
             else
             {

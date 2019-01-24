@@ -3,10 +3,10 @@ using System.Threading;
 using Tumo;
 namespace ClientExample
 {
-     class TmTest : TmSystem
+    class TmTest : TmSystem
     {
         private static TmTest _instance;
-        public static TmTest Instance { get => _instance;  }
+        public static TmTest Instance { get => _instance; }
         public override void TmAwake() { base.TmAwake(); _instance = this; }
 
         private bool IsUserLogin = false;
@@ -27,31 +27,25 @@ namespace ClientExample
             }
         }
         void TmUserLogin()
-        {            
-            TmUser tmUser = new TmUser();
-            tmUser.Username = "Tumo";
-            tmUser.Password = "123456";
-            TmParameter mvc = TmParameterTool.ToJsonParameter(TenCode.TmUserHandler, ElevenCode.Login, ElevenCode.Login.ToString(), tmUser);
-            TmTcpSocket.Instance.Send(mvc);
-            Console.WriteLine(TmTimerTool.CurrentTime() + " 用户登录, Username:{0} Password:{1}", tmUser.Username, tmUser.Password);
+        {
+            TmUser user = new TmUser();
+            user.Username = "Tumo";
+            user.Password = "123456";
+            //TmParameter parameter = TmParameterTool.ToJsonParameter<TmUser>(TenCode.User, ElevenCode.UserLogin, ElevenCode.UserLogin.ToString(), user);
+            TmParameter parameter = TmParameterTool.ToParameter(TenCode.User, ElevenCode.UserLogin);
+            TmParameterTool.AddParameter(parameter, "Username", "Tumo");
+            TmParameterTool.AddParameter(parameter, "Password", "123456");
+            TmTcpSocket.Instance.Send(parameter);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " 用户登录36, Username:{0} Password:{1}", user.Username, user.Password);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " 用户登录37, Username:{0} Password:{1}", parameter.Parameters["Username"], parameter.Parameters["Password"]);
         }
         public void EngineerLogin(int rolerId)
         {
-            TmParameter parameter = TmParameterTool.ToJsonParameter(TenCode.TmEngineerHandler, ElevenCode.Login, ElevenCode.Login.ToString(), rolerId);
+            TmParameter parameter = TmParameterTool.ToJsonParameter(TenCode.Engineer, ElevenCode.EngineerLogin, ElevenCode.EngineerLogin.ToString(), rolerId);
             TmTcpSocket.Instance.Send(parameter);
             Console.WriteLine(TmTimerTool.CurrentTime() + " Id:{0}", rolerId);
         }
         #endregion
-        #region
-        void TestLogin()
-        {
-            if (IsLogin == false)
-            {
-                IsLogin = true;
-                Console.WriteLine(TmTimerTool.CurrentTime() + " IsLogin:{0}", IsLogin.ToString());
-                EngineerLogin(100001);
-            }
-        }
-        #endregion
+
     }
 }

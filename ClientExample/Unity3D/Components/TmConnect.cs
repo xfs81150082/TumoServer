@@ -14,11 +14,11 @@ namespace ClientExample
             TenCode tenCode = parameter.TenCode;
             switch (tenCode)
             {
-                case (TenCode.TmUserController):
+                case (TenCode.User):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmLogin: " + tenCode);
                     TmGame.TmSence.GetComponent<TmUserController>().OnTransferParameter(this, parameter);
                     break;
-                case (TenCode.TmEngineerController):
+                case (TenCode.Engineer):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmLogin: " + tenCode);
                     TmGame.TmSence.GetComponent<TmEngineerController>().OnTransferParameter(this, parameter);
                     break;

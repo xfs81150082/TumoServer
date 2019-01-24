@@ -11,7 +11,7 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.Login):
+                case (ElevenCode.UserLogin):
                     GetTmUserByName(sender, parameter);
                     break;
                 case (ElevenCode.None):
@@ -23,8 +23,8 @@ namespace Servers
         private string SoulName = "Users";
         private void GetTmUserByName(object sender, TmParameter parameter)
         {
-            TmUser user1 = TmParameterTool.GetJsonValue<TmUser>(parameter, parameter.ElevenCode.ToString());
-            TmUser user2 = GetUserByUserName(user1.Username);
+            string name = TmParameterTool.GetValue<string>(parameter, "Username");
+            TmUser user2 = GetUserByUserName(name);
             if (user2 != null)
             {
                 (sender as TmUserHandler).User = user2;
