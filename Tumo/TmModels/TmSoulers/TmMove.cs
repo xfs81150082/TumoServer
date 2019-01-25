@@ -6,8 +6,8 @@ using System.Timers;
 
 namespace Tumo
 {
-    public class RolerMove
-    {
+    public class TmMove : TmComponent
+    {       
         public double MoveSpeed = 0;
         public TmTransform TargetTransform;
         public bool IsCanSeeing = false;
@@ -22,15 +22,15 @@ namespace Tumo
         private int restTime1 = 3;
         private int valTime = 1;
 
-        public RolerMove() { }
-        public RolerMove(TmTransform spawn)
+        public TmMove() { }
+        public TmMove(TmTransform spawn)
         {
             if (spawn != null)
             {
                 this.SpawnTransform = spawn;
             }
         }
-        public RolerMove(TmSoulerItem soulItem)
+        public TmMove(TmSoulerItem soulItem)
         {
             if (soulItem != null)
             {

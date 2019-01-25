@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Timers;
-
 namespace Tumo
 {
     public abstract class TmRoler : TmEntity
     {
+        public override void TmAwake()
+        {
+            base.TmAwake();
+            AddComponent(new TmTransform());
+            AddComponent(new TmSoulerItem());
+            AddComponent(new TmStatus());
+            AddComponent(new TmMove());
+            AddComponent(new TmAttack());
+            AddComponent(new TmInventoryItem());
+            AddComponent(new TmSkillItem());
+        }
         public TmTransform TmTransform { get; set; }
         public TmSoulerItem SoulItem { get; set; }
         public TmStatus MoveState { get; set; }
-        public RolerMove RolerMove { get; set; }
-        public RolerAttack RolerAttack { get; set; }
+        public TmMove RolerMove { get; set; }
+        public TmAttack RolerAttack { get; set; }
         public List<TmRoler> TargetRolers { get; set; }
         public bool IsOut { get; set; } = true;
         

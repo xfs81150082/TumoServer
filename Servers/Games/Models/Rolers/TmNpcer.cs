@@ -1,15 +1,15 @@
-﻿using Tumo;
-using Tumo.Models;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using Tumo;
 namespace Servers
 {
     [Serializable]
-    public class Player : TmEntity
+    public class TmNpcer : TmEntity
     {
         public override void TmAwake()
         {
             base.TmAwake();
-            AddComponent(new TmBooker());
+            AddComponent(new TmTeacher());
             AddComponent(new TmCoolDown());
             AddComponent(new TmSoulerDB());
         }

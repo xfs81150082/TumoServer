@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using Tumo;
 namespace Servers
 {
-    public class TmBookerHandler : TmComponent
+    public class TmBookerHandler : TmEntity
     {
+        public override void TmAwake()
+        {
+            base.TmAwake();
+            AddComponent(new TmStatusSyncHandler());
+        }
         public override void OnTransferParameter(object obj , TmParameter parameter)
         {
             ElevenCode elevenCode = parameter.ElevenCode;
@@ -13,6 +18,10 @@ namespace Servers
                 case (ElevenCode.GetRolers):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerHandler: " + elevenCode);
                     GetRolers(parameter);
+                    break;
+                case (ElevenCode.StatusSync):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
+                    this.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
                     break;
                 case (ElevenCode.Die):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerHandler: " + elevenCode);
@@ -25,7 +34,7 @@ namespace Servers
             }
         }
         internal List<TmSoulerDB> Bookers;
-        internal Dictionary<int, Monster> SpawnMonsters = new Dictionary<int, Monster>();
+        internal Dictionary<int, TmMonster> SpawnMonsters = new Dictionary<int, TmMonster>();
         internal TmSoulerDB booker { get; set; }
         void GetRolers(TmParameter parameter)
         {
@@ -42,7 +51,7 @@ namespace Servers
         {
             int rolerId = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.GetRoler.ToString());
             ///ToTo
-            Monster monster = new Monster();
+            TmMonster monster = new TmMonster();
             TmSoulerDB soulerDB = monster.GetComponent<TmSoulerDB>() as TmSoulerDB;
             soulerDB = new TmSoulerDB();
             (monster.GetComponent<TmCoolDown>() as TmCoolDown).MaxCdTime = 14;
