@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using Tumo;
 namespace Servers
 {
-    public class TmEngineerHandler : TmComponent
+    public class TmEngineerHandler : TmEntity
     {
+        public override void TmAwake()
+        {
+            base.TmAwake();
+            AddComponent(new TmStatusSyncHandler());
+        }
         public override void OnTransferParameter(object obj , TmParameter parameter)
         {
             ElevenCode elevenCode = parameter.ElevenCode;
@@ -17,6 +22,10 @@ namespace Servers
                 case (ElevenCode.EngineerLogin):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerHandler: " + elevenCode);
                     EngineerLogin(parameter);
+                    break;
+                case (ElevenCode.StatusSync):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
+                    this.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
                     break;
                 case (ElevenCode.None):
                     break;

@@ -12,7 +12,6 @@ namespace Tumo
         {
             base.TmAwake();
             AddComponent(new TmName());
-            AddComponent(new TmTransform());
             AddComponent(new TmSouler());
             AddComponent(new TmSoulerDB());
             AddComponent(new TmAttribute());

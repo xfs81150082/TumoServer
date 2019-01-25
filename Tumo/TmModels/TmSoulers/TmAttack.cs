@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public class RolerAttack
+    public class TmAttack : TmComponent
     {
         void TakeDamager(TmAttribute myself, TmAttribute attacker)
         {
