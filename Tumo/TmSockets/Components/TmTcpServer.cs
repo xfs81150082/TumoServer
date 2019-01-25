@@ -47,10 +47,6 @@ namespace Tumo
             {
                 ///创建一个TPeer接收socket
                 new TmPeer().BeginReceiveMessage(socket);
-
-                //RecvThread = new Thread(new ParameterizedThreadStart(new TPeer().BeginReceiveMessage));
-                //RecvThread.Start(socket);
-                //Console.WriteLine(TmTimerTool.CurrentTime() + " AsyncRecv ThreadId:{0}", Thread.CurrentThread.ManagedThreadId);
             }
         }
         #endregion
@@ -63,10 +59,10 @@ namespace Tumo
                 while (SendParameters.Count > 0)
                 {
                     TmParameter mvc = SendParameters.Dequeue();
+                    TmTcpSession tpeer;
+                    TPeers.TryGetValue(mvc.EcsId, out tpeer);
                     ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
                     string mvcJsons = TmJson.ToString<TmParameter>(mvc);
-                    TmTcpSession tpeer = TmParameterTool.OutOfDictionary(mvc.EcsId, TPeers);
-                    //TPeers.TryGetValue(mvc.EcsId, out tpeer);
                     if (tpeer != null)
                     {
                         tpeer.SendString(mvcJsons);

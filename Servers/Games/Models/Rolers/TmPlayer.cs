@@ -1,9 +1,10 @@
 ﻿using Tumo;
+using Tumo.Models;
 using System;
-using System.Collections.Generic;
 namespace Servers
 {
-    public class Monster : TmEntity
+    [Serializable]
+    public class TmPlayer : TmEntity
     {
         public override void TmAwake()
         {

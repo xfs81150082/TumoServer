@@ -15,6 +15,7 @@ namespace Tumo
         Engineer,
         Booker,
         Teacher,
+        Status,
         Inventory,
         Dressed,
         Knapsack,
@@ -40,11 +41,13 @@ namespace Tumo
         UserLogin,           /// 登录
         EngineerLogin,       /// 登录
         GetRolers,           ///得到小怪或NPC
-        GetRoler,           ///生产一只小怪或NPC
+        GetRoler,            ///生产一只小怪或NPC
         Save,                /// 保存
+        Add,                 /// 添加
         Remove,              /// 删除
         Update,              /// 更新
         Die,
+        StatusSync,
 
         End,
 
