@@ -24,11 +24,9 @@ namespace Tumo
         Task,
         War,
         Sence,
+        Ugui,
 
         End,
-
-
-
     }
     [Serializable]
     public enum ElevenCode
@@ -51,11 +49,18 @@ namespace Tumo
         Engineer,
         Booker,
         Teacher,
-
+        Bar,
+        Chat,
+        Inventory,
+        Dressed,
+        Smithy,
+        Knapscak,
+        Teerain,
+        Map,
+        Souler,
+        Roler,
 
         End,
-
-
     }
     [Serializable]
     public enum KeyCode
