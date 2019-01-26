@@ -38,7 +38,7 @@ namespace Tumo
                 TmDispose();   /// 为继承类释放时使用，用抽象方法
                 GC.SuppressFinalize(this); ///GC不用二次释放this资源   
                 isDisposed = true;
-                Console.WriteLine(TmTimerTool.CurrentTime() + " TmDispose EcsId:" + EcsId + " TmEcsBase释放资源");
+                //Console.WriteLine(TmTimerTool.CurrentTime() + " TmDispose EcsId:" + EcsId + " TmEcsBase释放资源");
             }
             else
             {
