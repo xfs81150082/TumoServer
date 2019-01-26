@@ -15,7 +15,7 @@ namespace Tumo
         Engineer,
         Booker,
         Teacher,
-        Status,
+        StatusSync,
         Inventory,
         Dressed,
         Knapsack,
@@ -48,6 +48,10 @@ namespace Tumo
         Update,              /// 更新
         Die,
         StatusSync,
+        Engineer,
+        Booker,
+        Teacher,
+
 
         End,
 

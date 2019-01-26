@@ -8,7 +8,7 @@ namespace Servers
         public override void TmAwake()
         {
             base.TmAwake();
-            AddComponent(new TmStatusSyncHandler());
+            //AddComponent(new TmStatusSyncHandler());
         }
         public override void OnTransferParameter(object obj , TmParameter parameter)
         {

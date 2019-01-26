@@ -20,6 +20,7 @@ namespace Servers
             TmGame.TmSence.AddComponent(new TmEngineerHandler());       ///服务器加载组件 : Engineer处理组件
             TmGame.TmSence.AddComponent(new TmBookerHandler());         ///服务器加载组件 : Booker处理组件
             TmGame.TmSence.AddComponent(new TmTeacherHandler());        ///服务器加载组件 : Teacher处理组件
+            TmGame.TmSence.AddComponent(new TmStatusSyncHandler());        ///服务器加载组件 : Teacher处理组件
 
 
             Thread.CurrentThread.Name = "TumoWorld";

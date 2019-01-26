@@ -39,6 +39,10 @@ namespace Servers
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
                     TmGame.TmSence.GetComponent<TmTeacherHandler>().OnTransferParameter(this, parameter);
                     break;
+                case (TenCode.StatusSync):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmGate: " + tenCode);
+                    TmGame.TmSence.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
+                    break;
                 case (TenCode.None):
                     break;
                 default:
