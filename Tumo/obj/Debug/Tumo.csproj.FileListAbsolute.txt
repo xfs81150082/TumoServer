@@ -17,4 +17,3 @@ I:\TumoServerHome\Tumo\obj\Debug\Tumo.csproj.CopyComplete
 I:\TumoServerHome\Tumo\obj\Debug\Tumo.dll
 I:\TumoServerHome\Tumo\obj\Debug\Tumo.pdb
 I:\TumoServerHome\Tumo\obj\Debug\Tumo.csprojAssemblyReference.cache
-D:\xfs81150082\TumoServerOffice\Tumo\obj\Debug\Tumo.csprojAssemblyReference.cache
