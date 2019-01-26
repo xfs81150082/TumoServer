@@ -51,6 +51,7 @@
     <Compile Include="Unity3D\Components\TmEngineerController.cs" />
     <Compile Include="Unity3D\Components\TmTest.cs" />
     <Compile Include="Unity3D\Components\TmUserController.cs" />
+    <Compile Include="Unity3D\Players\TmEngineer.cs" />
     <Compile Include="Unity3D\Systems\TmClientSocket.cs" />
   </ItemGroup>
   <ItemGroup>
