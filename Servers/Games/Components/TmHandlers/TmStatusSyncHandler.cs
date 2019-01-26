@@ -43,11 +43,14 @@ namespace Servers
         }
         void OutStatusSync(TmStatus status)
         {
-            foreach(var tem in TmTcpSocket.Instance.TPeers.Values)
+            foreach (var tem in TmTcpSocket.Instance.TPeers.Values)
             {
-                TmParameter par = TmParameterTool.ToJsonParameter(TenCode.Status, ElevenCode.StatusSync, ElevenCode.StatusSync.ToString(), status);
-                par.Key = tem.EcsId;
-                TmTcpSocket.Instance.Send(par);
+                TmParameter par = TmParameterTool.ToJsonParameter(TenCode.Engineer, ElevenCode.StatusSync, ElevenCode.StatusSync.ToString(), status);
+                if (tem.EcsId != status.Key)
+                {
+                    par.Key = tem.EcsId;
+                    TmTcpSocket.Instance.Send(par);
+                }
             }
         }
         void RemoveStatus(TmParameter parameter)
