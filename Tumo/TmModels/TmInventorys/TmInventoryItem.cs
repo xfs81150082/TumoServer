@@ -14,7 +14,7 @@ namespace Tumo
             AddComponent(new TmName());
             AddComponent(new TmInventory());
             AddComponent(new TmInventoryDB());
-            AddComponent(new TmAttribute());
+            AddComponent(new TmProperty());
             AddComponent(new TmInventoryAdd());            
             AddComponent(new TmChangeType());
         }

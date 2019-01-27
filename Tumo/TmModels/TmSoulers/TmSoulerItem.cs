@@ -14,9 +14,8 @@ namespace Tumo
             AddComponent(new TmName());
             AddComponent(new TmSouler());
             AddComponent(new TmSoulerDB());
-            AddComponent(new TmAttribute());
+            AddComponent(new TmProperty());
             AddComponent(new TmInventoryAdd());
-            AddComponent(new TmBuffAdd());
             AddComponent(new TmSkillAdd());
             AddComponent(new TmChangeType());
         }
@@ -27,6 +26,10 @@ namespace Tumo
             {
                 TmSoulerDB tem = GetComponent<TmSoulerDB>() as TmSoulerDB;
                 tem = itemDB;
+            }
+            else
+            {
+                AddComponent(itemDB);
             }
         }
         //public void InitAttribute()

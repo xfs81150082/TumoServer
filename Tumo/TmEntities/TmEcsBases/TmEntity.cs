@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Tumo
 {
     public abstract class TmEntity : TmComponent
@@ -53,7 +50,7 @@ namespace Tumo
             {
                 Components.Remove(name);
                 tem.Parent = null;
-                Console.WriteLine(TmTimerTool.CurrentTime() + " 实例 {0} 删除组件 {1} 成功", this.GetType().Name, typeof(T).Name);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 实例 {0} 删除组件 {1}", this.GetType().Name, typeof(T).Name);
                 tem.Dispose();
             }
             else
@@ -84,4 +81,5 @@ namespace Tumo
             }
         }
     }
+
 }

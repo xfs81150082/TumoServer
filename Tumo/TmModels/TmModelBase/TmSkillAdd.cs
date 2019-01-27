@@ -6,7 +6,7 @@ using System.Text;
 namespace Tumo
 {
     [Serializable]
-    public class TmSkillAdd : TmAttribute
+    public class TmSkillAdd : TmProperty
     {
         public TmSkillAdd() { }
         //public void Clear()

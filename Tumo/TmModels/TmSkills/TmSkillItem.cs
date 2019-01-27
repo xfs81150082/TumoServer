@@ -12,7 +12,7 @@ namespace Tumo
         {
             base.TmAwake();
             AddComponent(new TmName());
-            AddComponent(new TmAttribute());
+            AddComponent(new TmProperty());
             AddComponent(new TmChangeType());
             AddComponent(new TmSkill());
             AddComponent(new TmSkillDB());
