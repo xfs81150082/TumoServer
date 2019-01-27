@@ -6,7 +6,7 @@ using System.Text;
 namespace Tumo
 {
     [Serializable]
-    public class TmInventoryAdd : TmAttribute
+    public class TmInventoryAdd : TmProperty
     {
         public TmInventoryAdd() { }
         //public void Clear()

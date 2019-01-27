@@ -7,7 +7,7 @@ namespace Tumo
 {
     public class TmAttack : TmComponent
     {
-        void TakeDamager(TmAttribute myself, TmAttribute attacker)
+        void TakeDamager(TmProperty myself, TmProperty attacker)
         {
             if (myself.Hp <= 0)
             {

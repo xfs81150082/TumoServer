@@ -14,7 +14,7 @@ namespace Tumo
             AddComponent(new TmName());
             AddComponent(new TmLabel());
             AddComponent(new TmFixedType());
-            AddComponent(new TmAttribute());
+            AddComponent(new TmProperty());
         }
         public TmSkill()
         {
@@ -27,17 +27,17 @@ namespace Tumo
             (this.GetComponent<TmLabel>() as TmLabel).Does = "reader.GetString(9)";
             (this.GetComponent<TmFixedType>() as TmFixedType).RoleType = (RoleType)1;
             (this.GetComponent<TmFixedType>() as TmFixedType).Quality = (Quality)1;
-            (this.GetComponent<TmAttribute>() as TmAttribute).Stamina = 12;
-            (this.GetComponent<TmAttribute>() as TmAttribute).Brains = 10;
-            (this.GetComponent<TmAttribute>() as TmAttribute).Power = 14;
-            (this.GetComponent<TmAttribute>() as TmAttribute).Agility = 10;
-            (this.GetComponent<TmAttribute>() as TmAttribute).Hr = 0.8;
-            (this.GetComponent<TmAttribute>() as TmAttribute).Cr = 0.2;
-            (this.GetComponent<TmAttribute>() as TmAttribute).Sp = 2.0;
-            (this.GetComponent<TmAttribute>() as TmAttribute).StaminaRate = 10.0;
-            (this.GetComponent<TmAttribute>() as TmAttribute).BrainsRate = 1.0;
-            (this.GetComponent<TmAttribute>() as TmAttribute).PowerRate = 1.0;
-            (this.GetComponent<TmAttribute>() as TmAttribute).AgilityRate = 1.0;
+            (this.GetComponent<TmProperty>() as TmProperty).Stamina = 12;
+            (this.GetComponent<TmProperty>() as TmProperty).Brains = 10;
+            (this.GetComponent<TmProperty>() as TmProperty).Power = 14;
+            (this.GetComponent<TmProperty>() as TmProperty).Agility = 10;
+            (this.GetComponent<TmProperty>() as TmProperty).Hr = 0.8;
+            (this.GetComponent<TmProperty>() as TmProperty).Cr = 0.2;
+            (this.GetComponent<TmProperty>() as TmProperty).Sp = 2.0;
+            (this.GetComponent<TmProperty>() as TmProperty).StaminaRate = 10.0;
+            (this.GetComponent<TmProperty>() as TmProperty).BrainsRate = 1.0;
+            (this.GetComponent<TmProperty>() as TmProperty).PowerRate = 1.0;
+            (this.GetComponent<TmProperty>() as TmProperty).AgilityRate = 1.0;
         }
     }
 }

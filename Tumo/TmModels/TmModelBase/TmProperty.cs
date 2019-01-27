@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Tumo
 {
-    public class TmAttribute : TmComponent
+    public class TmProperty : TmComponent
     {      
         public int Stamina { get; set; } = 0;            //耐力，案例，每升1级加1，影响血量
         public int Brains { get; set; } = 0;             //智力，计价，每升1级加1，影响魔法攻击强度，魔法防御

@@ -28,14 +28,15 @@ namespace ClientExample
         }
         void TmUserLogin()
         {
-            TmUser user = new TmUser();
-            user.Username = "Tumo";
-            user.Password = "123456";
+            //TmUser user = new TmUser();
+            //user.Username = "Tumo";
+            //user.Password = "123456";
+            //Console.WriteLine(TmTimerTool.CurrentTime() + " 用户登录36, Username:{0} Password:{1}", user.Username, user.Password);       
             TmParameter parameter = TmParameterTool.ToParameter(TenCode.User, ElevenCode.UserLogin);
             TmParameterTool.AddParameter(parameter, "Username", "Tumo");
             TmParameterTool.AddParameter(parameter, "Password", "123456");
             TmTcpSocket.Instance.Send(parameter);
-            Console.WriteLine(TmTimerTool.CurrentTime() + " 用户登录36, Username:{0} Password:{1}", user.Username, user.Password);
+
             Console.WriteLine(TmTimerTool.CurrentTime() + " 用户登录37, Username:{0} Password:{1}", parameter.Parameters["Username"], parameter.Parameters["Password"]);
         }
         public void EngineerLogin(int rolerId)
