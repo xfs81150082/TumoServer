@@ -56,7 +56,6 @@
     <Compile Include="TmSockets\Systems\TmCoolDownSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
     <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />
-    <Compile Include="TmModels\TmModelBase\TmBuffAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmName.cs" />
     <Compile Include="TmModels\TmModelBase\TmSkillAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmLabel.cs" />
@@ -64,7 +63,7 @@
     <Compile Include="TmModels\TmTasks\TmTaskItem.cs" />
     <Compile Include="TmModels\TmTasks\TmTaskItemDB.cs" />
     <Compile Include="TmModels\TmModelBase\TmInventoryAdd.cs" />
-    <Compile Include="TmModels\TmModelBase\TmAttribute.cs" />
+    <Compile Include="TmModels\TmModelBase\TmProperty.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmInitialize.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmTimer.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsBase.cs" />
