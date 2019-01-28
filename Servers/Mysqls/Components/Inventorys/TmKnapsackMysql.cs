@@ -31,7 +31,7 @@ namespace Servers
             List<TmInventoryDB> dbs = GetInventorydbsByRolerId((parameter.Parameters[parameter.ElevenCode.ToString()] as TmUser).Id);
             if (dbs.Count > 0)
             {
-                (sender as TmEngineerHandler).Knapsacks = dbs;
+                //(sender as TmEngineerHandler).Knapsacks = dbs;
             }
             else
             {
