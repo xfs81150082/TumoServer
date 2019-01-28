@@ -5,11 +5,6 @@ namespace Servers
 {
     public class TmEngineerHandler : TmEntity
     {
-        public override void TmAwake()
-        {
-            base.TmAwake();
-            //AddComponent(new TmStatusSyncHandler());
-        }
         public override void OnTransferParameter(object obj , TmParameter parameter)
         {
             ElevenCode elevenCode = parameter.ElevenCode;
@@ -33,12 +28,8 @@ namespace Servers
                     break;
             }
         }
+        internal TmSoulerDB Engineer;
         internal List<TmSoulerDB> Engineers;
-        internal List<TmInventoryDB> Knapsacks;
-        internal List<TmInventoryDB> Dresseds;
-        internal List<TmSkillDB> Abilitis;
-        internal List<TmSkillDB> Buffs;
-        internal List<TmSkillDB> Inborns;
         private void GetRolersByUersId(TmParameter parameter)
         {
             TmMysqlHandler.Instance.GetComponent<TmEngineerMysql>().OnTransferParameter(this, parameter);
@@ -54,6 +45,17 @@ namespace Servers
         {
             int rolerId = TmParameterTool.GetJsonValue<int>(parameter, parameter.ElevenCode.ToString());
             Console.WriteLine(TmTimerTool.CurrentTime() + " rolerId:" + rolerId);
+            TmMysqlHandler.Instance.GetComponent<TmEngineerMysql>().OnTransferParameter(this, parameter);
+            if (this.Engineer != null)
+            {
+                TmParameter response = TmParameterTool.ToJsonParameter<TmSoulerDB>(TenCode.Engineer, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), this.Engineer);
+                response.EcsId = parameter.EcsId;
+                TmTcpSocket.Instance.Send(response);
+            }
+            GetBookersAndTeachers(parameter);
+        }
+        void GetBookersAndTeachers(TmParameter parameter)
+        {
             parameter.ElevenCode = ElevenCode.GetRolers;
             Parent.GetComponent<TmBookerHandler>().OnTransferParameter(this, parameter);
             Parent.GetComponent<TmTeacherHandler>().OnTransferParameter(this, parameter);
