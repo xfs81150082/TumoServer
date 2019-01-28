@@ -35,7 +35,7 @@ namespace Servers
             List<TmSkillDB> dbs = GetSkilldbsByRolerId((parameter.Parameters[parameter.ElevenCode.ToString()] as TmUser).Id);
             if (dbs.Count > 0)
             {
-                (sender as TmEngineerHandler).Abilitis = dbs;
+                //(sender as TmEngineerHandler).Abilitis = dbs;
             }
             else
             {

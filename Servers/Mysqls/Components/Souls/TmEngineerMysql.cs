@@ -18,7 +18,11 @@ namespace Servers
             {
                 case (ElevenCode.GetRolers):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
-                    GetDbsByEngineerLogin(sender, parameter);
+                    GetRolers(sender, parameter);
+                    break;
+                case (ElevenCode.EngineerLogin):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
+                    GetdbofEngineerLogin(sender, parameter);
                     break;
                 case (ElevenCode.None):
                     break;
@@ -26,7 +30,7 @@ namespace Servers
                     break;
             }
         }
-        void GetDbsByEngineerLogin(object sender, TmParameter parameter)
+        void GetRolers(object sender, TmParameter parameter)
         {
             int rolerId = TmParameterTool.GetValue<int>(parameter, ElevenCode.UserLogin.ToString());
             Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql,rolerId:" + rolerId);
@@ -41,5 +45,21 @@ namespace Servers
                 Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
             }
         }
+        void GetdbofEngineerLogin(object sender, TmParameter parameter)
+        {
+            int rolerId = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.EngineerLogin.ToString());
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql,rolerId:" + rolerId);
+            TmSoulerDB db = GetTmSoulerdbById(rolerId);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " db:" + db.Name);
+            if (db != null)
+            {
+                (sender as TmEngineerHandler).Engineer = db;
+            }
+            else
+            {
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
+            }
+        }
+
     }
 }
