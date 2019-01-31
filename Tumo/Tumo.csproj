@@ -53,7 +53,8 @@
     <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryComponent.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmRequest.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
-    <Compile Include="TmSockets\Systems\TmCoolDownSystem.cs" />
+    <Compile Include="TmSockets\Components\TmSession.cs" />
+    <Compile Include="TmSockets\Systems\TmSessionCDSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
     <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />
     <Compile Include="TmModels\TmModelBase\TmName.cs" />
@@ -64,7 +65,6 @@
     <Compile Include="TmModels\TmTasks\TmTaskItemDB.cs" />
     <Compile Include="TmModels\TmModelBase\TmInventoryAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmProperty.cs" />
-    <Compile Include="TmEntities\TmEcsBases\TmInitialize.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmTimer.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsBase.cs" />
     <Compile Include="TmEntities\TmComponents\TmCoolDown.cs" />

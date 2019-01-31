@@ -32,9 +32,9 @@ namespace Servers
                 while (TcpServer.RecvParameters.Count > 0)
                 {
                     TmParameter parameter = TcpServer.RecvParameters.Dequeue();
-                    if (TmGate.Instance != null)
+                    if (TmGateHandler.Instance != null)
                     {
-                        TmGate.Instance.OnTransferParameter(this, parameter);
+                        TmGateHandler.Instance.OnTransferParameter(this, parameter);
                         Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + TcpServer.RecvParameters.Count);
                     }
                     else

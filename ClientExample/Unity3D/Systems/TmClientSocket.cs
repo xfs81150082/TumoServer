@@ -33,9 +33,9 @@ namespace ClientExample
                 while (TmClient.RecvParameters.Count > 0)
                 {
                     TmParameter parameter = TmClient.RecvParameters.Dequeue();
-                    if (TmConnect.Instance != null)
+                    if (TmConnectController.Instance != null)
                     {
-                        TmConnect.Instance.OnTransferParameter(this, parameter); ///与客户端的接口函数
+                        TmConnectController.Instance.OnTransferParameter(this, parameter); ///与客户端的接口函数
                         Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + TmClient.RecvParameters.Count);
                     }
                     else

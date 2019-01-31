@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Servers
 {
-    public class TmGate : TmEntity
+    public class TmGateHandler : TmEntity
     {
-        private static TmGate _instance;
-        public static TmGate Instance { get => _instance; }  
+        private static TmGateHandler _instance;
+        public static TmGateHandler Instance { get => _instance; }  
         public override void TmAwake()
         {
             base.TmAwake();
