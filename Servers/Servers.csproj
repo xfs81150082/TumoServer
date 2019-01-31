@@ -95,7 +95,7 @@
     <Compile Include="Games\Models\Rolers\TmMonster.cs" />
     <Compile Include="Games\Models\Rolers\TmPlayer.cs" />
     <Compile Include="Games\Models\Rolers\TmNpcer.cs" />
-    <Compile Include="Games\Components\TmHandlers\TmGate.cs" />
+    <Compile Include="Games\Components\TmHandlers\TmGateHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
