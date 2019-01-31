@@ -22,6 +22,7 @@ namespace Servers
             if (!TcpServer.IsRunning)
             {
                 TcpServer.Init("127.0.0.1", 8115, 10);
+                //TcpServer.Init("172.17.16.15", 8115);
                 TcpServer.StartListen();
             }
         }
