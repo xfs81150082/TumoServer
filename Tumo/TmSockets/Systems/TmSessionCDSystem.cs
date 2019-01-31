@@ -5,12 +5,13 @@ using System.Text;
 
 namespace Tumo
 {
-    public class TmCoolDownSystem : TmSystem
+    public class TmSessionCDSystem : TmSystem
     {
         public override void TmAwake()
         {
             base.TmAwake();
             ValTime = 4000;
+            AddComponent(new TmSession());
             AddComponent(new TmCoolDown());
         }
 

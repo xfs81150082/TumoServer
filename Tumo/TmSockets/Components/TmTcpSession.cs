@@ -18,6 +18,7 @@ namespace Tumo
         public override void TmAwake()
         {
             base.TmAwake();
+            AddComponent(new TmSession());
             AddComponent(new TmCoolDown(EcsId));
         }
         public TmTcpSession() { }
