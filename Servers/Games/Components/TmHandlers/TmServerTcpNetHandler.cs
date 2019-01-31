@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Tumo
+using Tumo;
+namespace Servers
 {
-    public class TmSystemManangerDll : TmEntity
+    class TmServerTcpNetHandler : TmEntity
     {
         public override void TmAwake()
         {
             base.TmAwake();
-            AddComponent(new TmSessionCDSystem());
+            AddComponent(new TmTcpServer());
         }
     }
 }

@@ -46,13 +46,13 @@ namespace Tumo
                         tms.Add(entites[i]);
                     }
                 }
-                if (tms.Count > 0)
-                {
-                    for (int x = 0; x < tms.Count; x++)
-                    {
-                        Console.WriteLine(TmTimerTool.CurrentTime() + " TmSystem, tms-entites: " + tms.Count + "-" + entites.Count + " Name:" + tms[x].GetType().Name);
-                    }
-                }
+                ////if (tms.Count > 0)
+                ////{
+                ////    for (int x = 0; x < tms.Count; x++)
+                ////    {
+                ////        Console.WriteLine(TmTimerTool.CurrentTime() + " TmSystem, tms-entites: " + tms.Count + "-" + entites.Count + " Name:" + tms[x].GetType().Name);
+                ////    }
+                ////}
                 return tms;
             }
             else

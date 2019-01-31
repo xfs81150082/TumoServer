@@ -24,3 +24,16 @@ D:\xfs81150082\TumoServerOffice\ClientExample\obj\Debug\ClientExample.csproj.Cor
 D:\xfs81150082\TumoServerOffice\ClientExample\obj\Debug\ClientExample.csproj.CopyComplete
 D:\xfs81150082\TumoServerOffice\ClientExample\obj\Debug\ClientExample.exe
 D:\xfs81150082\TumoServerOffice\ClientExample\obj\Debug\ClientExample.pdb
+E:\TumoServer\ClientExample\bin\Debug\ClientExample.exe.config
+E:\TumoServer\ClientExample\bin\Debug\ClientExample.exe
+E:\TumoServer\ClientExample\bin\Debug\ClientExample.pdb
+E:\TumoServer\ClientExample\bin\Debug\Tumo.dll
+E:\TumoServer\ClientExample\bin\Debug\Newtonsoft.Json.dll
+E:\TumoServer\ClientExample\bin\Debug\UnityEngine.dll
+E:\TumoServer\ClientExample\bin\Debug\Tumo.pdb
+E:\TumoServer\ClientExample\bin\Debug\Newtonsoft.Json.xml
+E:\TumoServer\ClientExample\obj\Debug\ClientExample.csprojAssemblyReference.cache
+E:\TumoServer\ClientExample\obj\Debug\ClientExample.csproj.CoreCompileInputs.cache
+E:\TumoServer\ClientExample\obj\Debug\ClientExample.csproj.CopyComplete
+E:\TumoServer\ClientExample\obj\Debug\ClientExample.exe
+E:\TumoServer\ClientExample\obj\Debug\ClientExample.pdb

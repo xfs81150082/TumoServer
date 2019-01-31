@@ -22,6 +22,7 @@ namespace ClientExample
             {
                 TmClient.IsRunning = true;
                 TmClient.Init("127.0.0.1", 8115);
+                //TmClient.Init("172.17.16.15", 8115);
                 TmClient.StartConnect();
                 Console.WriteLine(TmTimerTool.CurrentTime() + " Connecting...");
             }
@@ -33,9 +34,9 @@ namespace ClientExample
                 while (TmClient.RecvParameters.Count > 0)
                 {
                     TmParameter parameter = TmClient.RecvParameters.Dequeue();
-                    if (TmConnect.Instance != null)
+                    if (TmConnectController.Instance != null)
                     {
-                        TmConnect.Instance.OnTransferParameter(this, parameter); ///与客户端的接口函数
+                        TmConnectController.Instance.OnTransferParameter(this, parameter); ///与客户端的接口函数
                         Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + TmClient.RecvParameters.Count);
                     }
                     else

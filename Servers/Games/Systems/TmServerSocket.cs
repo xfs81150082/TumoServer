@@ -22,6 +22,7 @@ namespace Servers
             if (!TcpServer.IsRunning)
             {
                 TcpServer.Init("127.0.0.1", 8115, 10);
+                //TcpServer.Init("172.17.16.15", 8115);
                 TcpServer.StartListen();
             }
         }
@@ -32,9 +33,9 @@ namespace Servers
                 while (TcpServer.RecvParameters.Count > 0)
                 {
                     TmParameter parameter = TcpServer.RecvParameters.Dequeue();
-                    if (TmGate.Instance != null)
+                    if (TmGateHandler.Instance != null)
                     {
-                        TmGate.Instance.OnTransferParameter(this, parameter);
+                        TmGateHandler.Instance.OnTransferParameter(this, parameter);
                         Console.WriteLine(TmTimerTool.CurrentTime() + " RecvParameters: " + TcpServer.RecvParameters.Count);
                     }
                     else
