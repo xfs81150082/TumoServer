@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4F11A08-46C4-4BA8-9C58-BF6C2E3CFF07}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tumo</RootNamespace>
+    <AssemblyName>Tumo</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UnityEngine.1.0.0\lib\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TmEntities\TmComponents\TmSystemManangerDll.cs" />
+    <Compile Include="TmEntities\TmComponents\TmSystemMananger.cs" />
+    <Compile Include="TmEntities\TmComponents\TmSence.cs" />
+    <Compile Include="TmEntities\TmComponents\TmGame.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmGameObject.cs" />
+    <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryComponent.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmRequest.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
+    <Compile Include="TmSockets\Systems\TmCoolDownSystem.cs" />
+    <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
+    <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />
+    <Compile Include="TmModels\TmModelBase\TmName.cs" />
+    <Compile Include="TmModels\TmModelBase\TmSkillAdd.cs" />
+    <Compile Include="TmModels\TmModelBase\TmLabel.cs" />
+    <Compile Include="TmModels\TmTasks\TmTask.cs" />
+    <Compile Include="TmModels\TmTasks\TmTaskItem.cs" />
+    <Compile Include="TmModels\TmTasks\TmTaskItemDB.cs" />
+    <Compile Include="TmModels\TmModelBase\TmInventoryAdd.cs" />
+    <Compile Include="TmModels\TmModelBase\TmProperty.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmInitialize.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmTimer.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmEcsBase.cs" />
+    <Compile Include="TmEntities\TmComponents\TmCoolDown.cs" />
+    <Compile Include="TmModels\TmInventorys\TmInventory.cs" />
+    <Compile Include="TmModels\TmInventorys\TmInventoryItem.cs" />
+    <Compile Include="TmModels\TmInventorys\TmInventoryDB.cs" />
+    <Compile Include="TmModels\TmSoulers\TmStatus.cs" />
+    <Compile Include="TmModels\TmSoulers\TmRoler.cs" />
+    <Compile Include="TmModels\TmSoulers\TmAttack.cs" />
+    <Compile Include="TmModels\TmSoulers\TmMove.cs" />
+    <Compile Include="TmModels\TmSkills\TmSkill.cs" />
+    <Compile Include="TmModels\TmSkills\TmSkillItem.cs" />
+    <Compile Include="TmModels\TmSkills\TmSkillDB.cs" />
+    <Compile Include="TmModels\TmSoulers\TmSouler.cs" />
+    <Compile Include="TmModels\TmSoulers\TmSoulerItem.cs" />
+    <Compile Include="TmModels\TmSoulers\TmSoulerDB.cs" />
+    <Compile Include="TmSockets\Components\TmTcpSocket.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmDictionary.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmJson.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmSystem.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmComponent.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmEntity.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmIdGenerater.cs" />
+    <Compile Include="TmModels\TmSoulers\TmTransform.cs" />
+    <Compile Include="TmModels\TmSoulers\TmUser.cs" />
+    <Compile Include="TmSockets\Components\TmClient.cs" />
+    <Compile Include="TmSockets\Components\TmPeer.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmResponse.cs" />
+    <Compile Include="TmSockets\Components\TmTcpSession.cs" />
+    <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryParameter.cs" />
+    <Compile Include="TmModels\TmEnums\TmInfoType.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmLog.cs" />
+    <Compile Include="TmSockets\Components\TmTcpClient.cs" />
+    <Compile Include="TmSockets\Components\TmTcpServer.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmTimerTool.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmMD5Tool.cs" />
+    <Compile Include="TmEntities\TmHelpers\Components\TmParameter.cs" />
+    <Compile Include="TmEntities\TmHelpers\TmStatic\TmParameterTool.cs" />
+    <Compile Include="TmModels\TmEnums\TmParamterCode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Hotfixes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
