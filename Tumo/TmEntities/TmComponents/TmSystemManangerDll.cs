@@ -10,7 +10,7 @@ namespace Tumo
         public override void TmAwake()
         {
             base.TmAwake();
-            AddComponent(new TmSessionCDSystem());
+            AddComponent(new TmCoolDownSystem());
         }
     }
 }

@@ -64,7 +64,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Games\Components\TmHandlers\TmServerTcpNetHandler.cs" />
     <Compile Include="Games\Models\Rolers\TmEngineer.cs" />
     <Compile Include="Games\Models\Rolers\TmBooker.cs" />
     <Compile Include="Games\Components\TmHandlers\TmStatusSyncHandler.cs" />
@@ -75,7 +74,6 @@
     <Compile Include="Games\Components\TmHandlers\TmMysqlHandler.cs" />
     <Compile Include="Games\Models\Rolers\TmTeacher.cs" />
     <Compile Include="Games\Systems\TmBookercdSystem.cs" />
-    <Compile Include="Games\Systems\TmServerSocketSystem.cs" />
     <Compile Include="Mysqls\Components\Souls\TmEngineerMysql.cs" />
     <Compile Include="Mysqls\Components\Souls\TmSoulerdbMysql.cs" />
     <Compile Include="Mysqls\Components\Souls\TmBookerMysql.cs" />

@@ -25,7 +25,7 @@ namespace Servers
                 string connectionString = string.Format("Server = {0}; Database = {1}; User ID = {2}; Password = {3};", localhost, database, root, password);
                 Connection = new MySqlConnection(connectionString);
                 Connection.Open();
-                Console.WriteLine(TmTimerTool.CurrentTime() + " MySql版本号:{0} ", Connection.ServerVersion);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " MySql版本号:{0},数据库:{1} ", Connection.ServerVersion, localhost);
             }
         }
         ///退出数据库
