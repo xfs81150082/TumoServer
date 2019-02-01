@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Tumo
 {
     public class TmCoolDownSystem : TmSystem
@@ -13,7 +9,6 @@ namespace Tumo
             ValTime = 4000;
             AddComponent(new TmCoolDown());
         }
-
         public override void TmUpdate()
         {
             base.TmUpdate();
@@ -22,7 +17,6 @@ namespace Tumo
                 UpdateCDCount(com);
             }
         }
-
         void UpdateCDCount(TmEntity entity)
         {
             TmCoolDown cd = entity.GetComponent<TmCoolDown>() as TmCoolDown;
@@ -45,8 +39,6 @@ namespace Tumo
                 TmTcpSocket.Instance.Send(mvc);
             }
             Console.WriteLine(TmTimerTool.CurrentTime() + " CdCount:{0}-{1} ", cd.CdCount, cd.MaxCdCount);
-        }
-      
-
+        }   
     }
 }

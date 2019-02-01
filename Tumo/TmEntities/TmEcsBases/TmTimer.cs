@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Timers;
-
 namespace Tumo
 {
     public abstract class TmTimer : TmComponent

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Tumo
+﻿namespace Tumo
 {
     public static class TmIdGenerater
     {
@@ -12,7 +7,7 @@ namespace Tumo
         {
             string tmId = "";
             idCount++;
-            if (idCount > 5200)
+            if (idCount > 4000)
             {
                 idCount = 1000;
             }
