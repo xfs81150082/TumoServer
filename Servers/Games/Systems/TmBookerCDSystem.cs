@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Tumo;
-namespace Servers.Games.Systems
+namespace Servers
 {
-    class TmBookercdSystem : TmSystem
+    class TmBookerCDSystem : TmSystem
     {
         public override void TmAwake()
         {
@@ -14,7 +14,6 @@ namespace Servers.Games.Systems
         }
         public override void TmUpdate()
         {
-            base.TmUpdate();
             foreach(var entity in GetTmEntities())
             {
                 UpdateCDTime(entity);
@@ -23,25 +22,20 @@ namespace Servers.Games.Systems
         void UpdateCDTime(TmEntity entity)
         {
             TmCoolDown cd = entity.GetComponent<TmCoolDown>() as TmCoolDown;
-            cd.CdTime += 1;
+            cd.CdTime += ValTime;
             if (cd.CdTime >= cd.MaxCdTime)
             {
                 Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookercd Colsed. Booker Id{0} 刷新。 ", TmTcpSocket.Instance.TPeers.Count);
                 cd.End = true;
-                if (cd.Parent != null)
-                {
-                    cd.Parent.Dispose();
-                }
-                this.Dispose();
-            }
-            else
-            {
+                TmSoulerDB soulerDB = entity.GetComponent<TmSoulerDB>() as TmSoulerDB;
                 //发送心跳检测（并等待签到，签到入口在TmAsyncTcpSession里）
-                TmParameter parameter = TmParameterTool.ToJsonParameter(TenCode.Booker, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), (Parent.GetComponent<TmSoulerDB>() as TmSoulerDB));
-                parameter.EcsId = cd.Key;
-                TmTcpSocket.Instance.Send(parameter);
+                TmParameter parameter = TmParameterTool.ToJsonParameter(TenCode.Booker, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), (entity.GetComponent<TmSoulerDB>() as TmSoulerDB));
+                //parameter.Key = cd.Key;
+                TmTcpSocket.Instance.SendAll(parameter);
+                (entity.Parent as TmBookerHandler).SpawnCDs.Remove(entity.EcsId);
+                entity.Dispose();
             }
-            Console.WriteLine(TmTimerTool.CurrentTime() + " CdCount:{0}-{1} ", cd.CdCount, cd.MaxCdCount);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " CdTime:{0}-{1} ", cd.CdTime, cd.MaxCdTime);
         }
     }
 }
