@@ -22,7 +22,7 @@ namespace Servers
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
                     TeacherInStatusSync(parameter);
                     break;
-                case (ElevenCode.Remove):
+                case (ElevenCode.RolerRemove):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
                     RemoveStatus(parameter);
                     break;
