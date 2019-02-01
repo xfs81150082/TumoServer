@@ -34,7 +34,7 @@ namespace Servers
             }
         }
         internal List<TmSoulerDB> Bookers;
-        internal Dictionary<int, TmMonster> SpawnMonsters = new Dictionary<int, TmMonster>();
+        public Dictionary<string, TmMonster> SpawnCDs = new Dictionary<string, TmMonster>();
         internal TmSoulerDB booker { get; set; }
         void GetRolers(TmParameter parameter)
         {
@@ -49,13 +49,14 @@ namespace Servers
         }     
         void DiethHandler(TmParameter parameter)
         {
-            int rolerId = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.GetRoler.ToString());
-            ///ToTo
-            TmMonster monster = new TmMonster();
-            TmSoulerDB soulerDB = monster.GetComponent<TmSoulerDB>() as TmSoulerDB;
-            soulerDB = new TmSoulerDB();
-            (monster.GetComponent<TmCoolDown>() as TmCoolDown).MaxCdTime = 14;
-            ///ToTo
+            TmSoulerDB soulerDB = TmParameterTool.GetJsonValue<TmSoulerDB>(parameter, ElevenCode.Die.ToString());
+            TmMonster monster = new TmMonster(this);
+            monster.AddComponent(soulerDB);
+            //(monster.GetComponent<TmCoolDown>() as TmCoolDown).Key = parameter.Key;
+            SpawnCDs.Add(monster.EcsId, monster);
+
+            parameter.ElevenCode = ElevenCode.RolerRemove;
+            TmTcpSocket.Instance.SendAll(parameter);
         }
 
     }

@@ -42,7 +42,8 @@ namespace Tumo
         GetRoler,            ///生产一只小怪或NPC
         Save,                /// 保存
         Add,                 /// 添加
-        Remove,              /// 删除
+        UserRemove,          /// 删除
+        RolerRemove,         /// 删除
         Update,              /// 更新
         Die,
         StatusSync,
