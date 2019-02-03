@@ -12,7 +12,7 @@ namespace Servers
             Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");  
             Thread.Sleep(1);                                           
 
-            TmGame.TmSence.AddComponent(new TmMysqlConnection());       ///服务器加载组件 : 数据库链接组件
+            TmGame.TmSence.AddComponent(new TmMysqlConnection());       ///服务器加载组件 : 数据库链接组件TmSystem类型
             TmGame.TmSence.AddComponent(new TmMysqlHandler());          ///服务器加载组件 : 数据库表格组件集
             TmGame.TmSence.AddComponent(new TmGateHandler());                  ///服务器加载组件 : 服务器网关组件
             TmGame.TmSence.AddComponent(new TmServerSocket());          ///服务器加载组件 : 套接字 外网 传输数据组件
