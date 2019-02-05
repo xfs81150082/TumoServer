@@ -10,7 +10,6 @@ namespace ClientExample
         public override void TmAwake() { base.TmAwake(); _instance = this; }
 
         private bool IsUserLogin = false;
-        private bool IsLogin = false;
         public override void TmUpdate()
         {
             TestTmUserLogin();
@@ -28,10 +27,6 @@ namespace ClientExample
         }
         void TmUserLogin()
         {
-            //TmUser user = new TmUser();
-            //user.Username = "Tumo";
-            //user.Password = "123456";
-            //Console.WriteLine(TmTimerTool.CurrentTime() + " 用户登录36, Username:{0} Password:{1}", user.Username, user.Password);       
             TmParameter parameter = TmParameterTool.ToParameter(TenCode.User, ElevenCode.UserLogin);
             TmParameterTool.AddParameter(parameter, "Username", "Tumo");
             TmParameterTool.AddParameter(parameter, "Password", "123456");

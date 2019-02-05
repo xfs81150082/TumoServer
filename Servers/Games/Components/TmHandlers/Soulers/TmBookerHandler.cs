@@ -4,12 +4,7 @@ using Tumo;
 namespace Servers
 {
     public class TmBookerHandler : TmEntity
-    {
-        public override void TmAwake()
-        {
-            base.TmAwake();
-            AddComponent(new TmStatusSyncHandler());
-        }
+    {      
         public override void OnTransferParameter(object obj , TmParameter parameter)
         {
             ElevenCode elevenCode = parameter.ElevenCode;
@@ -17,15 +12,11 @@ namespace Servers
             {
                 case (ElevenCode.GetRolers):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerHandler: " + elevenCode);
-                    GetRolers(parameter);
+                    GetRolersByRolerId(parameter);
                     break;
                 case (ElevenCode.StatusSync):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
-                    this.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
-                    break;
-                case (ElevenCode.Die):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerHandler: " + elevenCode);
-                    DiethHandler(parameter);
+                    Parent.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
                     break;
                 case (ElevenCode.None):
                     break;
@@ -33,20 +24,34 @@ namespace Servers
                     break;
             }
         }
-        internal List<TmSoulerDB> Bookers;
+        internal List<TmSoulerDB> Bookers { get; set; }
         public Dictionary<string, TmMonster> SpawnCDs = new Dictionary<string, TmMonster>();
-        internal TmSoulerDB booker { get; set; }
-        void GetRolers(TmParameter parameter)
+        void GetRolersByRolerId(TmParameter parameter)
         {
-            TmMysqlHandler.Instance.GetComponent<TmBookerMysql>().OnTransferParameter(this, parameter);
-            Console.WriteLine(TmTimerTool.CurrentTime() + " Bookers:" + Bookers.Count);
-            if (this.Bookers != null)
+            bool yes = false;
+            int count = 0;
+            while (!yes)
             {
-                TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.Booker, ElevenCode.GetRolers, ElevenCode.GetRolers.ToString(), this.Bookers);
-                response.EcsId = parameter.EcsId;
-                TmTcpSocket.Instance.Send(response);
+                if (this.Bookers != null)
+                {
+                    TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.Booker, ElevenCode.GetRolers, ElevenCode.GetRolers.ToString(), this.Bookers);
+                    response.EcsId = parameter.EcsId;
+                    TmTcpSocket.Instance.Send(response);
+                    yes = true;
+                }
+                else
+                {
+                    TmMysqlHandler.Instance.GetComponent<TmBookerMysql>().OnTransferParameter(this, parameter);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " Bookers:" + Bookers.Count);
+                    count += 1;
+                }
+                if (count > 4)
+                {
+                    yes = true;
+                    break;
+                }
             }
-        }     
+        }  
         void DiethHandler(TmParameter parameter)
         {
             TmSoulerDB soulerDB = TmParameterTool.GetJsonValue<TmSoulerDB>(parameter, ElevenCode.Die.ToString());

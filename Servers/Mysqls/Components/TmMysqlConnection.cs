@@ -38,7 +38,7 @@ namespace Servers
                     Connection = new MySqlConnection(connectionString);
                     Connection.Open();
                     IsConnecting = true;
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " MySql版本号:{0},数据库:{1} ", Connection.ServerVersion, localhost);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " 连接MySql数据库成功,版本号:{0},地址:{1} ", Connection.ServerVersion, localhost);
                 }
                 catch (Exception ex)
                 {
