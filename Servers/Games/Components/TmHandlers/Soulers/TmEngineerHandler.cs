@@ -91,6 +91,7 @@ namespace Servers
         void GetSkillsByRolerId(TmParameter parameter)
         {
             parameter.ElevenCode = ElevenCode.GetSkills;
+            Console.WriteLine(TmTimerTool.CurrentTime() + " GetSkillsByRolerId:" + parameter.ElevenCode);
             Parent.GetComponent<TmAbilityHandler>().OnTransferParameter(this, parameter);
             Parent.GetComponent<TmBuffHandler>().OnTransferParameter(this, parameter);
             Parent.GetComponent<TmInbornHandler>().OnTransferParameter(this, parameter);
@@ -98,6 +99,7 @@ namespace Servers
         void GetInventorysByRolerId(TmParameter parameter)
         {
             parameter.ElevenCode = ElevenCode.GetInventorys;
+            Console.WriteLine(TmTimerTool.CurrentTime() + " GetInventorysByRolerId:" + parameter.ElevenCode);
             Parent.GetComponent<TmDressedHandler>().OnTransferParameter(this, parameter);
             Parent.GetComponent<TmKnapsackHandler>().OnTransferParameter(this, parameter);
             Parent.GetComponent<TmSmityHandler>().OnTransferParameter(this, parameter);

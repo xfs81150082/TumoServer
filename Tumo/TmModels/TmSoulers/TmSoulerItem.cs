@@ -11,24 +11,22 @@ namespace Tumo
             AddComponent(new TmName());
             AddComponent(new TmSouler());
             AddComponent(new TmSoulerDB());
+            AddComponent(new TmChangeType());
             AddComponent(new TmProperty());
             AddComponent(new TmInventoryAdd());
-            AddComponent(new TmSkillAdd());
-            AddComponent(new TmChangeType());
+            AddComponent(new TmBuffAdd());
+            AddComponent(new TmAbilityAdd());
         }
         public TmSoulerItem() { }                        ///构造函数 
         public TmSoulerItem(TmSoulerDB itemDB)
         {
-            if (GetComponent<TmSoulerDB>() != null)
+            if (this.GetComponent<TmSoulerDB>() != null)
             {
-                TmSoulerDB tem = GetComponent<TmSoulerDB>() as TmSoulerDB;
-                tem = itemDB;
+                RemoveComponent<TmSoulerDB>();
             }
-            else
-            {
-                AddComponent(itemDB);
-            }
+            AddComponent(itemDB);
         }
+   
         //public void InitAttribute()
         //{
         //    UpdateLevel();

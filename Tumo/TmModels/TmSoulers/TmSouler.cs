@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Tumo
 {
+    [Serializable]
     public class TmSouler : TmEntity
     {
         public override void TmAwake()
@@ -20,7 +17,7 @@ namespace Tumo
             (this.GetComponent<TmName>() as TmName).Id = 15101;
             (this.GetComponent<TmName>() as TmName).Name = "德鲁伊";
             (this.GetComponent<TmLabel>() as TmLabel).Icon = "headimageboy";
-            (this.GetComponent<TmLabel>() as TmLabel).AvatarName = "15101_AncientWarrior";
+            (this.GetComponent<TmLabel>() as TmLabel).AvatarName = "EngineerOne";
             (this.GetComponent<TmLabel>() as TmLabel).ChaterId = 111;
             (this.GetComponent<TmLabel>() as TmLabel).LevelUpLimit = 30;
             (this.GetComponent<TmLabel>() as TmLabel).Does = "reader.GetString(9)";

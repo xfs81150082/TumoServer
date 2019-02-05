@@ -17,10 +17,16 @@ namespace Servers
             TmGame.TmSence.AddComponent(new TmGateHandler());           ///服务器加载组件 : 服务器网关组件
             TmGame.TmSence.AddComponent(new TmServerSocket());          ///服务器加载组件 : 套接字 外网 传输数据组件
             TmGame.TmSence.AddComponent(new TmUserHandler());           ///服务器加载组件 : 用户处理组件
-            TmGame.TmSence.AddComponent(new TmEngineerHandler());       ///服务器加载组件 : Engineer处理组件
-            TmGame.TmSence.AddComponent(new TmBookerHandler());         ///服务器加载组件 : Booker处理组件
-            TmGame.TmSence.AddComponent(new TmTeacherHandler());        ///服务器加载组件 : Teacher处理组件
-            TmGame.TmSence.AddComponent(new TmStatusSyncHandler());     ///服务器加载组件 : Teacher处理组件
+            TmGame.TmSence.AddComponent(new TmEngineerHandler());       ///服务器加载组件 : Engineer 处理组件
+            TmGame.TmSence.AddComponent(new TmBookerHandler());         ///服务器加载组件 : Booker 处理组件
+            TmGame.TmSence.AddComponent(new TmTeacherHandler());        ///服务器加载组件 : Teacher 处理组件
+            TmGame.TmSence.AddComponent(new TmStatusSyncHandler());     ///服务器加载组件 : TmStatusSyncHandler 处理组件
+            TmGame.TmSence.AddComponent(new TmAbilityHandler());        ///服务器加载组件 : TmAbilityHandler 处理组件
+            TmGame.TmSence.AddComponent(new TmBuffHandler());           ///服务器加载组件 : TmBuffHandler 处理组件
+            TmGame.TmSence.AddComponent(new TmInbornHandler());         ///服务器加载组件 : TmInbornHandler 处理组件
+            TmGame.TmSence.AddComponent(new TmDressedHandler());        ///服务器加载组件 : TmDressedHandler 处理组件
+            TmGame.TmSence.AddComponent(new TmKnapsackHandler());       ///服务器加载组件 : TmKnapsackHandler 处理组件
+            TmGame.TmSence.AddComponent(new TmSmityHandler());          ///服务器加载组件 : TmSmityHandler 处理组件
 
 
             Thread.CurrentThread.Name = "TumoWorld";
