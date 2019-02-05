@@ -15,8 +15,8 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.Login):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
+                case (ElevenCode.GetInventorys):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmKnapsackMysql: " + elevenCode);
                     GetKnapsackByRolerId(sender, parameter);
                     break;
                 case (ElevenCode.None):
@@ -27,11 +27,11 @@ namespace Servers
         }
         void GetKnapsackByRolerId(object sender, TmParameter parameter)
         {
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmKnapsackMysql,Rolerid:" + (parameter.Parameters[parameter.ElevenCode.ToString()] as TmUser).Id);
-            List<TmInventoryDB> dbs = GetInventorydbsByRolerId((parameter.Parameters[parameter.ElevenCode.ToString()] as TmUser).Id);
+            int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.GetInventorys.ToString());
+            List<TmInventoryDB> dbs = GetInventorydbsByRolerId(rolerid);
             if (dbs.Count > 0)
             {
-                //(sender as TmEngineerHandler).Knapsacks = dbs;
+                (sender as TmKnapsackHandler).Knapsacks.Add(rolerid, dbs);
             }
             else
             {

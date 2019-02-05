@@ -12,11 +12,14 @@ namespace Tumo
         Booker,
         Teacher,
         StatusSync,
+        Skill,
+        Ability,
+        Buff,
+        Inborn,
         Inventory,
         Dressed,
         Knapsack,
         Smithy,
-        Skill,
         Task,
         War,
         Sence,
@@ -36,26 +39,30 @@ namespace Tumo
         EngineerLogin,       /// 登录
         GetRolers,           ///得到小怪或NPC
         GetRoler,            ///生产一只小怪或NPC
-        Save,                /// 保存
-        Add,                 /// 添加
-        UserRemove,          /// 删除
-        RolerRemove,         /// 删除
-        Update,              /// 更新
+        Souler,
+        Roler,
         Die,
         StatusSync,
         Engineer,
         Booker,
         Teacher,
-        Bar,
-        Chat,
+        GetSkills,           ///得到小怪或NPC
+        GetSkill,            ///生产一只小怪或NPC
+        GetInventorys,
+        GetInventory,
         Inventory,
         Dressed,
         Smithy,
         Knapscak,
+        Save,                /// 保存
+        Add,                 /// 添加
+        UserRemove,          /// 删除
+        RolerRemove,         /// 删除
+        Update,              /// 更新
+        Bar,
+        Chat,
         Teerain,
         Map,
-        Souler,
-        Roler,
 
         End,
     }
