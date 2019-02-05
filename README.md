@@ -12,5 +12,3 @@ TumoWorld 服务器，C# Console，Socket 异步 多线程。
 3、拿到Dressed、Knapsack、Smithy衣服； 
 
 
-
-[UpdateBefore(typeof(RotationSpeedSystem))]
