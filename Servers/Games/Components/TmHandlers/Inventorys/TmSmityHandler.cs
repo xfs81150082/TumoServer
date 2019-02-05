@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Tumo;
 namespace Servers
 {
-    class TmSmityHandler : TmComponent
+    class TmSmityHandler : TmEntity
     {
         public override void OnTransferParameter(object obj, TmParameter parameter)
         {
@@ -13,10 +13,7 @@ namespace Servers
                 case (ElevenCode.GetInventorys):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmSmityHandler: " + elevenCode);
                     GetSkillsByRolerId(parameter);
-                    break;
-                case (ElevenCode.GetInventory):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmSmityHandler: " + elevenCode);
-                    break;
+                    break;      
                 case (ElevenCode.Save):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmSmityHandler: " + elevenCode);
                     break;
@@ -26,13 +23,13 @@ namespace Servers
                     break;
             }
         }
-        internal TmInventoryDB Smithy;
-        internal Dictionary<int, List<TmInventoryDB>> Smithys { get; set; }
+        internal Dictionary<int, List<TmInventoryDB>> Smithys { get; set; } = new Dictionary<int, List<TmInventoryDB>>();
         private void GetSkillsByRolerId(TmParameter parameter)
         {
-            int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.GetSkills.ToString());
+            int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.EngineerLogin.ToString());
             List<TmInventoryDB> inventoryDBs;
             bool yes = false;
+            int count = 0;
             while (!yes)
             {
                 yes = Smithys.TryGetValue(rolerid, out inventoryDBs);
@@ -41,12 +38,19 @@ namespace Servers
                     TmParameter response = TmParameterTool.ToJsonParameter<List<TmInventoryDB>>(TenCode.Smithy, ElevenCode.GetInventorys, ElevenCode.GetInventorys.ToString(), inventoryDBs);
                     response.EcsId = parameter.EcsId;
                     TmTcpSocket.Instance.Send(response);
+                    yes = true;
                     break;
                 }
                 else
                 {
                     TmMysqlHandler.Instance.GetComponent<TmSmithyMysql>().OnTransferParameter(this, parameter);
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " this.Abilities:" + this.Smithys.Count);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " this.Smithys:" + this.Smithys.Count);
+                    count += 1;
+                }
+                if (count > 4)
+                {
+                    yes = true;
+                    break;
                 }
             }
         }

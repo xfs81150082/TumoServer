@@ -53,11 +53,12 @@
     <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryComponent.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmRequest.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
+    <Compile Include="TmModels\TmModelBase\TmAbilityAdd.cs" />
+    <Compile Include="TmModels\TmModelBase\TmBuffAdd.cs" />
     <Compile Include="TmSockets\Systems\TmCoolDownSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
     <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />
     <Compile Include="TmModels\TmModelBase\TmName.cs" />
-    <Compile Include="TmModels\TmModelBase\TmSkillAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmLabel.cs" />
     <Compile Include="TmModels\TmTasks\TmTask.cs" />
     <Compile Include="TmModels\TmTasks\TmTaskItem.cs" />

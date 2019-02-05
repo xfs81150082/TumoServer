@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Tumo;
 using MySql.Data.MySqlClient;
-
 namespace Servers
 {
     class TmInventoryMysql : TmComponent

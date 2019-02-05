@@ -29,7 +29,7 @@ namespace Servers
         private void GetRolersByUersId(object sender, TmParameter parameter)
         {
             List<TmSoulerDB> dbs = GetTmSoulerdbs();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql-dbs:" + dbs.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {
                 (sender as TmBookerHandler).Bookers = dbs;

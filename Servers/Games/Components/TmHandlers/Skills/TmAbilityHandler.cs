@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Tumo;
 namespace Servers
 {
-    class TmAbilityHandler : TmComponent
+    class TmAbilityHandler : TmEntity
     {
         public override void OnTransferParameter(object obj, TmParameter parameter)
         {
@@ -13,10 +13,7 @@ namespace Servers
                 case (ElevenCode.GetSkills):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmAbilityHandler: " + elevenCode);
                     GetSkillsByRolerId(parameter);
-                    break;
-                case (ElevenCode.GetSkill):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmAbilityHandler: " + elevenCode);
-                    break;
+                    break;              
                 case (ElevenCode.Save):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmAbilityHandler: " + elevenCode);
                     break;
@@ -26,12 +23,13 @@ namespace Servers
                     break;
             }
         }
-        internal Dictionary<int, Dictionary<int, TmSkillDB>> Abilities { get; set; }
+        internal Dictionary<int, Dictionary<int, TmSkillDB>> Abilities { get; set; } = new Dictionary<int, Dictionary<int, TmSkillDB>>();
         private void GetSkillsByRolerId(TmParameter parameter)
         {
-            int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.GetSkills.ToString());
-            Dictionary<int, TmSkillDB> skillDBs = null;
+            int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.EngineerLogin.ToString());
+            Dictionary<int, TmSkillDB> skillDBs = new Dictionary<int, TmSkillDB>();
             bool yes = false;
+            int count = 0;
             while (!yes)
             {
                 if (Abilities.Count > 0)
@@ -43,12 +41,19 @@ namespace Servers
                     TmParameter response = TmParameterTool.ToJsonParameter<Dictionary<int, TmSkillDB>>(TenCode.Ability, ElevenCode.GetSkills, ElevenCode.GetSkills.ToString(), skillDBs);
                     response.EcsId = parameter.EcsId;
                     TmTcpSocket.Instance.Send(response);
+                    yes = true;
                     break;
                 }
                 else
                 {
                     TmMysqlHandler.Instance.GetComponent<TmAbilityMysql>().OnTransferParameter(this, parameter);
                     Console.WriteLine(TmTimerTool.CurrentTime() + " this.Abilities:" + this.Abilities.Count);
+                    count += 1;
+                }
+                if (count > 4)
+                {
+                    yes = true;
+                    break;
                 }
             }
         }

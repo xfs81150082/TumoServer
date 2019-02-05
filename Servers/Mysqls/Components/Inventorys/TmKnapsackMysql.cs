@@ -27,8 +27,9 @@ namespace Servers
         }
         void GetKnapsackByRolerId(object sender, TmParameter parameter)
         {
-            int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.GetInventorys.ToString());
+            int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.EngineerLogin.ToString());
             List<TmInventoryDB> dbs = GetInventorydbsByRolerId(rolerid);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {
                 (sender as TmKnapsackHandler).Knapsacks.Add(rolerid, dbs);

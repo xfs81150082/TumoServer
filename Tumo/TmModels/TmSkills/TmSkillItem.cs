@@ -12,20 +12,19 @@ namespace Tumo
         {
             base.TmAwake();
             AddComponent(new TmName());
-            AddComponent(new TmProperty());
-            AddComponent(new TmChangeType());
             AddComponent(new TmSkill());
             AddComponent(new TmSkillDB());
-            AddComponent(new TmSkillAdd());
+            AddComponent(new TmChangeType());
+            AddComponent(new TmProperty());
         }
         public TmSkillItem() { }
         public TmSkillItem(TmSkillDB itemDB)
         {
-            if (GetComponent<TmSkillDB>() != null)
+            if (this.GetComponent<TmSkillDB>() != null)
             {
-                TmSkillDB tem = GetComponent<TmSkillDB>() as TmSkillDB;
-                tem = itemDB;
+                RemoveComponent<TmSkillDB>();
             }
+            AddComponent(itemDB);
         }
     }
 }
