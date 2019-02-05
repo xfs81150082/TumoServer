@@ -19,7 +19,7 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.Login):
+                case (ElevenCode.GetSkills):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmBuffMysql: " + elevenCode);
                     GetDbsByRolerId(sender, parameter);
                     break;
@@ -31,11 +31,11 @@ namespace Servers
         }
         void GetDbsByRolerId(object sender, TmParameter parameter)
         {
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmBuffMysql,Rolerid:" + (parameter.Parameters[parameter.ElevenCode.ToString()] as TmUser).Id);
-            List<TmSkillDB> dbs = GetSkilldbsByRolerId((parameter.Parameters[parameter.ElevenCode.ToString()] as TmUser).Id);
+            int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.GetSkills.ToString());
+            Dictionary<int, TmSkillDB> dbs = GetSkilldbsByRolerId(rolerid);
             if (dbs.Count > 0)
             {
-                //(sender as TmEngineerHandler).Abilitis = dbs;
+                (sender as TmBuffHandler).Buffs.Add(rolerid, dbs);
             }
             else
             {

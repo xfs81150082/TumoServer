@@ -7,13 +7,13 @@ namespace Servers
     class TmSkilldbMysql : TmComponent
     {
         internal string DatabaseFormName { get; set; }
-        internal List<TmSkillDB> GetSkilldbsByRolerId(int rolerid)
+        internal Dictionary<int, TmSkillDB> GetSkilldbsByRolerId(int rolerid)
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName + " where rolerid = '" + rolerid + "'", TmMysqlConnection.Connection);  //读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
-                List<TmSkillDB> list = new List<TmSkillDB>();
+                Dictionary<int, TmSkillDB> dict = new Dictionary<int, TmSkillDB>();
                 while (reader.Read())
                 {
                     if (reader.HasRows)
@@ -26,10 +26,10 @@ namespace Servers
                         item.Level = reader.GetInt32(4);
                         item.RoleType = (RoleType)reader.GetInt32(5);
                         item.Place = reader.GetInt32(6);
-                        list.Add(item);
+                        dict.Add(item.Id, item);
                     }
                 }
-                return list;
+                return dict;
             }
             catch (Exception)
             {

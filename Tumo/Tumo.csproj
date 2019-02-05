@@ -64,7 +64,6 @@
     <Compile Include="TmModels\TmTasks\TmTaskItemDB.cs" />
     <Compile Include="TmModels\TmModelBase\TmInventoryAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmProperty.cs" />
-    <Compile Include="TmEntities\TmEcsBases\TmInitialize.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmTimer.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEcsBase.cs" />
     <Compile Include="TmEntities\TmComponents\TmCoolDown.cs" />

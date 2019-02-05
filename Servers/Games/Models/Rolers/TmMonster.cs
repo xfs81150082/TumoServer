@@ -10,7 +10,11 @@ namespace Servers
             base.TmAwake();
             AddComponent(new TmBooker());
             AddComponent(new TmCoolDown());
-            AddComponent(new TmSoulerDB());
+        }
+        public TmMonster() { }
+        public TmMonster(TmEntity entity)
+        {
+            this.Parent = entity;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Servers
             {
                 case (ElevenCode.GetRolers):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
-                    GetRolers(sender, parameter);
+                    GetRolersByUersId(sender, parameter);
                     break;
                 case (ElevenCode.EngineerLogin):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
@@ -30,15 +30,16 @@ namespace Servers
                     break;
             }
         }
-        void GetRolers(object sender, TmParameter parameter)
+        void GetRolersByUersId(object sender, TmParameter parameter)
         {
-            int rolerId = TmParameterTool.GetValue<int>(parameter, ElevenCode.UserLogin.ToString());
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql,rolerId:" + rolerId);
-            List<TmSoulerDB> dbs = GetTmSoulerdbsByUserId(rolerId);
+            int userId = TmParameterTool.GetValue<int>(parameter, ElevenCode.UserLogin.ToString());
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql,userId:" + userId);
+            List<TmSoulerDB> dbs = GetTmSoulerdbsByUserId(userId);
             Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {
-                (sender as TmEngineerHandler).Engineers = dbs;
+                //(sender as TmEngineerHandler).Engineers = dbs;
+                (sender as TmEngineerHandler).EngineerDbs.Add(userId, dbs);
             }
             else
             {
@@ -53,7 +54,8 @@ namespace Servers
             Console.WriteLine(TmTimerTool.CurrentTime() + " db:" + db.Name);
             if (db != null)
             {
-                (sender as TmEngineerHandler).Engineer = db;
+                //(sender as TmEngineerHandler).Engineer = db;
+                (sender as TmEngineerHandler).Engineers.Add(rolerId, db);
             }
             else
             {

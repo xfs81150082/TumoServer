@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading;
-
 namespace Tumo
 {
     public abstract class TmTcpSocket : TmComponent
@@ -54,6 +50,16 @@ namespace Tumo
             SendParameters.Enqueue(mvc);
             OnSendMvcParameters();
         }
+        public void SendAll(TmParameter mvc)
+        {
+            foreach (var peerKey in TPeers.Keys)
+            {
+                mvc.Key = peerKey;
+                SendParameters.Enqueue(mvc);
+            }
+            OnSendMvcParameters();
+        }
+
         public abstract void OnSendMvcParameters();
         #endregion
     }

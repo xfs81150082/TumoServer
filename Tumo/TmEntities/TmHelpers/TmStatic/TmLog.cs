@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using UnityEngine;
-
 namespace Tumo
 {
     public static class TmLog

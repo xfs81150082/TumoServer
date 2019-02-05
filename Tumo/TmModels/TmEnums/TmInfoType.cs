@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Tumo
 {
     [Serializable]
@@ -120,6 +116,4 @@ namespace Tumo
         Reward,          //奖金        /**4 完成  未领奖*/  
         Complete,        //完成        /**3 完成  结束*/ 
     }
-
-
 }
