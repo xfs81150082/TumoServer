@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Tumo
 {
     [Serializable]
-    public class TmInventoryAdd : TmAttribute
+    public class TmInventoryAdd : TmProperty
     {
         public TmInventoryAdd() { }
         //public void Clear()

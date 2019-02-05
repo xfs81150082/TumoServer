@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using Tumo;
 using MySql.Data.MySqlClient;
-
 namespace Servers
 {
     class TmInventoryMysql : TmComponent
     {    
-        internal string DatabaseFormName { get; set; } = "knapsackitem";
+        internal string DatabaseFormName { get; set; }
         internal TmInventoryDB GetInventorydbById(int id)
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName + " where id = '" + id + "'", TmMysqlConnection.Connection);//读取数据函数  
@@ -199,5 +198,7 @@ namespace Servers
                 Console.WriteLine("删除数据失败..." + message);
             }
         }
+
     }
 }
+ 

@@ -1,34 +1,30 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Tumo
 {
     public static class TmParameterTool
     {
         public static TmParameter ToJsonParameter<T>(TenCode ten, ElevenCode eleven, string key, T value)
         {
-            TmParameter mvc = new TmParameter();
+            TmParameter parameter = new TmParameter();
             string json = TmJson.ToString<T>(value);
-            mvc.TenCode = ten;
-            mvc.ElevenCode = eleven;
-            mvc.Parameters.Add(key, json);
-            return mvc;
+            parameter.TenCode = ten;
+            parameter.ElevenCode = eleven;
+            parameter.Parameters.Add(key, json);
+            return parameter;
         }
-        public static void AddJsonParameter<T>(TmParameter mvc, string key, T value)
+        public static void AddJsonParameter<T>(TmParameter parameter, string key, T value)
         {
             object obj;
-            bool yes = mvc.Parameters.TryGetValue(key, out obj);
-            if (yes) { mvc.Parameters.Remove(key); }
+            bool yes = parameter.Parameters.TryGetValue(key, out obj);
+            if (yes) { parameter.Parameters.Remove(key); }
             string json = TmJson.ToString<T>(value);
-            mvc.Parameters.Add(key, json);
+            parameter.Parameters.Add(key, json);
         }
-        public static T GetJsonValue<T>(TmParameter mvc, string key)
+        public static T GetJsonValue<T>(TmParameter parameter, string key)
         {
             object obj = null;
-            mvc.Parameters.TryGetValue(key, out obj);
+            parameter.Parameters.TryGetValue(key, out obj);
             string json = (string)obj;
             //Json.NET反序列化
             T t = JsonConvert.DeserializeObject<T>(json);
@@ -36,22 +32,22 @@ namespace Tumo
         }
         public static TmParameter ToParameter(TenCode ten, ElevenCode eleven)
         {
-            TmParameter mvc = new TmParameter();
-            mvc.TenCode = ten;
-            mvc.ElevenCode = eleven;
-            return mvc;
+            TmParameter parameter = new TmParameter();
+            parameter.TenCode = ten;
+            parameter.ElevenCode = eleven;
+            return parameter;
         }
-        public static void AddParameter<T>(TmParameter mvc, string key, T value)
+        public static void AddParameter<T>(TmParameter parameter, string key, T value)
         {
             object obj;
-            bool yes = mvc.Parameters.TryGetValue(key, out obj);
-            if (yes) { mvc.Parameters.Remove(key); }
-            mvc.Parameters.Add(key, value);
+            bool yes = parameter.Parameters.TryGetValue(key, out obj);
+            if (yes) { parameter.Parameters.Remove(key); }
+            parameter.Parameters.Add(key, value);
         }
-        public static T GetValue<T>(TmParameter mvc, string key)
+        public static T GetValue<T>(TmParameter parameter, string key)
         {
             object obj = null;
-            mvc.Parameters.TryGetValue(key, out obj);
+            parameter.Parameters.TryGetValue(key, out obj);
             T tp = (T)obj;
             return tp;
         }

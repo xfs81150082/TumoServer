@@ -16,4 +16,12 @@ I:\TumoServerHome\Tumo\obj\Debug\Tumo.csproj.CoreCompileInputs.cache
 I:\TumoServerHome\Tumo\obj\Debug\Tumo.csproj.CopyComplete
 I:\TumoServerHome\Tumo\obj\Debug\Tumo.dll
 I:\TumoServerHome\Tumo\obj\Debug\Tumo.pdb
-I:\TumoServerHome\Tumo\obj\Debug\Tumo.csprojAssemblyReference.cache
+E:\TumoServer\Tumo\bin\Debug\Tumo.dll
+E:\TumoServer\Tumo\bin\Debug\Tumo.pdb
+E:\TumoServer\Tumo\bin\Debug\Newtonsoft.Json.dll
+E:\TumoServer\Tumo\bin\Debug\UnityEngine.dll
+E:\TumoServer\Tumo\bin\Debug\Newtonsoft.Json.xml
+E:\TumoServer\Tumo\obj\Debug\Tumo.csproj.CoreCompileInputs.cache
+E:\TumoServer\Tumo\obj\Debug\Tumo.csproj.CopyComplete
+E:\TumoServer\Tumo\obj\Debug\Tumo.dll
+E:\TumoServer\Tumo\obj\Debug\Tumo.pdb

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-
 namespace Tumo
 {
     public static class TmConsoleLog

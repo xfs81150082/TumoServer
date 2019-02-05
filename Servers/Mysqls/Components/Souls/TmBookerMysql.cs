@@ -17,7 +17,8 @@ namespace Servers
             switch (elevenCode)
             {
                 case (ElevenCode.GetRolers):
-                    this.GetSoulerdbs(sender, parameter);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql: " + elevenCode);
+                    GetRolersByUersId(sender, parameter);
                     break;
                 case (ElevenCode.None):
                     break;
@@ -25,10 +26,10 @@ namespace Servers
                     break;
             }
         }
-        private void GetSoulerdbs(object sender, TmParameter parameter)
+        private void GetRolersByUersId(object sender, TmParameter parameter)
         {
             List<TmSoulerDB> dbs = GetTmSoulerdbs();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql-dbs:" + dbs.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {
                 (sender as TmBookerHandler).Bookers = dbs;

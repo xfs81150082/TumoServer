@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Tumo
 {
     [Serializable]
@@ -15,19 +11,21 @@ namespace Tumo
         Engineer,
         Booker,
         Teacher,
+        StatusSync,
+        Skill,
+        Ability,
+        Buff,
+        Inborn,
         Inventory,
         Dressed,
         Knapsack,
         Smithy,
-        Skill,
         Task,
         War,
         Sence,
+        Ugui,
 
         End,
-
-
-
     }
     [Serializable]
     public enum ElevenCode
@@ -40,15 +38,33 @@ namespace Tumo
         UserLogin,           /// 登录
         EngineerLogin,       /// 登录
         GetRolers,           ///得到小怪或NPC
-        GetRoler,           ///生产一只小怪或NPC
-        Save,                /// 保存
-        Remove,              /// 删除
-        Update,              /// 更新
+        GetRoler,            ///生产一只小怪或NPC
+        Souler,
+        Roler,
         Die,
+        StatusSync,
+        Engineer,
+        Booker,
+        Teacher,
+        GetSkills,           ///得到小怪或NPC
+        GetSkill,            ///生产一只小怪或NPC
+        GetInventorys,
+        GetInventory,
+        Inventory,
+        Dressed,
+        Smithy,
+        Knapscak,
+        Save,                /// 保存
+        Add,                 /// 添加
+        UserRemove,          /// 删除
+        RolerRemove,         /// 删除
+        Update,              /// 更新
+        Bar,
+        Chat,
+        Teerain,
+        Map,
 
         End,
-
-
     }
     [Serializable]
     public enum KeyCode
@@ -60,6 +76,4 @@ namespace Tumo
         All,     
         End,
     }
-
-
 }

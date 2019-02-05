@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Tumo
 {
     [Serializable]
@@ -12,24 +9,24 @@ namespace Tumo
         {
             base.TmAwake();
             AddComponent(new TmName());
-            AddComponent(new TmTransform());
             AddComponent(new TmSouler());
             AddComponent(new TmSoulerDB());
-            AddComponent(new TmAttribute());
+            AddComponent(new TmChangeType());
+            AddComponent(new TmProperty());
             AddComponent(new TmInventoryAdd());
             AddComponent(new TmBuffAdd());
-            AddComponent(new TmSkillAdd());
-            AddComponent(new TmChangeType());
+            AddComponent(new TmAbilityAdd());
         }
         public TmSoulerItem() { }                        ///构造函数 
         public TmSoulerItem(TmSoulerDB itemDB)
         {
-            if (GetComponent<TmSoulerDB>() != null)
+            if (this.GetComponent<TmSoulerDB>() != null)
             {
-                TmSoulerDB tem = GetComponent<TmSoulerDB>() as TmSoulerDB;
-                tem = itemDB;
+                RemoveComponent<TmSoulerDB>();
             }
+            AddComponent(itemDB);
         }
+   
         //public void InitAttribute()
         //{
         //    UpdateLevel();

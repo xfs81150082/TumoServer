@@ -14,25 +14,25 @@ namespace Tumo
             AddComponent(new TmName());
             AddComponent(new TmInventory());
             AddComponent(new TmInventoryDB());
-            AddComponent(new TmAttribute());
-            AddComponent(new TmInventoryAdd());            
             AddComponent(new TmChangeType());
+            AddComponent(new TmProperty());
         }
         public TmInventoryItem() { }
         public TmInventoryItem(TmInventoryDB itemDB)
         {
-            if (GetComponent<TmInventoryDB>() != null)
+            if (this.GetComponent<TmInventoryDB>() != null)
             {
-                TmInventoryDB tem = GetComponent<TmInventoryDB>() as TmInventoryDB;
-                tem = itemDB;
+                RemoveComponent<TmInventoryDB>();
             }
+            AddComponent(itemDB);
         }
+
         //public InventoryItem(Inventory inventory)
         //{
         //    this.Inventory = inventory;
         //    UpdateItem();
         //}
-   
+
         //public InventoryItemDB CreatInventoryItemDB()
         //{
         //    UpdateItem();//属性初始化

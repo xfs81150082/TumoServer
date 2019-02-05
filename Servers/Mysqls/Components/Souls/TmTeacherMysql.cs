@@ -28,7 +28,7 @@ namespace Servers
         private void GetSoulerdbs(object sender, TmParameter parameter)
         {
             List<TmSoulerDB> dbs = GetTmSoulerdbs();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmTeacherMysql-dbs:" + dbs.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {
                 (sender as TmTeacherHandler).Teachers = dbs;

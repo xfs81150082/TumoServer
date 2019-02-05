@@ -1,2 +1,4 @@
 /.vs
 /Servers/bin/Debug/log.txt
+/Servers/bin/Debug
+/ClientExample/bin/Debug
