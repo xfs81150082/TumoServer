@@ -9,6 +9,6 @@ TumoWorld 服务器，C# Console，Socket 异步 多线程。
 # 2019年2月5日
 1、场景地面贴图、草地、树、地图边界碰撞器；
 2、拿到Buff、Ability、Inborn技能；
-3、拿到Dressed、Knapsack、Smithy衣服； 
+3、拿到Dressed、Knapsack、Smithy物品装备； 
 
 
