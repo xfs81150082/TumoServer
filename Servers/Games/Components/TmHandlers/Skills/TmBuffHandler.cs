@@ -36,6 +36,7 @@ namespace Servers
                 if (yes)
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<Dictionary<int, TmSkillDB>>(TenCode.Buff, ElevenCode.GetSkills, ElevenCode.GetSkills.ToString(), skillDBs);
+                    TmParameterTool.AddJsonParameter(response, "RolerId", rolerid);
                     response.EcsId = parameter.EcsId;
                     TmTcpSocket.Instance.Send(response);
                     yes = true;
