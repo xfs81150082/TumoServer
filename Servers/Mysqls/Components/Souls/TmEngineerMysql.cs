@@ -16,6 +16,10 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
+                case (ElevenCode.Get):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
+                    GetSouler(sender, parameter);
+                    break;
                 case (ElevenCode.GetRolers):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
                     GetRolersByUersId(sender, parameter);
@@ -56,6 +60,19 @@ namespace Servers
             {
                 //(sender as TmEngineerHandler).Engineer = db;
                 (sender as TmEngineerHandler).Engineers.Add(rolerId, db);
+            }
+            else
+            {
+                Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
+            }
+        }
+        void GetSouler(object sender, TmParameter parameter)
+        {
+            Dictionary<int, TmSouler> soulers = GetTmSoulers();
+            Console.WriteLine(TmTimerTool.CurrentTime() + " soulers:" + soulers.Count);
+            if (soulers.Count > 0)
+            {
+                (sender as TmEngineerHandler).Soulers = soulers;
             }
             else
             {

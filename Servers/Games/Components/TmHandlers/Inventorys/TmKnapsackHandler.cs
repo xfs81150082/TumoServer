@@ -13,7 +13,11 @@ namespace Servers
                 case (ElevenCode.GetInventorys):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmKnapsackHandler: " + elevenCode);
                     GetSkillsByRolerId(parameter);
-                    break;     
+                    break;
+                case (ElevenCode.Get):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmKnapsackHandler: " + elevenCode);
+                    GetInventorys(parameter);
+                    break;
                 case (ElevenCode.Save):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmKnapsackHandler: " + elevenCode);
                     break;
@@ -23,7 +27,34 @@ namespace Servers
                     break;
             }
         }
+        internal Dictionary<int, TmInventory> Inventorys { get; set; } = new Dictionary<int, TmInventory>();
         internal Dictionary<int, List<TmInventoryDB>> Knapsacks { get; set; } = new Dictionary<int, List<TmInventoryDB>>();
+        private void GetInventorys(TmParameter parameter)
+        {
+            bool yes = false;
+            int count = 0;
+            while (!yes)
+            {
+                if (Inventorys.Count > 0)
+                {
+                    TmParameter response = TmParameterTool.ToJsonParameter<Dictionary<int, TmInventory>>(TenCode.Knapsack, ElevenCode.Get, ElevenCode.Get.ToString(), Inventorys);
+                    response.EcsId = parameter.EcsId;
+                    TmTcpSocket.Instance.Send(response);
+                    yes = true;
+                }
+                else
+                {
+                    TmMysqlHandler.Instance.GetComponent<TmKnapsackMysql>().OnTransferParameter(this, parameter);
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " this.Inventorys:" + this.Inventorys.Count);
+                    count += 1;
+                }
+                if (count > 4)
+                {
+                    yes = true;
+                    break;
+                }
+            }
+        }
         private void GetSkillsByRolerId(TmParameter parameter)
         {
             int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.EngineerLogin.ToString());
