@@ -6,8 +6,8 @@ namespace Tumo
     {    
         public int Id { get; set; } = 100001;
         public string Name { get; set; } = "tumo";
-        public int SoulId { get; set; } = 15101;
         public int UserId { get; set; } = 0;             //用户名
+        public int SoulId { get; set; } = 15101;
         public int Exp { get; set; } = 0;                //经验数
         public int Level { get; set; } = 0;              //等级
         public int Hp { get; set; } = 0;                 //血量

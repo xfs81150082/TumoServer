@@ -51,6 +51,7 @@ namespace Servers
             List<TmSoulerDB> Engineers = null;
             int userId = TmParameterTool.GetValue<int>(parameter, ElevenCode.UserLogin.ToString());
             bool yes = false;
+            int count = 0;
             while (!yes)
             {
                 if (EngineerDbs.Count > 0)
@@ -68,6 +69,11 @@ namespace Servers
                 {
                     TmMysqlHandler.Instance.GetComponent<TmEngineerMysql>().OnTransferParameter(this, parameter);
                     Console.WriteLine(TmTimerTool.CurrentTime() + " this.EngineerDbs:" + EngineerDbs.Count);
+                    count += 1;
+                }
+                if (count > 3)
+                {
+                    yes = true;
                 }
             }
         }
@@ -76,6 +82,7 @@ namespace Servers
             TmSoulerDB Engineer = null;
             int rolerId = TmParameterTool.GetJsonValue<int>(parameter, parameter.ElevenCode.ToString());
             bool yes = false;
+            int count = 0;
             while (!yes)
             {
                 if (Engineers.Count > 0)
@@ -95,6 +102,11 @@ namespace Servers
                 {
                     TmMysqlHandler.Instance.GetComponent<TmEngineerMysql>().OnTransferParameter(this, parameter);
                     Console.WriteLine(TmTimerTool.CurrentTime() + " Engineers:" + Engineers.Count);
+                    count += 1;
+                }
+                if (count > 3)
+                {
+                    yes = true;
                 }
             }
         }    

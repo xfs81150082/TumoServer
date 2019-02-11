@@ -21,8 +21,8 @@ namespace Servers
                         TmSoulerDB item = new TmSoulerDB();
                         item.Id = reader.GetInt32(0);
                         item.Name = reader.GetString(1);
-                        item.SoulId = reader.GetInt32(2);
-                        item.UserId = reader.GetInt32(3);
+                        item.UserId = reader.GetInt32(2);
+                        item.SoulId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
                         item.Hp = reader.GetInt32(6);
@@ -69,8 +69,8 @@ namespace Servers
                         TmSoulerDB item = new TmSoulerDB();
                         item.Id = reader.GetInt32(0);
                         item.Name = reader.GetString(1);
-                        item.SoulId = reader.GetInt32(2);
-                        item.UserId = reader.GetInt32(3);
+                        item.UserId = reader.GetInt32(2);
+                        item.SoulId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
                         item.Hp = reader.GetInt32(6);
@@ -116,8 +116,8 @@ namespace Servers
                     {
                         item.Id = reader.GetInt32(0);
                         item.Name = reader.GetString(1);
-                        item.SoulId = reader.GetInt32(2);
-                        item.UserId = reader.GetInt32(3);
+                        item.UserId = reader.GetInt32(2);
+                        item.SoulId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
                         item.Hp = reader.GetInt32(6);
