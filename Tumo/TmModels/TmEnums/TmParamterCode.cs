@@ -63,6 +63,21 @@ namespace Tumo
         Chat,
         Teerain,
         Map,
+        HeadPortrait,
+        TargetPortrait,
+        MySelf,
+        Target,
+        Message,
+        Hudtext,
+        Hp,
+        Mp,
+        Bp,
+        Ap,
+        MaxHp,
+        MaxMp,
+        Button,
+        System,
+
 
         End,
     }
