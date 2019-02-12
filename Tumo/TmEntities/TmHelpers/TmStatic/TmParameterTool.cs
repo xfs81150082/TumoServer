@@ -30,6 +30,15 @@ namespace Tumo
             T t = JsonConvert.DeserializeObject<T>(json);
             return t;
         }
+
+        public static TmParameter ToParameter<T>(TenCode ten, ElevenCode eleven, string key, T value)
+        {
+            TmParameter parameter = new TmParameter();
+            parameter.TenCode = ten;
+            parameter.ElevenCode = eleven;
+            parameter.Parameters.Add(key, value);
+            return parameter;
+        }
         public static TmParameter ToParameter(TenCode ten, ElevenCode eleven)
         {
             TmParameter parameter = new TmParameter();
@@ -51,6 +60,7 @@ namespace Tumo
             T tp = (T)obj;
             return tp;
         }
+
         public static T OutOfDictionary<T>(string key, Dictionary<string, T> dictionary)
         {
             T val;

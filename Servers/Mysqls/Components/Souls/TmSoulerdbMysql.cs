@@ -164,7 +164,7 @@ namespace Servers
                         item.Name = reader.GetString(1);
                         item.Icon = reader.GetString(2);
                         item.AvatarName = reader.GetString(3);
-                        item.ChaterId = reader.GetInt32(4);
+                        item.Chater = reader.GetString(4);
                         item.LevelUpLimit = reader.GetInt32(5);
                         item.Does = reader.GetString(6);
                         item.InfoType = (InfoType)reader.GetInt32(8);
