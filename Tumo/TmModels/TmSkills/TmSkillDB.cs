@@ -13,6 +13,7 @@ namespace Tumo
         public string Name { get; set; } = "tumo";
         public int SkillId { get; set; } = 11101;
         public int RolerId { get; set; } = 100001;
+        public int Exp { get; set; } = 0;
         public int Level { get; set; } = 10;
         public RoleType RoleType { get; set; } = RoleType.CostEngineer;
         public int Place { get; set; } = 0;
