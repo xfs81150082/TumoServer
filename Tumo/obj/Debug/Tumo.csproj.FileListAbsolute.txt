@@ -34,4 +34,3 @@ F:\TumoServer\Tumo\obj\Debug\Tumo.csproj.CoreCompileInputs.cache
 F:\TumoServer\Tumo\obj\Debug\Tumo.csproj.CopyComplete
 F:\TumoServer\Tumo\obj\Debug\Tumo.dll
 F:\TumoServer\Tumo\obj\Debug\Tumo.pdb
-I:\TumoServerHome\Tumo\obj\Debug\Tumo.csprojAssemblyReference.cache

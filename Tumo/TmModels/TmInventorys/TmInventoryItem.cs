@@ -25,28 +25,13 @@ namespace Tumo
                 RemoveComponent<TmInventoryDB>();
             }
             AddComponent(itemDB);
+            (this.GetComponent<TmName>() as TmName).Name = (this.GetComponent<TmInventoryDB>() as TmInventoryDB).Name;
+            (this.GetComponent<TmName>() as TmName).Id = (this.GetComponent<TmInventoryDB>() as TmInventoryDB).Id;
+            (this.GetComponent<TmName>() as TmName).ParentId = (this.GetComponent<TmInventoryDB>() as TmInventoryDB).RolerId;
+            (this.GetComponent<TmChangeType>() as TmChangeType).Exp = (this.GetComponent<TmInventoryDB>() as TmInventoryDB).Exp;
+            (this.GetComponent<TmChangeType>() as TmChangeType).Level = (this.GetComponent<TmInventoryDB>() as TmInventoryDB).Level;
         }
 
-        //public InventoryItem(Inventory inventory)
-        //{
-        //    this.Inventory = inventory;
-        //    UpdateItem();
-        //}
-
-        //public InventoryItemDB CreatInventoryItemDB()
-        //{
-        //    UpdateItem();//属性初始化
-        //    inventoryItemDB.Id = Id;
-        //    inventoryItemDB.Name = Name;
-        //    inventoryItemDB.InventoryId = Inventory.Id;
-        //    inventoryItemDB.Place = Place;
-        //    inventoryItemDB.EquipQuality = EquipQuality;
-        //    inventoryItemDB.Count = Count;
-        //    inventoryItemDB.Level = Level;
-        //    inventoryItemDB.Durability = Durability;
-        //    inventoryItemDB.Pice = Pice;
-        //    return inventoryItemDB;
-        //}
         //public void UpdateItem(int level)
         //{
         //    this.Level = level;
