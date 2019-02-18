@@ -25,6 +25,11 @@ namespace Tumo
                 RemoveComponent<TmSkillDB>();
             }
             AddComponent(itemDB);
+            (this.GetComponent<TmName>() as TmName).Name = (this.GetComponent<TmSkillDB>() as TmSkillDB).Name;
+            (this.GetComponent<TmName>() as TmName).Id = (this.GetComponent<TmSkillDB>() as TmSkillDB).Id;
+            (this.GetComponent<TmName>() as TmName).ParentId = (this.GetComponent<TmSkillDB>() as TmSkillDB).RolerId;
+            (this.GetComponent<TmChangeType>() as TmChangeType).Exp = (this.GetComponent<TmSkillDB>() as TmSkillDB).Exp;
+            (this.GetComponent<TmChangeType>() as TmChangeType).Level = (this.GetComponent<TmSkillDB>() as TmSkillDB).Level;
         }
     }
 }

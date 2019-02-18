@@ -41,6 +41,7 @@ namespace Servers
                     parameter.ElevenCode = ElevenCode.GetRolers;
                     Parent.GetComponent<TmEngineerHandler>().OnTransferParameter(this, parameter);
                     Console.WriteLine(TmTimerTool.CurrentTime() + " Username:" + name + " Password:" + word);
+                    Gets(parameter);
                 }
                 else
                 {
@@ -52,6 +53,15 @@ namespace Servers
                 Console.WriteLine("帐号不存在");
             }
         }
+
+        void Gets(TmParameter parameter)
+        {
+            parameter.ElevenCode = ElevenCode.Get;
+            Parent.GetComponent<TmEngineerHandler>().OnTransferParameter(this, parameter);
+            Parent.GetComponent<TmBuffHandler>().OnTransferParameter(this, parameter);
+            Parent.GetComponent<TmKnapsackHandler>().OnTransferParameter(this, parameter);
+        }
+
 
     }
 }
