@@ -15,7 +15,7 @@ namespace Tumo
         public int Coin { get; set; } = 0;               //金币数  
         public int Diamond { get; set; } = 0;            //钻石数
         public int SenceId { get; set; } = 0;           //场景id
-        public int NodeId { get; set; } = 0;           //场景id
+        public int IsNode { get; set; } = 0;           //场景id
         public double px { get; set; } = 0.0;          //坐标x
         public double py { get; set; } = 0.0;          //坐标x
         public double pz { get; set; } = 0.0;          //坐标x  

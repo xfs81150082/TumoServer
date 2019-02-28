@@ -30,7 +30,7 @@ namespace Servers
                         item.Coin = reader.GetInt32(8);
                         item.Diamond = reader.GetInt32(9);
                         item.SenceId = reader.GetInt32(10);
-                        item.NodeId = reader.GetInt32(11);
+                        item.IsNode = reader.GetInt32(11);
                         item.px = reader.GetDouble(12);
                         item.py = reader.GetDouble(13);
                         item.pz = reader.GetDouble(14);
@@ -78,7 +78,7 @@ namespace Servers
                         item.Coin = reader.GetInt32(8);
                         item.Diamond = reader.GetInt32(9);
                         item.SenceId = reader.GetInt32(10);
-                        item.NodeId = reader.GetInt32(11);
+                        item.IsNode = reader.GetInt32(11);
                         item.px = reader.GetDouble(12);
                         item.py = reader.GetDouble(13);
                         item.pz = reader.GetDouble(14);
@@ -125,7 +125,7 @@ namespace Servers
                         item.Coin = reader.GetInt32(8);
                         item.Diamond = reader.GetInt32(9);
                         item.SenceId = reader.GetInt32(10);
-                        item.NodeId = reader.GetInt32(11);
+                        item.IsNode = reader.GetInt32(11);
                         item.px = reader.GetDouble(12);
                         item.py = reader.GetDouble(13);
                         item.pz = reader.GetDouble(14);
