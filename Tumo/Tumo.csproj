@@ -55,6 +55,7 @@
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
     <Compile Include="TmModels\TmModelBase\TmAbilityAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmBuffAdd.cs" />
+    <Compile Include="TmSockets\Components\TmSession.cs" />
     <Compile Include="TmSockets\Systems\TmCoolDownSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
     <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />
