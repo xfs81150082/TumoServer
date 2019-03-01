@@ -23,8 +23,8 @@ namespace Servers
                     break;
             }
         }
-        internal TmUser User;
-        internal List<TmSoulerDB> Engineers;
+        internal TmUser User { get; set; }
+        internal List<TmSoulerDB> Engineers { get; set; }
         private void CheckUserLoginPassword(TmParameter parameter)
         {
             Console.WriteLine(TmTimerTool.CurrentTime() + " to TmUserHandler 30 " + parameter.ElevenCode.ToString());

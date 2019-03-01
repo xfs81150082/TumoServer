@@ -22,7 +22,7 @@ namespace Servers
                         item.Id = reader.GetInt32(0);
                         item.Name = reader.GetString(1);
                         item.UserId = reader.GetInt32(2);
-                        item.SoulId = reader.GetInt32(3);
+                        item.SoulerId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
                         item.Hp = reader.GetInt32(6);
@@ -30,7 +30,7 @@ namespace Servers
                         item.Coin = reader.GetInt32(8);
                         item.Diamond = reader.GetInt32(9);
                         item.SenceId = reader.GetInt32(10);
-                        item.IsNode = reader.GetInt32(11);
+                        item.State = reader.GetInt32(11);
                         item.px = reader.GetDouble(12);
                         item.py = reader.GetDouble(13);
                         item.pz = reader.GetDouble(14);
@@ -70,7 +70,7 @@ namespace Servers
                         item.Id = reader.GetInt32(0);
                         item.Name = reader.GetString(1);
                         item.UserId = reader.GetInt32(2);
-                        item.SoulId = reader.GetInt32(3);
+                        item.SoulerId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
                         item.Hp = reader.GetInt32(6);
@@ -78,7 +78,7 @@ namespace Servers
                         item.Coin = reader.GetInt32(8);
                         item.Diamond = reader.GetInt32(9);
                         item.SenceId = reader.GetInt32(10);
-                        item.IsNode = reader.GetInt32(11);
+                        item.State = reader.GetInt32(11);
                         item.px = reader.GetDouble(12);
                         item.py = reader.GetDouble(13);
                         item.pz = reader.GetDouble(14);
@@ -117,7 +117,7 @@ namespace Servers
                         item.Id = reader.GetInt32(0);
                         item.Name = reader.GetString(1);
                         item.UserId = reader.GetInt32(2);
-                        item.SoulId = reader.GetInt32(3);
+                        item.SoulerId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
                         item.Hp = reader.GetInt32(6);
@@ -125,7 +125,7 @@ namespace Servers
                         item.Coin = reader.GetInt32(8);
                         item.Diamond = reader.GetInt32(9);
                         item.SenceId = reader.GetInt32(10);
-                        item.IsNode = reader.GetInt32(11);
+                        item.State = reader.GetInt32(11);
                         item.px = reader.GetDouble(12);
                         item.py = reader.GetDouble(13);
                         item.pz = reader.GetDouble(14);
