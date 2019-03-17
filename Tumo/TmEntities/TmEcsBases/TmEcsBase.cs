@@ -10,12 +10,12 @@ namespace Tumo
         {
             EcsId = TmIdGenerater.GetId();
             TmEcsBase tmEcs;
-            TmDictionary.Ecses.TryGetValue(EcsId, out tmEcs);
+            TmObjects.Ecses.TryGetValue(EcsId, out tmEcs);
             if (tmEcs != null)
             {
                 EcsId += 5200;
             }
-            TmDictionary.Ecses.Add(EcsId, this);
+            TmObjects.Ecses.Add(EcsId, this);
             BeginInit();
             TmAwake();
             EndInit();
@@ -33,7 +33,7 @@ namespace Tumo
         {
             if (!isDisposed)
             {
-                TmDictionary.Ecses.Remove(EcsId);   ///从ECS管理字典中删除
+                TmObjects.Ecses.Remove(EcsId);   ///从ECS管理字典中删除
                 TmDispose();   /// 为继承类释放时使用，用抽象方法
                 GC.SuppressFinalize(this); ///GC不用二次释放this资源   
                 isDisposed = true;

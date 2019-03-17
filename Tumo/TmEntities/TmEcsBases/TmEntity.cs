@@ -8,17 +8,17 @@ namespace Tumo
         public override void TmAwake()
         {
             base.TmAwake();
-            TmDictionary.Entities.Add(EcsId, this);
+            TmObjects.Entities.Add(EcsId, this);
         }
         public TmEntity() { }
-        public TmComponent GetComponent<T>()
+        public T GetComponent<T>() where T : class
         {
             string name = typeof(T).Name;
             TmComponent tem;
             Components.TryGetValue(name, out tem);
             if (tem != null)
             {                
-                return tem;
+                return tem as T;
             }
             else
             {
@@ -61,7 +61,7 @@ namespace Tumo
         public override void TmDispose()
         {
             base.TmDispose();
-            TmDictionary.Entities.Remove(EcsId);
+            TmObjects.Entities.Remove(EcsId);
             try
             {
                 if (Components.Count > 0)

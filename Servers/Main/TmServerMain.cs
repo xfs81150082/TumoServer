@@ -28,6 +28,7 @@ namespace Servers
             TmGame.TmSence.AddComponent(new TmKnapsackHandler());       ///服务器加载组件 : TmKnapsackHandler 处理组件
             TmGame.TmSence.AddComponent(new TmSmityHandler());          ///服务器加载组件 : TmSmityHandler 处理组件
 
+            TmGame.TmSystemMananger.AddComponent(new ServerTest());     ///测试用
 
             Thread.CurrentThread.Name = "TumoWorld";
             Console.WriteLine(TmTimerTool.CurrentTime() + " ThreadName:" + Thread.CurrentThread.Name);
