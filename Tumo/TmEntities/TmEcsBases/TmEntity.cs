@@ -8,7 +8,7 @@ namespace Tumo
         public override void TmAwake()
         {
             base.TmAwake();
-            TmObjects.Entities.Add(EcsId, this);
+            TmObjects.Entities.Add(this);
         }
         public TmEntity() { }
         public T GetComponent<T>() where T : class
@@ -58,10 +58,10 @@ namespace Tumo
                 Console.WriteLine(TmTimerTool.CurrentTime() + name + "此类型组件不存在！");
             }
         }
-        public override void TmDispose()
+        public override void Dispose()
         {
-            base.TmDispose();
-            TmObjects.Entities.Remove(EcsId);
+            base.Dispose();
+            TmObjects.Entities.Remove(this);
             try
             {
                 if (Components.Count > 0)

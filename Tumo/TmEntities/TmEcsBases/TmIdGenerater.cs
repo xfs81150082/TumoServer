@@ -7,7 +7,7 @@
         {
             string tmId = "";
             idCount++;
-            if (idCount > 4000)
+            if (idCount > 2600)
             {
                 idCount = 1000;
             }

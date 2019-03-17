@@ -11,10 +11,10 @@ namespace Servers
             ValTime = 4000;
             AddComponent(new TmBooker());
             AddComponent(new TmCoolDown());
-        }
+        }     
         public override void TmUpdate()
         {
-            foreach(var entity in GetTmEntities())
+            foreach (TmEntity entity in GetTmEntities())
             {
                 UpdateCDTime(entity);
             }
