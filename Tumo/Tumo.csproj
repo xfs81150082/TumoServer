@@ -45,6 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TmAstars\TmAstar.cs" />
+    <Compile Include="TmAstars\TmPriorityQueue.cs" />
+    <Compile Include="TmAstars\TmGrid.cs" />
     <Compile Include="TmEntities\TmComponents\TmSystemManangerDll.cs" />
     <Compile Include="TmEntities\TmComponents\TmSystemMananger.cs" />
     <Compile Include="TmEntities\TmComponents\TmSence.cs" />
@@ -55,6 +58,7 @@
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
     <Compile Include="TmModels\TmModelBase\TmAbilityAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmBuffAdd.cs" />
+    <Compile Include="TmSockets\Components\TmSession.cs" />
     <Compile Include="TmSockets\Systems\TmCoolDownSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
     <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />
@@ -82,7 +86,7 @@
     <Compile Include="TmModels\TmSoulers\TmSoulerItem.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerDB.cs" />
     <Compile Include="TmSockets\Components\TmTcpSocket.cs" />
-    <Compile Include="TmEntities\TmEcsBases\TmDictionary.cs" />
+    <Compile Include="TmEntities\TmEcsBases\TmObjects.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmJson.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmSystem.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmComponent.cs" />

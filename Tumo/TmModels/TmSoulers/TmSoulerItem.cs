@@ -11,6 +11,7 @@ namespace Tumo
             AddComponent(new TmName());
             AddComponent(new TmSouler());
             AddComponent(new TmSoulerDB());
+            AddComponent(new TmCoolDown());
             AddComponent(new TmChangeType());
             AddComponent(new TmProperty());
             AddComponent(new TmInventoryAdd());
