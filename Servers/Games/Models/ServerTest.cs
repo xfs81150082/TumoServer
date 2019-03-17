@@ -11,20 +11,14 @@ namespace Servers
     {
         public ServerTest()
         {
-            GetStartGoal();
-            GetGrids();
+            //GetStartGoal();
+            //GetGrids();
 
-            //TestPriorityQueue();
-            TestPaths();
-        }
-
-        public override void TmUpdate()
-        {
-            base.TmUpdate();
-
+            ////TestPriorityQueue();
             //TestPaths();
         }
 
+      
         TmPriorityQueue queue { get; set; }
         void TestPriorityQueue()
         {
