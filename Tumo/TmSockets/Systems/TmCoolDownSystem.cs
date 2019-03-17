@@ -10,12 +10,19 @@ namespace Tumo
             AddComponent(new TmSession());
             AddComponent(new TmCoolDown());
         }
+        //public override void TmUpdate()
+        //{
+        //    base.TmUpdate();
+        //    foreach(var com in GetTmEntities())
+        //    {
+        //        UpdateCDCount(com);
+        //    }
+        //}
         public override void TmUpdate()
         {
-            base.TmUpdate();
-            foreach(var com in GetTmEntities())
+            foreach (TmEntity entity in GetTmEntities())
             {
-                UpdateCDCount(com);
+                UpdateCDCount(entity);
             }
         }
         void UpdateCDCount(TmEntity entity)
