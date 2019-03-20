@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 namespace Tumo
 {
     public class TmPriorityQueue
@@ -34,6 +30,5 @@ namespace Tumo
             this.grids.Remove(grid);
             this.grids.Sort();
         }
-
     }
 }

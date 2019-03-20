@@ -9,6 +9,6 @@ namespace Tumo
         public int Diamond { get; set; } = 0;
         public int Place { get; set; } = 0;
         public int Count { get ; set ; }
-        public int Durability { get ; set; }
+        public int Durability { get; set; }
     }
 }

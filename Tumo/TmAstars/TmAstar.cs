@@ -2,11 +2,12 @@
 using System.Collections;
 namespace Tumo
 {
-    public static class TmAstar
+    public class TmAstar : TmComponent
     {
-        private static TmPriorityQueue closedList, openList;
-        public static ArrayList FindPath(TmGrid start, TmGrid goal, TmGrid[,] grids)
+        private TmPriorityQueue closedList, openList;
+        public ArrayList FindPath(TmGrid start, TmGrid goal, TmGrid[,] grids)
         {
+            if (grids[start.x, start.z].bObstacle && grids[goal.x, goal.z].bObstacle) return null;
             openList = new TmPriorityQueue();
             closedList = new TmPriorityQueue();
             openList.Add(start);
@@ -17,6 +18,7 @@ namespace Tumo
             while (openList.Length != 0)
             {
                 grid = openList.First();
+                if (grid == null) return null;
                 if (grid.x == goal.x && grid.z == goal.z)
                 {
                     return CalculatePath(grid);
@@ -49,7 +51,7 @@ namespace Tumo
             }
             return CalculatePath(grid);
         }
-        private static ArrayList CalculatePath(TmGrid goal)
+        private ArrayList CalculatePath(TmGrid goal)
         {
             ArrayList list = new ArrayList();
             while (goal != null)
@@ -60,7 +62,7 @@ namespace Tumo
             list.Reverse();
             return list;
         }
-        private static double GetCostG(TmGrid myself, TmGrid neighour)
+        private double GetCostG(TmGrid myself, TmGrid neighour)
         {
             double cost = 1.0;
             if (myself.x != neighour.x && myself.z != neighour.z)
@@ -69,7 +71,7 @@ namespace Tumo
             }
             return cost;
         }
-        private static double GetCostH(TmGrid myself, TmGrid goal)
+        private double GetCostH(TmGrid myself, TmGrid goal)
         {
             double cost = 0.0;
             double xx = Math.Abs(goal.x - myself.x);
@@ -79,7 +81,7 @@ namespace Tumo
             cost = Math.Pow((sqlxx + sqlyy), 0.5);
             return cost;
         }
-        private static ArrayList GetNeighbours(TmGrid grid, TmGrid[,] grids)
+        private ArrayList GetNeighbours(TmGrid grid, TmGrid[,] grids)
         {
             ArrayList list = new ArrayList();
             int row = grid.z;
@@ -94,7 +96,7 @@ namespace Tumo
             AssignNeighbour(row + 1, column + 1, list, grids);    //左上
             return list;
         }
-        private static void AssignNeighbour(int row, int column, ArrayList neighbours , TmGrid[,] grids)
+        private void AssignNeighbour(int row, int column, ArrayList neighbours , TmGrid[,] grids)
         {
             if (row > -1 && column > -1 && row < grids.GetLength(0) && column < grids.GetLength(1))
             {
@@ -104,7 +106,6 @@ namespace Tumo
                     neighbours.Add(grid);
                 }
             }
-        }  
-        
+        }          
     }
 }

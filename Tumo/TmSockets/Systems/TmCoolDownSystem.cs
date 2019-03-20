@@ -5,19 +5,10 @@ namespace Tumo
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             ValTime = 4000;
             AddComponent(new TmSession());
             AddComponent(new TmCoolDown());
-        }
-        //public override void TmUpdate()
-        //{
-        //    base.TmUpdate();
-        //    foreach(var com in GetTmEntities())
-        //    {
-        //        UpdateCDCount(com);
-        //    }
-        //}
+        }    
         public override void TmUpdate()
         {
             foreach (TmEntity entity in GetTmEntities())

@@ -70,7 +70,7 @@
     <Compile Include="Games\Components\TmHandlers\Skills\TmInbornHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmBuffHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmAbilityHandler.cs" />
-    <Compile Include="Games\Models\ServerTest.cs" />
+    <Compile Include="Games\Tests\ServerTest.cs" />
     <Compile Include="Games\Models\Rolers\TmEngineer.cs" />
     <Compile Include="Games\Models\Rolers\TmBooker.cs" />
     <Compile Include="Games\Components\TmHandlers\Soulers\TmStatusSyncHandler.cs" />

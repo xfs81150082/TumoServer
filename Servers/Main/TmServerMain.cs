@@ -10,8 +10,21 @@ namespace Servers
         static void Main(string[] args)
         {
             Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");  
-            Thread.Sleep(1);                                           
+            Thread.Sleep(1);
+            //TmSenceInit();
 
+            TmGame.TmSystemMananger.AddComponent(new ServerTest());     ///测试用
+
+            Thread.CurrentThread.Name = "TumoWorld";
+            Console.WriteLine(TmTimerTool.CurrentTime() + " ThreadName:" + Thread.CurrentThread.Name);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " ThreadId:" + Thread.CurrentThread.ManagedThreadId);
+
+            Console.ReadKey();
+            Console.WriteLine(TmTimerTool.CurrentTime() + " 退出监听，并关闭程序。");
+        }
+
+        static void TmSenceInit()
+        {
             TmGame.TmSence.AddComponent(new TmMysqlConnection());       ///服务器加载组件 : 数据库链接组件TmSystem类型
             TmGame.TmSence.AddComponent(new TmMysqlHandler());          ///服务器加载组件 : 数据库表格组件集
             TmGame.TmSence.AddComponent(new TmGateHandler());           ///服务器加载组件 : 服务器网关组件
@@ -28,14 +41,7 @@ namespace Servers
             TmGame.TmSence.AddComponent(new TmKnapsackHandler());       ///服务器加载组件 : TmKnapsackHandler 处理组件
             TmGame.TmSence.AddComponent(new TmSmityHandler());          ///服务器加载组件 : TmSmityHandler 处理组件
 
-            TmGame.TmSystemMananger.AddComponent(new ServerTest());     ///测试用
-
-            Thread.CurrentThread.Name = "TumoWorld";
-            Console.WriteLine(TmTimerTool.CurrentTime() + " ThreadName:" + Thread.CurrentThread.Name);
-            Console.WriteLine(TmTimerTool.CurrentTime() + " ThreadId:" + Thread.CurrentThread.ManagedThreadId);
-
-            Console.ReadKey();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " 退出监听，并关闭程序。");
         }
+
     }
 }

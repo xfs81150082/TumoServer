@@ -26,7 +26,7 @@ namespace Tumo
         {
             if (souler.GetComponent<TmTransform>() != null)
             {
-                TmTransform item = souler.GetComponent<TmTransform>() as TmTransform;
+                TmTransform item = souler.GetComponent<TmTransform>();
                 this.px = item.px;
                 this.py = item.py;
                 this.pz = item.pz;
