@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TmAstars\TmAstarSystem.cs" />
     <Compile Include="TmAstars\TmAstar.cs" />
     <Compile Include="TmAstars\TmPriorityQueue.cs" />
     <Compile Include="TmAstars\TmGrid.cs" />
@@ -55,8 +56,10 @@
     <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryComponent.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmRequest.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
+    <Compile Include="TmModels\TmModelBase\TmPropertySum.cs" />
     <Compile Include="TmModels\TmModelBase\TmAbilityAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmBuffAdd.cs" />
+    <Compile Include="TmModels\TmSoulers\TmAstarPath.cs" />
     <Compile Include="TmSockets\Components\TmSession.cs" />
     <Compile Include="TmSockets\Systems\TmCoolDownSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />

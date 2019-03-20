@@ -4,8 +4,8 @@
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             AddComponent(new TmCoolDownSystem());
+            AddComponent(new TmAstarSystem());
         }
     }
 }

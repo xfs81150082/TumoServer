@@ -5,12 +5,10 @@ namespace Tumo
     public abstract class TmEntity : TmComponent
     {
         public Dictionary<string, TmComponent> Components { get; set; } = new Dictionary<string, TmComponent>();
-        public override void TmAwake()
+        public TmEntity()
         {
-            base.TmAwake();
             TmObjects.Entities.Add(this);
         }
-        public TmEntity() { }
         public T GetComponent<T>() where T : class
         {
             string name = typeof(T).Name;
