@@ -5,7 +5,7 @@ namespace Tumo
     {
         public override void BeginInit()
         {
-            ValTime = 1000;
+            ValTime = 400;
         }
         public override void TmAwake()
         {
