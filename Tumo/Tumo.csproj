@@ -56,6 +56,8 @@
     <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryComponent.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmRequest.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
+    <Compile Include="TmGameObjects\TmGameObjectEntity.cs" />
+    <Compile Include="TmGameObjects\TmGameObjectSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmPropertySum.cs" />
     <Compile Include="TmModels\TmModelBase\TmAbilityAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmBuffAdd.cs" />
@@ -71,7 +73,6 @@
     <Compile Include="TmModels\TmTasks\TmTaskItemDB.cs" />
     <Compile Include="TmModels\TmModelBase\TmInventoryAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmProperty.cs" />
-    <Compile Include="TmEntities\TmEcsBases\TmTimer.cs" />
     <Compile Include="TmEntities\TmComponents\TmCoolDown.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventory.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventoryItem.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmParameterTool.cs" />
     <Compile Include="TmModels\TmEnums\TmParamterCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TumoTests\UnityTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -4,7 +4,6 @@
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             this.AddComponent(new TmSystemManangerDll());
         }
     }

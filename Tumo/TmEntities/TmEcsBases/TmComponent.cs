@@ -24,7 +24,6 @@ namespace Tumo
         public virtual void EndInit() { }
         public virtual void TmAwake() { }
         public virtual void OnTransferParameter(object sender, TmParameter parameter) { }
-
         #region Dispose
         ///是否已释放了资源，true时方法都不可用了。
         private bool isDisposed { get; set; } = false;
