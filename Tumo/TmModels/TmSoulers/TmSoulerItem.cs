@@ -17,7 +17,7 @@ namespace Tumo
             AddComponent(new TmInventoryAdd());
             AddComponent(new TmBuffAdd());
             AddComponent(new TmAbilityAdd());
-            AddComponent(new TmAstarPath());
+            AddComponent(new TmAstarComponent());
         }
         public TmSoulerItem() { }                        ///构造函数 
         public TmSoulerItem(TmSoulerDB itemDB)

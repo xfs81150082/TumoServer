@@ -9,7 +9,7 @@ namespace Tumo
         }
         public override void TmAwake()
         {
-            AddComponent(new TmAstarPath());
+            AddComponent(new TmAstarComponent());
             AddComponent(new TmSouler());
         }
         public override void TmUpdate()
@@ -22,7 +22,7 @@ namespace Tumo
         TmAstar Astar { get; set; } = new TmAstar();
         void FindPaths(TmEntity entity)
         {
-            TmAstarPath path = entity.GetComponent<TmAstarPath>();
+            TmAstarComponent path = entity.GetComponent<TmAstarComponent>();
             if (!path.isCan) return;
             if (entity.GetComponent<TmSouler>().RoleType == RoleType.Engineer || path.IsKey) return;
             if (path.start != null && path.goal != null && path.grids != null && path.grids.Length > 0)

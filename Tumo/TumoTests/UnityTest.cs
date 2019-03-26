@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-namespace Tumo.TumoTests
+namespace Tumo
 {
     public class UnityTest : MonoBehaviour
     {

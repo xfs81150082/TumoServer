@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 namespace Tumo
 {
     [Serializable]
@@ -25,11 +24,11 @@ namespace Tumo
                 RemoveComponent<TmSkillDB>();
             }
             AddComponent(itemDB);
-            (this.GetComponent<TmName>() as TmName).Name = (this.GetComponent<TmSkillDB>() as TmSkillDB).Name;
-            (this.GetComponent<TmName>() as TmName).Id = (this.GetComponent<TmSkillDB>() as TmSkillDB).Id;
-            (this.GetComponent<TmName>() as TmName).ParentId = (this.GetComponent<TmSkillDB>() as TmSkillDB).RolerId;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Exp = (this.GetComponent<TmSkillDB>() as TmSkillDB).Exp;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Level = (this.GetComponent<TmSkillDB>() as TmSkillDB).Level;
+            this.GetComponent<TmName>().Name = this.GetComponent<TmSkillDB>().Name;
+            this.GetComponent<TmName>().Id = this.GetComponent<TmSkillDB>().Id;
+            this.GetComponent<TmName>().ParentId = this.GetComponent<TmSkillDB>().RolerId;
+            this.GetComponent<TmChangeType>().Exp = this.GetComponent<TmSkillDB>().Exp;
+            this.GetComponent<TmChangeType>().Level = this.GetComponent<TmSkillDB>().Level;
         }
     }
 }
