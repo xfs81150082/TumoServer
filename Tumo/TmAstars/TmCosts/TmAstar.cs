@@ -2,7 +2,7 @@
 using System.Collections;
 namespace Tumo
 {
-    public class TmAstar : TmComponent
+    public class TmAstar
     {
         private TmPriorityQueue closedList, openList;
         public ArrayList FindPath(TmGrid start, TmGrid goal, TmGrid[,] grids)

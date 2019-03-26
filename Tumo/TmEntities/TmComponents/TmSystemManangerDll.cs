@@ -6,6 +6,10 @@
         {
             AddComponent(new TmCoolDownSystem());
             AddComponent(new TmAstarSystem());
+            AddComponent(new TmSoulerSystem());
+            AddComponent(new TmSkillSystem());
+            AddComponent(new TmInventorySystem());
+
         }
     }
 }

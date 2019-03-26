@@ -24,7 +24,7 @@ namespace Servers
         void TestPaths()
         {           
             //Console.WriteLine(" grids:" + grids.Length);
-            Paths = SoulerItem.GetComponent<TmAstarPath>().paths;
+            Paths = SoulerItem.GetComponent<TmAstarComponent>().paths;
             if (Paths != null && Paths.Count > 0 && iscan)
             {
                 Console.WriteLine(Paths.Count);
@@ -51,15 +51,15 @@ namespace Servers
             if (time == resTime)
             {
                 GetStartGoal2();
-                SoulerItem.GetComponent<TmAstarPath>().isCan = true;
-                Console.WriteLine(TmTimerTool.CurrentTime() + " ServerTest53: " + SoulerItem.GetComponent<TmAstarPath>().isCan);
+                SoulerItem.GetComponent<TmAstarComponent>().isCan = true;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " ServerTest53: " + SoulerItem.GetComponent<TmAstarComponent>().isCan);
             }
 
             if (time == resTime * 2)
             {
                 GetStartGoal();
-                SoulerItem.GetComponent<TmAstarPath>().isCan = true;
-                Console.WriteLine(TmTimerTool.CurrentTime() + " ServerTest59: " + SoulerItem.GetComponent<TmAstarPath>().isCan);
+                SoulerItem.GetComponent<TmAstarComponent>().isCan = true;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " ServerTest59: " + SoulerItem.GetComponent<TmAstarComponent>().isCan);
                 time = 0;
             }
         }
@@ -87,9 +87,9 @@ namespace Servers
         }
         void UpdateStartGoal()
         {
-            SoulerItem.GetComponent<TmAstarPath>().start = start;
-            SoulerItem.GetComponent<TmAstarPath>().goal = goal;
-            SoulerItem.GetComponent<TmAstarPath>().grids = grids;
+            SoulerItem.GetComponent<TmAstarComponent>().start = start;
+            SoulerItem.GetComponent<TmAstarComponent>().goal = goal;
+            SoulerItem.GetComponent<TmAstarComponent>().grids = grids;
             SoulerItem.GetComponent<TmSouler>().RoleType = RoleType.Booker;
         }
         void GetGrids()

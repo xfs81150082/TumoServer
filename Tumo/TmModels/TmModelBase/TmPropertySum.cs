@@ -43,7 +43,7 @@ namespace Tumo
                     Property.Add(tem.GetComponent<TmProperty>());
                 }
             }
-            Property.Init();
+            //Property.Init();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 namespace Tumo
 {
-    public class TmAstarPath : TmComponent
+    public class TmAstarComponent : TmComponent
     {
         public TmGrid start { get; set; }
         public TmGrid goal { get; set; }
