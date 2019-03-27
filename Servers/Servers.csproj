@@ -67,6 +67,8 @@
     <Compile Include="Games\Components\TmHandlers\Inventorys\TmSmityHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Inventorys\TmKnapsackHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Inventorys\TmDressedHandler.cs" />
+    <Compile Include="Games\Components\TmHandlers\Maps\TmMapHandler.cs" />
+    <Compile Include="Mysqls\Components\Maps\Class1.cs" />
     <Compile Include="Mysqls\Components\Sences\TmGridMysql.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmInbornHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmBuffHandler.cs" />

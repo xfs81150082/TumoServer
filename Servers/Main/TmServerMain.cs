@@ -11,7 +11,7 @@ namespace Servers
         {
             Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");  
             Thread.Sleep(1);
-            //TmSenceInit();
+            TmSenceInit();
 
             TmGame.TmSystemMananger.AddComponent(new ServerTest());     ///测试用
 

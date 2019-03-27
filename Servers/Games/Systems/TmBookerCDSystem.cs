@@ -26,10 +26,10 @@ namespace Servers
             if (cd.CdTime >= cd.MaxCdTime)
             {
                 Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookercd Colsed. Booker Id{0} 刷新。 ", TmTcpSocket.Instance.TPeers.Count);
-                cd.End = true;
+                cd.Timing = true;
                 TmSoulerDB soulerDB = entity.GetComponent<TmSoulerDB>() as TmSoulerDB;
                 //发送心跳检测（并等待签到，签到入口在TmAsyncTcpSession里）
-                TmParameter parameter = TmParameterTool.ToJsonParameter(TenCode.Booker, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), (entity.GetComponent<TmSoulerDB>() as TmSoulerDB));
+                TmParameter parameter = TmParameterTool.ToJsonParameter(TenCode.Booker, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), entity.GetComponent<TmSoulerDB>());
                 //parameter.Key = cd.Key;
                 TmTcpSocket.Instance.SendAll(parameter);
                 (entity.Parent as TmBookerHandler).SpawnCDs.Remove(entity.EcsId);

@@ -27,15 +27,15 @@ namespace Tumo
                 RemoveComponent<TmSoulerDB>();
             }
             AddComponent(itemDB);
-            (this.GetComponent<TmName>() as TmName).Name = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Name;
-            (this.GetComponent<TmName>() as TmName).Id = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Id;
-            (this.GetComponent<TmName>() as TmName).ParentId = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).UserId;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Exp = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Exp;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Level = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Level;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Coin = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Coin;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Diamond = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Diamond;
-            (this.GetComponent<TmProperty>() as TmProperty).Hp = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Hp;
-            (this.GetComponent<TmProperty>() as TmProperty).Mp = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Mp;
+            this.GetComponent<TmName>().Name = this.GetComponent<TmSoulerDB>().Name;
+            this.GetComponent<TmName>().Id = this.GetComponent<TmSoulerDB>().Id;
+            this.GetComponent<TmName>().ParentId = this.GetComponent<TmSoulerDB>().UserId;
+            this.GetComponent<TmChangeType>().Exp = this.GetComponent<TmSoulerDB>().Exp;
+            this.GetComponent<TmChangeType>().Level = this.GetComponent<TmSoulerDB>().Level;
+            this.GetComponent<TmChangeType>().Coin = this.GetComponent<TmSoulerDB>().Coin;
+            this.GetComponent<TmChangeType>().Diamond = this.GetComponent<TmSoulerDB>().Diamond;
+            this.GetComponent<TmProperty>().Hp = this.GetComponent<TmSoulerDB>().Hp;
+            this.GetComponent<TmProperty>().Mp = this.GetComponent<TmSoulerDB>().Mp;
         }
 
     }
