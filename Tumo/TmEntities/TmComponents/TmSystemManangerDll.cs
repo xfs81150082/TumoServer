@@ -5,6 +5,7 @@
         public override void TmAwake()
         {
             AddComponent(new TmCoolDownSystem());
+            AddComponent(new TmSessionSystem());
             AddComponent(new TmAstarSystem());
             AddComponent(new TmSoulerSystem());
             AddComponent(new TmSkillSystem());

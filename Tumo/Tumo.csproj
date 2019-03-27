@@ -47,11 +47,11 @@
   <ItemGroup>
     <Compile Include="TmAstars\TmCosts\TmAstarSystem.cs" />
     <Compile Include="TmAstars\TmCosts\TmAstar.cs" />
+    <Compile Include="TmAstars\TmMaps\TmGridManager.cs" />
+    <Compile Include="TmAstars\TmMaps\TmGridMap.cs" />
+    <Compile Include="TmAstars\TmMaps\TmObstacle.cs" />
     <Compile Include="TmAstars\TmCosts\TmPriorityQueue.cs" />
     <Compile Include="TmAstars\TmCosts\TmGrid.cs" />
-    <Compile Include="TmAstars\TmMap\TmObstacle.cs" />
-    <Compile Include="TmAstars\TmMap\TmGridManager.cs" />
-    <Compile Include="TmAstars\TmMap\TmGridMap.cs" />
     <Compile Include="TmEntities\TmComponents\TmSystemManangerDll.cs" />
     <Compile Include="TmEntities\TmComponents\TmSystemMananger.cs" />
     <Compile Include="TmEntities\TmComponents\TmSence.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="TmModels\TmSkills\TmSkillSystem.cs" />
     <Compile Include="TmModels\TmSoulers\TmSoulerSystem.cs" />
     <Compile Include="TmSockets\Components\TmSession.cs" />
+    <Compile Include="TmSockets\Systems\TmSessionSystem.cs" />
     <Compile Include="TmSockets\Systems\TmCoolDownSystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
     <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />

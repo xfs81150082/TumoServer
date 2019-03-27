@@ -1,5 +1,7 @@
 ﻿using System;
-namespace Tumo
+using System.Collections.Generic;
+using Tumo;
+namespace Servers
 {
     public class TmGridMap : TmComponent
     {
@@ -11,5 +13,7 @@ namespace Tumo
         public int raw { get; set; }
         public int column { get; set; }
         public TmGrid[,] grids { get; set; }
+        public List<TmGrid> gridList { get; set; }
+        public List<TmObstacle> obstacles { get; set; }
     }
 }
