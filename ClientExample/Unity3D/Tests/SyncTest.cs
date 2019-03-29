@@ -30,13 +30,13 @@ namespace ClientExample
             {
                 if (GetTms().Count > 0)
                 {
-                    TmStatus status = new TmStatus();
-                    status.Paths = GetTms();
-                    status.MyselfTmTransform = new TmTransform(10, 11, 12);
-                    status.TargetTmTransform = new TmTransform(20, 21, 22);
-                    Console.WriteLine("SyncTest-Send-status.Count33: " + status.Paths.Count);
-                    TmParameter request = TmParameterTool.ToJsonParameter<TmStatus>(TenCode.StatusSync, ElevenCode.Roler, ElevenCode.Roler.ToString(), status);
-                    TmTcpSocket.Instance.Send(request);
+                    //TmStatus status = new TmStatus();
+                    //status.Paths = GetTms();
+                    //status.MyselfTmTransform = new TmTransform(10, 11, 12);
+                    //status.TargetTmTransform = new TmTransform(20, 21, 22);
+                    //Console.WriteLine("SyncTest-Send-status.Count33: " + status.Paths.Count);
+                    //TmParameter request = TmParameterTool.ToJsonParameter<TmStatus>(TenCode.StatusSync, ElevenCode.Roler, ElevenCode.Roler.ToString(), status);
+                    //TmTcpSocket.Instance.Send(request);
                     time2 = 0;
                 }
             }

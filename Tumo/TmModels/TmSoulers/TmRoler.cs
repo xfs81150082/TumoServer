@@ -9,7 +9,6 @@ namespace Tumo
             base.TmAwake();
             AddComponent(new TmTransform());
             AddComponent(new TmSoulerItem());
-            AddComponent(new TmStatus());
             AddComponent(new TmMove());
             AddComponent(new TmAttack());
             AddComponent(new TmInventoryItem());
