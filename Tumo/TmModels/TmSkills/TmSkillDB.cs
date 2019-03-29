@@ -15,7 +15,7 @@ namespace Tumo
         public int RolerId { get; set; } = 100001;
         public int Exp { get; set; } = 0;
         public int Level { get; set; } = 10;
-        public RoleType RoleType { get; set; } = RoleType.CostEngineer;
+        public RoleType RoleType { get; set; } = RoleType.Engineer;
         public int Place { get; set; } = 0;
     }
 }

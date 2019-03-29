@@ -35,7 +35,7 @@ namespace Servers
                 if (this.Bookers != null)
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.Booker, ElevenCode.GetRolers, ElevenCode.GetRolers.ToString(), this.Bookers);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]); 
                     TmTcpSocket.Instance.Send(response);
                     yes = true;
                 }
@@ -61,7 +61,11 @@ namespace Servers
             SpawnCDs.Add(monster.EcsId, monster);
 
             parameter.ElevenCode = ElevenCode.RolerRemove;
-            TmTcpSocket.Instance.SendAll(parameter);
+            foreach(var tem in TmTcpSocket.Instance.TPeers.Keys)
+            {
+                parameter.Keys.Add(tem);
+            }
+            TmTcpSocket.Instance.Send(parameter);
         }
 
     }

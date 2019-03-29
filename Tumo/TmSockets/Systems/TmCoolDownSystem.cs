@@ -12,10 +12,10 @@ namespace Tumo
         {
             foreach (TmEntity entity in GetTmEntities())
             {
-                UpdateCDCount(entity);
+                UpdateCoolDown(entity);
             }
         }
-        void UpdateCDCount(TmEntity entity)
+        void UpdateCoolDown(TmEntity entity)
         {
             TmCoolDown cd = entity.GetComponent<TmCoolDown>();
             if (cd.Counting)

@@ -66,15 +66,9 @@ namespace Tumo
     [Serializable]
     public enum RoleType
     {
-        Player,
-        Monster,
-        Npcer,
         Engineer,
         Booker,
         Teacher,
-        CostEngineer,                  //造价师
-        SupervisionEngineer,           //监理师
-        BuildEngineer,                 //建造师 
         Administration,
         Valuation,
         Metering,

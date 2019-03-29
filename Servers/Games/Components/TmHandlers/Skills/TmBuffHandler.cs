@@ -38,7 +38,7 @@ namespace Servers
                 if (Skills.Count>0)
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<Dictionary<int, TmSkill>>(TenCode.Buff, ElevenCode.Get, ElevenCode.Get.ToString(), Skills);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     yes = true;
                 }
@@ -68,7 +68,7 @@ namespace Servers
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<Dictionary<int, TmSkillDB>>(TenCode.Buff, ElevenCode.GetSkills, ElevenCode.GetSkills.ToString(), skillDBs);
                     TmParameterTool.AddJsonParameter(response, "RolerId", rolerid);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     yes = true;
                     break;

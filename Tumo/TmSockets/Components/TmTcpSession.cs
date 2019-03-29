@@ -139,10 +139,10 @@ namespace Tumo
         public override void OnTransferParameter(object obj, TmParameter parameter)
         {
             ///将字符串string,用json反序列化转换成MvcParameter参数
-            parameter.EcsId = this.EcsId;
+            parameter.Keys.Add(this.EcsId);
             if (parameter.TenCode == TenCode.EessionCD)
             {
-                (this.GetComponent<TmCoolDown>() as TmCoolDown).CdCount = 0;
+                this.GetComponent<TmCoolDown>().CdCount = 0;
             }
             else
             {
@@ -164,7 +164,7 @@ namespace Tumo
             BuffList.AddRange(temByte);
         }/// 队列数据
         #endregion
-        #region SendString       
+        #region SendString
         public void SendString(string mvcString)
         {
             if (null == Socket.Handle || !Socket.Connected)

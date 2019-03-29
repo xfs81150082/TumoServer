@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 namespace Tumo
 {
-    public class TmDictionaryParameter : TmComponent
+    public class TmDictionaryParameter
     {
         public TenCode TenCode { get; set; }
         public ElevenCode ElevenCode { get; set; }

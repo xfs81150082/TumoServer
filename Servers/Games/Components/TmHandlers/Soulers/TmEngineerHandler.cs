@@ -43,7 +43,7 @@ namespace Servers
                 Console.WriteLine(TmTimerTool.CurrentTime() + " this.Soulers:" + this.Soulers.Count);
             }
             TmParameter response = TmParameterTool.ToJsonParameter<Dictionary<int, TmSouler>>(TenCode.Engineer, ElevenCode.Get, ElevenCode.Get.ToString(), Soulers);
-            response.EcsId = parameter.EcsId;
+            response.Keys.Add(parameter.Keys[0]);
             TmTcpSocket.Instance.Send(response);
         }
         private void GetRolersByUersId(TmParameter parameter)
@@ -61,7 +61,7 @@ namespace Servers
                 if (yes)
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.Engineer, ElevenCode.GetRolers, ElevenCode.GetRolers.ToString(), Engineers);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     break;
                 }
@@ -92,7 +92,7 @@ namespace Servers
                 if (yes)
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<TmSoulerDB>(TenCode.Engineer, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), Engineer);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     GetSoulersByRolerId(parameter);
                     GetSkillsByRolerId(parameter);

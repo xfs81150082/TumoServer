@@ -13,34 +13,15 @@ namespace Tumo
         {
             foreach (TmEntity entity in GetTmEntities())
             {
-                UpdateCDCount(entity);
+                CheckSession(entity);
             }
         }
-        void UpdateCDCount(TmEntity entity)
+        void CheckSession(TmEntity entity)
         {
-            TmCoolDown cd = entity.GetComponent<TmCoolDown>();
-            ////cd.CdCount += 1;
-            ////if (cd.CdCount >= cd.MaxCdCount)
-            ////{
-            ////    Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmTcpSocket.Instance.TPeers.Count);
-            ////    cd.End = true;
-            ////    if (cd.Parent != null)
-            ////    {
-            ////        cd.Parent.Dispose();
-            ////    }
-            ////    this.Dispose();
-            ////}
-            ////else
-            ////{
-            ////    //发送心跳检测（并等待签到，签到入口在TmAsyncTcpSession里）
-            ////    TmParameter mvc = TmParameterTool.ToParameter(TenCode.EessionCD, ElevenCode.Login);
-            ////    mvc.EcsId = cd.Key;
-            ////    TmTcpSocket.Instance.Send(mvc);
-            ////}
+            TmCoolDown cd = entity.GetComponent<TmCoolDown>();           
             if (!cd.Counting)
             {
                 Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmTcpSocket.Instance.TPeers.Count);
-                cd.Counting = true;
                 if (cd.Parent != null)
                 {
                     cd.Parent.Dispose();
@@ -51,7 +32,8 @@ namespace Tumo
             {
                 //发送心跳检测（并等待签到，签到入口在TmAsyncTcpSession里）
                 TmParameter mvc = TmParameterTool.ToParameter(TenCode.EessionCD, ElevenCode.Login);
-                mvc.EcsId = cd.Key;
+                //mvc.Keys.Add(cd.Key);        
+                mvc.Keys.Add(entity.EcsId);
                 TmTcpSocket.Instance.Send(mvc);
             }
             Console.WriteLine(TmTimerTool.CurrentTime() + " CdCount:{0}-{1} ", cd.CdCount, cd.MaxCdCount);

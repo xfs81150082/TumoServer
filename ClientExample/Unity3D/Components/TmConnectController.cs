@@ -30,6 +30,10 @@ namespace ClientExample
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmConnect: " + tenCode);
                     TmGame.TmSence.GetComponent<TmTeacherController>().OnTransferParameter(this, parameter);
                     break;
+                case (TenCode.StatusSync):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmConnect: " + tenCode);
+                    TmGame.TmSence.GetComponent<TmStatusSyncController>().OnTransferParameter(this, parameter);
+                    break;
                 case (TenCode.None):
                     break;
                 default:

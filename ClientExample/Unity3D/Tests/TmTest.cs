@@ -17,7 +17,7 @@ namespace ClientExample
         #region
         void TestTmUserLogin()
         {
-            Thread.Sleep(4000);
+            Thread.Sleep(1000);
             if (IsUserLogin == false)
             {
                 IsUserLogin = true;

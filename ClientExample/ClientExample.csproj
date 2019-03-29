@@ -45,14 +45,16 @@
   <ItemGroup>
     <Compile Include="Main\TmClientMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unity3D\Components\Statuses\TmStatusSyncController.cs" />
     <Compile Include="Unity3D\Components\TmConnectController.cs" />
     <Compile Include="Unity3D\Components\Souers\TmBookerController.cs" />
     <Compile Include="Unity3D\Components\Souers\TmTeacherController.cs" />
     <Compile Include="Unity3D\Components\Souers\TmEngineerController.cs" />
-    <Compile Include="Unity3D\Components\TmTest.cs" />
+    <Compile Include="Unity3D\Tests\TmTest.cs" />
     <Compile Include="Unity3D\Components\Souers\TmUserController.cs" />
     <Compile Include="Unity3D\Players\TmEngineer.cs" />
     <Compile Include="Unity3D\Systems\TmClientSocket.cs" />
+    <Compile Include="Unity3D\Tests\SyncTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

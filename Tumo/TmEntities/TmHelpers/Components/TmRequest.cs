@@ -5,6 +5,6 @@ namespace Tumo
 {
     [Serializable]
     public class TmRequest : TmParameter
-    {       
+    {
     }
 }

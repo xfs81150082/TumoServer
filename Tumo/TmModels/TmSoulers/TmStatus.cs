@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 namespace Tumo
 {
@@ -12,6 +13,7 @@ namespace Tumo
         public double MoveSpeed;                //当前速度
         public TmTransform MyselfTmTransform;   //当前坐标
         public TmTransform TargetTmTransform;   //当前目标坐标或朝向
+        public List<TmTransform> Paths;         //当前TmGrid路径
         public TmStatus() { }
     }
 }

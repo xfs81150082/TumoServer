@@ -5,6 +5,6 @@ namespace Tumo
     [Serializable]
     public class TmParameter : TmDictionaryParameter
     {
-        public string Key { get; set; }
+        public List<string> Keys { get; set; } = new List<string>();
     }
 }
