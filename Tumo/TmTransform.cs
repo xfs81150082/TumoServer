@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Tumo
 {
+    [Serializable]
     public class TmTransform : TmComponent
     {
         public int senceId { get; set; }
@@ -28,23 +29,6 @@ namespace Tumo
             this.py = py;
             this.pz = pz;
             this.ay = ay;
-        }
-        public TmTransform(TmSoulerItem souler)
-        {
-            if (souler.GetComponent<TmTransform>() != null)
-            {
-                TmTransform trans = souler.GetComponent<TmTransform>();
-                this.px = trans.px;
-                this.py = trans.py;
-                this.pz = trans.pz;
-                this.ax = trans.ax;
-                this.ay = trans.ay;
-                this.az = trans.az;                
-            }
-            else
-            {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " " + souler.GetType().Name + " 无TmTransform组件。");
-            }
         }
     }
 }
