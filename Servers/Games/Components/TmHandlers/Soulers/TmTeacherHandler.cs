@@ -39,7 +39,7 @@ namespace Servers
                 if (this.Teachers != null)
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.Teacher, ElevenCode.GetRolers, ElevenCode.GetRolers.ToString(), this.Teachers);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     yes = true;
                 }

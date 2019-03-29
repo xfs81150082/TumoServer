@@ -37,7 +37,7 @@ namespace Servers
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<List<TmInventoryDB>>(TenCode.Dressed, ElevenCode.GetInventorys, ElevenCode.GetInventorys.ToString(), inventoryDBs);
                     TmParameterTool.AddJsonParameter(response, "RolerId", rolerid);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     yes = true;
                     break;

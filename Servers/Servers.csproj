@@ -76,7 +76,7 @@
     <Compile Include="Games\Tests\ServerTest.cs" />
     <Compile Include="Games\Models\Rolers\TmEngineer.cs" />
     <Compile Include="Games\Models\Rolers\TmBooker.cs" />
-    <Compile Include="Games\Components\TmHandlers\Soulers\TmStatusSyncHandler.cs" />
+    <Compile Include="Games\Components\TmHandlers\Statuses\TmStatusSyncHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Soulers\TmBookerHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Soulers\TmTeacherHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Soulers\TmUserHandler.cs" />

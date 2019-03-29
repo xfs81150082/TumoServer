@@ -8,6 +8,7 @@ namespace Tumo
         public override void TmAwake()
         {
             base.TmAwake();
+            AddComponent(new TmTransform());
             AddComponent(new TmName());
             AddComponent(new TmSouler());
             AddComponent(new TmSoulerDB());

@@ -38,7 +38,7 @@ namespace Servers
                 if (Inventorys.Count > 0)
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<Dictionary<int, TmInventory>>(TenCode.Knapsack, ElevenCode.Get, ElevenCode.Get.ToString(), Inventorys);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     yes = true;
                 }
@@ -68,7 +68,7 @@ namespace Servers
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<List<TmInventoryDB>>(TenCode.Knapsack, ElevenCode.GetInventorys, ElevenCode.GetInventorys.ToString(), inventoryDBs);
                     TmParameterTool.AddJsonParameter(response, "RolerId", rolerid);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     yes = true;
                     break;

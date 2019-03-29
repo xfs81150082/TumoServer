@@ -5,6 +5,5 @@ namespace ClientExample
 {
     public class TmEngineer : TmEntity
     {
-
     }
 }

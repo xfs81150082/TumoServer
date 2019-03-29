@@ -56,7 +56,6 @@
     <Compile Include="TmEntities\TmComponents\TmSystemMananger.cs" />
     <Compile Include="TmEntities\TmComponents\TmSence.cs" />
     <Compile Include="TmEntities\TmComponents\TmGame.cs" />
-    <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryComponent.cs" />
     <Compile Include="TmEntities\TmHelpers\Components\TmRequest.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
     <Compile Include="TmGameObjects\TmGameObjectEntity.cs" />
@@ -101,7 +100,7 @@
     <Compile Include="TmEntities\TmEcsBases\TmComponent.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmEntity.cs" />
     <Compile Include="TmEntities\TmEcsBases\TmIdGenerater.cs" />
-    <Compile Include="TmModels\TmSoulers\TmTransform.cs" />
+    <Compile Include="TmTransform.cs" />
     <Compile Include="TmModels\TmSoulers\TmUser.cs" />
     <Compile Include="TmSockets\Components\TmClient.cs" />
     <Compile Include="TmSockets\Components\TmPeer.cs" />

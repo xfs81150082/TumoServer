@@ -53,24 +53,28 @@ namespace Tumo
                 while (SendParameters.Count > 0)
                 {
                     TmParameter mvc = SendParameters.Dequeue();
-                    TmTcpSession tpeer;
-                    TPeers.TryGetValue(mvc.EcsId, out tpeer);
-                    ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
-                    string mvcJsons = TmJson.ToString<TmParameter>(mvc);
-                    if (tpeer != null)
+                    while (mvc.Keys.Count > 0)
                     {
-                        tpeer.SendString(mvcJsons);
-                    }
-                    else
-                    {
-                        Console.WriteLine(TmTimerTool.CurrentTime() + " 没找TPeer，用Key: " + mvc.EcsId);
-                        break;
+                        TmTcpSession tpeer;
+                        TPeers.TryGetValue(mvc.Keys[0], out tpeer);
+                        ///用Json将参数（MvcParameter）,序列化转换成字符串（string）
+                        string mvcJsons = TmJson.ToString<TmParameter>(mvc);
+                        if (tpeer != null)
+                        {
+                            tpeer.SendString(mvcJsons);
+                        }
+                        else
+                        {
+                            Console.WriteLine(TmTimerTool.CurrentTime() + " 没找TPeer，用Key: " + mvc.Keys[0]);
+                            break;
+                        }
+                        mvc.Keys.Remove(mvc.Keys[0]);                        
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " SendMvcParameters: " + ex.Message);
+                Console.WriteLine(TmTimerTool.CurrentTime() + " OnSendMvcParameters: " + ex.Message);
             }
         }
         #endregion
