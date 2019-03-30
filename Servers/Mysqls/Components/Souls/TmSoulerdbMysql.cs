@@ -25,21 +25,22 @@ namespace Servers
                         item.SoulerId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
-                        item.Hp = reader.GetInt32(6);
-                        item.Mp = reader.GetInt32(7);
-                        item.Coin = reader.GetInt32(8);
-                        item.Diamond = reader.GetInt32(9);
-                        item.SenceId = reader.GetInt32(10);
-                        item.State = reader.GetInt32(11);
-                        item.px = reader.GetDouble(12);
-                        item.py = reader.GetDouble(13);
-                        item.pz = reader.GetDouble(14);
-                        item.ax = reader.GetDouble(15);
-                        item.ay = reader.GetDouble(16);
-                        item.az = reader.GetDouble(17);
-                        item.ServerId = reader.GetInt32(18);
-                        item.CreateDate = reader.GetString(19);
-                        //Console.WriteLine(userId + " " + reader.FieldCount + " " + item.Id);
+                        item.Coin = reader.GetInt32(6);
+                        item.Diamond = reader.GetInt32(7);
+                        item.Hp = reader.GetInt32(8);
+                        item.Mp = reader.GetInt32(9);
+                        item.State = reader.GetInt32(10);
+                        item.CdTime = reader.GetDouble(11);
+                        item.MaxCdTime = reader.GetDouble(12);
+                        item.ServerId = reader.GetInt32(13);
+                        item.SenceId = reader.GetInt32(14);
+                        item.px = reader.GetDouble(15);
+                        item.py = reader.GetDouble(16);
+                        item.pz = reader.GetDouble(17);
+                        item.ax = reader.GetDouble(18);
+                        item.ay = reader.GetDouble(19);
+                        item.az = reader.GetDouble(20);
+                        item.CreateDate = reader.GetString(21);
                         itemDBs.Add(item);
                     }
                 }
@@ -73,21 +74,22 @@ namespace Servers
                         item.SoulerId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
-                        item.Hp = reader.GetInt32(6);
-                        item.Mp = reader.GetInt32(7);
-                        item.Coin = reader.GetInt32(8);
-                        item.Diamond = reader.GetInt32(9);
-                        item.SenceId = reader.GetInt32(10);
-                        item.State = reader.GetInt32(11);
-                        item.px = reader.GetDouble(12);
-                        item.py = reader.GetDouble(13);
-                        item.pz = reader.GetDouble(14);
-                        item.ax = reader.GetDouble(15);
-                        item.ay = reader.GetDouble(16);
-                        item.az = reader.GetDouble(17);
-                        item.ServerId = reader.GetInt32(18);
-                        item.CreateDate = reader.GetString(19);
-                        //Console.WriteLine(userId + " " + reader.FieldCount + " " + item.Id);
+                        item.Coin = reader.GetInt32(6);
+                        item.Diamond = reader.GetInt32(7);
+                        item.Hp = reader.GetInt32(8);
+                        item.Mp = reader.GetInt32(9);
+                        item.State = reader.GetInt32(10);
+                        item.CdTime = reader.GetDouble(11);
+                        item.MaxCdTime = reader.GetDouble(12);
+                        item.ServerId = reader.GetInt32(13);
+                        item.SenceId = reader.GetInt32(14);
+                        item.px = reader.GetDouble(15);
+                        item.py = reader.GetDouble(16);
+                        item.pz = reader.GetDouble(17);
+                        item.ax = reader.GetDouble(18);
+                        item.ay = reader.GetDouble(19);
+                        item.az = reader.GetDouble(20);
+                        item.CreateDate = reader.GetString(21);
                         itemDBs.Add(item);
                     }
                 }
@@ -120,20 +122,22 @@ namespace Servers
                         item.SoulerId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
-                        item.Hp = reader.GetInt32(6);
-                        item.Mp = reader.GetInt32(7);
-                        item.Coin = reader.GetInt32(8);
-                        item.Diamond = reader.GetInt32(9);
-                        item.SenceId = reader.GetInt32(10);
-                        item.State = reader.GetInt32(11);
-                        item.px = reader.GetDouble(12);
-                        item.py = reader.GetDouble(13);
-                        item.pz = reader.GetDouble(14);
-                        item.ax = reader.GetDouble(15);
-                        item.ay = reader.GetDouble(16);
-                        item.az = reader.GetDouble(17);
-                        item.ServerId = reader.GetInt32(18);
-                        item.CreateDate = reader.GetString(19);
+                        item.Coin = reader.GetInt32(6);
+                        item.Diamond = reader.GetInt32(7);
+                        item.Hp = reader.GetInt32(8);
+                        item.Mp = reader.GetInt32(9);
+                        item.State = reader.GetInt32(10);
+                        item.CdTime = reader.GetDouble(11);
+                        item.MaxCdTime = reader.GetDouble(12);
+                        item.ServerId = reader.GetInt32(13);
+                        item.SenceId = reader.GetInt32(14);
+                        item.px = reader.GetDouble(15);
+                        item.py = reader.GetDouble(16);
+                        item.pz = reader.GetDouble(17);
+                        item.ax = reader.GetDouble(18);
+                        item.ay = reader.GetDouble(19);
+                        item.az = reader.GetDouble(20);
+                        item.CreateDate = reader.GetString(21);
                     }
                 }
                 return item;
@@ -183,7 +187,6 @@ namespace Servers
                         item.BrainsRate = reader.GetDouble(20);
                         item.PowerRate = reader.GetDouble(21);
                         item.AgilityRate = reader.GetDouble(22);
-                        //Console.WriteLine(TmTimerTool.CurrentTime() + " TmSouler-186-Power:" + (item.GetComponent<TmProperty>() as TmProperty).Power);
                         dict.Add(item.Id, item);
                     }
                 }

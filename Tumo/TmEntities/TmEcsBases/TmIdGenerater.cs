@@ -1,17 +1,19 @@
-﻿namespace Tumo
+﻿using System;
+
+namespace Tumo
 {
     public static class TmIdGenerater
     {
-        static int idCount = 1000;
+        static int idCount = 1400;
         public static string GetId()
         {
             string tmId = "";
-            idCount++;
-            if (idCount > 2600)
+            idCount += 1;
+            if (idCount > 4000)
             {
-                idCount = 1000;
+                idCount = 1400;
             }
-            tmId = TmTimerTool.CurrentTime() + idCount;
+            tmId = TmTimerTool.IdCurrentTime() + idCount.ToString();
             return tmId;
         }
     }

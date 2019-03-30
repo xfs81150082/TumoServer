@@ -6,11 +6,13 @@ using Tumo;
 namespace ClientExample
 {
     class SyncTest : TmSystem
-    {        
+    {
+        public string clientId;
         public override void TmAwake()
         {
             //GetGrids();
             //GetStartGoal();
+            clientId = TmIdGenerater.GetId();
         }
         public override void TmUpdate()
         {
@@ -18,42 +20,32 @@ namespace ClientExample
             //TestPaths();
 
             SyncGrid();
+
+
         }
 
-        #region
+        #region StatusSync test
         int time2 = 0;
-        int resTime2 = 120;
+        int resTime2 = 100;
         void SyncGrid()
         {
             time2 += 1;
             if (time2 > resTime2)
             {
-                if (GetTms().Count > 0)
-                {
-                    //TmStatus status = new TmStatus();
-                    //status.Paths = GetTms();
-                    //status.MyselfTmTransform = new TmTransform(10, 11, 12);
-                    //status.TargetTmTransform = new TmTransform(20, 21, 22);
-                    //Console.WriteLine("SyncTest-Send-status.Count33: " + status.Paths.Count);
-                    //TmParameter request = TmParameterTool.ToJsonParameter<TmStatus>(TenCode.StatusSync, ElevenCode.Roler, ElevenCode.Roler.ToString(), status);
-                    //TmTcpSocket.Instance.Send(request);
-                    time2 = 0;
-                }
+                TmStatus status = new TmStatus();
+                status.Name = clientId;
+                status.MyselfTmTransform = new TmTransform(10, 11, 12, 60);
+                status.TargetTmTransform = new TmTransform(20, 21, 22, 84);
+                Console.WriteLine("clientId: " + clientId + " Send36: " + " px: " + status.MyselfTmTransform.px + " py: " + status.MyselfTmTransform.py + " pz: " + status.MyselfTmTransform.pz + " ay: " + status.MyselfTmTransform.ay);
+                Console.WriteLine("clientId: " + clientId + " Send37: " + " px: " + status.MyselfTmTransform.px + " py: " + status.MyselfTmTransform.py + " pz: " + status.MyselfTmTransform.pz + " ay: " + status.MyselfTmTransform.ay);
+                TmParameter request = TmParameterTool.ToJsonParameter<TmStatus>(TenCode.StatusSync, ElevenCode.Roler, ElevenCode.Roler.ToString(), status);
+                TmTcpSocket.Instance.Send(request);
+                time2 = 0;
             }
-        }
-
-        List<TmTransform> GetTms()
-        {
-            List<TmTransform> tms = new List<TmTransform>();
-            tms.Add(new TmTransform(1, 2, 3));
-            tms.Add(new TmTransform(3, 4, 5));
-            tms.Add(new TmTransform(5, 6, 7));
-            tms.Add(new TmTransform(7, 8, 9));
-            return tms;
         }
         #endregion
 
-        #region TestPaths
+        #region AstarFath test
         Stopwatch TmTime = new Stopwatch();
         TmSoulerItem SoulerItem = new TmSoulerItem();
         ArrayList Paths { get; set; } = new ArrayList();
@@ -72,9 +64,7 @@ namespace ClientExample
                 iscan = false;
             }            
         }
-        #endregion
-
-        #region Gets
+        
         TmGrid[,] grids { get; set; }
         TmGrid start { get; set; }
         TmGrid goal { get; set; }
