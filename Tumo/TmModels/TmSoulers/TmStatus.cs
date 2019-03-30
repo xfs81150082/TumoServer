@@ -6,9 +6,7 @@ namespace Tumo
     [Serializable]
     public class TmStatus
     {
-        public int RoelerId;
-        public string Name;
-        public string Key;
+        public string KeyId;                    //TmSoulerDB的EcsId
         public string CurdateTime;              //当前时间数值
         public string AttackState;              //攻击动画状态
         public double MoveSpeed;                //当前速度

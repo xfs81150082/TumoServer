@@ -106,7 +106,6 @@
     <Compile Include="TmSockets\Components\TmPeer.cs" />
     <Compile Include="TmEntities\TmHelpers\Components\TmResponse.cs" />
     <Compile Include="TmSockets\Components\TmTcpSession.cs" />
-    <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryParameter.cs" />
     <Compile Include="TmModels\TmEnums\TmInfoType.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmLog.cs" />
     <Compile Include="TmSockets\Components\TmTcpClient.cs" />
@@ -117,7 +116,6 @@
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmParameterTool.cs" />
     <Compile Include="TmModels\TmEnums\TmParamterCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TumoTests\UnityTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
