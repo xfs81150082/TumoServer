@@ -25,7 +25,7 @@ namespace Servers
         {
             string myself = parameter.Keys[0];
             parameter.Keys = new List<string>(TmTcpSocket.Instance.TPeers.Keys);
-            //parameter.Keys.Remove(myself);
+            parameter.Keys.Remove(myself);
             TmTcpSocket.Instance.Send(parameter);
         }
 

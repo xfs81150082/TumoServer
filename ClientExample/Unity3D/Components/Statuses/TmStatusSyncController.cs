@@ -13,7 +13,7 @@ namespace ClientExample
             {
                 case (ElevenCode.Roler):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
-                    //RolerStatusSync(parameter);
+                    RolerStatusSync(parameter);
                     break;              
                 case (ElevenCode.None):
                     break;
@@ -22,29 +22,15 @@ namespace ClientExample
             }
         }
 
-        //void RolerStatusSync(TmParameter parameter)
-        //{
-        //    TmStatus status = TmParameterTool.GetJsonValue<TmStatus>(parameter, parameter.ElevenCode.ToString());
-        //    if (status != null)
-        //    {
-        //        Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncController-Recv-status.Count28: " + status.Paths.Count);
-        //        TestPaths(status);
-        //    }
-        //}
-        //void TestPaths(TmStatus status)
-        //{
-        //    if (status.Paths != null && status.Paths.Count > 0)
-        //    {
-        //        Console.WriteLine(status.Paths.Count);
-        //        Console.WriteLine(TmTimerTool.CurrentTime() + " Myself-px: " + status.MyselfTmTransform.px + " py: " + status.MyselfTmTransform.py + " pz: " + status.MyselfTmTransform.pz);
-        //        Console.WriteLine(TmTimerTool.CurrentTime() + " Target-px: " + status.TargetTmTransform.px + " py: " + status.TargetTmTransform.py + " pz: " + status.TargetTmTransform.pz);
-        //        for (int i = 0; i < status.Paths.Count; i++)
-        //        {
-        //            TmTransform trans = status.Paths[i];
-        //            Console.WriteLine(TmTimerTool.CurrentTime() + " (x,z): " + trans.px + " , " + trans.pz);
-        //        }
-        //    }
-        //}
+        void RolerStatusSync(TmParameter parameter)
+        {
+            TmStatus status = TmParameterTool.GetJsonValue<TmStatus>(parameter, parameter.ElevenCode.ToString());
+            if (status != null)
+            {
+                Console.WriteLine("status.Name: " + status.Name + " Recv30: " + " px: " + status.MyselfTmTransform.px + " py: " + status.MyselfTmTransform.py + " pz: " + status.MyselfTmTransform.pz + " ay: " + status.MyselfTmTransform.ay);
+                Console.WriteLine("status.Name: " + status.Name + " Recv31: " + " px: " + status.TargetTmTransform.px + " py: " + status.TargetTmTransform.py + " pz: " + status.TargetTmTransform.pz + " ay: " + status.TargetTmTransform.ay);
+            }
+        }
 
     }
 }
