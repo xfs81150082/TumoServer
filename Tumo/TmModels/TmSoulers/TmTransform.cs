@@ -7,9 +7,6 @@ namespace Tumo
     [Serializable]
     public class TmTransform : TmComponent
     {
-        public int senceId { get; set; }
-        public string map { get; set; }
-        public int rolerId { get; set; }
         public double px { get; set; } = 0;
         public double py { get; set; } = 0;
         public double pz { get; set; } = 0;
