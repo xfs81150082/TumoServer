@@ -33,7 +33,7 @@ namespace ClientExample
             if (time2 > resTime2)
             {
                 TmStatus status = new TmStatus();
-                status.Name = clientId;
+                status.KeyId = clientId;
                 status.MyselfTmTransform = new TmTransform(10, 11, 12, 60);
                 status.TargetTmTransform = new TmTransform(20, 21, 22, 84);
                 Console.WriteLine("clientId: " + clientId + " Send36: " + " px: " + status.MyselfTmTransform.px + " py: " + status.MyselfTmTransform.py + " pz: " + status.MyselfTmTransform.pz + " ay: " + status.MyselfTmTransform.ay);

@@ -27,8 +27,8 @@ namespace ClientExample
             TmStatus status = TmParameterTool.GetJsonValue<TmStatus>(parameter, parameter.ElevenCode.ToString());
             if (status != null)
             {
-                Console.WriteLine("status.Name: " + status.Name + " Recv30: " + " px: " + status.MyselfTmTransform.px + " py: " + status.MyselfTmTransform.py + " pz: " + status.MyselfTmTransform.pz + " ay: " + status.MyselfTmTransform.ay);
-                Console.WriteLine("status.Name: " + status.Name + " Recv31: " + " px: " + status.TargetTmTransform.px + " py: " + status.TargetTmTransform.py + " pz: " + status.TargetTmTransform.pz + " ay: " + status.TargetTmTransform.ay);
+                Console.WriteLine(" KeyId: " + status.KeyId + " Recv30: " + " px: " + status.MyselfTmTransform.px + " py: " + status.MyselfTmTransform.py + " pz: " + status.MyselfTmTransform.pz + " ay: " + status.MyselfTmTransform.ay);
+                Console.WriteLine(" KeyId: " + status.KeyId + " Recv31: " + " px: " + status.TargetTmTransform.px + " py: " + status.TargetTmTransform.py + " pz: " + status.TargetTmTransform.pz + " ay: " + status.TargetTmTransform.ay);
             }
         }
 
