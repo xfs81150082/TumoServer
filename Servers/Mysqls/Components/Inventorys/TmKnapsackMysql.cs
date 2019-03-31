@@ -46,7 +46,7 @@ namespace Servers
         {
             int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.EngineerLogin.ToString());
             List<TmInventoryDB> dbs = GetInventorydbsByRolerId(rolerid);
-            Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmKnapsackMysql-dbs: " + dbs.Count);
             if (dbs.Count > 0)
             {
                 (sender as TmKnapsackHandler).Knapsacks.Add(rolerid, dbs);
