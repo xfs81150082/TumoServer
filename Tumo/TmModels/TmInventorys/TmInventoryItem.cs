@@ -25,11 +25,15 @@ namespace Tumo
                 RemoveComponent<TmInventoryDB>();
             }
             AddComponent(itemDB);
-            (this.GetComponent<TmName>() as TmName).Name = (this.GetComponent<TmInventoryDB>() as TmInventoryDB).Name;
-            (this.GetComponent<TmName>() as TmName).Id = (this.GetComponent<TmInventoryDB>() as TmInventoryDB).Id;
-            (this.GetComponent<TmName>() as TmName).ParentId = (this.GetComponent<TmInventoryDB>() as TmInventoryDB).RolerId;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Exp = (this.GetComponent<TmInventoryDB>() as TmInventoryDB).Exp;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Level = (this.GetComponent<TmInventoryDB>() as TmInventoryDB).Level;
+            this.GetComponent<TmName>().Id = this.GetComponent<TmInventoryDB>().Id;
+            this.GetComponent<TmName>().Name = this.GetComponent<TmInventoryDB>().Name;
+            this.GetComponent<TmName>().ParentId = this.GetComponent<TmInventoryDB>().RolerId;
+            this.GetComponent<TmInventory>().Id = this.GetComponent<TmInventoryDB>().InventoryId;
+            this.GetComponent<TmChangeType>().Place = this.GetComponent<TmInventoryDB>().Place;
+            this.GetComponent<TmChangeType>().Exp = this.GetComponent<TmInventoryDB>().Exp;
+            this.GetComponent<TmChangeType>().Level = this.GetComponent<TmInventoryDB>().Level;
+            this.GetComponent<TmChangeType>().Count = this.GetComponent<TmInventoryDB>().Count;
+            this.GetComponent<TmChangeType>().Durability = this.GetComponent<TmInventoryDB>().Durability;
         }
 
         //public void UpdateItem(int level)

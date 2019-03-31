@@ -18,7 +18,6 @@ namespace Servers
                 {
                     if (reader.HasRows)
                     {
-                        //Console.WriteLine(reader.RecordsAffected + "*" + reader.FieldCount);
                         item.Id = reader.GetInt32(0);
                         item.Name = reader.GetString(1);
                         item.InventoryId = reader.GetInt32(2);
