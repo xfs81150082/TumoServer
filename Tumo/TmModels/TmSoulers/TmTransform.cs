@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 namespace Tumo
 {
     [Serializable]
@@ -26,6 +25,15 @@ namespace Tumo
             this.py = py;
             this.pz = pz;
             this.ay = ay;
+        }
+        public TmTransform(double px, double py, double pz, double ax, double ay, double az)
+        {
+            this.px = px;
+            this.py = py;
+            this.pz = pz;
+            this.ax = ax;
+            this.ay = ay;
+            this.az = az;
         }
     }
 }
