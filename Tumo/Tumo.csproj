@@ -60,6 +60,7 @@
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
     <Compile Include="TmGameObjects\TmGameObjectEntity.cs" />
     <Compile Include="TmGameObjects\TmGameObjectSystem.cs" />
+    <Compile Include="TmModels\TmInfoes\TumInfo.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventorySystem.cs" />
     <Compile Include="TmModels\TmModelBase\TmPropertySum.cs" />
     <Compile Include="TmModels\TmModelBase\TmAbilityAdd.cs" />

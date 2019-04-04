@@ -18,7 +18,7 @@ namespace Servers
             {
                 case (ElevenCode.Get):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
-                    GetSouler(sender, parameter);
+                    //GetSouler(sender, parameter);
                     break;
                 case (ElevenCode.GetRolers):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
@@ -60,6 +60,12 @@ namespace Servers
             {
                 //(sender as TmEngineerHandler).Engineer = db;
                 (sender as TmEngineerHandler).Engineers.Add(rolerId, db);
+                TmSoulerDB tem;
+                TmObjects.Engineers.TryGetValue(db.Id, out tem);
+                if (tem == null)
+                {
+                    TmObjects.Engineers.Add(db.Id, db);
+                }
             }
             else
             {
