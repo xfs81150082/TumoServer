@@ -211,7 +211,7 @@ namespace Servers
                         item.Quality = (Quality)reader.GetInt32(9);
                         item.RoleType = (RoleType)reader.GetInt32(7);
                         item.Duration = reader.GetInt32(10);
-                        item.ColdTime = reader.GetInt32(11);
+                        item.MaxColdTime = reader.GetInt32(11);
                         item.Stamina = reader.GetInt32(12);
                         item.Brains = reader.GetInt32(13);
                         item.Power = reader.GetInt32(14);

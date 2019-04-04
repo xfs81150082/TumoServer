@@ -6,7 +6,7 @@ namespace Tumo
     {
         public string Name { get; set; } = "tumo";
         public int Id { get; set; } = 100001;
-        public int ParentId { get; set; } = 0;
+        //public int ParentId { get; set; } = 0;
         public string Icon { get; set; } = "headimagegirl";                 //图标
         public string AvatarName { get; set; } = "EngineerOne";             //预制体名称
         public string Chater { get; set; } = "Icon_Player01";               //章节号,种族家族 
@@ -19,7 +19,7 @@ namespace Tumo
         public Quality Quality { get; set; } = Quality.Green;               //品质等级（白绿蓝紫橙）//怪的级别：普通-白、精英-蓝、首领-橙
         public int DamageDis { get; set; } = 10;
         public int Duration { get; set; } = 120;                            //持续时间
-        public int ColdTime { get; set; } = 4;                              //冷却时间
+        public int MaxColdTime { get; set; } = 4;                           //冷却时间
         public bool Start { get; set; } = false;
         public bool End { get; set; } = false;
 
