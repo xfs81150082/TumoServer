@@ -58,7 +58,6 @@ namespace Servers
             Console.WriteLine(TmTimerTool.CurrentTime() + " db:" + db.Name);
             if (db != null)
             {
-                //(sender as TmEngineerHandler).Engineer = db;
                 (sender as TmEngineerHandler).Engineers.Add(rolerId, db);
                 TmSoulerDB tem;
                 TmObjects.Engineers.TryGetValue(db.Id, out tem);
