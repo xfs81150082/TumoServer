@@ -7,11 +7,11 @@ namespace Tumo
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             AddComponent(new TmTransform());
             AddComponent(new TmProperty());
             AddComponent(new TmName());
             AddComponent(new TmSouler());
+            AddComponent(new TmSoulerDB());
             AddComponent(new TmChangeType());
             AddComponent(new TmCoolDown());
             AddComponent(new TmInventoryAdd());
@@ -22,6 +22,11 @@ namespace Tumo
         public TmSoulerItem() { }                        ///构造函数 
         public TmSoulerItem(TmSoulerDB itemDB)
         {
+            if(this.GetComponent<TmSoulerDB>() != null)
+            {
+                this.RemoveComponent<TmSoulerDB>();
+            }
+            this.AddComponent(itemDB);
             this.GetComponent<TmName>().Id = itemDB.Id;
             this.GetComponent<TmName>().Name = itemDB.Name;
             this.GetComponent<TmName>().ParentId = itemDB.UserId;

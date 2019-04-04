@@ -9,7 +9,6 @@ namespace Tumo
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             AddComponent(new TmName());
             AddComponent(new TmSkill());
             AddComponent(new TmSkillDB());
@@ -21,9 +20,9 @@ namespace Tumo
         {
             if (this.GetComponent<TmSkillDB>() != null)
             {
-                RemoveComponent<TmSkillDB>();
+                this.RemoveComponent<TmSkillDB>();
             }
-            AddComponent(itemDB);
+            this.AddComponent(itemDB);
             this.GetComponent<TmName>().Name = this.GetComponent<TmSkillDB>().Name;
             this.GetComponent<TmName>().Id = this.GetComponent<TmSkillDB>().Id;
             this.GetComponent<TmName>().ParentId = this.GetComponent<TmSkillDB>().RolerId;
