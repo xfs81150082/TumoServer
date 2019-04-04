@@ -58,8 +58,6 @@
     <Compile Include="TmEntities\TmComponents\TmGame.cs" />
     <Compile Include="TmEntities\TmHelpers\Components\TmRequest.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
-    <Compile Include="TmGameObjects\TmGameObjectEntity.cs" />
-    <Compile Include="TmGameObjects\TmGameObjectSystem.cs" />
     <Compile Include="TmModels\TmInfoes\TmSkillInit.cs" />
     <Compile Include="TmModels\TmInfoes\TmInventoryInit.cs" />
     <Compile Include="TmModels\TmInfoes\TmSoulerInit.cs" />

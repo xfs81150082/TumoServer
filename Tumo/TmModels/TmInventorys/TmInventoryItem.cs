@@ -10,7 +10,6 @@ namespace Tumo
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             AddComponent(new TmName());
             AddComponent(new TmInventory());
             AddComponent(new TmInventoryDB());
