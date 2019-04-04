@@ -66,11 +66,9 @@
   <ItemGroup>
     <Compile Include="Games\Components\TmHandlers\Inventorys\TmSmityHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Inventorys\TmKnapsackHandler.cs" />
-    <Compile Include="Games\Components\TmHandlers\Inventorys\TmDressedHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Maps\TmMapHandler.cs" />
-    <Compile Include="Games\Systems\TmSoulerDBSystem.cs" />
-    <Compile Include="Mysqls\Components\Maps\Class1.cs" />
-    <Compile Include="Mysqls\Components\Sences\TmGridMysql.cs" />
+    <Compile Include="Mysqls\Systems\TmSoulerDBSystem.cs" />
+    <Compile Include="Mysqls\Components\GridMaps\TmGridMysql.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmInbornHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmBuffHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmAbilityHandler.cs" />
@@ -84,7 +82,7 @@
     <Compile Include="Games\Components\TmHandlers\Soulers\TmEngineerHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\TmMysqlHandler.cs" />
     <Compile Include="Games\Models\Rolers\TmTeacher.cs" />
-    <Compile Include="Games\Systems\TmBookerCDSystem.cs" />
+    <Compile Include="Mysqls\Systems\TmBookerCDSystem.cs" />
     <Compile Include="Mysqls\Components\Souls\TmEngineerMysql.cs" />
     <Compile Include="Mysqls\Components\Souls\TmSoulerdbMysql.cs" />
     <Compile Include="Mysqls\Components\Souls\TmBookerMysql.cs" />
@@ -92,7 +90,6 @@
     <Compile Include="Mysqls\Components\Souls\TmUserMysql.cs" />
     <Compile Include="Mysqls\Components\Inventorys\TmSmithyMysql.cs" />
     <Compile Include="Mysqls\Components\Inventorys\TmInventoryMysql.cs" />
-    <Compile Include="Mysqls\Components\Inventorys\TmDressedMysql.cs" />
     <Compile Include="Mysqls\Components\Skills\TmSkilldbMysql.cs" />
     <Compile Include="Mysqls\Components\Taskers\TmTaskMysql.cs" />
     <Compile Include="Mysqls\Components\Inventorys\TmKnapsackMysql.cs" />
@@ -103,9 +100,6 @@
     <Compile Include="Mysqls\Components\TmMysqlConnection.cs" />
     <Compile Include="Main\TmServerMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Games\Models\Rolers\TmMonster.cs" />
-    <Compile Include="Games\Models\Rolers\TmPlayer.cs" />
-    <Compile Include="Games\Models\Rolers\TmNpcer.cs" />
     <Compile Include="Games\Components\TmHandlers\TmGateHandler.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -118,8 +112,6 @@
       <Name>Tumo</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mysqls\Systems\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

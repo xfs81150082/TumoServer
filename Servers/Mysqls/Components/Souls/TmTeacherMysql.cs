@@ -8,7 +8,6 @@ namespace Servers
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             DatabaseFormName = "teacheritem";
         }
 

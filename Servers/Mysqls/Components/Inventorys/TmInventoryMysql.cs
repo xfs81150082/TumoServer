@@ -135,14 +135,14 @@ namespace Servers
                         item.Name = reader.GetString(1);
                         item.Icon = reader.GetString(2);
                         item.AvatarName = reader.GetString(3);
-                        item.ChaterId = reader.GetInt32(4);
+                        item.Chater = reader.GetString(4);
                         item.LevelUpLimit = reader.GetInt32(5);
                         item.Does = reader.GetString(6);
                         item.InfoType = (InfoType)reader.GetInt32(8);
                         item.Quality = (Quality)reader.GetInt32(9);
                         item.EquipType = (EquipType)reader.GetInt32(7);
                         item.Duration = reader.GetInt32(10);
-                        item.ColdTime = reader.GetInt32(11);
+                        item.MaxColdTime = reader.GetInt32(11);
                         item.Stamina = reader.GetInt32(12);
                         item.Brains = reader.GetInt32(13);
                         item.Power = reader.GetInt32(14);

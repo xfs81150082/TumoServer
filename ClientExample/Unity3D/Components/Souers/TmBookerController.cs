@@ -14,10 +14,6 @@ namespace ClientExample
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerController: " + elevenCode);
                     SetSoulerDBs(parameter);
                     break;
-                //case (ElevenCode.GetRolers):
-                //    Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerController: " + elevenCode);
-                //    GetBookers(parameter);
-                //    break;
                 default:
                     break;
             }

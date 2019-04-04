@@ -9,12 +9,11 @@ namespace Tumo
         {
             base.TmAwake();
             AddComponent(new TmTransform());
+            AddComponent(new TmProperty());
             AddComponent(new TmName());
             AddComponent(new TmSouler());
-            AddComponent(new TmSoulerDB());
-            AddComponent(new TmCoolDown());
             AddComponent(new TmChangeType());
-            AddComponent(new TmProperty());
+            AddComponent(new TmCoolDown());
             AddComponent(new TmInventoryAdd());
             AddComponent(new TmBuffAdd());
             AddComponent(new TmAbilityAdd());
@@ -23,20 +22,21 @@ namespace Tumo
         public TmSoulerItem() { }                        ///构造函数 
         public TmSoulerItem(TmSoulerDB itemDB)
         {
-            if (this.GetComponent<TmSoulerDB>() != null)
-            {
-                RemoveComponent<TmSoulerDB>();
-            }
-            AddComponent(itemDB);
-            this.GetComponent<TmName>().Name = this.GetComponent<TmSoulerDB>().Name;
-            this.GetComponent<TmName>().Id = this.GetComponent<TmSoulerDB>().Id;
-            this.GetComponent<TmName>().ParentId = this.GetComponent<TmSoulerDB>().UserId;
-            this.GetComponent<TmChangeType>().Exp = this.GetComponent<TmSoulerDB>().Exp;
-            this.GetComponent<TmChangeType>().Level = this.GetComponent<TmSoulerDB>().Level;
-            this.GetComponent<TmChangeType>().Coin = this.GetComponent<TmSoulerDB>().Coin;
-            this.GetComponent<TmChangeType>().Diamond = this.GetComponent<TmSoulerDB>().Diamond;
-            this.GetComponent<TmProperty>().Hp = this.GetComponent<TmSoulerDB>().Hp;
-            this.GetComponent<TmProperty>().Mp = this.GetComponent<TmSoulerDB>().Mp;
+            this.GetComponent<TmName>().Id = itemDB.Id;
+            this.GetComponent<TmName>().Name = itemDB.Name;
+            this.GetComponent<TmName>().ParentId = itemDB.UserId;
+            this.GetComponent<TmChangeType>().Exp = itemDB.Exp;
+            this.GetComponent<TmChangeType>().Level = itemDB.Level;
+            this.GetComponent<TmChangeType>().Coin = itemDB.Coin;
+            this.GetComponent<TmChangeType>().Diamond = itemDB.Diamond;
+            this.GetComponent<TmProperty>().Hp = itemDB.Hp;
+            this.GetComponent<TmProperty>().Mp = itemDB.Mp;
+            this.GetComponent<TmTransform>().px = itemDB.px;
+            this.GetComponent<TmTransform>().py = itemDB.py;
+            this.GetComponent<TmTransform>().pz = itemDB.pz;
+            this.GetComponent<TmTransform>().ax = itemDB.ax;
+            this.GetComponent<TmTransform>().ay = itemDB.ay;
+            this.GetComponent<TmTransform>().az = itemDB.az;
         }
 
     }

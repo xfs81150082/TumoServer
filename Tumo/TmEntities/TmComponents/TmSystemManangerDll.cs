@@ -4,6 +4,9 @@
     {
         public override void TmAwake()
         {
+            AddComponent(new TmSoulerInit());
+            AddComponent(new TmInventoryInit());
+            AddComponent(new TmSkillInit());
             AddComponent(new TmCoolDownSystem());
             AddComponent(new TmSessionSystem());
             AddComponent(new TmAstarSystem());

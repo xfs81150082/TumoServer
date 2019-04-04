@@ -7,7 +7,6 @@ namespace Servers
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             DatabaseFormName = "smithyitem";
         }
         public override void OnTransferParameter(object sender, TmParameter parameter)
