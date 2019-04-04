@@ -52,7 +52,6 @@
     <Compile Include="Unity3D\Components\Souers\TmEngineerController.cs" />
     <Compile Include="Unity3D\Tests\TmTest.cs" />
     <Compile Include="Unity3D\Components\Souers\TmUserController.cs" />
-    <Compile Include="Unity3D\Players\TmEngineer.cs" />
     <Compile Include="Unity3D\Systems\TmClientSocket.cs" />
     <Compile Include="Unity3D\Tests\SyncTest.cs" />
   </ItemGroup>
@@ -65,9 +64,6 @@
       <Name>Tumo</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Unity3D\Components\Inventorys\" />
-    <Folder Include="Unity3D\Components\Skills\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

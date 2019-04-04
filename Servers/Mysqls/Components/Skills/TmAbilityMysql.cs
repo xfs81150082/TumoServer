@@ -8,7 +8,6 @@ namespace Servers
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             DatabaseFormName = "abilityitem";
         }
         public override void OnTransferParameter(object sender, TmParameter parameter)

@@ -7,7 +7,7 @@ namespace ClientExample
     {
         private static TmConnectController _instance;
         public static TmConnectController Instance { get => _instance; }
-        public override void TmAwake() { base.TmAwake(); _instance = this; }
+        public override void TmAwake() { _instance = this; }
         //这个方法用来处理TPeer参数Mvc，并让结果给客户端响应（当客户端发起请求时调用）
         public override void OnTransferParameter(object obj, TmParameter parameter)
         {
@@ -40,5 +40,6 @@ namespace ClientExample
                     break;
             }
         }
+
     }
 }

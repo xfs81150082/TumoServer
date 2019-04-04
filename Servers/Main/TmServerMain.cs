@@ -38,7 +38,6 @@ namespace Servers
             TmGame.TmSence.AddComponent(new TmAbilityHandler());        ///服务器加载组件 : TmAbilityHandler 处理组件
             TmGame.TmSence.AddComponent(new TmBuffHandler());           ///服务器加载组件 : TmBuffHandler 处理组件
             TmGame.TmSence.AddComponent(new TmInbornHandler());         ///服务器加载组件 : TmInbornHandler 处理组件
-            TmGame.TmSence.AddComponent(new TmDressedHandler());        ///服务器加载组件 : TmDressedHandler 处理组件
             TmGame.TmSence.AddComponent(new TmKnapsackHandler());       ///服务器加载组件 : TmKnapsackHandler 处理组件
             TmGame.TmSence.AddComponent(new TmSmityHandler());          ///服务器加载组件 : TmSmityHandler 处理组件
 

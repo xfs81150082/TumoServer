@@ -8,7 +8,6 @@ namespace Servers
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             DatabaseFormName = "bookeritem";
         }
         public TmBookerMysql()
@@ -36,9 +35,7 @@ namespace Servers
         //       {
         //           case (ElevenCode.GetRolers):
         //               Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql: " + elevenCode);
-
         //               //GetRolersByUersId(sender, parameter);
-
         //               break;
         //           case (ElevenCode.None):
         //               break;
@@ -46,18 +43,7 @@ namespace Servers
         //               break;
         //       }
         //   }  
-        //private void GetRolersByUersId(object sender, TmParameter parameter)
-        //{
-        //    Dictionary<int, TmSoulerDB> dbdict = GetTmSoulerdbDict();
-        //    Console.WriteLine(TmTimerTool.CurrentTime() + " dbDict:" + dbdict.Count);
-        //    if (dbdict.Count > 0)
-        //    {
-        //        (sender as TmBookerHandler).Bookers = dbdict;
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
-        //    }
-        //}
+     
+
     }
 }
