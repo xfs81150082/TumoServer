@@ -7,26 +7,41 @@ namespace Tumo
     {
         public override void TmAwake()
         {
+            AddComponent(new TmSoulerDB());
+            AddComponent(new TmSouler());
+            AddComponent(new TmName());
             AddComponent(new TmTransform());
             AddComponent(new TmProperty());
-            AddComponent(new TmName());
-            AddComponent(new TmSouler());
-            AddComponent(new TmSoulerDB());
             AddComponent(new TmChangeType());
             AddComponent(new TmCoolDown());
+            AddComponent(new TmAstarComponent());
             AddComponent(new TmInventoryAdd());
             AddComponent(new TmBuffAdd());
             AddComponent(new TmAbilityAdd());
-            AddComponent(new TmAstarComponent());
         }
         public TmSoulerItem() { }                        ///构造函数 
         public TmSoulerItem(TmSoulerDB itemDB)
         {
-            if(this.GetComponent<TmSoulerDB>() != null)
+            if (this.GetComponent<TmSoulerDB>() != null)
             {
                 this.RemoveComponent<TmSoulerDB>();
             }
             this.AddComponent(itemDB);
+            TmSouler souler = null;
+            TmObjects.Soulers.TryGetValue(itemDB.SoulerId, out souler);
+            if (souler != null)
+            {
+                if (this.GetComponent<TmSouler>() != null)
+                {
+                    this.RemoveComponent<TmSouler>();
+                }
+                this.AddComponent(souler);
+                if (GetComponent<TmCoolDown>() != null)
+                {
+                    this.GetComponent<TmCoolDown>().CdTime = itemDB.CdTime;
+                    this.GetComponent<TmCoolDown>().MaxCdTime = souler.MaxColdTime;
+                }
+            }
             this.GetComponent<TmName>().Id = itemDB.Id;
             this.GetComponent<TmName>().Name = itemDB.Name;
             this.GetComponent<TmName>().ParentId = itemDB.UserId;
@@ -42,7 +57,7 @@ namespace Tumo
             this.GetComponent<TmTransform>().ax = itemDB.ax;
             this.GetComponent<TmTransform>().ay = itemDB.ay;
             this.GetComponent<TmTransform>().az = itemDB.az;
+          
         }
-
     }
 }

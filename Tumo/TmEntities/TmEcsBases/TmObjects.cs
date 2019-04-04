@@ -10,8 +10,8 @@ namespace Tumo
         public static ArrayList GameObjects { get; set; } = new ArrayList();
         public static Dictionary<string, GameObject> GoDict = new Dictionary<string, GameObject>();
         public static ArrayList SoulerItems { get; set; } = new ArrayList();
+        public static ArrayList SoulerDBs { get; set; } = new ArrayList();
         public static Dictionary<int, TmSouler> Soulers { get; set; } = new Dictionary<int, TmSouler>();
-        public static Dictionary<int, TmSoulerDB> SoulerDBs { get; set; } = new Dictionary<int, TmSoulerDB>();
         public static Dictionary<int, TmSoulerDB> Bookers { get; set; } = new Dictionary<int, TmSoulerDB>();
         public static Dictionary<int, TmSoulerDB> Teachers { get; set; } = new Dictionary<int, TmSoulerDB>();
         public static Dictionary<int, TmSoulerDB> Engineers { get; set; } = new Dictionary<int, TmSoulerDB>();
