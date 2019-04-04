@@ -33,13 +33,13 @@ namespace Tumo
             soulers.Add(souler14101.Id, souler14101);
             TmSouler souler14102 = GetTmSouler("小怪", 14102, "headimagegirl", "BookerOne", "Icon_Player01", 30, "是最--的生灵", RoleType.Booker, EquipType.Water, InfoType.Bp, Quality.Green, 4);
             soulers.Add(souler14102.Id, souler14102);
-            TmSouler souler15101 = GetTmSouler("人类", 15101, "headimageboy", "EngineerOne", "Icon_Player01", 30, "人族是最智慧的生灵", RoleType.Engineer, EquipType.Break, InfoType.Bp, Quality.Green, 4);
+            TmSouler souler15101 = GetTmSouler("玩家", 15101, "headimageboy", "EngineerOne", "Icon_Player01", 30, "人族是最智慧的生灵", RoleType.Engineer, EquipType.Break, InfoType.Bp, Quality.Green, 4);
             soulers.Add(souler15101.Id, souler15101);
-            TmSouler souler15102 = GetTmSouler("人类", 15102, "headimagegirl", "EngineerOne", "Icon_Player01", 30, "人族是最智慧的生灵", RoleType.Engineer, EquipType.Break, InfoType.Bp, Quality.Green, 4);
+            TmSouler souler15102 = GetTmSouler("玩家", 15102, "headimagegirl", "EngineerOne", "Icon_Player01", 30, "人族是最智慧的生灵", RoleType.Engineer, EquipType.Break, InfoType.Bp, Quality.Green, 4);
             soulers.Add(souler15102.Id, souler15102);
-            TmSouler souler16101 = GetTmSouler("小怪", 16101, "headimageboy", "BookerOne", "Icon_Player01", 30, "是最--的生灵", RoleType.Booker, EquipType.Break, InfoType.Bp, Quality.Green, 4);
+            TmSouler souler16101 = GetTmSouler("人类", 16101, "headimageboy", "TeacherOne", "Icon_Player01", 30, "是最--的生灵", RoleType.Booker, EquipType.Break, InfoType.Bp, Quality.Green, 4);
             soulers.Add(souler16101.Id, souler16101);
-            TmSouler souler16102 = GetTmSouler("小怪", 16102, "headimagegirl", "BookerOne", "Icon_Player01", 30, "是最--的生灵", RoleType.Booker, EquipType.Water, InfoType.Bp, Quality.Green, 4);
+            TmSouler souler16102 = GetTmSouler("人类", 16102, "headimagegirl", "TeacherOne", "Icon_Player01", 30, "是最--的生灵", RoleType.Booker, EquipType.Water, InfoType.Bp, Quality.Green, 4);
             soulers.Add(souler16102.Id, souler16102);
             return soulers;
         }

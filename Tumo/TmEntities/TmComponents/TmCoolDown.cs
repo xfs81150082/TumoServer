@@ -3,6 +3,7 @@
     public class TmCoolDown : TmComponent
     {
         public string Key { get; set; }
+        public int State { get; set; } = 0;
         public int CdCount { get; set; } = 0;
         public int MaxCdCount { get; set; } = 4;
         public double CdTime { get; set; } = 0.0;

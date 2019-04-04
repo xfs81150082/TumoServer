@@ -14,9 +14,8 @@ namespace Tumo
         public int Diamond { get; set; } = 0;           //钻石数
         public int Hp { get; set; } = 0;                //血量
         public int Mp { get; set; } = 0;                //法量          
-        public int State { get; set; } = 0;             //角色状态，有没有死亡
-        public double CdTime { get; set; } = 0;         //角色状态，有没有死亡
-        public double MaxCdTime { get; set; } = 0;      //角色状态，有没有死亡
+        public int State { get; set; } = 0;             //角色死亡状态，0为死亡，1为活着
+        public double CdTime { get; set; } = 0;         //角色刷新时间还余多久
         public int ServerId { get; set; } = 0;          //服务Id
         public int SenceId { get; set; } = 0;           //场景id
         public double px { get; set; } = 0.0;           //坐标x
