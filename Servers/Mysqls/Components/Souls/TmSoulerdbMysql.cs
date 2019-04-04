@@ -7,6 +7,55 @@ namespace Servers
      class TmSoulerdbMysql : TmComponent
     {
         internal string DatabaseFormName { get; set; }
+        internal Dictionary<int,TmSoulerDB> GetTmSoulerdbDict()
+        {
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName, TmMysqlConnection.Connection);//读取数据函数  
+            MySqlDataReader reader = mySqlCommand.ExecuteReader();
+            try
+            {
+                Dictionary<int, TmSoulerDB> itemDBs = new Dictionary<int, TmSoulerDB>();
+                while (reader.Read())
+                {
+                    if (reader.HasRows)
+                    {
+                        TmSoulerDB item = new TmSoulerDB();
+                        item.Id = reader.GetInt32(0);
+                        item.Name = reader.GetString(1);
+                        item.UserId = reader.GetInt32(2);
+                        item.SoulerId = reader.GetInt32(3);
+                        item.Exp = reader.GetInt32(4);
+                        item.Level = reader.GetInt32(5);
+                        item.Coin = reader.GetInt32(6);
+                        item.Diamond = reader.GetInt32(7);
+                        item.Hp = reader.GetInt32(8);
+                        item.Mp = reader.GetInt32(9);
+                        item.State = reader.GetInt32(10);
+                        item.CdTime = reader.GetDouble(11);
+                        item.MaxCdTime = reader.GetDouble(12);
+                        item.ServerId = reader.GetInt32(13);
+                        item.SenceId = reader.GetInt32(14);
+                        item.px = reader.GetDouble(15);
+                        item.py = reader.GetDouble(16);
+                        item.pz = reader.GetDouble(17);
+                        item.ax = reader.GetDouble(18);
+                        item.ay = reader.GetDouble(19);
+                        item.az = reader.GetDouble(20);
+                        item.CreateDate = reader.GetString(21);
+                        itemDBs.Add(item.Id,item);
+                    }
+                }
+                return itemDBs;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("查询失败...168");
+                return null;
+            }
+            finally
+            {
+                reader.Close();
+            }
+        }                          //读取表格//得到所有角色列表         
         internal List<TmSoulerDB> GetTmSoulerdbs()
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName, TmMysqlConnection.Connection);//读取数据函数  

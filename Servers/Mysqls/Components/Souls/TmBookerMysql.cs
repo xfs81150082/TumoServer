@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Tumo;
 
-namespace Servers 
+namespace Servers
 {
     class TmBookerMysql : TmSoulerdbMysql
     {
@@ -11,33 +11,53 @@ namespace Servers
             base.TmAwake();
             DatabaseFormName = "bookeritem";
         }
-        public override void OnTransferParameter(object sender, TmParameter parameter)
+        public TmBookerMysql()
         {
-            ElevenCode elevenCode = parameter.ElevenCode;
-            switch (elevenCode)
-            {
-                case (ElevenCode.GetRolers):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql: " + elevenCode);
-                    GetRolersByUersId(sender, parameter);
-                    break;
-                case (ElevenCode.None):
-                    break;
-                default:
-                    break;
-            }
+            GetSoulerDBs();
         }
-        private void GetRolersByUersId(object sender, TmParameter parameter)
+        private void GetSoulerDBs()
         {
-            List<TmSoulerDB> dbs = GetTmSoulerdbs();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
-            if (dbs.Count > 0)
+            Dictionary<int, TmSoulerDB> dbdict = GetTmSoulerdbDict();
+            if (dbdict.Count > 0)
             {
-                (sender as TmBookerHandler).Bookers = dbs;
+                TmObjects.Bookers = dbdict;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmObjects.Bookers: " + TmObjects.Bookers.Count);
             }
             else
             {
                 Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
             }
         }
+
+        //public override void OnTransferParameter(object sender, TmParameter parameter)
+        //   {
+        //       ElevenCode elevenCode = parameter.ElevenCode;
+        //       switch (elevenCode)
+        //       {
+        //           case (ElevenCode.GetRolers):
+        //               Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql: " + elevenCode);
+
+        //               //GetRolersByUersId(sender, parameter);
+
+        //               break;
+        //           case (ElevenCode.None):
+        //               break;
+        //           default:
+        //               break;
+        //       }
+        //   }  
+        //private void GetRolersByUersId(object sender, TmParameter parameter)
+        //{
+        //    Dictionary<int, TmSoulerDB> dbdict = GetTmSoulerdbDict();
+        //    Console.WriteLine(TmTimerTool.CurrentTime() + " dbDict:" + dbdict.Count);
+        //    if (dbdict.Count > 0)
+        //    {
+        //        (sender as TmBookerHandler).Bookers = dbdict;
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
+        //    }
+        //}
     }
 }

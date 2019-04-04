@@ -7,7 +7,6 @@ namespace Servers
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             ValTime = 4000;
             AddComponent(new TmBooker());
             AddComponent(new TmCoolDown());

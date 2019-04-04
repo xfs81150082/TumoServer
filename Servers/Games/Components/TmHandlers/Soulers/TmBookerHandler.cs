@@ -10,10 +10,10 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.GetRolers):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerHandler: " + elevenCode);
-                    GetRolersByRolerId(parameter);
-                    break;
+                //case (ElevenCode.GetRolers):
+                //    Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerHandler: " + elevenCode);
+                //    //GetRolersByRolerId(parameter);
+                //    break;
                 case (ElevenCode.StatusSync):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
                     Parent.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
@@ -24,7 +24,7 @@ namespace Servers
                     break;
             }
         }
-        internal List<TmSoulerDB> Bookers { get; set; }
+        internal Dictionary<int, TmSoulerDB> Bookers { get; set; }
         public Dictionary<string, TmMonster> SpawnCDs = new Dictionary<string, TmMonster>();
         void GetRolersByRolerId(TmParameter parameter)
         {
@@ -34,8 +34,9 @@ namespace Servers
             {
                 if (this.Bookers != null)
                 {
-                    TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.Booker, ElevenCode.GetRolers, ElevenCode.GetRolers.ToString(), this.Bookers);
-                    response.Keys.Add(parameter.Keys[0]); 
+                    //TmObjects.Bookers = this.Bookers;
+                    TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Booker, ElevenCode.GetRolers, ElevenCode.GetRolers.ToString(), this.Bookers);
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     yes = true;
                 }
@@ -52,6 +53,7 @@ namespace Servers
                 }
             }
         }  
+        
         void DiethHandler(TmParameter parameter)
         {
             TmSoulerDB soulerDB = TmParameterTool.GetJsonValue<TmSoulerDB>(parameter, ElevenCode.Die.ToString());

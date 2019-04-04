@@ -94,9 +94,10 @@ namespace Servers
                     TmParameter response = TmParameterTool.ToJsonParameter<TmSoulerDB>(TenCode.Engineer, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), Engineer);
                     response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
-                    GetSoulersByRolerId(parameter);
-                    GetSkillsByRolerId(parameter);
-                    GetInventorysByRolerId(parameter);
+
+                    //GetSoulersByRolerId(parameter);
+                    //GetSkillsByRolerId(parameter);
+                    //GetInventorysByRolerId(parameter);
                 }
                 else
                 {
@@ -113,24 +114,24 @@ namespace Servers
         void GetSoulersByRolerId(TmParameter parameter)
         {
             parameter.ElevenCode = ElevenCode.GetRolers;
-            Parent.GetComponent<TmBookerHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmTeacherHandler>().OnTransferParameter(this, parameter);
+            //Parent.GetComponent<TmBookerHandler>().OnTransferParameter(this, parameter);
+            //Parent.GetComponent<TmTeacherHandler>().OnTransferParameter(this, parameter);
         }
         void GetSkillsByRolerId(TmParameter parameter)
         {
             parameter.ElevenCode = ElevenCode.GetSkills;
             Console.WriteLine(TmTimerTool.CurrentTime() + " GetSkillsByRolerId:" + parameter.ElevenCode);
-            Parent.GetComponent<TmAbilityHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmBuffHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmInbornHandler>().OnTransferParameter(this, parameter);
+            //Parent.GetComponent<TmAbilityHandler>().OnTransferParameter(this, parameter);
+            //Parent.GetComponent<TmBuffHandler>().OnTransferParameter(this, parameter);
+            //Parent.GetComponent<TmInbornHandler>().OnTransferParameter(this, parameter);
         }
         void GetInventorysByRolerId(TmParameter parameter)
         {
             parameter.ElevenCode = ElevenCode.GetInventorys;
             Console.WriteLine(TmTimerTool.CurrentTime() + " GetInventorysByRolerId:" + parameter.ElevenCode);
-            Parent.GetComponent<TmDressedHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmKnapsackHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmSmityHandler>().OnTransferParameter(this, parameter);
+            //Parent.GetComponent<TmDressedHandler>().OnTransferParameter(this, parameter);
+            //Parent.GetComponent<TmKnapsackHandler>().OnTransferParameter(this, parameter);
+            //Parent.GetComponent<TmSmityHandler>().OnTransferParameter(this, parameter);
         }
 
 

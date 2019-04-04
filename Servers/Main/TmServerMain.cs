@@ -12,6 +12,7 @@ namespace Servers
             Console.WriteLine(TmTimerTool.CurrentTime() + " ... ");  
             Thread.Sleep(1);
             TmSenceInit();
+            TmSystemManager();
 
             TmGame.TmSystemMananger.AddComponent(new ServerTest());     ///测试用
 
@@ -40,6 +41,15 @@ namespace Servers
             TmGame.TmSence.AddComponent(new TmDressedHandler());        ///服务器加载组件 : TmDressedHandler 处理组件
             TmGame.TmSence.AddComponent(new TmKnapsackHandler());       ///服务器加载组件 : TmKnapsackHandler 处理组件
             TmGame.TmSence.AddComponent(new TmSmityHandler());          ///服务器加载组件 : TmSmityHandler 处理组件
+
+        }
+
+        static void TmSystemManager()
+        {
+            //TmGame.TmSystemMananger.AddComponent(new TmBookerSystem());       ///服务器加载组件 : 数据库链接组件TmSystem类型
+            //TmGame.TmSystemMananger.AddComponent(new TmTeacherSystem());       ///服务器加载组件 : 数据库链接组件TmSystem类型
+            TmGame.TmSystemMananger.AddComponent(new TmSoulerDBSystem());       ///服务器加载组件 : 数据库链接组件TmSystem类型
+
 
         }
 

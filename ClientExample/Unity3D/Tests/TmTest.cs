@@ -13,7 +13,27 @@ namespace ClientExample
         public override void TmUpdate()
         {
             TestTmUserLogin();
+            TmDebugLog();
         }
+        #region
+        float time = 0;
+        float restime = 100;
+        void TmDebugLog()
+        {
+            time += 1;
+            if (time > restime)
+            {
+                if (TmObjects.Bookers.Count > 0)
+                {
+                    Console.WriteLine(" TmObjects.Bookers: " + TmObjects.Bookers.Count);
+                    Console.WriteLine(" TmObjects.Teachers: " + TmObjects.Teachers.Count);
+                }
+                time = 0;
+            }
+        }
+        #endregion
+
+
         #region
         void TestTmUserLogin()
         {

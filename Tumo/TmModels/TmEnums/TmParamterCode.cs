@@ -42,7 +42,10 @@ namespace Tumo
         Souler,
         Roler,
         Die,
+
+        SetSoulerDBs,
         StatusSync,
+
         Engineer,
         Booker,
         Teacher,
