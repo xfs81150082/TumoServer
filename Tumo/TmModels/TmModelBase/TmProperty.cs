@@ -28,6 +28,33 @@
         public double HrRate { get; set; } = 0.0f;       //hr命中率与敏捷成正比。
         public double CrRate { get; set; } = 0.0f;       //cr暴击率与敏捷成正比。
         public double SpRate { get; set; } = 0.0f;       //移动速度
+        public TmProperty() { }
+        public TmProperty(TmProperty pro)
+        {
+            this.Stamina = pro.Stamina;           //耐力，案例，每升1级加1，影响血量
+            this.Brains = pro.Brains;             //智力，计价，每升1级加1，影响魔法攻击强度，魔法防御
+            this.Power = pro.Power;               //力量，计量，每升1级加1，影响物理攻击强度，物理防御
+            this.Agility = pro.Agility;           //敏捷，管理，每升1级加1，影响暴击率，命中率，闪避率 
+            this.Hp = pro.Hp;
+            this.MaxHp = pro.MaxHp;
+            this.Bp = pro.Bp;
+            this.Ap = pro.Ap;
+            this.Hr = pro.Hr;
+            this.Cr = pro.Cr;
+            this.Sp = pro.Sp;
+            this.StaminaRate = pro.StaminaRate;
+            this.BrainsRate = pro.BrainsRate;
+            this.PowerRate = pro.PowerRate;
+            this.AgilityRate = pro.AgilityRate;
+            this.HpRate = pro.HpRate;
+            this.MaxHpRate = pro.MaxHpRate;       //HP=10 * 耐力 + 装备 + 法术；暂定10倍；
+            this.ApRate = pro.ApRate;             //Ap与力量成正比；暂定1倍；
+            this.BpRate = pro.BpRate;             //Bp与智力成正比；暂定1倍；
+            this.HrRate = pro.HrRate;             //hr命中率与敏捷成正比。
+            this.CrRate = pro.CrRate;             //cr暴击率与敏捷成正比。
+            this.SpRate = pro.SpRate;             //移动速度
+
+        }
         public void Add(TmProperty pro)
         {
             this.Stamina += pro.Stamina;           //耐力，案例，每升1级加1，影响血量

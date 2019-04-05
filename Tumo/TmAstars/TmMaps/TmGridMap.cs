@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Tumo;
-namespace Servers
+namespace Tumo
 {
     public class TmGridMap : TmComponent
     {

@@ -34,19 +34,20 @@ namespace Tumo
                 }
             }
         }
-        void InitProperty(TmEntity soulerItem)
+        void InitProperty(TmEntity entity)
         {
-            UpdateLevel(soulerItem);
-            InitPropertyOne(soulerItem);
-            InitPropertyTwo(soulerItem);
-            InitPropertyThree(soulerItem);
+            UpdateLevel(entity);
+            InitPropertyOne(entity);
+            InitPropertyTwo(entity);
+            InitPropertyThree(entity);
+            UpdateItem(entity);
         }  //更新属性
         void InitPropertyOne(TmEntity soulerItem)
         {
-            soulerItem.GetComponent<TmProperty>().Stamina = soulerItem.GetComponent<TmSkill>().Stamina * soulerItem.GetComponent<TmChangeType>().Level ;
-            soulerItem.GetComponent<TmProperty>().Brains = soulerItem.GetComponent<TmSkill>().Brains * soulerItem.GetComponent<TmChangeType>().Level;
-            soulerItem.GetComponent<TmProperty>().Power = soulerItem.GetComponent<TmSkill>().Power * soulerItem.GetComponent<TmChangeType>().Level;
-            soulerItem.GetComponent<TmProperty>().Agility = soulerItem.GetComponent<TmSkill>().Agility * soulerItem.GetComponent<TmChangeType>().Level;
+            soulerItem.GetComponent<TmProperty>().Stamina = soulerItem.GetComponent<TmSkill>().Stamina * (soulerItem.GetComponent<TmChangeType>().Level + 1);
+            soulerItem.GetComponent<TmProperty>().Brains = soulerItem.GetComponent<TmSkill>().Brains * (soulerItem.GetComponent<TmChangeType>().Level + 1);
+            soulerItem.GetComponent<TmProperty>().Power = soulerItem.GetComponent<TmSkill>().Power * (soulerItem.GetComponent<TmChangeType>().Level + 1);
+            soulerItem.GetComponent<TmProperty>().Agility = soulerItem.GetComponent<TmSkill>().Agility * (soulerItem.GetComponent<TmChangeType>().Level + 1);
         }
         void InitPropertyTwo(TmEntity soulerItem)
         {
@@ -75,6 +76,29 @@ namespace Tumo
                 }
             }
         }          //等级更新
+        public void UpdateItem(TmEntity entity)
+        {
+            TmSkill inventory = entity.GetComponent<TmSkill>();
+            TmProperty property = entity.GetComponent<TmProperty>();
+            TmChangeType changeType = entity.GetComponent<TmChangeType>();
+            switch (inventory.InfoType)
+            {
+                case (InfoType.Brains):
+                    property.Stamina += (int)(inventory.Stamina * (changeType.Level + 1));
+                    property.Brains += (int)(inventory.Brains * (changeType.Level + 1));
+                    break;
+                case (InfoType.Power):
+                    property.Stamina += (int)(inventory.Stamina * (changeType.Level + 1));
+                    property.Power += (int)(inventory.Power * (changeType.Level + 1));
+                    break;
+                case (InfoType.Bp):
+                    property.Bp += (int)(inventory.Bp * (changeType.Level + 1));
+                    break;
+                case (InfoType.Ap):
+                    property.Ap += (int)(inventory.Ap * (changeType.Level + 1));
+                    break;
+            }
+        }
 
 
 
