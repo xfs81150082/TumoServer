@@ -12,7 +12,9 @@ namespace Servers
             {
                 case (ElevenCode.StatusSync):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
-                    Parent.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
+
+                    //Parent.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
+
                     break;
                 case (ElevenCode.None):
                     break;

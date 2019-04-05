@@ -10,13 +10,11 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.Get):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmBuffHandler: " + elevenCode);
-                    GetSkill(parameter);
-                    break;
                 case (ElevenCode.GetSkills):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmBuffHandler: " + elevenCode);
-                    GetSkillsByRolerId(parameter);
+
+                    //GetSkillsByRolerId(parameter);
+
                     break;
                 case (ElevenCode.Save):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmBuffHandler: " + elevenCode);

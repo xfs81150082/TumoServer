@@ -12,7 +12,9 @@ namespace ClientExample
             {
                 case (ElevenCode.SetSoulerDBs):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmTeacherController: " + elevenCode);
+
                     SetSoulerDBs(parameter);
+
                     break;
                 default:
                     break;
@@ -20,13 +22,13 @@ namespace ClientExample
         }
         void SetSoulerDBs(TmParameter parameter)
         {
-            Dictionary<int, TmSoulerDB> teachers = TmParameterTool.GetJsonValue<Dictionary<int, TmSoulerDB>>(parameter, parameter.ElevenCode.ToString());
-            if (teachers.Count > 0)
+            List<TmSoulerDB> bookers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, parameter.ElevenCode.ToString());
+            if (bookers.Count > 0)
             {
-                TmObjects.Teachers = teachers;
+                TmObjects.Teachers = bookers;
                 Console.WriteLine(TmTimerTool.CurrentTime() + " TmObjects.Teachers: " + TmObjects.Teachers.Count);
             }
         }
-        
+
     }
 }

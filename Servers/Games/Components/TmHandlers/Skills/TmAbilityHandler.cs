@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Tumo;
 namespace Servers
 {
@@ -16,6 +17,8 @@ namespace Servers
                     break;              
                 case (ElevenCode.Save):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmAbilityHandler: " + elevenCode);
+
+
                     break;
                 case (ElevenCode.None):
                     break;
@@ -23,11 +26,11 @@ namespace Servers
                     break;
             }
         }
-        internal Dictionary<int, Dictionary<int, TmSkillDB>> Abilities { get; set; } = new Dictionary<int, Dictionary<int, TmSkillDB>>();
+        internal Dictionary<int, List<TmSkillDB>> Abilities { get; set; } = new Dictionary<int, List<TmSkillDB>>();
         private void GetSkillsByRolerId(TmParameter parameter)
         {
             int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.EngineerLogin.ToString());
-            Dictionary<int, TmSkillDB> skillDBs = new Dictionary<int, TmSkillDB>();
+            List<TmSkillDB> skillDBs = new List<TmSkillDB>();
             bool yes = false;
             int count = 0;
             while (!yes)
@@ -38,10 +41,10 @@ namespace Servers
                 }
                 if (yes)
                 {
-                    TmParameter response = TmParameterTool.ToJsonParameter<Dictionary<int, TmSkillDB>>(TenCode.Ability, ElevenCode.GetSkills, ElevenCode.GetSkills.ToString(), skillDBs);
-                    TmParameterTool.AddJsonParameter(response, "RolerId", rolerid);
-                    response.Keys.Add(parameter.Keys[0]);
-                    TmTcpSocket.Instance.Send(response);
+                    if (TmTcpSocket.Instance.TPeers[parameter.Keys[0]] != null)
+                    {
+                        TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().SkillDBs = skillDBs;  //给TmTcpSession赋值Engineer-SoulerDB
+                    }
                     yes = true;
                     break;
                 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Tumo;
 namespace Servers
@@ -31,7 +32,7 @@ namespace Servers
             Console.WriteLine(TmTimerTool.CurrentTime() + " TmKnapsackMysql-dbs: " + dbs.Count);
             if (dbs.Count > 0)
             {
-                (sender as TmKnapsackHandler).Knapsacks.Add(rolerid, dbs);
+                (sender as TmKnapsackHandler).Knapsacks.Add(rolerid ,dbs);
             }
             else
             {

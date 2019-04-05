@@ -2,7 +2,7 @@
 namespace Tumo
 {
     [Serializable]
-    public class TmSoulerDB : TmComponent
+    public class TmSoulerDB
     {    
         public int Id { get; set; } = 100001;           //Id
         public string Name { get; set; } = "tumo";      //用户名

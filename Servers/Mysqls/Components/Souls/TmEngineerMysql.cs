@@ -53,11 +53,9 @@ namespace Servers
             if (db != null)
             {
                 (sender as TmEngineerHandler).Engineers.Add(rolerId, db);
-                TmSoulerDB tem;
-                TmObjects.Engineers.TryGetValue(db.Id, out tem);
-                if (tem == null)
+                if (!TmObjects.SoulerDBs.Contains(db))
                 {
-                    TmObjects.Engineers.Add(db.Id, db);
+                    TmObjects.SoulerDBs.Add(db);
                 }
             }
             else

@@ -14,32 +14,31 @@ namespace Servers
         {
             foreach (TmEntity entity in GetTmEntities())
             {
-                SetBookers(entity);
-                SetTeachers(entity);
+                SetSoulerDBs(entity);
             }
         }
-        void SetBookers(TmEntity entity)
+        void SetSoulerDBs(TmEntity entity)
         {
             TmSession session = entity.GetComponent<TmSession>();
-            if (session.bookersChange != TmObjects.Bookers.Count)
+            if (session.bookersChange != TmObjects.Bookers.Count && TmObjects.Bookers.Count > 0 && session.IsLogin)
             {
+
                 TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Booker, ElevenCode.SetSoulerDBs, ElevenCode.SetSoulerDBs.ToString(), TmObjects.Bookers);
                 response.Keys.Add(entity.EcsId);
                 TmTcpSocket.Instance.Send(response);
                 session.bookersChange = TmObjects.Bookers.Count;
             }
-        }
-        void SetTeachers(TmEntity entity)
-        {
-            TmSession session = entity.GetComponent<TmSession>();
-            if (session.teachersChange != TmObjects.Teachers.Count)
+            if (session.teachersChange != TmObjects.Teachers.Count && TmObjects.Teachers.Count > 0 && session.IsLogin)
             {
+
                 TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Teacher, ElevenCode.SetSoulerDBs, ElevenCode.SetSoulerDBs.ToString(), TmObjects.Teachers);
                 response.Keys.Add(entity.EcsId);
                 TmTcpSocket.Instance.Send(response);
                 session.teachersChange = TmObjects.Teachers.Count;
             }
+          
         }
+      
 
     }
 
