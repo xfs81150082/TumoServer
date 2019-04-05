@@ -2,6 +2,8 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Collections;
+
 namespace Servers
 {
     class TmTeacherMysql : TmSoulerdbMysql
@@ -15,13 +17,15 @@ namespace Servers
         {
             GetSoulerDBs();
         }
+        bool isYes = false;
         private void GetSoulerDBs()
         {
-            Dictionary<int, TmSoulerDB> dbdict = GetTmSoulerdbDict();
-            if (dbdict.Count > 0)
+            List<TmSoulerDB> dbs = GetTmSoulerDBs();
+            if (dbs.Count > 0 && !isYes)
             {
-                TmObjects.Teachers = dbdict;
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmObjects.Teachers: " + TmObjects.Teachers.Count);
+                TmObjects.Teachers = dbs;
+                isYes = true;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmTeacherMysql-Teachers: " + TmObjects.Teachers.Count);
             }
             else
             {
@@ -29,33 +33,7 @@ namespace Servers
             }
         }
 
-        //public override void OnTransferParameter(object sender, TmParameter parameter)
-        //{
-        //    ElevenCode elevenCode = parameter.ElevenCode;
-        //    switch (elevenCode)
-        //    {
-        //        case (ElevenCode.GetRolers):
-        //            //this.GetSoulerdbs(sender, parameter);
-        //            break;
-        //        case (ElevenCode.None):
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
-      
-        //private void GetSoulerdbs(object sender, TmParameter parameter)
-        //{
-        //    List<TmSoulerDB> dbs = GetTmSoulerdbs();
-        //    Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
-        //    if (dbs.Count > 0)
-        //    {
-        //        (sender as TmTeacherHandler).Teachers = dbs;
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
-        //    }
-        //}
+     
+
     }
 }

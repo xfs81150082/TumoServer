@@ -15,13 +15,11 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                //case (ElevenCode.GetRolers):
-                //    Console.WriteLine(TmTimerTool.CurrentTime() + " TmTeacherHandler: " + elevenCode);
-                //    //GetRolersByRolerId(parameter);
-                //    break;
                 case (ElevenCode.StatusSync):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
-                    Parent.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
+
+                    //Parent.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
+
                     break;
                 case (ElevenCode.None):
                     break;

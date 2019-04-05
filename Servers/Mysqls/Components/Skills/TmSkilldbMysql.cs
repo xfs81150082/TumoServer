@@ -7,6 +7,40 @@ namespace Servers
     class TmSkilldbMysql : TmComponent
     {
         internal string DatabaseFormName { get; set; }
+        internal List<TmSkillDB> GetSkillDBsListByRolerId(int rolerid)
+        {
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName + " where rolerid = '" + rolerid + "'", TmMysqlConnection.Connection);  //读取数据函数  
+            MySqlDataReader reader = mySqlCommand.ExecuteReader();
+            try
+            {
+                List< TmSkillDB> dict = new List< TmSkillDB>();
+                while (reader.Read())
+                {
+                    if (reader.HasRows)
+                    {
+                        TmSkillDB item = new TmSkillDB();
+                        item.Id = reader.GetInt32(0);
+                        item.Name = reader.GetString(1);
+                        item.SkillId = reader.GetInt32(2);
+                        item.RolerId = reader.GetInt32(3);
+                        item.Level = reader.GetInt32(4);
+                        item.RoleType = (RoleType)reader.GetInt32(5);
+                        item.Place = reader.GetInt32(6);
+                        dict.Add(item);
+                    }
+                }
+                return dict;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("查询失败...");
+                return null;
+            }
+            finally
+            {
+                reader.Close();
+            }
+        }                               //读取表格
         internal Dictionary<int, TmSkillDB> GetSkilldbsByRolerId(int rolerid)
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName + " where rolerid = '" + rolerid + "'", TmMysqlConnection.Connection);  //读取数据函数  

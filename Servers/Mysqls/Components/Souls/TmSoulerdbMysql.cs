@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Tumo;
 namespace Servers
@@ -7,13 +8,13 @@ namespace Servers
      class TmSoulerdbMysql : TmComponent
     {
         internal string DatabaseFormName { get; set; }
-        internal Dictionary<int,TmSoulerDB> GetTmSoulerdbDict()
+        internal ArrayList TmSoulerDBs()
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName, TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
-                Dictionary<int, TmSoulerDB> itemDBs = new Dictionary<int, TmSoulerDB>();
+                ArrayList itemDBs = new ArrayList();
                 while (reader.Read())
                 {
                     if (reader.HasRows)
@@ -40,7 +41,7 @@ namespace Servers
                         item.ay = reader.GetDouble(18);
                         item.az = reader.GetDouble(19);
                         item.CreateDate = reader.GetString(20);
-                        itemDBs.Add(item.Id,item);
+                        itemDBs.Add(item);
                     }
                 }
                 return itemDBs;
@@ -55,7 +56,7 @@ namespace Servers
                 reader.Close();
             }
         }                          //读取表格//得到所有角色列表         
-        internal List<TmSoulerDB> GetTmSoulerdbs()
+        internal List<TmSoulerDB> GetTmSoulerDBs()
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName, TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();

@@ -23,10 +23,9 @@ namespace ClientExample
             time += 1;
             if (time > restime)
             {
-                if (TmObjects.Bookers.Count > 0)
+                if (TmObjects.SoulerDBs.Count > 0)
                 {
-                    Console.WriteLine(" TmObjects.Bookers: " + TmObjects.Bookers.Count);
-                    Console.WriteLine(" TmObjects.Teachers: " + TmObjects.Teachers.Count);
+                    Console.WriteLine(" TmObjects.SoulerDBs: " + TmObjects.SoulerDBs.Count);
                 }
                 time = 0;
             }
