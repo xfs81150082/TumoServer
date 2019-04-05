@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Servers
+namespace Tumo
 {
     public class TmObstacle
     {

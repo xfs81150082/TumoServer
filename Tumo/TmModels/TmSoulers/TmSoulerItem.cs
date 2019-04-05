@@ -10,8 +10,8 @@ namespace Tumo
             AddComponent(new TmSoulerDB());
             AddComponent(new TmSouler());
             AddComponent(new TmName());
-            AddComponent(new TmTransform());
             AddComponent(new TmProperty());
+            AddComponent(new TmTransform());
             AddComponent(new TmChangeType());
             AddComponent(new TmCoolDown());
             AddComponent(new TmAstarComponent());

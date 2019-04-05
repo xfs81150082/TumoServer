@@ -13,7 +13,8 @@
             AddComponent(new TmSoulerSystem());
             AddComponent(new TmSkillSystem());
             AddComponent(new TmInventorySystem());
-
+            AddComponent(new TmInventoryAddSystem());
+            AddComponent(new TmBuffAddSystem());
         }
     }
 }
