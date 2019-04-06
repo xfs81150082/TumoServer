@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Games\Components\TmHandlers\Inventorys\TmKnapsackHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Maps\TmMapHandler.cs" />
+    <Compile Include="Mysqls\Systems\TmEngineerSystem.cs" />
     <Compile Include="Mysqls\Systems\TmSkillDBSystem.cs" />
     <Compile Include="Mysqls\Systems\TmInventoryDBSystem.cs" />
     <Compile Include="Mysqls\Systems\TmSoulerDBSystem.cs" />

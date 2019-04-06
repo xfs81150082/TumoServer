@@ -10,13 +10,13 @@ namespace Tumo
         public static Dictionary<int, TmSouler> Soulers { get; set; } = new Dictionary<int, TmSouler>();
         public static Dictionary<int, TmSkill> Skills { get; set; } = new Dictionary<int, TmSkill>();
         public static Dictionary<int, TmInventory> Inventorys { get; set; } = new Dictionary<int, TmInventory>();
-        public static List<TmSoulerDB> SoulerDBs = new List<TmSoulerDB>();
         public static List<TmInventoryDB> InventoryDBs = new List<TmInventoryDB>();
-        public static List<TmSkillDB> SkillDBs = new List<TmSkillDB>();
-        public static List<TmGridMap> GridMaps = new List<TmGridMap>();
+        public static Dictionary<string, TmSkillDB> SkillDBs { get; set; } = new Dictionary<string, TmSkillDB>();
+        public static Dictionary<string, TmGridMap> GridMaps { get; set; } = new Dictionary<string, TmGridMap>();
         public static TmGrid[,] Grids { get; set; }
-        public static List<TmSoulerDB> Bookers { get; set; } = new List<TmSoulerDB>();
-        public static List<TmSoulerDB> Teachers { get; set; } = new List<TmSoulerDB>();
-        public static List<TmSoulerDB> Engineers { get; set; } = new List<TmSoulerDB>();
+        public static Dictionary<string, TmSoulerDB> Bookers { get; set; } = new Dictionary<string, TmSoulerDB>();
+        public static Dictionary<string, TmSoulerDB> Teachers { get; set; } = new Dictionary<string, TmSoulerDB>();
+        public static Dictionary<string, TmSoulerDB> Engineers { get; set; } = new Dictionary<string, TmSoulerDB>();
+        public static TmSoulerDB Engineer { get; set; }
     }
 }

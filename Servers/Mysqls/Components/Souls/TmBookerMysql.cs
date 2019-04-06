@@ -18,7 +18,7 @@ namespace Servers
         bool isYes = false;
         private void GetSoulerDBs()
         {
-            List<TmSoulerDB> dbs = GetTmSoulerDBs();
+            Dictionary<string, TmSoulerDB> dbs = GetTmSoulerDBsDict();
             if (dbs.Count > 0 && !isYes)
             {
                 TmObjects.Bookers = dbs;
