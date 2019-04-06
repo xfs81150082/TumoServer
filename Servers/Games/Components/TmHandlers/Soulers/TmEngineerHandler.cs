@@ -78,13 +78,10 @@ namespace Servers
                     TmParameter response = TmParameterTool.ToJsonParameter<TmSoulerDB>(TenCode.Engineer, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), Engineer);
                     response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
-                    TryRemove(rolerId);//检查删除                                    
-                    TmObjects.Engineers.Add(Engineer);
                     if (TmTcpSocket.Instance.TPeers[parameter.Keys[0]] != null)
                     {
                         TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().Engineer = Engineer;  //给TmTcpSession赋值Engineer-SoulerDB
                         TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().IsLogin = true;  //给TmTcpSession赋值Engineer-SoulerDB
-                        //Console.WriteLine(" TmTcpSession: " +TmTcpSocket.Instance.TPeers[parameter.Keys[0]].EcsId +" SoulerDB: "+ TmTcpSocket.Instance.TPeers[parameter.Keys[0]].Engineer.Id);
                     }
                     GetInventorysByRolerId(parameter);
                     GetSkillsByRolerId(parameter);
@@ -101,17 +98,6 @@ namespace Servers
                 }
             }
         }   
-     
-        void TryRemove(int rolerId)
-        {
-            for (int i = 0; i < TmObjects.Engineers.Count; i++)
-            {
-                if (rolerId == TmObjects.Engineers[i].Id)
-                {
-                    TmObjects.Engineers.Remove(TmObjects.Engineers[i]);
-                }
-            }
-        }
 
         void GetSkillsByRolerId(TmParameter parameter)
         {

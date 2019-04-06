@@ -38,10 +38,12 @@ namespace Servers
             TmGame.TmSence.AddComponent(new TmAbilityHandler());        ///服务器加载组件 : TmAbilityHandler 处理组件
             TmGame.TmSence.AddComponent(new TmKnapsackHandler());       ///服务器加载组件 : TmKnapsackHandler 处理组件
 
+
         }
 
         static void TmSystemManager()
         {
+            TmGame.TmSystemMananger.AddComponent(new TmEngineerSystem());        ///服务器加载组件 : 数据库链接组件TmSystem类型
             TmGame.TmSystemMananger.AddComponent(new TmSoulerDBSystem());       ///服务器加载组件 : 数据库链接组件TmSystem类型
             TmGame.TmSystemMananger.AddComponent(new TmInventoryDBSystem());    ///服务器加载组件 : 数据库链接组件TmSystem类型
             TmGame.TmSystemMananger.AddComponent(new TmSkillDBSystem());        ///服务器加载组件 : 数据库链接组件TmSystem类型
