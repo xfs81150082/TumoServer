@@ -78,9 +78,20 @@ namespace Servers
                     TmParameter response = TmParameterTool.ToJsonParameter<TmSoulerDB>(TenCode.Engineer, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), Engineer);
                     response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
+
+                    TmSoulerDB tem;
+                    TmObjects.Engineers.TryGetValue(Engineer.Id, out tem);
+                    if (tem != null)
+                    {
+                        TmObjects.Engineers.Remove(Engineer.Id);
+                    }
+                    TmObjects.Engineers.Add(Engineer.Id, Engineer);  //将engineer 集中管理 放在 全局变量字典中，之前几行是检查有没有注册，如有先删除，再重新注册（因为数据更新了）。
+
                     if (TmTcpSocket.Instance.TPeers[parameter.Keys[0]] != null)
                     {
                         TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().Engineer = Engineer;  //给TmTcpSession赋值Engineer-SoulerDB
+                        //TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().Engineers = GetEngineersByMyself(Engineer, TmObjects.Engineers);  //给TmTcpSession赋值Engineer-SoulerDB
+                        TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().Engineers = TmObjects.Engineers;  //给TmTcpSession赋值Engineer-SoulerDB
                         TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().IsLogin = true;  //给TmTcpSession赋值Engineer-SoulerDB
                     }
                     GetInventorysByRolerId(parameter);
@@ -98,7 +109,22 @@ namespace Servers
                 }
             }
         }   
-
+        Dictionary<int,TmSoulerDB> GetEngineersByMyself(TmSoulerDB soulerDB, Dictionary<int,TmSoulerDB> soulerDBs)
+        {
+            Dictionary<int, TmSoulerDB> dbs = new Dictionary<int, TmSoulerDB>();
+            soulerDBs.Remove(soulerDB.Id);
+            List<TmSoulerDB> list = new List<TmSoulerDB>(soulerDBs.Values);
+            for(int i = 0; i < list.Count; i++)
+            {
+                double xx = Math.Abs(soulerDB.px - list[i].px);
+                double zz = Math.Abs(soulerDB.pz - list[i].pz);
+                if (xx < 100 && zz < 100)
+                {
+                    dbs.Add(list[i].Id, list[i]);
+                }
+            }       
+            return dbs;
+        }
         void GetSkillsByRolerId(TmParameter parameter)
         {
             parameter.ElevenCode = ElevenCode.GetSkills;

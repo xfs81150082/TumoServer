@@ -14,9 +14,7 @@ namespace Tumo
         public int skillsChange { get; set; } = -1;
         public List<TmInventoryDB> InventoryDBs { get; set; }
         public List<TmSkillDB> SkillDBs { get; set; }
-        public List<TmSoulerDB> Bookers { get; set; }
-        public List<TmSoulerDB> Teachers { get; set; }
-        public List<TmSoulerDB> Engineers { get; set; }
+        public Dictionary<int, TmSoulerDB> Engineers { get; set; }
         public TmSoulerDB Engineer { get; set; }
     }
 }

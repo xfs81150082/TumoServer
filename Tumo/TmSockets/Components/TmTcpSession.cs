@@ -10,7 +10,6 @@ namespace Tumo
     {
         #region Properties        
         public Socket Socket { get; set; }  ///创建一个套接字，用于储藏代理服务端套接字，与客户端通信///客户端Socket 
-        //public TmSoulerDB Engineer {get;set;}
         public bool IsRunning { get; set; }
         public bool IsServer { get; set; } = true;
         public override void TmAwake()

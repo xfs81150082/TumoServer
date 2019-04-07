@@ -56,13 +56,13 @@ namespace Servers
                 reader.Close();
             }
         }                          //读取表格//得到所有角色列表         
-        internal Dictionary<string, TmSoulerDB> GetTmSoulerDBsDict()
+        internal Dictionary<int, TmSoulerDB> GetTmSoulerDBsDict()
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName, TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
             try
             {
-                Dictionary<string, TmSoulerDB> itemDBs = new Dictionary<string, TmSoulerDB>();
+                Dictionary<int, TmSoulerDB> itemDBs = new Dictionary<int, TmSoulerDB>();
                 while (reader.Read())
                 {
                     if (reader.HasRows)
@@ -89,7 +89,7 @@ namespace Servers
                         item.ay = reader.GetDouble(18);
                         item.az = reader.GetDouble(19);
                         item.CreateDate = reader.GetString(20);
-                        itemDBs.Add(item.Id.ToString(), item);
+                        itemDBs.Add(item.Id, item);
                     }
                 }
                 return itemDBs;
