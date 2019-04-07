@@ -23,7 +23,7 @@ namespace ClientExample
         }
         void SetSoulerDBs(TmParameter parameter)
         {
-            Dictionary<string, TmSoulerDB> bookers = TmParameterTool.GetJsonValue<Dictionary<string, TmSoulerDB>>(parameter, parameter.ElevenCode.ToString());
+            Dictionary<int, TmSoulerDB> bookers = TmParameterTool.GetJsonValue<Dictionary<int, TmSoulerDB>>(parameter, parameter.ElevenCode.ToString());
             if (bookers.Count > 0)
             {
                 TmObjects.Bookers = bookers;

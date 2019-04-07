@@ -23,15 +23,15 @@ namespace Servers
         void SetInventoryDBs(TmEntity entity)
         {
             TmSession session = entity.GetComponent<TmSession>();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmInventoryDBSystem-session.InventoryDBs25:" + session.InventoryDBs.Count);
             if (session.inventorysChange != session.InventoryDBs.Count && session.InventoryDBs.Count > 0 && session.IsLogin)
             {
                 TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Knapsack, ElevenCode.SetIventoryDBs, ElevenCode.SetIventoryDBs.ToString(), session.InventoryDBs);
                 response.Keys.Add(entity.EcsId);
                 TmTcpSocket.Instance.Send(response);
                 session.inventorysChange = session.InventoryDBs.Count;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmInventoryDBSystem-session.InventoryDBs:" + session.InventoryDBs.Count);
             }
-        }      
+        }
 
 
     }

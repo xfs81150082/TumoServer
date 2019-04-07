@@ -20,7 +20,7 @@ namespace Servers
         bool isYes = false;
         private void GetSoulerDBs()
         {
-            Dictionary<string, TmSoulerDB> dbs = GetTmSoulerDBsDict();
+            Dictionary<int, TmSoulerDB> dbs = GetTmSoulerDBsDict();
             if (dbs.Count > 0 && !isYes)
             {
                 TmObjects.Teachers = dbs;

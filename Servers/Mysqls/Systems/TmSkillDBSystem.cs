@@ -23,13 +23,13 @@ namespace Servers
         void SetSkillDBs(TmEntity entity)
         {
             TmSession session = entity.GetComponent<TmSession>();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmSkillDBSystem-session.SkillDBs26:" + session.SkillDBs.Count);
             if (session.skillsChange != session.SkillDBs.Count && session.SkillDBs.Count > 0 && session.IsLogin)
             {
                 TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Ability, ElevenCode.SetSkillDBs, ElevenCode.SetSkillDBs.ToString(), session.SkillDBs);
                 response.Keys.Add(entity.EcsId);
                 TmTcpSocket.Instance.Send(response);
                 session.skillsChange = session.SkillDBs.Count;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSkillDBSystem-session.SkillDBs: " + session.SkillDBs.Count);
             }
         }
 

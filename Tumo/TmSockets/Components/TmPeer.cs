@@ -30,7 +30,17 @@ namespace Tumo
                 //删除掉心跳包群中对应的peer
                 TmTcpSocket.Instance.TPeers.Remove(EcsId);
             }            ///显示客户端群中的客户端数量
+            if (this.GetComponent<TmSession>().Engineer != null)
+            {
+                TmSoulerDB soulerDB;
+                TmObjects.Engineers.TryGetValue(this.GetComponent<TmSession>().Engineer.Id, out soulerDB);
+                if (soulerDB != null)
+                {
+                    TmObjects.Engineers.Remove(this.GetComponent<TmSession>().Engineer.Id);
+                }
+            }
             Console.WriteLine(TmTimerTool.CurrentTime() + " 一个客户端:已经中断连接" + " TPeers: " + TmTcpServer.Instance.TPeers.Count);
+            Console.WriteLine(TmTimerTool.CurrentTime() + " 一个角色:已经离线" + " Engineers: " + TmObjects.Engineers.Count);
         }
     }
 }

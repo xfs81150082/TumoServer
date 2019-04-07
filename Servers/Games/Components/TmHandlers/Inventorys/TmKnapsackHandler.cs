@@ -42,7 +42,6 @@ namespace Servers
                 yes = Knapsacks.TryGetValue(rolerid, out inventoryDBs);
                 if (yes)
                 {
-
                     if (TmTcpSocket.Instance.TPeers[parameter.Keys[0]] != null)
                     {
                         TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().InventoryDBs = inventoryDBs;  //给TmTcpSession赋值Engineer-SoulerDB
