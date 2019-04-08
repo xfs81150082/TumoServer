@@ -7,12 +7,11 @@ namespace ClientExample
 {
     class SyncTest : TmSystem
     {
-        public string clientId;
+        public int clientId = 100;
         public override void TmAwake()
         {
             //GetGrids();
             //GetStartGoal();
-            clientId = TmIdGenerater.GetId();
         }
         public override void TmUpdate()
         {
