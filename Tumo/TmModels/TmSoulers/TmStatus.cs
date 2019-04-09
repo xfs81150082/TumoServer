@@ -6,10 +6,11 @@ namespace Tumo
     [Serializable]
     public class TmStatus
     {
-        public int KeyId;                    //TmSoulerDB的EcsId
-        public string CurdateTime;              //当前时间数值
-        public double MoveSpeed;                //当前速度
-        public TmTransform MyselfTmTransform;   //当前坐标
-        public TmTransform TargetTmTransform;   //当前目标坐标
+        public int KeyId;
+        public int State;
+        public string CurdateTime;
+        public double MoveSpeed;
+        public TmTransform MyselfTmTransform;
+        public TmTransform TargetTmTransform;
     }
 }
