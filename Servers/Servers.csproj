@@ -66,9 +66,12 @@
   <ItemGroup>
     <Compile Include="Games\Components\TmHandlers\Inventorys\TmKnapsackHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Maps\TmMapHandler.cs" />
-    <Compile Include="Mysqls\Systems\TmSkillDBSystem.cs" />
-    <Compile Include="Mysqls\Systems\TmInventoryDBSystem.cs" />
-    <Compile Include="Mysqls\Systems\TmSoulerDBSystem.cs" />
+    <Compile Include="Games\Systems\DBs\TmEngineerDBSystem.cs" />
+    <Compile Include="Games\Systems\DBs\TmBookerDBSystem.cs" />
+    <Compile Include="Games\Systems\DBs\TmTeacherDBSystem.cs" />
+    <Compile Include="Games\Systems\DBs\TmSkillDBSystem.cs" />
+    <Compile Include="Games\Systems\DBs\TmInventoryDBSystem.cs" />
+    <Compile Include="Games\Systems\DBs\TmSoulerDBSystem.cs" />
     <Compile Include="Mysqls\Components\GridMaps\TmGridMysql.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmBuffHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmAbilityHandler.cs" />
@@ -94,7 +97,7 @@
     <Compile Include="Mysqls\Components\Skills\TmAbilityMysql.cs" />
     <Compile Include="Mysqls\Components\Skills\TmBuffMysql.cs" />
     <Compile Include="Mysqls\Components\Skills\TmInbornMysql.cs" />
-    <Compile Include="Games\Systems\TmServerSocket.cs" />
+    <Compile Include="Games\Systems\Sockets\TmServerSocket.cs" />
     <Compile Include="Mysqls\Components\TmMysqlConnection.cs" />
     <Compile Include="Main\TmServerMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

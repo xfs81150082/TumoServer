@@ -44,9 +44,12 @@ namespace Servers
         static void TmSystemManager()
         {
             //TmGame.TmSystemMananger.AddComponent(new TmEngineerSystem());        ///服务器加载组件 : 数据库链接组件TmSystem类型
-            TmGame.TmSystemMananger.AddComponent(new TmSoulerDBSystem());       ///服务器加载组件 : 数据库链接组件TmSystem类型
-            TmGame.TmSystemMananger.AddComponent(new TmInventoryDBSystem());    ///服务器加载组件 : 数据库链接组件TmSystem类型
-            TmGame.TmSystemMananger.AddComponent(new TmSkillDBSystem());        ///服务器加载组件 : 数据库链接组件TmSystem类型
+            //TmGame.TmSystemMananger.AddComponent(new TmSoulerDBSystem());       ///服务器加载组件 : 数据库链接组件TmSystem类型
+            TmGame.TmSystemMananger.AddComponent(new TmEngineerDBSystem());      ///服务器加载组件 : 数据库链接组件TmSystem类型
+            TmGame.TmSystemMananger.AddComponent(new TmTeacherDBSystem());       ///服务器加载组件 : 数据库链接组件TmSystem类型
+            TmGame.TmSystemMananger.AddComponent(new TmBookerDBSystem());        ///服务器加载组件 : 数据库链接组件TmSystem类型
+            TmGame.TmSystemMananger.AddComponent(new TmInventoryDBSystem());     ///服务器加载组件 : 数据库链接组件TmSystem类型
+            TmGame.TmSystemMananger.AddComponent(new TmSkillDBSystem());         ///服务器加载组件 : 数据库链接组件TmSystem类型
 
 
         }

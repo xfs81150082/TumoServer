@@ -13,14 +13,26 @@ namespace Servers
                 case (ElevenCode.Engineer):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
                     RolerStatusSync(parameter);
-                    break;         
+                    break;
+                case (ElevenCode.Teacher):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
+                    RolerStatusSync(parameter);
+                    break;
+                case (ElevenCode.Booker):
+                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
+                    RolerStatusSync(parameter);
+                    break;
+                //case (ElevenCode.Souler):
+                //    Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
+                //    RolerStatusSync(parameter);
+                //    break;
                 case (ElevenCode.None):
                     break;
                 default:
                     break;
             }
-        }
-       
+        }      
+        
         void RolerStatusSync(TmParameter parameter)
         {
             string myself = parameter.Keys[0];
@@ -28,6 +40,8 @@ namespace Servers
             //parameter.Keys.Remove(myself);
             TmTcpSocket.Instance.Send(parameter);
         }
+
+
 
     }
 }

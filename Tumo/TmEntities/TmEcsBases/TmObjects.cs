@@ -15,6 +15,8 @@ namespace Tumo
         public static Dictionary<int, TmSoulerDB> Bookers { get; set; } = new Dictionary<int, TmSoulerDB>();
         public static Dictionary<int, TmSoulerDB> Teachers { get; set; } = new Dictionary<int, TmSoulerDB>();
         public static Dictionary<int, TmSoulerDB> Engineers { get; set; } = new Dictionary<int, TmSoulerDB>();
+        public static Dictionary<int, TmStatus> OutRolerStatuses { get; set; } = new Dictionary<int, TmStatus>();
+        public static Dictionary<int, TmStatus> InRolerStatuses { get; set; } = new Dictionary<int, TmStatus>();
         public static Dictionary<int, TmStatus> OutEngineerStatuses { get; set; } = new Dictionary<int, TmStatus>();
         public static Dictionary<int, TmStatus> InEngineerStatuses { get; set; } = new Dictionary<int, TmStatus>();
         public static TmSoulerDB Engineer { get; set; }

@@ -5,20 +5,20 @@ namespace Servers
 {
     class TmSoulerDBSystem : TmSystem
     {
-        public override void TmAwake()
-        {
-            ValTime = 4000;
-            AddComponent(new TmSession());
-        }
-        public override void TmUpdate()
-        {
-            foreach (TmEntity entity in GetTmEntities())
-            {
-                SetEngineers(entity);
-                SetBookers(entity);
-                SetTeachers(entity);
-            }
-        }
+        //public override void TmAwake()
+        //{
+        //    ValTime = 4000;
+        //    AddComponent(new TmSession());
+        //}
+        //public override void TmUpdate()
+        //{
+        //    foreach (TmEntity entity in GetTmEntities())
+        //    {
+        //        SetEngineers(entity);
+        //        SetBookers(entity);
+        //        SetTeachers(entity);
+        //    }
+        //}
 
         #region Engineer
         void SetEngineers(TmEntity entity)
@@ -36,7 +36,6 @@ namespace Servers
                 session.engineersChange = session.Engineers.Count;
             }
         }
-
         Dictionary<int, TmSoulerDB> GetEngineersByMyself(TmSoulerDB soulerDB, Dictionary<int, TmSoulerDB> soulerDBs)
         {
             Dictionary<int, TmSoulerDB> dbs = new Dictionary<int, TmSoulerDB>();
@@ -54,32 +53,54 @@ namespace Servers
             dbs.Remove(soulerDB.Id);
             return dbs;
         }
-
         #endregion
 
-        #region Bookers + Teachers
+        #region Bookers + Teachers 每4秒刷新一下，如果死亡重新生成，否则不变
         void SetBookers(TmEntity entity)
         {
             TmSession session = entity.GetComponent<TmSession>();
-            if (session.bookersChange != TmObjects.Bookers.Count && TmObjects.Bookers.Count > 0 && session.IsLogin)
+            if (TmObjects.Bookers.Count > 0 && session.IsLogin)
             {
                 TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Booker, ElevenCode.SetSoulerDBs, ElevenCode.SetSoulerDBs.ToString(), TmObjects.Bookers);
                 response.Keys.Add(entity.EcsId);
                 TmTcpSocket.Instance.Send(response);
-                session.bookersChange = TmObjects.Bookers.Count;
             }
         }
         void SetTeachers(TmEntity entity)
         {
             TmSession session = entity.GetComponent<TmSession>();
-            if (session.teachersChange != TmObjects.Teachers.Count && TmObjects.Teachers.Count > 0 && session.IsLogin)
+            if (TmObjects.Teachers.Count > 0 && session.IsLogin)
             {
                 TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Teacher, ElevenCode.SetSoulerDBs, ElevenCode.SetSoulerDBs.ToString(), TmObjects.Teachers);
                 response.Keys.Add(entity.EcsId);
                 TmTcpSocket.Instance.Send(response);
-                session.teachersChange = TmObjects.Teachers.Count;
             }
         }
+        #endregion
+
+        #region old : Bookers + Teachers , 一次性给客户端
+        //void SetBookers(TmEntity entity)
+        //{
+        //    TmSession session = entity.GetComponent<TmSession>();
+        //    if (session.bookersChange != TmObjects.Bookers.Count && TmObjects.Bookers.Count > 0 && session.IsLogin)
+        //    {
+        //        TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Booker, ElevenCode.SetSoulerDBs, ElevenCode.SetSoulerDBs.ToString(), TmObjects.Bookers);
+        //        response.Keys.Add(entity.EcsId);
+        //        TmTcpSocket.Instance.Send(response);
+        //        session.bookersChange = TmObjects.Bookers.Count;
+        //    }
+        //}
+        //void SetTeachers(TmEntity entity)
+        //{
+        //    TmSession session = entity.GetComponent<TmSession>();
+        //    if (session.teachersChange != TmObjects.Teachers.Count && TmObjects.Teachers.Count > 0 && session.IsLogin)
+        //    {
+        //        TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Teacher, ElevenCode.SetSoulerDBs, ElevenCode.SetSoulerDBs.ToString(), TmObjects.Teachers);
+        //        response.Keys.Add(entity.EcsId);
+        //        TmTcpSocket.Instance.Send(response);
+        //        session.teachersChange = TmObjects.Teachers.Count;
+        //    }
+        //}
         #endregion
 
     }
