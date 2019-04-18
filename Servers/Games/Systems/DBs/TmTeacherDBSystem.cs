@@ -9,7 +9,7 @@ namespace Servers
     {
         public override void TmAwake()
         {
-            ValTime = 4000;
+            ValTime = 14000;
             AddComponent(new TmSession());
         }
         public override void TmUpdate()
