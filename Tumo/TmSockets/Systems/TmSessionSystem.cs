@@ -1,4 +1,6 @@
 ﻿using System;
+using UnityEngine;
+
 namespace Tumo
 {
     class TmSessionSystem : TmSystem
@@ -21,22 +23,23 @@ namespace Tumo
             TmCoolDown cd = entity.GetComponent<TmCoolDown>();           
             if (!cd.Counting)
             {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmTcpSocket.Instance.TPeers.Count);
-                if (cd.Parent != null)
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmTcpSocket.Instance.TPeers.Count);              
+                if (!cd.Timing)
                 {
-                    cd.Parent.Dispose();
+                    cd.Dispose();
                 }
-                this.Dispose();
+                entity.Dispose();
             }
             else
             {
-                //发送心跳检测（并等待签到，签到入口在TmAsyncTcpSession里）
+                //发送心跳检测（并等待签到，签到入口在TmTcpSession里，双向发向即：客户端向服务端发送，服务端向客户端发送）
                 TmParameter mvc = TmParameterTool.ToParameter(TenCode.EessionCD, ElevenCode.Login);
                 //mvc.Keys.Add(cd.Key);        
                 mvc.Keys.Add(entity.EcsId);
                 TmTcpSocket.Instance.Send(mvc);
             }
             Console.WriteLine(TmTimerTool.CurrentTime() + " CdCount:{0}-{1} ", cd.CdCount, cd.MaxCdCount);
+            Debug.Log(TmTimerTool.CurrentTime() + " CdCount:" + cd.CdCount + "-" + cd.MaxCdCount);
         }
     }
 }

@@ -6,11 +6,10 @@ namespace Tumo
     public class TmTcpClient : TmTcpSocket
     {      
         #region Methods Callbacks ///接收参数消息
-        public void StartConnect()
+        public void StartConnect()    //开始连接
         {
             try
             {
-                //开始连接
                 netSocket.BeginConnect(new IPEndPoint(address, Port), new AsyncCallback(this.ConnectCallback), netSocket);
                 IsRunning = true;
             }

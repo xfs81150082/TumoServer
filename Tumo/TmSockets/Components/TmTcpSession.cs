@@ -14,7 +14,6 @@ namespace Tumo
         public bool IsServer { get; set; } = true;
         public override void TmAwake()
         {
-            base.TmAwake();
             AddComponent(new TmSession());
             AddComponent(new TmCoolDown(EcsId));
         }

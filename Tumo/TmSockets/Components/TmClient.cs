@@ -1,4 +1,6 @@
 ﻿using System;
+using UnityEngine;
+
 namespace Tumo
 {
     public class TmClient : TmTcpSession
@@ -6,7 +8,7 @@ namespace Tumo
         public TmClient()
         {
             TmTcpSocket.Instance.TClient = this;
-            (this.GetComponent<TmCoolDown>() as TmCoolDown).IsServer = false;
+            this.GetComponent<TmCoolDown>().IsServer = false;
         }                 
         public override void OnConnect()
         {
@@ -20,7 +22,9 @@ namespace Tumo
             {
                 TmTcpSocket.Instance.TClient = null;
             }
+
             Console.WriteLine("{0} 服务端{1}断开连接", TmTimerTool.CurrentTime(), EcsId);
+            Debug.Log(TmTimerTool.CurrentTime() + " TmClient:" + EcsId + "断开连接.");
         }///与服务器断开时调用                      
     }
 }
