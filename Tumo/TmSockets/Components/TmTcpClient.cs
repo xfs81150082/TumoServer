@@ -42,8 +42,9 @@ namespace Tumo
         }
         public void TmReceiveSocket(Socket socket)
         {
-            ///创建一个TClient接收socket            
-            new TmClient().BeginReceiveMessage(socket);
+            ///创建一个TClient接收socket       
+            TClient = new TmClient();
+            TClient.BeginReceiveMessage(socket);
         }
         #endregion
 

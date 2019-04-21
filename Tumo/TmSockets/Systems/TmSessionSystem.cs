@@ -23,18 +23,13 @@ namespace Tumo
             TmCoolDown cd = entity.GetComponent<TmCoolDown>();           
             if (!cd.Counting)
             {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmTcpSocket.Instance.TPeers.Count);              
-                if (!cd.Timing)
-                {
-                    cd.Dispose();
-                }
                 entity.Dispose();
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmTcpSocket.Instance.TPeers.Count);              
             }
             else
             {
                 //发送心跳检测（并等待签到，签到入口在TmTcpSession里，双向发向即：客户端向服务端发送，服务端向客户端发送）
                 TmParameter mvc = TmParameterTool.ToParameter(TenCode.EessionCD, ElevenCode.Login);
-                //mvc.Keys.Add(cd.Key);        
                 mvc.Keys.Add(entity.EcsId);
                 TmTcpSocket.Instance.Send(mvc);
             }
