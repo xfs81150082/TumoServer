@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using UnityEngine;
+
 namespace Tumo
 {
     public class TmTcpClient : TmTcpSocket
@@ -45,6 +47,7 @@ namespace Tumo
             ///创建一个TClient接收socket       
             TClient = new TmClient();
             TClient.BeginReceiveMessage(socket);
+            Debug.Log( TmTimerTool.CurrentTime() + " 连接服务器成功TmTcpClient: " + socket.RemoteEndPoint.ToString());
         }
         #endregion
 

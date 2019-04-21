@@ -20,11 +20,14 @@ namespace Tumo
         }
         void CheckSession(TmEntity entity)
         {
-            TmCoolDown cd = entity.GetComponent<TmCoolDown>();           
+            TmCoolDown cd = entity.GetComponent<TmCoolDown>();
             if (!cd.Counting)
             {
                 entity.Dispose();
-                Console.WriteLine(TmTimerTool.CurrentTime() + " TmSessionCDItem Colsed. TPeers:{0} ", TmTcpSocket.Instance.TPeers.Count);              
+                if (!cd.IsServer && TmTcpSocket.Instance.TClient == null)
+                {
+                    TmTcpSocket.Instance.StartConnect();
+                }
             }
             else
             {
