@@ -10,12 +10,21 @@ namespace Tumo
         public static TmTcpSocket Instance { get => _instance;  }
         public TmTcpSocket() { _instance = this; }
         #region Properties
+<<<<<<< HEAD
         public string IpString { get; set; } = "111.231.11.127";        //监听的IP地址  
         public int Port { get; set; } = 8115;                           //监听的端口  
         public int MaxListenCount { get; set; } = 100;                   //服务器程序允许的最大客户端连接数  
         public bool IsRunning { get; set; }                             //服务器是否正在运行
         protected IPAddress address { get; set; }                       //监听的IP地址  
         public Socket netSocket { get; set; }                           //服务器使用的异步socket   
+=======
+        public string IpString { get; set; } = "111.231.11.127";           //监听的IP地址  
+        public int Port { get; set; } = 8115;                              //监听的端口  
+        public int MaxListenCount { get; set; } = 10;                      //服务器程序允许的最大客户端连接数  
+        public bool IsRunning { get; set; }                                //服务器是否正在运行
+        protected IPAddress address { get; set; }                          //监听的IP地址  
+        public Socket netSocket { get; set; }                              //服务器使用的异步socket   
+>>>>>>> 70b5558143e2fb39875fdfdb1a22d08653076b9e
         public Queue<Socket> WaitingSockets = new Queue<Socket>();
         public Dictionary<string, TmTcpSession> TPeers { get; set; } = new Dictionary<string, TmTcpSession>();
         public TmTcpSession TClient { get; set; }
@@ -32,6 +41,10 @@ namespace Tumo
         {
             this.IpString = ipString;
             this.Port = port;
+            if (netSocket != null)
+            {
+                netSocket.Close();
+            }
             address = IPAddress.Parse(ipString);
             netSocket = new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
         }
@@ -42,6 +55,14 @@ namespace Tumo
             this.MaxListenCount = maxListenCount;
             address = IPAddress.Parse(ipString);
             netSocket = new Socket(address.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+        }
+        public virtual void StartConnect()
+        {
+            Init();
+        }
+        public virtual void StartListen()
+        {
+            Init();
         }
         #endregion
         #region ///发送参数信息

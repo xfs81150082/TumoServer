@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using UnityEngine;
+
 namespace Tumo
 {
     public class TmTcpClient : TmTcpSocket
     {      
         #region Methods Callbacks ///接收参数消息
-        public void StartConnect()
+        public override void StartConnect()    //开始连接
         {
+            base.StartConnect();
             try
             {
-                //开始连接
                 netSocket.BeginConnect(new IPEndPoint(address, Port), new AsyncCallback(this.ConnectCallback), netSocket);
                 IsRunning = true;
             }
@@ -21,6 +23,7 @@ namespace Tumo
                 Console.WriteLine(ex.ToString());
             }
         }
+
         private void ConnectCallback(IAsyncResult ar)
         {
             if (IsRunning)
@@ -43,8 +46,10 @@ namespace Tumo
         }
         public void TmReceiveSocket(Socket socket)
         {
-            ///创建一个TClient接收socket            
-            new TmClient().BeginReceiveMessage(socket);
+            ///创建一个TClient接收socket       
+            TClient = new TmClient();
+            TClient.BeginReceiveMessage(socket);
+            Debug.Log( TmTimerTool.CurrentTime() + " 连接服务器成功TmTcpClient: " + socket.RemoteEndPoint.ToString());
         }
         #endregion
 
