@@ -24,10 +24,7 @@ namespace Tumo
             if (!cd.Counting)
             {
                 entity.Dispose();
-                if (!cd.IsServer && TmTcpSocket.Instance.TClient == null)
-                {
-                    TmTcpSocket.Instance.StartConnect();
-                }
+                //TmTcpSocket.Instance.StartConnect();
             }
             else
             {
