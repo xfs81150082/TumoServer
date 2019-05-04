@@ -71,7 +71,6 @@
     <Compile Include="Games\Systems\DBs\TmTeacherDBSystem.cs" />
     <Compile Include="Games\Systems\DBs\TmSkillDBSystem.cs" />
     <Compile Include="Games\Systems\DBs\TmInventoryDBSystem.cs" />
-    <Compile Include="Games\Systems\DBs\TmSoulerDBSystem.cs" />
     <Compile Include="Mysqls\Components\GridMaps\TmGridMysql.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmBuffHandler.cs" />
     <Compile Include="Games\Components\TmHandlers\Skills\TmAbilityHandler.cs" />
