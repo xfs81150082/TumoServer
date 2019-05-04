@@ -6,7 +6,7 @@ namespace Tumo
     public class TmTcpServer : TmTcpSocket
     {
         #region Methods Callbacks ///启动服务 ///接收参数消息     
-        public void StartListen()
+        public override void StartListen()
         {
             if (!IsRunning)
             {
@@ -14,20 +14,16 @@ namespace Tumo
                 netSocket.Listen(MaxListenCount);
                 netSocket.BeginAccept(new AsyncCallback(this.AcceptCallback), netSocket);
                 Console.WriteLine("{0} 服务启动，监听{1}成功", TmTimerTool.CurrentTime(), netSocket.LocalEndPoint);
-                IsRunning = true;
             }
         }
         private void AcceptCallback(IAsyncResult ar)
         {
-            if (IsRunning)
-            {
                 Socket server = (Socket)ar.AsyncState;
                 Socket peerSocket = server.EndAccept(ar);
                 ///触发事件///创建一个方法接收peerSocket (在方法里创建一个peer来处理读取数据//开始接受来自该客户端的数据)
                 TmReceiveSocket(peerSocket);
                 ///接受下一个请求  
                 server.BeginAccept(new AsyncCallback(this.AcceptCallback), server);
-            }
         }
         private void TmReceiveSocket(Socket socket)
         {
@@ -41,6 +37,7 @@ namespace Tumo
             {
                 ///创建一个TPeer接收socket
                 new TmPeer().BeginReceiveMessage(socket);
+                IsRunning = true;
             }
         }
         #endregion

@@ -18,7 +18,7 @@ namespace ClientExample
             //ResTimeGet();
             //TestPaths();
 
-            SyncGrid();
+            //SyncGrid();
 
 
         }

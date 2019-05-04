@@ -6,42 +6,40 @@ using UnityEngine;
 namespace Tumo
 {
     public class TmTcpClient : TmTcpSocket
-    {      
+    {
         #region Methods Callbacks ///接收参数消息
         public override void StartConnect()    //开始连接
         {
-            base.StartConnect();
-            try
+            if (!IsRunning)
             {
-                netSocket.BeginConnect(new IPEndPoint(address, Port), new AsyncCallback(this.ConnectCallback), netSocket);
-                IsRunning = true;
-            }
-            catch (Exception ex)
-            {
-                netSocket.Close();
-                IsRunning = false;
-                Console.WriteLine(ex.ToString());
+                try
+                {
+                    netSocket.BeginConnect(new IPEndPoint(address, Port), new AsyncCallback(this.ConnectCallback), netSocket);
+                }
+                catch (Exception ex)
+                {
+                    netSocket.Close();
+                    IsRunning = false;
+                    Console.WriteLine(ex.ToString());
+                }
             }
         }
 
         private void ConnectCallback(IAsyncResult ar)
         {
-            if (IsRunning)
+            //创建一个Socket接收传递过来的TmSocket
+            Socket tcpSocket = (Socket)ar.AsyncState;
+            try
             {
-                //创建一个Socket接收传递过来的TmSocket
-                Socket tcpSocket = (Socket)ar.AsyncState;
-                try
-                {
-                    //得到成功的连接
-                    tcpSocket.EndConnect(ar);
-                    ///触发事件///创建一个方法接收peerSocket (在方法里创建一个peer来处理读取数据//开始接受来自该客户端的数据)
-                    TmReceiveSocket(tcpSocket);
-                    Console.WriteLine("{0} 连接服务器成功 {1}", TmTimerTool.CurrentTime(), tcpSocket.RemoteEndPoint.ToString());
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
+                //得到成功的连接
+                tcpSocket.EndConnect(ar);
+                ///触发事件///创建一个方法接收peerSocket (在方法里创建一个peer来处理读取数据//开始接受来自该客户端的数据)
+                TmReceiveSocket(tcpSocket);
+                Console.WriteLine("{0} 连接服务器成功 {1}", TmTimerTool.CurrentTime(), tcpSocket.RemoteEndPoint.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
         public void TmReceiveSocket(Socket socket)
@@ -49,7 +47,7 @@ namespace Tumo
             ///创建一个TClient接收socket       
             TClient = new TmClient();
             TClient.BeginReceiveMessage(socket);
-            Debug.Log( TmTimerTool.CurrentTime() + " 连接服务器成功TmTcpClient: " + socket.RemoteEndPoint.ToString());
+            IsRunning = true;
         }
         #endregion
 
@@ -67,14 +65,18 @@ namespace Tumo
                     {
                         TClient.SendString(mvcJsons);
                     }
-                    else
-                    {
-                        TClient = new TmClient();
-                        Console.WriteLine(TmTimerTool.CurrentTime() + " TClient is Null. {0}", "new TClient() 重新连接。");
-                    }
+                    //else
+                    //{
+                    //    if (IsRunning)
+                    //    {
+                    //        IsRunning = false;
+                    //        StartConnect();
+                    //        Console.WriteLine(TmTimerTool.CurrentTime() + " TClient is Null. new TClient() 重新连接。");
+                    //    }
+                    //}
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(TmTimerTool.CurrentTime() + " SendMvcParameters: " + ex.Message);
             }
