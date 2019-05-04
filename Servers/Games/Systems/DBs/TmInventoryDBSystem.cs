@@ -23,6 +23,7 @@ namespace Servers
         void SetInventoryDBs(TmEntity entity)
         {
             TmSession session = entity.GetComponent<TmSession>();
+            if (session.InventoryDBs == null) return;
             if (session.inventorysChange != session.InventoryDBs.Count && session.InventoryDBs.Count > 0 && session.IsLogin)
             {
                 TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Knapsack, ElevenCode.SetIventoryDBs, ElevenCode.SetIventoryDBs.ToString(), session.InventoryDBs);

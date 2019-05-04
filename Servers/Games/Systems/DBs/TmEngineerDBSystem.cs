@@ -28,7 +28,6 @@ namespace Servers
             session.Engineers = GetEngineersByMyself(session.Engineer, TmObjects.Engineers);
             session.Engineers.Remove(session.Engineer.Id);
             Console.WriteLine(TmTimerTool.CurrentTime() + " TmSoulerDBSystem-session: Id: " + session.Engineer.Id + " Engineers: " + session.Engineers.Count + "/" + TmObjects.Engineers.Count);
-            //Console.WriteLine(TmTimerTool.CurrentTime() + " TmSoulerDBSystem-Engineers: Id: " + session.Engineer.Id + " Engineers: " + TmObjects.Engineers.Count);
             if (session.engineersChange != session.Engineers.Count && session.IsLogin)
             {
                 TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Engineer, ElevenCode.SetSoulerDBs, ElevenCode.SetSoulerDBs.ToString(), session.Engineers);

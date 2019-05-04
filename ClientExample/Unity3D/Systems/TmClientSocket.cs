@@ -20,7 +20,6 @@ namespace ClientExample
         {
             if (!TmClient.IsRunning)
             {
-                TmClient.IsRunning = true;
                 //TmClient.Init("127.0.0.1", 8115);
                 TmClient.Init("172.17.16.15", 8115);
                 TmClient.StartConnect();

@@ -46,34 +46,31 @@ namespace Tumo
         }
         private void ReceiveCallback(IAsyncResult ar)
         {
-            if (IsRunning)
+            try
             {
-                try
+                RecvLength = Socket.EndReceive(ar);
+                if (RecvLength == 0)
                 {
-                    RecvLength = Socket.EndReceive(ar);
-                    if (RecvLength == 0)
-                    {
-                        ///发送端关闭
-                        Console.WriteLine("{0} 发送端{1}连接关闭", TmTimerTool.CurrentTime(), Socket.RemoteEndPoint);
-                        IsRunning = false;
-                        Dispose();
-                        return;
-                    }
-                    else
-                    {
-                        AddRange(RecvBuffList, Buffer, RecvLength);
-                    }
-                    ///触发事件 解析缓存池RecvBuffList<byte> 读取数据字节
-                    ParsingBytes();
-                    ///继续接收来自来客户端的数据  
-                    Socket.BeginReceive(Buffer, 0, BufferSize, SocketFlags.None, new AsyncCallback(this.ReceiveCallback), this);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " " + ex.ToString());
+                    ///发送端关闭
+                    Console.WriteLine("{0} 发送端{1}连接关闭", TmTimerTool.CurrentTime(), Socket.RemoteEndPoint);
                     IsRunning = false;
                     Dispose();
+                    return;
                 }
+                else
+                {
+                    AddRange(RecvBuffList, Buffer, RecvLength);
+                }
+                ///触发事件 解析缓存池RecvBuffList<byte> 读取数据字节
+                ParsingBytes();
+                ///继续接收来自来客户端的数据  
+                Socket.BeginReceive(Buffer, 0, BufferSize, SocketFlags.None, new AsyncCallback(this.ReceiveCallback), this);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(TmTimerTool.CurrentTime() + " " + ex.ToString());
+                IsRunning = false;
+                Dispose();
             }
         }
         private void ParsingBytes()

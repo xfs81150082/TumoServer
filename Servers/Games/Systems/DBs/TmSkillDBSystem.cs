@@ -23,6 +23,7 @@ namespace Servers
         void SetSkillDBs(TmEntity entity)
         {
             TmSession session = entity.GetComponent<TmSession>();
+            if (session.SkillDBs == null) return;
             if (session.skillsChange != session.SkillDBs.Count && session.SkillDBs.Count > 0 && session.IsLogin)
             {
                 TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Ability, ElevenCode.SetSkillDBs, ElevenCode.SetSkillDBs.ToString(), session.SkillDBs);
