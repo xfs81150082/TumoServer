@@ -7,12 +7,12 @@ namespace Tumo
         private TmPriorityQueue closedList, openList;
         public ArrayList FindPath(TmGrid start, TmGrid goal, TmGrid[,] grids)
         {
-            if (grids[start.x, start.z].bObstacle && grids[goal.x, goal.z].bObstacle) return null;
+            //if (grids[start.x, start.z].bObstacle && grids[goal.x, goal.z].bObstacle) return null;
             openList = new TmPriorityQueue();
             closedList = new TmPriorityQueue();
             openList.Add(start);
             start.G = 0.0;
-            start.H = Math.Abs(goal.x - start.x) + Math.Abs(goal.z - start.z);
+            start.H = Math.Abs(goal.x - start.x) + Math.Abs(goal.z - start.z) + start.bH;
             start.F = start.G + start.H;
             TmGrid grid = null;
             while (openList.Length != 0)
@@ -30,7 +30,8 @@ namespace Tumo
                     if (!closedList.Contains(neighGrid))
                     {
                         double costG = GetCostG(neighGrid, grid);
-                        double costH = Math.Abs(goal.x - neighGrid.x) + Math.Abs(goal.z - neighGrid.z);
+                        //double costH = Math.Abs(goal.x - neighGrid.x) + Math.Abs(goal.z - neighGrid.z);
+                        double costH = GetCostH(neighGrid, goal);
                         neighGrid.G = grid.G + costG;
                         neighGrid.H = costH;
                         neighGrid.F = neighGrid.G + neighGrid.H;
@@ -62,23 +63,28 @@ namespace Tumo
             list.Reverse();
             return list;
         }
-        private double GetCostG(TmGrid myself, TmGrid neighour)
+        private double GetCostG(TmGrid neighour, TmGrid grid)
         {
             double cost = 1.0;
-            if (myself.x != neighour.x && myself.z != neighour.z)
+            if (grid.x != neighour.x && grid.z != neighour.z)
             {
                 cost = 1.4;
             }
             return cost;
         }
-        private double GetCostH(TmGrid myself, TmGrid goal)
+        private double GetCostH(TmGrid neighour, TmGrid goal)
         {
             double cost = 0.0;
-            double xx = Math.Abs(goal.x - myself.x);
-            double yy = Math.Abs(goal.z - myself.z);
-            double sqlxx = Math.Pow(xx, 2);
-            double sqlyy = Math.Pow(yy, 2);
-            cost = Math.Pow((sqlxx + sqlyy), 0.5);
+            double xx = Math.Abs(goal.x - neighour.x);
+            double yy = Math.Abs(goal.z - neighour.z);
+            if (xx >= yy)
+            {
+                cost = xx - yy + yy * 1.4 + neighour.bH;
+            }
+            else
+            {
+                cost = yy - xx + xx * 1.4 + neighour.bH;
+            }
             return cost;
         }
         private ArrayList GetNeighbours(TmGrid grid, TmGrid[,] grids)

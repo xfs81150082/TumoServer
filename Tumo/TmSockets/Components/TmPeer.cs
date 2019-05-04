@@ -39,8 +39,10 @@ namespace Tumo
                     TmObjects.Engineers.Remove(this.GetComponent<TmSession>().Engineer.Id);
                 }
             }
+            Console.WriteLine(TmTimerTool.CurrentTime() + "{0} 服务端{1}断开连接", TmTimerTool.CurrentTime(), EcsId);
             Console.WriteLine(TmTimerTool.CurrentTime() + " 一个客户端:已经中断连接" + " TPeers: " + TmTcpServer.Instance.TPeers.Count);
             Console.WriteLine(TmTimerTool.CurrentTime() + " 一个角色:已经离线" + " Engineers: " + TmObjects.Engineers.Count);
         }
+
     }
 }

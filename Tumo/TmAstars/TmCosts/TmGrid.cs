@@ -13,7 +13,8 @@ namespace Tumo
         public int z { get; set; }
         public double G { get; set; } ///G表示当前节点到起点移动的耗费
         public double H { get; set; } ///H表示当前节点到终点可能的移动耗费
-        public double F { get; set; } ///F是两者之，F值越小
+        public double F { get; set; } ///F是两者之和，F值越小
+        public double bH { get; set; } = 0; ///bH表示为是否是障碍物，如果是则 bH = 10000 ；
         public GridType type { get; set; } = GridType.Sky;
         public bool bObstacle = false;
         public TmGrid parent { get; set; }
@@ -49,6 +50,7 @@ namespace Tumo
         {
             this.bObstacle = true;
             this.type = GridType.Obstacle;
+            this.bH = 10000;
         }
         public int CompareTo(object obj)
         {
