@@ -34,7 +34,7 @@ namespace Tumo
                 TmTcpSocket.Instance.Send(mvc);
             }
             Console.WriteLine(TmTimerTool.CurrentTime() + " CdCount:{0}-{1} ", cd.CdCount, cd.MaxCdCount);
-            Debug.Log(TmTimerTool.CurrentTime() + " CdCount:" + cd.CdCount + "-" + cd.MaxCdCount);
+            //Debug.Log(TmTimerTool.CurrentTime() + " CdCount:" + cd.CdCount + "-" + cd.MaxCdCount);
         }
     }
 }

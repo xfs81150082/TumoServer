@@ -21,10 +21,8 @@ namespace Tumo
             if (TmTcpSocket.Instance.TClient != null && TmTcpSocket.Instance.TClient.EcsId == this.EcsId)
             {
                 TmTcpSocket.Instance.TClient = null;
-                Debug.Log(TmTimerTool.CurrentTime() + " TmClient:" + EcsId + " = null 断开连接.");
             }
             Console.WriteLine("{0} 服务端{1}断开连接", TmTimerTool.CurrentTime(), EcsId);
-            Debug.Log(TmTimerTool.CurrentTime() + " TmClient:" + EcsId + "断开连接.");
         }///与服务器断开时调用                      
     }
 }
