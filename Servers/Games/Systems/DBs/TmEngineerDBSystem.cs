@@ -27,14 +27,17 @@ namespace Servers
             TmSession session = entity.GetComponent<TmSession>();
             session.Engineers = GetEngineersByMyself(session.Engineer, TmObjects.Engineers);
             session.Engineers.Remove(session.Engineer.Id);
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmSoulerDBSystem-session: Id: " + session.Engineer.Id + " Engineers: " + session.Engineers.Count + "/" + TmObjects.Engineers.Count);
-            if (session.engineersChange != session.Engineers.Count && session.IsLogin)
+            Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerDBSystem-Id: " + session.Engineer.Id + " Engineers: " + session.Engineers.Count + "-" + TmObjects.Engineers.Count);
+            if (session.Engineers.Count > 0 && session.IsLogin)
             {
                 TmParameter response = TmParameterTool.ToJsonParameter(TenCode.Engineer, ElevenCode.SetSoulerDBs, ElevenCode.SetSoulerDBs.ToString(), session.Engineers);
                 response.Keys.Add(entity.EcsId);
                 TmTcpSocket.Instance.Send(response);
-                session.engineersChange = session.Engineers.Count;
             }
+            //if (session.engineersChange != session.Engineers.Count && session.IsLogin)
+            //{
+            //    session.engineersChange = session.Engineers.Count;
+            //}
         }
         Dictionary<int, TmSoulerDB> GetEngineersByMyself(TmSoulerDB soulerDB, Dictionary<int, TmSoulerDB> soulerDBs)
         {
