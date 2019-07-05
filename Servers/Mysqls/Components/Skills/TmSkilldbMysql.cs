@@ -7,6 +7,40 @@ namespace Servers
     class TmSkilldbMysql : TmComponent
     {
         internal string DatabaseFormName { get; set; }
+        internal List<TmSkillDB> GetSkillDBsListByRolerId(int rolerid)
+        {
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName + " where rolerid = '" + rolerid + "'", TmMysqlConnection.Connection);  //读取数据函数  
+            MySqlDataReader reader = mySqlCommand.ExecuteReader();
+            try
+            {
+                List< TmSkillDB> dict = new List< TmSkillDB>();
+                while (reader.Read())
+                {
+                    if (reader.HasRows)
+                    {
+                        TmSkillDB item = new TmSkillDB();
+                        item.Id = reader.GetInt32(0);
+                        item.Name = reader.GetString(1);
+                        item.SkillId = reader.GetInt32(2);
+                        item.RolerId = reader.GetInt32(3);
+                        item.Level = reader.GetInt32(4);
+                        item.RoleType = (RoleType)reader.GetInt32(5);
+                        item.Place = reader.GetInt32(6);
+                        dict.Add(item);
+                    }
+                }
+                return dict;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("查询失败...");
+                return null;
+            }
+            finally
+            {
+                reader.Close();
+            }
+        }                               //读取表格
         internal Dictionary<int, TmSkillDB> GetSkilldbsByRolerId(int rolerid)
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName + " where rolerid = '" + rolerid + "'", TmMysqlConnection.Connection);  //读取数据函数  
@@ -91,14 +125,14 @@ namespace Servers
                         item.Name = reader.GetString(1);
                         item.Icon = reader.GetString(2);
                         item.AvatarName = reader.GetString(3);
-                        item.ChaterId = reader.GetInt32(4);
+                        item.Chater = reader.GetString(4);
                         item.LevelUpLimit = reader.GetInt32(5);
                         item.Does = reader.GetString(6);
                         item.InfoType = (InfoType)reader.GetInt32(8);
                         item.RoleType = (RoleType)reader.GetInt32(7);
                         item.DamageDis = reader.GetInt32(9);
                         item.Duration = reader.GetInt32(10);
-                        item.ColdTime = reader.GetInt32(11);
+                        item.MaxColdTime = reader.GetInt32(11);
                         item.Stamina = reader.GetInt32(12);
                         item.Brains = reader.GetInt32(13);
                         item.Power = reader.GetInt32(14);

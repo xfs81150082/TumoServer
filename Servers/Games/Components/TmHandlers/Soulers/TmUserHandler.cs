@@ -24,7 +24,6 @@ namespace Servers
             }
         }
         internal TmUser User { get; set; }
-        internal List<TmSoulerDB> Engineers { get; set; }
         private void CheckUserLoginPassword(TmParameter parameter)
         {
             Console.WriteLine(TmTimerTool.CurrentTime() + " to TmUserHandler 30 " + parameter.ElevenCode.ToString());
@@ -41,7 +40,6 @@ namespace Servers
                     parameter.ElevenCode = ElevenCode.GetRolers;
                     Parent.GetComponent<TmEngineerHandler>().OnTransferParameter(this, parameter);
                     Console.WriteLine(TmTimerTool.CurrentTime() + " Username:" + name + " Password:" + word);
-                    Gets(parameter);
                 }
                 else
                 {
@@ -53,15 +51,7 @@ namespace Servers
                 Console.WriteLine("帐号不存在");
             }
         }
-
-        void Gets(TmParameter parameter)
-        {
-            parameter.ElevenCode = ElevenCode.Get;
-            Parent.GetComponent<TmEngineerHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmBuffHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmKnapsackHandler>().OnTransferParameter(this, parameter);
-        }
-
-
+        
+        
     }
 }

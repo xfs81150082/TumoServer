@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Tumo;
 using MySql.Data.MySqlClient;
+using System.Collections;
+
 namespace Servers
 {
     class TmInventoryMysql : TmComponent
@@ -18,7 +20,6 @@ namespace Servers
                 {
                     if (reader.HasRows)
                     {
-                        //Console.WriteLine(reader.RecordsAffected + "*" + reader.FieldCount);
                         item.Id = reader.GetInt32(0);
                         item.Name = reader.GetString(1);
                         item.InventoryId = reader.GetInt32(2);
@@ -44,6 +45,44 @@ namespace Servers
                 reader.Close();
             }
         }                    //读取表格
+        internal ArrayList InventoryDBsByRolerId(int rolerid)
+        {
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName + " where rolerid = '" + rolerid + "'", TmMysqlConnection.Connection);//读取数据函数  
+            MySqlDataReader reader = mySqlCommand.ExecuteReader();
+            try
+            {
+                ArrayList list = new ArrayList();
+                while (reader.Read())
+                {
+                    if (reader.HasRows)
+                    {
+                        TmInventoryDB item = new TmInventoryDB();
+                        item.Id = reader.GetInt32(0);
+                        item.Name = reader.GetString(1);
+                        item.InventoryId = reader.GetInt32(2);
+                        item.RolerId = reader.GetInt32(3);
+                        item.Quality = (Quality)reader.GetInt32(4);
+                        item.Place = reader.GetInt32(5);
+                        item.Level = reader.GetInt32(6);
+                        item.Count = reader.GetInt32(7);
+                        item.Durability = reader.GetInt32(8);
+                        item.Pice = reader.GetInt32(9);
+                        item.BuildDate = reader.GetString(10);
+                        list.Add(item);
+                    }
+                }
+                return list;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("查询失败...");
+                return null;
+            }
+            finally
+            {
+                reader.Close();
+            }
+        }   //读取表格
         internal List<TmInventoryDB> GetInventorydbsByRolerId(int rolerid)
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName + " where rolerid = '" + rolerid + "'", TmMysqlConnection.Connection);//读取数据函数  
@@ -136,14 +175,14 @@ namespace Servers
                         item.Name = reader.GetString(1);
                         item.Icon = reader.GetString(2);
                         item.AvatarName = reader.GetString(3);
-                        item.ChaterId = reader.GetInt32(4);
+                        item.Chater = reader.GetString(4);
                         item.LevelUpLimit = reader.GetInt32(5);
                         item.Does = reader.GetString(6);
                         item.InfoType = (InfoType)reader.GetInt32(8);
                         item.Quality = (Quality)reader.GetInt32(9);
                         item.EquipType = (EquipType)reader.GetInt32(7);
                         item.Duration = reader.GetInt32(10);
-                        item.ColdTime = reader.GetInt32(11);
+                        item.MaxColdTime = reader.GetInt32(11);
                         item.Stamina = reader.GetInt32(12);
                         item.Brains = reader.GetInt32(13);
                         item.Power = reader.GetInt32(14);

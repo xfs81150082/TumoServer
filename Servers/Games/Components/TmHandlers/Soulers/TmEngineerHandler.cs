@@ -10,10 +10,6 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.Get):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerHandler: " + elevenCode);
-                    GetSoulers(parameter);
-                    break;
                 case (ElevenCode.GetRolers):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerHandler: " + elevenCode);
                     GetRolersByUersId(parameter);
@@ -32,20 +28,8 @@ namespace Servers
                     break;
             }
         }
-        internal Dictionary<int, TmSouler> Soulers { get; set; }                  //在线角色字典,ByRolerId
         internal Dictionary<int, TmSoulerDB> Engineers { get; set; } = new Dictionary<int, TmSoulerDB>();                      //在线角色字典,ByRolerId
         internal Dictionary<int, List<TmSoulerDB>> EngineerDbs { get; set; } = new Dictionary<int, List<TmSoulerDB>>();        //角色列表字典,ByUersId
-        private void GetSoulers(TmParameter parameter)
-        {
-            if (Soulers == null)
-            {
-                TmMysqlHandler.Instance.GetComponent<TmEngineerMysql>().OnTransferParameter(this, parameter);
-                Console.WriteLine(TmTimerTool.CurrentTime() + " this.Soulers:" + this.Soulers.Count);
-            }
-            TmParameter response = TmParameterTool.ToJsonParameter<Dictionary<int, TmSouler>>(TenCode.Engineer, ElevenCode.Get, ElevenCode.Get.ToString(), Soulers);
-            response.EcsId = parameter.EcsId;
-            TmTcpSocket.Instance.Send(response);
-        }
         private void GetRolersByUersId(TmParameter parameter)
         {
             List<TmSoulerDB> Engineers = null;
@@ -61,7 +45,7 @@ namespace Servers
                 if (yes)
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.Engineer, ElevenCode.GetRolers, ElevenCode.GetRolers.ToString(), Engineers);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     break;
                 }
@@ -90,13 +74,28 @@ namespace Servers
                     yes = Engineers.TryGetValue(rolerId, out Engineer);
                 }
                 if (yes)
-                {
+                {                    
                     TmParameter response = TmParameterTool.ToJsonParameter<TmSoulerDB>(TenCode.Engineer, ElevenCode.GetRoler, ElevenCode.GetRoler.ToString(), Engineer);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
-                    GetSoulersByRolerId(parameter);
-                    GetSkillsByRolerId(parameter);
+
+                    TmSoulerDB tem;
+                    TmObjects.Engineers.TryGetValue(Engineer.Id, out tem);
+                    if (tem != null)
+                    {
+                        TmObjects.Engineers.Remove(Engineer.Id);
+                    }
+                    TmObjects.Engineers.Add(Engineer.Id, Engineer);  //将engineer 集中管理 放在 全局变量字典中，之前几行是检查有没有注册，如有先删除，再重新注册（因为数据更新了）。
+
+                    if (TmTcpSocket.Instance.TPeers[parameter.Keys[0]] != null)
+                    {
+                        TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().Engineer = Engineer;  //给TmTcpSession赋值Engineer-SoulerDB
+                        //TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().Engineers = GetEngineersByMyself(Engineer, TmObjects.Engineers);  //给TmTcpSession赋值Engineer-SoulerDB
+                        TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().Engineers = TmObjects.Engineers;  //给TmTcpSession赋值Engineer-SoulerDB
+                        TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().IsLogin = true;  //给TmTcpSession赋值Engineer-SoulerDB
+                    }
                     GetInventorysByRolerId(parameter);
+                    GetSkillsByRolerId(parameter);
                 }
                 else
                 {
@@ -109,28 +108,34 @@ namespace Servers
                     yes = true;
                 }
             }
-        }    
-        void GetSoulersByRolerId(TmParameter parameter)
+        }   
+        Dictionary<int,TmSoulerDB> GetEngineersByMyself(TmSoulerDB soulerDB, Dictionary<int,TmSoulerDB> soulerDBs)
         {
-            parameter.ElevenCode = ElevenCode.GetRolers;
-            Parent.GetComponent<TmBookerHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmTeacherHandler>().OnTransferParameter(this, parameter);
+            Dictionary<int, TmSoulerDB> dbs = new Dictionary<int, TmSoulerDB>();
+            soulerDBs.Remove(soulerDB.Id);
+            List<TmSoulerDB> list = new List<TmSoulerDB>(soulerDBs.Values);
+            for(int i = 0; i < list.Count; i++)
+            {
+                double xx = Math.Abs(soulerDB.px - list[i].px);
+                double zz = Math.Abs(soulerDB.pz - list[i].pz);
+                if (xx < 100 && zz < 100)
+                {
+                    dbs.Add(list[i].Id, list[i]);
+                }
+            }       
+            return dbs;
         }
         void GetSkillsByRolerId(TmParameter parameter)
         {
             parameter.ElevenCode = ElevenCode.GetSkills;
             Console.WriteLine(TmTimerTool.CurrentTime() + " GetSkillsByRolerId:" + parameter.ElevenCode);
             Parent.GetComponent<TmAbilityHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmBuffHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmInbornHandler>().OnTransferParameter(this, parameter);
         }
         void GetInventorysByRolerId(TmParameter parameter)
         {
             parameter.ElevenCode = ElevenCode.GetInventorys;
             Console.WriteLine(TmTimerTool.CurrentTime() + " GetInventorysByRolerId:" + parameter.ElevenCode);
-            Parent.GetComponent<TmDressedHandler>().OnTransferParameter(this, parameter);
             Parent.GetComponent<TmKnapsackHandler>().OnTransferParameter(this, parameter);
-            Parent.GetComponent<TmSmityHandler>().OnTransferParameter(this, parameter);
         }
 
 

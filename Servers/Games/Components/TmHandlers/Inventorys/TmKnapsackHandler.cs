@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Tumo;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
 namespace Servers
 {
     class TmKnapsackHandler : TmEntity
@@ -14,12 +19,10 @@ namespace Servers
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmKnapsackHandler: " + elevenCode);
                     GetSkillsByRolerId(parameter);
                     break;
-                case (ElevenCode.Get):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmKnapsackHandler: " + elevenCode);
-                    GetInventorys(parameter);
-                    break;
                 case (ElevenCode.Save):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmKnapsackHandler: " + elevenCode);
+
+
                     break;
                 case (ElevenCode.None):
                     break;
@@ -27,34 +30,7 @@ namespace Servers
                     break;
             }
         }
-        internal Dictionary<int, TmInventory> Inventorys { get; set; } = new Dictionary<int, TmInventory>();
         internal Dictionary<int, List<TmInventoryDB>> Knapsacks { get; set; } = new Dictionary<int, List<TmInventoryDB>>();
-        private void GetInventorys(TmParameter parameter)
-        {
-            bool yes = false;
-            int count = 0;
-            while (!yes)
-            {
-                if (Inventorys.Count > 0)
-                {
-                    TmParameter response = TmParameterTool.ToJsonParameter<Dictionary<int, TmInventory>>(TenCode.Knapsack, ElevenCode.Get, ElevenCode.Get.ToString(), Inventorys);
-                    response.EcsId = parameter.EcsId;
-                    TmTcpSocket.Instance.Send(response);
-                    yes = true;
-                }
-                else
-                {
-                    TmMysqlHandler.Instance.GetComponent<TmKnapsackMysql>().OnTransferParameter(this, parameter);
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " this.Inventorys:" + this.Inventorys.Count);
-                    count += 1;
-                }
-                if (count > 4)
-                {
-                    yes = true;
-                    break;
-                }
-            }
-        }
         private void GetSkillsByRolerId(TmParameter parameter)
         {
             int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.EngineerLogin.ToString());
@@ -66,10 +42,10 @@ namespace Servers
                 yes = Knapsacks.TryGetValue(rolerid, out inventoryDBs);
                 if (yes)
                 {
-                    TmParameter response = TmParameterTool.ToJsonParameter<List<TmInventoryDB>>(TenCode.Knapsack, ElevenCode.GetInventorys, ElevenCode.GetInventorys.ToString(), inventoryDBs);
-                    TmParameterTool.AddJsonParameter(response, "RolerId", rolerid);
-                    response.EcsId = parameter.EcsId;
-                    TmTcpSocket.Instance.Send(response);
+                    if (TmTcpSocket.Instance.TPeers[parameter.Keys[0]] != null)
+                    {
+                        TmTcpSocket.Instance.TPeers[parameter.Keys[0]].GetComponent<TmSession>().InventoryDBs = inventoryDBs;  //给TmTcpSession赋值Engineer-SoulerDB
+                    }
                     yes = true;
                     break;
                 }

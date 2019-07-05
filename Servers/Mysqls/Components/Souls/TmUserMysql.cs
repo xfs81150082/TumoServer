@@ -51,7 +51,6 @@ namespace Servers
                         item.LoginCount = reader.GetInt32(6);
                         item.LoginDateTime = reader.GetString(7);
                         item.RigisterDateTime = reader.GetString(8);
-                        //Console.WriteLine(TmTimer.GetCurrentTime() + " Username: " + item.Username + " + " + item.LoginCount);
                     }
                 }
                 return item;

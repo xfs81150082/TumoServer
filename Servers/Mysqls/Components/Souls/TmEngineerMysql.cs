@@ -8,7 +8,6 @@ namespace Servers
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             DatabaseFormName = "engineeritem";
         }
         public override void OnTransferParameter(object sender, TmParameter parameter)
@@ -16,10 +15,6 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.Get):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
-                    GetSouler(sender, parameter);
-                    break;
                 case (ElevenCode.GetRolers):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmEngineerMysql: " + elevenCode);
                     GetRolersByUersId(sender, parameter);
@@ -42,7 +37,6 @@ namespace Servers
             Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {
-                //(sender as TmEngineerHandler).Engineers = dbs;
                 (sender as TmEngineerHandler).EngineerDbs.Add(userId, dbs);
             }
             else
@@ -58,21 +52,7 @@ namespace Servers
             Console.WriteLine(TmTimerTool.CurrentTime() + " db:" + db.Name);
             if (db != null)
             {
-                //(sender as TmEngineerHandler).Engineer = db;
                 (sender as TmEngineerHandler).Engineers.Add(rolerId, db);
-            }
-            else
-            {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
-            }
-        }
-        void GetSouler(object sender, TmParameter parameter)
-        {
-            Dictionary<int, TmSouler> soulers = GetTmSoulers();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " soulers:" + soulers.Count);
-            if (soulers.Count > 0)
-            {
-                (sender as TmEngineerHandler).Soulers = soulers;
             }
             else
             {

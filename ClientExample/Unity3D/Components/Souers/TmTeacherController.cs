@@ -10,18 +10,25 @@ namespace ClientExample
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.GetRolers):
+                case (ElevenCode.SetSoulerDBs):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmTeacherController: " + elevenCode);
-                    GetTeachers(parameter);
+
+                    SetSoulerDBs(parameter);
+
                     break;
                 default:
                     break;
             }
         }
-        void GetTeachers(TmParameter parameter)
+        void SetSoulerDBs(TmParameter parameter)
         {
-            List<TmSoulerDB> teachers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, parameter.ElevenCode.ToString());
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmTeacherController-Teachers: " + teachers.Count);
-        }        
+            Dictionary<int, TmSoulerDB> bookers = TmParameterTool.GetJsonValue<Dictionary<int, TmSoulerDB>>(parameter, parameter.ElevenCode.ToString());
+            if (bookers.Count > 0)
+            {
+                TmObjects.Teachers = bookers;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmObjects.Teachers: " + TmObjects.Teachers.Count);
+            }
+        }
+
     }
 }

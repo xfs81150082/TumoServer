@@ -8,6 +8,8 @@ namespace Tumo
         All,
         EessionCD,  /// 链接心跳包
         User,
+        Roler,
+        Souler,
         Engineer,
         Booker,
         Teacher,
@@ -42,7 +44,12 @@ namespace Tumo
         Souler,
         Roler,
         Die,
+
+        SetSoulerDBs,
+        SetIventoryDBs,
+        SetSkillDBs,
         StatusSync,
+
         Engineer,
         Booker,
         Teacher,

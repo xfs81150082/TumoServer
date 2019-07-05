@@ -15,13 +15,11 @@ namespace Servers
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.GetRolers):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmTeacherHandler: " + elevenCode);
-                    GetRolersByRolerId(parameter);
-                    break;
                 case (ElevenCode.StatusSync):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmStatusSyncHandler: " + elevenCode);
-                    Parent.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
+
+                    //Parent.GetComponent<TmStatusSyncHandler>().OnTransferParameter(this, parameter);
+
                     break;
                 case (ElevenCode.None):
                     break;
@@ -39,7 +37,7 @@ namespace Servers
                 if (this.Teachers != null)
                 {
                     TmParameter response = TmParameterTool.ToJsonParameter<List<TmSoulerDB>>(TenCode.Teacher, ElevenCode.GetRolers, ElevenCode.GetRolers.ToString(), this.Teachers);
-                    response.EcsId = parameter.EcsId;
+                    response.Keys.Add(parameter.Keys[0]);
                     TmTcpSocket.Instance.Send(response);
                     yes = true;
                 }

@@ -1,43 +1,35 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Tumo;
-
-namespace Servers 
+namespace Servers
 {
     class TmBookerMysql : TmSoulerdbMysql
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             DatabaseFormName = "bookeritem";
-        }
-        public override void OnTransferParameter(object sender, TmParameter parameter)
+        }       
+        public TmBookerMysql()
         {
-            ElevenCode elevenCode = parameter.ElevenCode;
-            switch (elevenCode)
-            {
-                case (ElevenCode.GetRolers):
-                    Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql: " + elevenCode);
-                    GetRolersByUersId(sender, parameter);
-                    break;
-                case (ElevenCode.None):
-                    break;
-                default:
-                    break;
-            }
+            GetSoulerDBs();
         }
-        private void GetRolersByUersId(object sender, TmParameter parameter)
+        bool isYes = false;
+        private void GetSoulerDBs()
         {
-            List<TmSoulerDB> dbs = GetTmSoulerdbs();
-            Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
-            if (dbs.Count > 0)
+            Dictionary<int, TmSoulerDB> dbs = GetTmSoulerDBsDict();
+            if (dbs.Count > 0 && !isYes)
             {
-                (sender as TmBookerHandler).Bookers = dbs;
+                TmObjects.Bookers = dbs;
+                isYes = true;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerMysql-Bookers: " + TmObjects.Bookers.Count);
             }
             else
             {
                 Console.WriteLine(TmTimerTool.CurrentTime() + " 没有角色");
             }
         }
+             
     }
 }

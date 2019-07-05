@@ -49,17 +49,7 @@ namespace Tumo
         {
             SendParameters.Enqueue(mvc);
             OnSendMvcParameters();
-        }
-        public void SendAll(TmParameter mvc)
-        {
-            foreach (var peerKey in TPeers.Keys)
-            {
-                mvc.Key = peerKey;
-                SendParameters.Enqueue(mvc);
-            }
-            OnSendMvcParameters();
-        }
-
+        }     
         public abstract void OnSendMvcParameters();
         #endregion
     }

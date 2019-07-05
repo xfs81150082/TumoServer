@@ -8,7 +8,6 @@ namespace Servers
     {
         public override void TmAwake()
         {
-            base.TmAwake();
             DatabaseFormName = "abilityitem";
         }
         public override void OnTransferParameter(object sender, TmParameter parameter)
@@ -29,7 +28,7 @@ namespace Servers
         void GetDbsByRolerId(object sender, TmParameter parameter)
         {
             int rolerid = TmParameterTool.GetJsonValue<int>(parameter, ElevenCode.EngineerLogin.ToString());
-            Dictionary<int, TmSkillDB> dbs = GetSkilldbsByRolerId(rolerid);
+            List<TmSkillDB> dbs = GetSkillDBsListByRolerId(rolerid);
             Console.WriteLine(TmTimerTool.CurrentTime() + " dbs:" + dbs.Count);
             if (dbs.Count > 0)
             {

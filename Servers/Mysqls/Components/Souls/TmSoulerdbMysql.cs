@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Tumo;
 namespace Servers
@@ -7,7 +8,103 @@ namespace Servers
      class TmSoulerdbMysql : TmComponent
     {
         internal string DatabaseFormName { get; set; }
-        internal List<TmSoulerDB> GetTmSoulerdbs()
+        internal ArrayList TmSoulerDBs()
+        {
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName, TmMysqlConnection.Connection);//读取数据函数  
+            MySqlDataReader reader = mySqlCommand.ExecuteReader();
+            try
+            {
+                ArrayList itemDBs = new ArrayList();
+                while (reader.Read())
+                {
+                    if (reader.HasRows)
+                    {
+                        TmSoulerDB item = new TmSoulerDB();
+                        item.Id = reader.GetInt32(0);
+                        item.Name = reader.GetString(1);
+                        item.UserId = reader.GetInt32(2);
+                        item.SoulerId = reader.GetInt32(3);
+                        item.Exp = reader.GetInt32(4);
+                        item.Level = reader.GetInt32(5);
+                        item.Coin = reader.GetInt32(6);
+                        item.Diamond = reader.GetInt32(7);
+                        item.Hp = reader.GetInt32(8);
+                        item.Mp = reader.GetInt32(9);
+                        item.State = reader.GetInt32(10);
+                        item.CdTime = reader.GetDouble(11);
+                        item.ServerId = reader.GetInt32(12);
+                        item.SenceId = reader.GetInt32(13);
+                        item.px = reader.GetDouble(14);
+                        item.py = reader.GetDouble(15);
+                        item.pz = reader.GetDouble(16);
+                        item.ax = reader.GetDouble(17);
+                        item.ay = reader.GetDouble(18);
+                        item.az = reader.GetDouble(19);
+                        item.CreateDate = reader.GetString(20);
+                        itemDBs.Add(item);
+                    }
+                }
+                return itemDBs;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("查询失败...168");
+                return null;
+            }
+            finally
+            {
+                reader.Close();
+            }
+        }                          //读取表格//得到所有角色列表         
+        internal Dictionary<int, TmSoulerDB> GetTmSoulerDBsDict()
+        {
+            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName, TmMysqlConnection.Connection);//读取数据函数  
+            MySqlDataReader reader = mySqlCommand.ExecuteReader();
+            try
+            {
+                Dictionary<int, TmSoulerDB> itemDBs = new Dictionary<int, TmSoulerDB>();
+                while (reader.Read())
+                {
+                    if (reader.HasRows)
+                    {
+                        TmSoulerDB item = new TmSoulerDB();
+                        item.Id = reader.GetInt32(0);
+                        item.Name = reader.GetString(1);
+                        item.UserId = reader.GetInt32(2);
+                        item.SoulerId = reader.GetInt32(3);
+                        item.Exp = reader.GetInt32(4);
+                        item.Level = reader.GetInt32(5);
+                        item.Coin = reader.GetInt32(6);
+                        item.Diamond = reader.GetInt32(7);
+                        item.Hp = reader.GetInt32(8);
+                        item.Mp = reader.GetInt32(9);
+                        item.State = reader.GetInt32(10);
+                        item.CdTime = reader.GetDouble(11);
+                        item.ServerId = reader.GetInt32(12);
+                        item.SenceId = reader.GetInt32(13);
+                        item.px = reader.GetDouble(14);
+                        item.py = reader.GetDouble(15);
+                        item.pz = reader.GetDouble(16);
+                        item.ax = reader.GetDouble(17);
+                        item.ay = reader.GetDouble(18);
+                        item.az = reader.GetDouble(19);
+                        item.CreateDate = reader.GetString(20);
+                        itemDBs.Add(item.Id, item);
+                    }
+                }
+                return itemDBs;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("查询失败...168");
+                return null;
+            }
+            finally
+            {
+                reader.Close();
+            }
+        }                          //读取表格//得到所有角色列表         
+        internal List<TmSoulerDB> GetTmSoulerDBsList()
         {
             MySqlCommand mySqlCommand = new MySqlCommand("select * from " + DatabaseFormName, TmMysqlConnection.Connection);//读取数据函数  
             MySqlDataReader reader = mySqlCommand.ExecuteReader();
@@ -25,21 +122,21 @@ namespace Servers
                         item.SoulerId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
-                        item.Hp = reader.GetInt32(6);
-                        item.Mp = reader.GetInt32(7);
-                        item.Coin = reader.GetInt32(8);
-                        item.Diamond = reader.GetInt32(9);
-                        item.SenceId = reader.GetInt32(10);
-                        item.State = reader.GetInt32(11);
-                        item.px = reader.GetDouble(12);
-                        item.py = reader.GetDouble(13);
-                        item.pz = reader.GetDouble(14);
-                        item.ax = reader.GetDouble(15);
-                        item.ay = reader.GetDouble(16);
-                        item.az = reader.GetDouble(17);
-                        item.ServerId = reader.GetInt32(18);
-                        item.CreateDate = reader.GetString(19);
-                        //Console.WriteLine(userId + " " + reader.FieldCount + " " + item.Id);
+                        item.Coin = reader.GetInt32(6);
+                        item.Diamond = reader.GetInt32(7);
+                        item.Hp = reader.GetInt32(8);
+                        item.Mp = reader.GetInt32(9);
+                        item.State = reader.GetInt32(10);
+                        item.CdTime = reader.GetDouble(11);
+                        item.ServerId = reader.GetInt32(12);
+                        item.SenceId = reader.GetInt32(13);
+                        item.px = reader.GetDouble(14);
+                        item.py = reader.GetDouble(15);
+                        item.pz = reader.GetDouble(16);
+                        item.ax = reader.GetDouble(17);
+                        item.ay = reader.GetDouble(18);
+                        item.az = reader.GetDouble(19);
+                        item.CreateDate = reader.GetString(20);
                         itemDBs.Add(item);
                     }
                 }
@@ -73,21 +170,21 @@ namespace Servers
                         item.SoulerId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
-                        item.Hp = reader.GetInt32(6);
-                        item.Mp = reader.GetInt32(7);
-                        item.Coin = reader.GetInt32(8);
-                        item.Diamond = reader.GetInt32(9);
-                        item.SenceId = reader.GetInt32(10);
-                        item.State = reader.GetInt32(11);
-                        item.px = reader.GetDouble(12);
-                        item.py = reader.GetDouble(13);
-                        item.pz = reader.GetDouble(14);
-                        item.ax = reader.GetDouble(15);
-                        item.ay = reader.GetDouble(16);
-                        item.az = reader.GetDouble(17);
-                        item.ServerId = reader.GetInt32(18);
-                        item.CreateDate = reader.GetString(19);
-                        //Console.WriteLine(userId + " " + reader.FieldCount + " " + item.Id);
+                        item.Coin = reader.GetInt32(6);
+                        item.Diamond = reader.GetInt32(7);
+                        item.Hp = reader.GetInt32(8);
+                        item.Mp = reader.GetInt32(9);
+                        item.State = reader.GetInt32(10);
+                        item.CdTime = reader.GetDouble(11);
+                        item.ServerId = reader.GetInt32(12);
+                        item.SenceId = reader.GetInt32(13);
+                        item.px = reader.GetDouble(14);
+                        item.py = reader.GetDouble(15);
+                        item.pz = reader.GetDouble(16);
+                        item.ax = reader.GetDouble(17);
+                        item.ay = reader.GetDouble(18);
+                        item.az = reader.GetDouble(19);
+                        item.CreateDate = reader.GetString(20);
                         itemDBs.Add(item);
                     }
                 }
@@ -120,20 +217,21 @@ namespace Servers
                         item.SoulerId = reader.GetInt32(3);
                         item.Exp = reader.GetInt32(4);
                         item.Level = reader.GetInt32(5);
-                        item.Hp = reader.GetInt32(6);
-                        item.Mp = reader.GetInt32(7);
-                        item.Coin = reader.GetInt32(8);
-                        item.Diamond = reader.GetInt32(9);
-                        item.SenceId = reader.GetInt32(10);
-                        item.State = reader.GetInt32(11);
-                        item.px = reader.GetDouble(12);
-                        item.py = reader.GetDouble(13);
-                        item.pz = reader.GetDouble(14);
-                        item.ax = reader.GetDouble(15);
-                        item.ay = reader.GetDouble(16);
-                        item.az = reader.GetDouble(17);
-                        item.ServerId = reader.GetInt32(18);
-                        item.CreateDate = reader.GetString(19);
+                        item.Coin = reader.GetInt32(6);
+                        item.Diamond = reader.GetInt32(7);
+                        item.Hp = reader.GetInt32(8);
+                        item.Mp = reader.GetInt32(9);
+                        item.State = reader.GetInt32(10);
+                        item.CdTime = reader.GetDouble(11);
+                        item.ServerId = reader.GetInt32(12);
+                        item.SenceId = reader.GetInt32(13);
+                        item.px = reader.GetDouble(14);
+                        item.py = reader.GetDouble(15);
+                        item.pz = reader.GetDouble(16);
+                        item.ax = reader.GetDouble(17);
+                        item.ay = reader.GetDouble(18);
+                        item.az = reader.GetDouble(19);
+                        item.CreateDate = reader.GetString(20);
                     }
                 }
                 return item;
@@ -148,57 +246,6 @@ namespace Servers
                 reader.Close();
             }
         }                       //读取表格//得到id单个角色列表
-        internal Dictionary<int, TmSouler> GetTmSoulers()
-        {
-            MySqlCommand mySqlCommand = new MySqlCommand("select * from " + "souler", TmMysqlConnection.Connection);//读取数据函数  
-            MySqlDataReader reader = mySqlCommand.ExecuteReader();
-            try
-            {
-                Dictionary<int, TmSouler> dict = new Dictionary<int, TmSouler>();
-                while (reader.Read())
-                {
-                    if (reader.HasRows)
-                    {
-                        TmSouler item = new TmSouler();
-                        item.Id = reader.GetInt32(0);
-                        item.Name = reader.GetString(1);
-                        item.Icon = reader.GetString(2);
-                        item.AvatarName = reader.GetString(3);
-                        item.Chater = reader.GetString(4);
-                        item.LevelUpLimit = reader.GetInt32(5);
-                        item.Does = reader.GetString(6);
-                        item.InfoType = (InfoType)reader.GetInt32(8);
-                        item.Quality = (Quality)reader.GetInt32(9);
-                        item.RoleType = (RoleType)reader.GetInt32(7);
-                        item.Duration = reader.GetInt32(10);
-                        item.ColdTime = reader.GetInt32(11);
-                        item.Stamina = reader.GetInt32(12);
-                        item.Brains = reader.GetInt32(13);
-                        item.Power = reader.GetInt32(14);
-                        item.Agility = reader.GetInt32(15);
-                        item.Sp = reader.GetDouble(16);
-                        item.Hr = reader.GetDouble(17);
-                        item.Cr = reader.GetDouble(18);
-                        item.StaminaRate = reader.GetDouble(19);
-                        item.BrainsRate = reader.GetDouble(20);
-                        item.PowerRate = reader.GetDouble(21);
-                        item.AgilityRate = reader.GetDouble(22);
-                        //Console.WriteLine(TmTimerTool.CurrentTime() + " TmSouler-186-Power:" + (item.GetComponent<TmProperty>() as TmProperty).Power);
-                        dict.Add(item.Id, item);
-                    }
-                }
-                return dict;
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("查询失败...168");
-                return null;
-            }
-            finally
-            {
-                reader.Close();
-            }
-        }                          //读取表格//得到所有角色列表         
         internal void InsertItemdb(string name, int soulId, int userid, int exp, int level, int hp, int mp, int coin, int diamond, int senceId, double px, double py, double pz, double ax, double ay, double az, int serverid)
         {
             MySqlCommand mySqlCommand = new MySqlCommand("insert into " + DatabaseFormName + "(name,soulId,userid,exp,level,hp,mp,coin,diamond,senceId,px,py,pz,ax,ay,az,serverid) values('" + name + "','" + soulId + "','" + userid + "','" + exp + "','" + level + "','" + hp + "','" + mp + "','" + coin + "','" + diamond + "','" + senceId + "','" + px + "','" + py + "','" + pz + "','" + ax + "','" + ay + "','" + az + "','" + serverid + "')", TmMysqlConnection.Connection);  //插入列表行

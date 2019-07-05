@@ -45,42 +45,46 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TmAstars\TmAstarSystem.cs" />
-    <Compile Include="TmAstars\TmAstar.cs" />
-    <Compile Include="TmAstars\TmPriorityQueue.cs" />
-    <Compile Include="TmAstars\TmGrid.cs" />
+    <Compile Include="TmAstars\TmCosts\TmAstarSystem.cs" />
+    <Compile Include="TmAstars\TmCosts\TmAstar.cs" />
+    <Compile Include="TmAstars\TmMaps\TmGridManager.cs" />
+    <Compile Include="TmAstars\TmMaps\TmGridMap.cs" />
+    <Compile Include="TmAstars\TmMaps\TmObstacle.cs" />
+    <Compile Include="TmAstars\TmCosts\TmPriorityQueue.cs" />
+    <Compile Include="TmAstars\TmCosts\TmGrid.cs" />
     <Compile Include="TmEntities\TmComponents\TmSystemManangerDll.cs" />
     <Compile Include="TmEntities\TmComponents\TmSystemMananger.cs" />
     <Compile Include="TmEntities\TmComponents\TmSence.cs" />
     <Compile Include="TmEntities\TmComponents\TmGame.cs" />
-    <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryComponent.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmStatic\TmRequest.cs" />
+    <Compile Include="TmEntities\TmHelpers\Components\TmRequest.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmConsoleLog.cs" />
-    <Compile Include="TmGameObjects\TmGameObjectEntity.cs" />
-    <Compile Include="TmGameObjects\TmGameObjectSystem.cs" />
-    <Compile Include="TmModels\TmModelBase\TmPropertySum.cs" />
-    <Compile Include="TmModels\TmModelBase\TmAbilityAdd.cs" />
-    <Compile Include="TmModels\TmModelBase\TmBuffAdd.cs" />
-    <Compile Include="TmModels\TmSoulers\TmAstarPath.cs" />
+    <Compile Include="TmModels\TmInfoes\TmSkillInit.cs" />
+    <Compile Include="TmModels\TmInfoes\TmInventoryInit.cs" />
+    <Compile Include="TmModels\TmInfoes\TmSoulerInit.cs" />
+    <Compile Include="TmModels\TmInfoes\TmInfo.cs" />
+    <Compile Include="TmModels\TmInventorys\TmInventorySystem.cs" />
+    <Compile Include="TmModels\TmPropertyAdds\TmBuffAddSystem.cs" />
+    <Compile Include="TmModels\TmPropertyAdds\TmInventoryAddSystem.cs" />
+    <Compile Include="TmModels\TmPropertyAdds\TmAbilityAdd.cs" />
+    <Compile Include="TmModels\TmPropertyAdds\TmBuffAdd.cs" />
+    <Compile Include="TmAstars\TmCosts\TmAstarComponent.cs" />
+    <Compile Include="TmModels\TmSkills\TmSkillSystem.cs" />
+    <Compile Include="TmModels\TmSoulers\TmSoulerSystem.cs" />
     <Compile Include="TmSockets\Components\TmSession.cs" />
+    <Compile Include="TmSockets\Systems\TmSessionSystem.cs" />
     <Compile Include="TmSockets\Systems\TmCoolDownSystem.cs" />
-    <Compile Include="TmModels\TmModelBase\TmFixedType.cs" />
     <Compile Include="TmModels\TmModelBase\TmChangeType.cs" />
     <Compile Include="TmModels\TmModelBase\TmName.cs" />
-    <Compile Include="TmModels\TmModelBase\TmLabel.cs" />
     <Compile Include="TmModels\TmTasks\TmTask.cs" />
     <Compile Include="TmModels\TmTasks\TmTaskItem.cs" />
     <Compile Include="TmModels\TmTasks\TmTaskItemDB.cs" />
-    <Compile Include="TmModels\TmModelBase\TmInventoryAdd.cs" />
+    <Compile Include="TmModels\TmPropertyAdds\TmInventoryAdd.cs" />
     <Compile Include="TmModels\TmModelBase\TmProperty.cs" />
     <Compile Include="TmEntities\TmComponents\TmCoolDown.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventory.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventoryItem.cs" />
     <Compile Include="TmModels\TmInventorys\TmInventoryDB.cs" />
     <Compile Include="TmModels\TmSoulers\TmStatus.cs" />
-    <Compile Include="TmModels\TmSoulers\TmRoler.cs" />
-    <Compile Include="TmModels\TmSoulers\TmAttack.cs" />
-    <Compile Include="TmModels\TmSoulers\TmMove.cs" />
     <Compile Include="TmModels\TmSkills\TmSkill.cs" />
     <Compile Include="TmModels\TmSkills\TmSkillItem.cs" />
     <Compile Include="TmModels\TmSkills\TmSkillDB.cs" />
@@ -98,9 +102,8 @@
     <Compile Include="TmModels\TmSoulers\TmUser.cs" />
     <Compile Include="TmSockets\Components\TmClient.cs" />
     <Compile Include="TmSockets\Components\TmPeer.cs" />
-    <Compile Include="TmEntities\TmHelpers\TmStatic\TmResponse.cs" />
+    <Compile Include="TmEntities\TmHelpers\Components\TmResponse.cs" />
     <Compile Include="TmSockets\Components\TmTcpSession.cs" />
-    <Compile Include="TmEntities\TmHelpers\Components\TmDictionaryParameter.cs" />
     <Compile Include="TmModels\TmEnums\TmInfoType.cs" />
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmLog.cs" />
     <Compile Include="TmSockets\Components\TmTcpClient.cs" />
@@ -111,7 +114,6 @@
     <Compile Include="TmEntities\TmHelpers\TmStatic\TmParameterTool.cs" />
     <Compile Include="TmModels\TmEnums\TmParamterCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TumoTests\UnityTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

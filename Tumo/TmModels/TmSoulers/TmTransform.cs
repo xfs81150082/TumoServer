@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 namespace Tumo
 {
+    [Serializable]
     public class TmTransform : TmComponent
     {
-        public double senceId { get; set; } = 0;
         public double px { get; set; } = 0;
         public double py { get; set; } = 0;
         public double pz { get; set; } = 0;
@@ -18,26 +19,21 @@ namespace Tumo
             this.py = py;
             this.pz = pz;
         }
-        public TmTransform(double ay)
+        public TmTransform(double px, double py, double pz, double ay)
         {
+            this.px = px;
+            this.py = py;
+            this.pz = pz;
             this.ay = ay;
         }
-        public TmTransform(TmSoulerItem souler)
+        public TmTransform(double px, double py, double pz, double ax, double ay, double az)
         {
-            if (souler.GetComponent<TmTransform>() != null)
-            {
-                TmTransform item = souler.GetComponent<TmTransform>();
-                this.px = item.px;
-                this.py = item.py;
-                this.pz = item.pz;
-                this.ax = item.ax;
-                this.ay = item.ay;
-                this.az = item.az;
-            }
-            else
-            {
-                Console.WriteLine(TmTimerTool.CurrentTime() + " " + souler.GetType().Name + " 无TmTransform组件。");
-            }
+            this.px = px;
+            this.py = py;
+            this.pz = pz;
+            this.ax = ax;
+            this.ay = ay;
+            this.az = az;
         }
     }
 }

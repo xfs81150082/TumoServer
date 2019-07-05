@@ -10,5 +10,6 @@ namespace Tumo
         public int Place { get; set; } = 0;
         public int Count { get ; set ; }
         public int Durability { get; set; }
+        public int changeCount = -1;
     }
 }

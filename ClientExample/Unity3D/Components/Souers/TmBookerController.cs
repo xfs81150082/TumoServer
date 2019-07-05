@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Tumo;
 namespace ClientExample
@@ -10,18 +11,26 @@ namespace ClientExample
             ElevenCode elevenCode = parameter.ElevenCode;
             switch (elevenCode)
             {
-                case (ElevenCode.GetRolers):
+                case (ElevenCode.SetSoulerDBs):
                     Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerController: " + elevenCode);
-                    GetBookers(parameter);
+
+                    SetSoulerDBs(parameter);
+
                     break;
                 default:
                     break;
             }
         }
-        void GetBookers(TmParameter parameter)
+        void SetSoulerDBs(TmParameter parameter)
         {
-            List<TmSoulerDB> bookers = TmParameterTool.GetJsonValue<List<TmSoulerDB>>(parameter, parameter.ElevenCode.ToString());
-            Console.WriteLine(TmTimerTool.CurrentTime() + " TmBookerController-Bookers: " + bookers.Count);
+            Dictionary<int, TmSoulerDB> bookers = TmParameterTool.GetJsonValue<Dictionary<int, TmSoulerDB>>(parameter, parameter.ElevenCode.ToString());
+            if (bookers.Count > 0)
+            {
+                TmObjects.Bookers = bookers;
+                Console.WriteLine(TmTimerTool.CurrentTime() + " TmObjects.Bookers: " + TmObjects.Bookers.Count);
+            }
         }
+      
+
     }
 }

@@ -7,36 +7,50 @@ namespace Tumo
     {
         public override void TmAwake()
         {
-            base.TmAwake();
-            AddComponent(new TmName());
             AddComponent(new TmSouler());
-            AddComponent(new TmSoulerDB());
-            AddComponent(new TmCoolDown());
-            AddComponent(new TmChangeType());
+            AddComponent(new TmName());
             AddComponent(new TmProperty());
+            AddComponent(new TmTransform());
+            AddComponent(new TmChangeType());
+            AddComponent(new TmCoolDown());
+            AddComponent(new TmAstarComponent());
             AddComponent(new TmInventoryAdd());
             AddComponent(new TmBuffAdd());
             AddComponent(new TmAbilityAdd());
-            AddComponent(new TmAstarPath());
         }
         public TmSoulerItem() { }                        ///构造函数 
         public TmSoulerItem(TmSoulerDB itemDB)
-        {
-            if (this.GetComponent<TmSoulerDB>() != null)
+        {          
+            TmSouler souler = null;
+            TmObjects.Soulers.TryGetValue(itemDB.SoulerId, out souler);
+            if (souler != null)
             {
-                RemoveComponent<TmSoulerDB>();
+                if (this.GetComponent<TmSouler>() != null)
+                {
+                    this.RemoveComponent<TmSouler>();
+                }
+                this.AddComponent(souler);
+                if (GetComponent<TmCoolDown>() != null)
+                {
+                    this.GetComponent<TmCoolDown>().CdTime = itemDB.CdTime;
+                    this.GetComponent<TmCoolDown>().MaxCdTime = souler.MaxColdTime;
+                }
             }
-            AddComponent(itemDB);
-            (this.GetComponent<TmName>() as TmName).Name = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Name;
-            (this.GetComponent<TmName>() as TmName).Id = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Id;
-            (this.GetComponent<TmName>() as TmName).ParentId = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).UserId;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Exp = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Exp;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Level = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Level;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Coin = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Coin;
-            (this.GetComponent<TmChangeType>() as TmChangeType).Diamond = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Diamond;
-            (this.GetComponent<TmProperty>() as TmProperty).Hp = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Hp;
-            (this.GetComponent<TmProperty>() as TmProperty).Mp = (this.GetComponent<TmSoulerDB>() as TmSoulerDB).Mp;
+            this.GetComponent<TmName>().Id = itemDB.Id;
+            this.GetComponent<TmName>().Name = itemDB.Name;
+            this.GetComponent<TmName>().ParentId = itemDB.UserId;
+            this.GetComponent<TmChangeType>().Exp = itemDB.Exp;
+            this.GetComponent<TmChangeType>().Level = itemDB.Level;
+            this.GetComponent<TmChangeType>().Coin = itemDB.Coin;
+            this.GetComponent<TmChangeType>().Diamond = itemDB.Diamond;
+            this.GetComponent<TmProperty>().Hp = itemDB.Hp;
+            this.GetComponent<TmProperty>().Mp = itemDB.Mp;
+            this.GetComponent<TmTransform>().px = itemDB.px;
+            this.GetComponent<TmTransform>().py = itemDB.py;
+            this.GetComponent<TmTransform>().pz = itemDB.pz;
+            this.GetComponent<TmTransform>().ax = itemDB.ax;
+            this.GetComponent<TmTransform>().ay = itemDB.ay;
+            this.GetComponent<TmTransform>().az = itemDB.az;          
         }
-
     }
 }
